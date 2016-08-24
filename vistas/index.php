@@ -2,7 +2,7 @@
    <div class="hero-header">
           <div class="inner-hero-header">
             <div class="container">
-              <div class="text-center logo"> <a href="index.html"><img src="../images/logo.png" alt=""></a></div>
+              <div class="text-center logo"> <a href="/empleo/index.php/home"><img src="../images/logo.png" alt=""></a></div>
               <div class="relative">
                 <i class="fa fa-globe ic-fade-globe"></i>
                 <!-- form search -->
@@ -31,8 +31,7 @@
               </div>
             </div>
           </div>
-
-
+          
           <!-- modal Advanced search -->
           <div class="modal fade" id="modal-advanced" >
             <div class="modal-dialog ">
@@ -160,7 +159,15 @@
         </div><!-- end box simple static -->
 
       </div><!--end body-content -->
-
+ <?php if(isset($_GET['state'])){
+            if($_GET['state']=="fail"){
+              ?>
+              
+              <center><h4>usuario o contraseña incorrecta</h4></center>
+              
+              <?php
+            }
+           } ?>
 
 <?php $contenido=ob_get_clean(); ?>
 <?php include "plantilla/plantilla_base.php"; ?>
