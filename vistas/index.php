@@ -6,18 +6,18 @@
               <div class="relative">
                 <i class="fa fa-globe ic-fade-globe"></i>
                 <!-- form search -->
-                <form class="form-search-home" method="post" action="job_list.html">
+                <form class="form-search-home" method="post" action="/empleo/index.php/job_list">
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>What</label>
-                        <input class="form-control  input-lg" placeholder="job title, keywords or company name">
+                        <input class="form-control  input-lg" name ="trabajo" placeholder="job title, keywords or company name">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>Where</label>
-                        <input class="form-control input-lg" placeholder="city, province, or region">
+                        <input class="form-control input-lg" name ="donde" placeholder="city, province, or region">
                       </div>
                     </div>
                   </div>

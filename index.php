@@ -17,8 +17,11 @@
        if($uri=="/empleo/index.php/login?state=fail"){
      Login_Fail_Action_Controller();
     } 
-       if($uri=="/empleo/index.php/sistema"){
+       if($uri=="/empleo/index.php/sistem"){
      echo "aqui vamos";
+    } 
+    if($uri=="/empleo/index.php/job_list"){
+     Job_List_Action_Controller();
     } 
     
     ?>
