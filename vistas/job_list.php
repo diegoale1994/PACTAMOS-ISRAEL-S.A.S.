@@ -16,7 +16,7 @@
                   <div class="col-sm-5 col-xs-6 ">
                     <div class="form-group">
                       <label class="color-white">What</label>
-                      <input class="form-control" name = "trabajo" placeholder="job title, keywords or company name" >
+                      <input class="form-control" name = "trabajo" placeholder="job title, keywords or company name" required >
                     </div>
                   </div>
                   <div class="col-sm-5 col-xs-6 ">

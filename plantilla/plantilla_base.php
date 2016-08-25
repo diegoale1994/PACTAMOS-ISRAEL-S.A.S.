@@ -72,7 +72,28 @@
                     <li><a href="company_page.html">Company Profile</a></li>
                   </ul>
                 </li>
-              </ul>      
+              </ul>  
+
+
+<?php 
+session_start();
+if (isset($_SESSION['tipo_documento'])){ ?>
+<ul class="nav navbar-nav nav-block-left">
+              <li class="dropdown">
+                <a href="#" class="link-profile dropdown-toggle"  data-toggle="dropdown" >
+                  <img src="../images/people/4.jpg" alt="" class="img-profile"><?php echo $_SESSION['nombre'];?><b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="my_alerts.html"> My Alerts </a></li>
+                  <li><a href="my_notifications.html"> Notifications <span class="badge ">5</span></a></li>
+                  <li><a href="change_password.html"> Change Password</a></li>
+                  <li><a href="/empleo/index.php/loggout"> Logout</a></li>
+                </ul>
+              </li>
+            </ul>
+<?php } else{?>
+
+
               <ul class="nav navbar-nav navbar-right">
                 <li class="link-btn"><a href="/empleo/index.php/login"><span class="btn btn-theme btn-pill btn-xs btn-line">Login</span></a></li>
                 <li class="link-btn"><a href="register.html"><span class="btn btn-theme  btn-pill btn-xs btn-line">Register</span></a></li>
@@ -80,7 +101,7 @@
             </div>
           </div>
         </nav><!-- end main navbar -->
-
+<?php }?>
         <!-- mobile navbar -->
         <div class="container">
           <nav class="mobile-nav hidden-md hidden-lg">

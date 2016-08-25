@@ -30,6 +30,16 @@
                     <!-- form login -->
                     <form method = "POST" action='/empleo/index.php/loggin_form'>
                       <div class="form-group">
+                       <label>Tipo de documento</label>
+                       <select class="form-control" name ="tipo_documento" data-live-search="true">
+                       <option data-tokens="ketchup mustard" value ="CC">CC</option>
+                       <option data-tokens="mustard" value= "NIT">NIT</option>
+                
+                       </select>
+
+                      </div>
+
+                      <div class="form-group">
                         <label>Email</label>
                         <input type="text" name = "identificacion" class="form-control" placeholder="Your identification">
                       </div>

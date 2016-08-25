@@ -159,7 +159,6 @@
         </div><!-- end box simple static -->
 
       </div><!--end body-content -->
- 
 
 <?php $contenido=ob_get_clean(); ?>
 <?php include "plantilla/plantilla_base.php"; ?>

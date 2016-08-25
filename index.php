@@ -23,5 +23,12 @@
     if($uri=="/empleo/index.php/job_list"){
      Job_List_Action_Controller();
     } 
+    if($uri=="/empleo/index.php/job_post"){
+     Job_Post_Action_Controller();
+    } 
+     if($uri=="/empleo/index.php/loggout"){
+     User_Loggout_Action_Controller();
+    } 
+    
     
     ?>
