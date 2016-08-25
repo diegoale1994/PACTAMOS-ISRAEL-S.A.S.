@@ -10,7 +10,7 @@ Loggin_Action_Model();
 }
 
 function Login_Fail_Action_Controller(){
-	require "vistas/index.php";
+	require "vistas/login.php";
 }
 function Job_List_Action_Controller(){
 	$oferta = Job_List_Action_Model();

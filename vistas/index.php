@@ -159,15 +159,7 @@
         </div><!-- end box simple static -->
 
       </div><!--end body-content -->
- <?php if(isset($_GET['state'])){
-            if($_GET['state']=="fail"){
-              ?>
-              
-              <center><h4>usuario o contraseña incorrecta</h4></center>
-              
-              <?php
-            }
-           } ?>
+ 
 
 <?php $contenido=ob_get_clean(); ?>
 <?php include "plantilla/plantilla_base.php"; ?>

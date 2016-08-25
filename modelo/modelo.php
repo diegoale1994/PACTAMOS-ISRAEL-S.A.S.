@@ -48,12 +48,13 @@ while ($fila=mysqli_fetch_array($resultado)) {
    cerrar_conexion_db($conexion);
 }}
   function Job_List_Action_Model(){
+     $oferta = array();  
 if($_SERVER['REQUEST_METHOD']=="POST"){
         $conexion=conectar_base_de_datos();
         
         $donde =htmlentities($_POST['donde']); 
         $trabajo=htmlentities($_POST['trabajo']);
-        $oferta = array();  
+       
        $consulta = "SELECT * FROM `oferta` WHERE `vacante` LIKE '%".$trabajo."%' AND `ciudad` LIKE '%".$donde."%' ORDER BY fecha_publicacion DESC ";
        $resultado=mysqli_query($conexion,$consulta);
        $cont=0;
@@ -76,8 +77,13 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     }
     $cont++;
     }
-  
-  }
+    if($cont==0){
+        $oferta[0]="N";
+        return $oferta;
+    }else{
+  return $oferta;
+  }}
+
 return $oferta;
 }
 

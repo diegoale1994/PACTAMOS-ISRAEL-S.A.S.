@@ -166,14 +166,18 @@
                       </p>
                     </div>
                   </div><!-- end desc top -->
+<?php
 
+                  if (empty($oferta)) {
+                  
+                      }else{
+                        if($oferta[0]=="N"){
+                          echo "no se encontraron resultados";
+                        }else{
+?>
                   <!-- item list -->  
                   <div class="box-list">
-                  <?php
-                  if (empty($oferta)) {
-                  echo 'No resultados encontrados';
-                      }
-?>
+                  
                   <?php foreach($oferta as $value): ?>
                     <div class="item">
                       <div class="row">
@@ -193,7 +197,7 @@
                     </div><!-- end item list -->
                        <?php endforeach ?>
                   </div>
-
+<?php }} ?>
 
                   <!-- form get alert -->
                   <div class="get_alert">
