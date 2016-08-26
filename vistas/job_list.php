@@ -1,6 +1,7 @@
 
    <?php ob_start() ?>
         <!-- form search area-->
+ 
         <div class="container">
           <div class="row">
 
@@ -172,7 +173,14 @@
                   
                       }else{
                         if($oferta[0]=="N"){
-                          echo "no se encontraron resultados";
+                          ?>
+                         <div id="no_result" >
+                         <center>
+                
+                          <p>No se encontraron resultados</p>
+                        </center>
+              </div>
+                          <?php
                         }else{
 ?>
                   <!-- item list -->  

@@ -27,8 +27,12 @@
      Job_Post_Action_Controller();
     } 
      if($uri=="/empleo/index.php/loggout"){
+
      User_Loggout_Action_Controller();
     } 
-    
+
+     if($uri=="/empleo/index.php/loggout?time_session=out"){
+     User_Loggout_Time_Out_Action_Controller();
+    } 
     
     ?>

@@ -1,3 +1,14 @@
+<?php
+  session_start();
+$inac = 900;
+if (isset($_SESSION['tiempo'])){ 
+$tiempo_actual = time() - $_SESSION['tiempo'];
+if($tiempo_actual > $inac){
+ header("Location: /empleo/index.php/loggout?time_session=out");
+}
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en" >
   <head>
@@ -49,7 +60,7 @@
               <ul class="nav navbar-nav">
                 <li class=""><a href="/empleo/index.php/job_list"><strong>Find a Job</strong></a></li>
                 <li class=""><a href="resume_list.html"><strong>Find Resumes</strong></a></li>
-                <li  class=""><a href="job_post_1.html"><strong>Post a Job</strong></a></li>
+                <li  class=""><a href="/empleo/index.php/job_post"><strong>Post a Job</strong></a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" >Pages <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
@@ -76,7 +87,7 @@
 
 
 <?php 
-session_start();
+
 if (isset($_SESSION['tipo_documento'])){ ?>
 <ul class="nav navbar-nav nav-block-left">
               <li class="dropdown">

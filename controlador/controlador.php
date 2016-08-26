@@ -24,4 +24,10 @@ function Job_Post_Action_Controller(){
  	session_destroy();
  	header("Location: /empleo/index.php/home");
   }
+ function User_Loggout_Time_Out_Action_Controller(){
+ 	session_start();
+ 	session_destroy();
+ 
+ 	require "vistas/index.php";
+ }
 ?>

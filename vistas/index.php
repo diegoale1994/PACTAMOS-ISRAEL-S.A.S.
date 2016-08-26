@@ -31,7 +31,7 @@
               </div>
             </div>
           </div>
-          
+         
           <!-- modal Advanced search -->
           <div class="modal fade" id="modal-advanced" >
             <div class="modal-dialog ">
@@ -134,7 +134,9 @@
         </div>
       </header><!-- end main-header -->
 
-
+       <?php
+         if (isset($_GET['time_session'])){if($_GET['time_session']=='out'){echo "<label>Su session ha finalizado</label>";}}
+          ?>
       <!-- body-content -->
       <div class="body-content clearfix" >
 

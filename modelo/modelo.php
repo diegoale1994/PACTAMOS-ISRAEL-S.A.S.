@@ -44,6 +44,7 @@ function Loggin_Action_Model(){
                 $band=1;
                 $_SESSION['documento']=$documentofinal;
                 $_SESSION['tipo_documento']=$niveldeacceso;
+                $_SESSION['tiempo'] = time();
     }
 
 
