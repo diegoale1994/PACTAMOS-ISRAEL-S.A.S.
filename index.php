@@ -1,6 +1,7 @@
 <?php
     require_once "modelo/modelo.php";
     require_once "controlador/controlador.php";
+    session_start();
     if(isset($_SERVER['REQUEST_URI'])){
       $uri = $_SERVER['REQUEST_URI'];
     }
@@ -30,9 +31,20 @@
 
      User_Loggout_Action_Controller();
     } 
+     if($uri=="/empleo/index.php/404_error"){
+
+     error404();
+    } 
 
      if($uri=="/empleo/index.php/loggout?time_session=out"){
      User_Loggout_Time_Out_Action_Controller();
     } 
+    $uri = explode("?", $_SERVER['REQUEST_URI']);
+         if($uri[0]=="/empleo/index.php/job_details"){
+      
+      Show_Job_Action_Controller();
+    }
+    
+    
     
     ?>

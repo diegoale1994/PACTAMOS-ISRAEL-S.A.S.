@@ -1,5 +1,5 @@
 <?php
-  session_start();
+ 
 $inac = 900;
 if (isset($_SESSION['tiempo'])){ 
 $tiempo_actual = time() - $_SESSION['tiempo'];

@@ -8,7 +8,6 @@ require "vistas/login.php";
 function Login_Form_Action_Controller(){
 Loggin_Action_Model();
 }
-
 function Login_Fail_Action_Controller(){
 	require "vistas/login.php";
 }
@@ -30,4 +29,14 @@ function Job_Post_Action_Controller(){
  
  	require "vistas/index.php";
  }
+ function Show_Job_Action_Controller(){
+ 	$oferta_detailed = Show_Job_Action_Model();
+require "vistas/job_details.php";
+ }
+  function  error404(){
+ 	
+require "vistas/error_404.php";
+ }
+
+    
 ?>

@@ -11,7 +11,9 @@ function cerrar_conexion_db($conexion){
 }
 
 function Loggin_Action_Model(){
+
     if($_SERVER['REQUEST_METHOD']=="POST"){
+
         $conexion=conectar_base_de_datos();
         $documento=htmlentities($_POST['identificacion']);
         $documentofinal = mysql_escape_string($documento);
@@ -46,9 +48,8 @@ function Loggin_Action_Model(){
                 $_SESSION['tipo_documento']=$niveldeacceso;
                 $_SESSION['tiempo'] = time();
     }
-
-
     }
+
     
     if($band==1 and $tipo_documento == "CC"){
        header("Location: /empleo/index.php/job_list");
@@ -56,6 +57,7 @@ function Loggin_Action_Model(){
       if($band==1 and $tipo_documento == "NIT"){
       header("Location: /empleo/index.php/job_post");
     }
+    
    cerrar_conexion_db($conexion);
 }}
   function Job_List_Action_Model(){
@@ -68,10 +70,12 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         $resultado=mysqli_query($conexion,$consulta);
         $cont=0;
             while ($fila=mysqli_fetch_array($resultado)) {
+                 $oferta[$cont]['id_oferta']=$fila['id_oferta'];
                 $oferta[$cont]['vacante']=$fila['vacante'];
                 $oferta[$cont]['descripcion_profesional']=$fila['descrip_prof'];
                 $oferta[$cont]['departamento']=$fila['departamento'];
                 $oferta[$cont]['ciudad']=$fila['ciudad'];
+
                 $oferta[$cont]['fecha']=$fila['fecha_publicacion'];
                 $docu = $fila['documento'];
                 $consulta2="SELECT nombre FROM empresa WHERE documento ='".$docu."'";
@@ -94,6 +98,27 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
   }}
 
 return $oferta;
+}
+
+function Show_Job_Action_Model(){
+if (isset($_GET['offerNo'])){
+if($_GET['offerNo']=="" ){
+header("Location: /empleo/index.php/404_error");
+}
+ $conexion=conectar_base_de_datos();
+$oferta_detailed=array();
+$No_oferta = $_GET['offerNo'];
+$cont = 0;
+$consulta = "SELECT * FROM oferta WHERE `id_oferta` = '".$No_oferta."'";
+        $resultado=mysqli_query($conexion,$consulta);
+            while ($fila=mysqli_fetch_array($resultado)) {
+                $oferta_detailed[]=$fila;
+}
+return $oferta_detailed;
+}
+else{
+     header("Location: /empleo/index.php/404_error");
+}
 }
 
 ?>
