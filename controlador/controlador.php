@@ -11,12 +11,22 @@ require "vistas/contact.php";
 function Login_Action_Controller(){
 require "vistas/login.php";
 }
+function Register_Action_Controller(){
+require "vistas/register.php";
+}
 function Login_Form_Action_Controller(){
 Loggin_Action_Model();
 }
 function Login_Fail_Action_Controller(){
 	require "vistas/login.php";
 }
+
+//Menú usuario logueado
+function Resume_Action_Controller(){
+	require "vistas/resume.php";
+}
+
+
 function Job_List_Action_Controller(){
 	$oferta = Job_List_Action_Model();
 require "vistas/job_list.php";

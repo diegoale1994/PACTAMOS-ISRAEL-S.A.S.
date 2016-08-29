@@ -15,16 +15,28 @@
     if($uri=="/empleo/index.php/contact"){
      Contact_Action_Controller();
     } 
+
     if($uri=="/empleo/index.php/login"){
      Login_Action_Controller();
     } 
      if($uri=="/empleo/index.php/loggin_form"){
      Login_Form_Action_Controller();
     } 
-       if($uri=="/empleo/index.php/login?state=fail"){
+    if($uri=="/empleo/index.php/login?state=fail"){
      Login_Fail_Action_Controller();
     } 
-       if($uri=="/empleo/index.php/sistem"){
+    if($uri=="/empleo/index.php/register"){
+     Register_Action_Controller();
+    } 
+
+    //Menú usuario Logueado
+    if($uri=="/empleo/index.php/resume"){
+     Resume_Action_Controller();
+    } 
+
+
+
+    if($uri=="/empleo/index.php/sistem"){
      echo "aqui vamos";
     } 
     if($uri=="/empleo/index.php/job_list"){

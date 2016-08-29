@@ -52,10 +52,10 @@ function Loggin_Action_Model(){
 
     
     if($band==1 and $tipo_documento == "CC"){
-       header("Location: /empleo/index.php/job_list");
+       header("Location: ../index.php/resume");
     }
       if($band==1 and $tipo_documento == "NIT"){
-      header("Location: /empleo/index.php/job_post");
+      header("Location: ../index.php/job_post");
     }
     
    cerrar_conexion_db($conexion);

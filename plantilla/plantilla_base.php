@@ -1,3 +1,13 @@
+<?php
+ 
+$inac = 900;
+if (isset($_SESSION['tiempo'])){ 
+$tiempo_actual = time() - $_SESSION['tiempo'];
+if($tiempo_actual > $inac){
+ header("Location: /empleo/index.php/loggout?time_session=out");
+}
+}
+?>
 <!DOCTYPE html>
 <html lang="en" >
   <head>
@@ -41,30 +51,46 @@
       <header class="main-header">
         <nav class="navbar navbar-default main-navbar hidden-sm hidden-xs">
           <div class="container">
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-              <ul class="nav navbar-nav">
-                <li class=""><a href="../index.php/home"><strong>Inicio</strong></a></li>
-                <li class=""><a href="../index.php/job_list"><strong>Ofertas</strong></a></li>
-                <li class=""><a href="../index.php/company">¿Quienes somos?</a></li>
-                <li class=""><a href="../index.php/contact">Contáctenos</a></li>
-                <!--<li  class=""><a href="job_post_1.html"><strong>Publica tu oferta</strong></a></li>-->
-                <!--<li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" >Acerca de <span class="caret"></span></a>
-                  <ul class="dropdown-menu" role="menu">
-                    <li></li>
-                    <li><a href="../index.php/contact">Contáctenos</a></li>                    
-                  </ul>
-                </li>-->
-                
-              </ul>      
-              <!--<ul class="nav navbar-nav navbar-right">
-                <li class="link-btn"><a href="login.html"><span class="btn btn-theme btn-pill btn-xs btn-line">Ingresar</span></a></li>
-                <li class="link-btn"><a href="register.html"><span class="btn btn-theme  btn-pill btn-xs btn-line">Registro</span></a></li>
-              </ul>-->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">                  
+              <?php 
+                if (isset($_SESSION['tipo_documento'])){ ?>
+                <ul class="nav navbar-nav">
+                  <li><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
+                  <li class=""><a href="../index.php/resume"><strong>Mi Hoja de Vida</strong></a></li>
+                  <li class=""><a href="../index.php/job_list"><strong>Ofertas Disponibles</strong></a></li>
+                  <li class=""><a href="../index.php/company">Mis Ofertas</a></li>                  
+                </ul>  
+                <ul class="nav navbar-nav navbar-right">
+                  <li class="dropdown">
+                    <a href="#" class="link-profile dropdown-toggle"  data-toggle="dropdown" >
+                      <img src="../images/people/4.jpg" alt="" class="img-profile"><?php echo $_SESSION['nombre'];?><b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="my_alerts.html"> My Alerts </a></li>
+                      <li><a href="my_notifications.html"> Notifications <span class="badge ">5</span></a></li>
+                      <li><a href="change_password.html"> Cambiar contraseña</a></li>
+                      <li><a href="/empleo/index.php/loggout"> SAlir</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              <?php } else{?>
+                <ul class="nav navbar-nav">
+                  <li><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
+                  <li class=""><a href="../index.php/home"><strong>Inicio</strong></a></li>
+                  <li class=""><a href="../index.php/job_list"><strong>Ofertas</strong></a></li>
+                  <li class=""><a href="../index.php/company">¿Quienes somos?</a></li>
+                  <li class=""><a href="../index.php/contact">Contáctenos</a></li>
+                  <li  class=""><a href="../index.php/post_offer"><strong>Publica tu oferta</strong></a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <li class="link-btn"><a href="../index.php/login"><span class="btn btn-theme btn-pill btn-xs btn-line">Ingresar</span></a></li>
+                  <li class="link-btn"><a href="../index.php/register"><span class="btn btn-theme  btn-pill btn-xs btn-line">Registro</span></a></li>
+                </ul>
+              </div>
             </div>
-          </div>
-        </nav><!-- end main navbar -->
+          </nav><!-- end main navbar -->
+              <?php }?>  
+              
 
         <!-- mobile navbar -->
         <div class="container">
