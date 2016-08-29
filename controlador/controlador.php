@@ -2,6 +2,12 @@
 function Home_Action_Controller(){
 require "vistas/index.php";
 }
+function Company_Action_Controller(){
+require "vistas/about.php";
+}
+function Contact_Action_Controller(){
+require "vistas/contact.php";
+}
 function Login_Action_Controller(){
 require "vistas/login.php";
 }

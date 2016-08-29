@@ -9,6 +9,12 @@
     if($uri=="/empleo/index.php/home"){
      Home_Action_Controller();
     } 
+    if($uri=="/empleo/index.php/company"){
+     Company_Action_Controller();
+    } 
+    if($uri=="/empleo/index.php/contact"){
+     Contact_Action_Controller();
+    } 
     if($uri=="/empleo/index.php/login"){
      Login_Action_Controller();
     } 
