@@ -79,8 +79,7 @@ if($tiempo_actual > $inac){
                   <li class=""><a href="../index.php/home"><strong>Inicio</strong></a></li>
                   <li class=""><a href="../index.php/job_list"><strong>Ofertas</strong></a></li>
                   <li class=""><a href="../index.php/company">¿Quienes somos?</a></li>
-                  <li class=""><a href="../index.php/contact">Contáctenos</a></li>
-                  <li  class=""><a href="../index.php/post_offer"><strong>Publica tu oferta</strong></a></li>
+                  <li class=""><a href="../index.php/contact">Contáctenos</a></li>                  
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                   <li class="link-btn"><a href="../index.php/login"><span class="btn btn-theme btn-pill btn-xs btn-line">Ingresar</span></a></li>

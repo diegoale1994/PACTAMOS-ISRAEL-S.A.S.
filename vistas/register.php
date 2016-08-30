@@ -41,8 +41,16 @@
                     <label>Correo</label>
                     <input type="email" class="form-control" placeholder="Correo para contáctarte" name="email">
                   </div>
+                  <div class="form-group">
+                    <label>Contraseña</label>
+                    <input type="password" name="pass" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>Repite tu Contraseña</label>
+                    <input type="password" name="pass_2" class="form-control">
+                  </div>
                   <div class="white-space-10"></div>
-                  <center><h4>Enviaremos la contraseña de tu cuenta a tu correo electrónico</h4></center><br>
+                  <center><h4>En breve verificaremos tu correo</h4></center><br>
                   <div class="form-group no-margin">
                     <button class="btn btn-theme btn-lg btn-t-primary btn-block">Registrarse</button>
                   </div>
@@ -96,8 +104,16 @@
                     <label>Correo</label>
                     <input type="email" class="form-control" placeholder="Correo para contáctarte" name="email">
                   </div>
+                  <div class="form-group">
+                    <label>Contraseña</label>
+                    <input type="password" name="pass" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>Repite tu Contraseña</label>
+                    <input type="password" name="pass_2" class="form-control">
+                  </div>
                   <div class="white-space-10"></div>
-                  <center><h4>Enviaremos la contraseña de tu cuenta a tu correo electrónico</h4></center><br>
+                  <center><h4>En breve verificaremos tu correo</h4></center><br>
                   <div class="form-group no-margin">
                     <button class="btn btn-theme btn-lg btn-t-primary btn-block">Registrarse</button>
                   </div>
