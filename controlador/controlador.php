@@ -23,7 +23,9 @@ function Login_Fail_Action_Controller(){
 function Register_N_Action_Controller(){
 	Register_N_Action_Model();
 }
- 
+function Profile_Confirmation_Action_Controller(){
+	require "vistas/profile_confirmation.php";
+}
 //Menú usuario logueado
 function Resume_Action_Controller(){
 	require "vistas/resume.php";

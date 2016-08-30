@@ -162,22 +162,31 @@ function Loggin_Action_Model(){
         $tipo_documento = htmlentities($_POST['tipo_documento']);
         $claveCodificada = sha1($pass);
         $band=0;
+        //echo $pass." -> ".$tipo_documento." -> ".$documento;
+        
         $consulta="SELECT * FROM persona";
         $resultado=mysqli_query($conexion,$consulta);
             while ($fila=mysqli_fetch_array($resultado)) {
                 $documentobase= $fila['documento'];
                 $passbase = $fila['password'];
-                $niveldeacceso = $fila['tipo_documento'];
+                
+
                 if ($documentobase==$documentofinal && $passbase==$claveCodificada) {
-                    session_start();
-                    if($niveldeacceso=="N"){
+
+                   if($fila['verificado'] =='N'){
+                    $_SESSION['verificado']='N';
+                  }
+                $niveldeacceso = $fila['rol'];
+                    
+                    $_SESSION['session_started']='yes';
+                    if($niveldeacceso=="E"){
                         $consulta_datos="SELECT nombre FROM empresa where documento = '".$documentofinal."'";
                          $resultado1=mysqli_query($conexion,$consulta_datos);
             while ($fila1=mysqli_fetch_array($resultado1)) {
                      $_SESSION['nombre']=$fila1['nombre'];
                     }
                 }
-                   if($niveldeacceso=="C"){
+                   if($niveldeacceso=="P"){
                         $consulta_datos="SELECT nombre1 FROM persona_natural where documento = '".$documentofinal."'";
                          $resultado1=mysqli_query($conexion,$consulta_datos);
             while ($fila1=mysqli_fetch_array($resultado1)) {
@@ -186,16 +195,18 @@ function Loggin_Action_Model(){
                 }
                 $band=1;
                 $_SESSION['documento']=$documentofinal;
-                $_SESSION['tipo_documento']=$niveldeacceso;
+                $_SESSION['nivel_de_acceso']=$niveldeacceso;
                 $_SESSION['tiempo'] = time();
     }
     }
-
+    if($band==0){
+       header("Location: ../index.php/login?state=fail");
+    }
     
     if($band==1 and $tipo_documento == "CC"){
        header("Location: ../index.php/resume");
     }
-      if($band==1 and $tipo_documento == "NIT"){
+      if($band==1 and $tipo_documento == "NI"){
       header("Location: ../index.php/job_post");
     }
     

@@ -53,10 +53,14 @@ if($tiempo_actual > $inac){
           <div class="container">
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">                  
               <?php 
-                if (isset($_SESSION['tipo_documento'])){ ?>
+                if (isset($_SESSION['nivel_de_acceso'])){ 
+                  if($_SESSION['nivel_de_acceso']=='E'){
+                  ?>
                 <ul class="nav navbar-nav">
                   <li><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
-                  <li class=""><a href="../index.php/resume"><strong>Mi Hoja de Vida</strong></a></li>
+                  <li class=""><a href="../index.php/resume"><strong>Perfil</strong></a></li>
+                  
+                  <li class=""><a href="../index.php/job_post"><strong>Publicar oferta</strong></a></li>
                   <li class=""><a href="../index.php/job_list"><strong>Ofertas Disponibles</strong></a></li>
                   <li class=""><a href="../index.php/company">Mis Ofertas</a></li>                  
                 </ul>  
@@ -73,11 +77,36 @@ if($tiempo_actual > $inac){
                     </ul>
                   </li>
                 </ul>
-              <?php } else{?>
+              <?php } 
+              if($_SESSION['nivel_de_acceso']=='P'){
+              ?>
                 <ul class="nav navbar-nav">
-                  <li><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
-                  <li class=""><a href="../index.php/home"><strong>Inicio</strong></a></li>
+                  <li><a href="/empleo/index.php/home"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
+                   <li class=""><a href="../index.php/resume"><strong>Perfil</strong></a></li>
                   <li class=""><a href="../index.php/job_list"><strong>Ofertas</strong></a></li>
+                     
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <li class="dropdown">
+                    <a href="#" class="link-profile dropdown-toggle"  data-toggle="dropdown" >
+                      <img src="../images/people/4.jpg" alt="" class="img-profile"><?php echo $_SESSION['nombre'];?><b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="my_alerts.html"> My Alerts </a></li>
+                      <li><a href="my_notifications.html"> Notifications <span class="badge ">5</span></a></li>
+                      <li><a href="change_password.html"> Cambiar contraseña</a></li>
+                      <li><a href="/empleo/index.php/loggout"> SAlir</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav><!-- end main navbar -->
+              <?php }}else{ ?>
+  <ul class="nav navbar-nav">
+                  <li><a href="/empleo/index.php/home"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
+                  <li class=""><a href="../index.php/home"><strong>Inicio</strong></a></li>
+                  <li class=""><a href="../index.php/job_list"><strong></strong></a></li>
                   <li class=""><a href="../index.php/company">¿Quienes somos?</a></li>
                   <li class=""><a href="../index.php/contact">Contáctenos</a></li>                  
                 </ul>
@@ -88,7 +117,7 @@ if($tiempo_actual > $inac){
               </div>
             </div>
           </nav><!-- end main navbar -->
-              <?php }?>  
+                <<?php }?>  
               
 
         <!-- mobile navbar -->

@@ -36,6 +36,10 @@
     if($uri=="/empleo/index.php/register_N_form"){
     Register_N_Action_Controller();
     } 
+    if($uri=="/empleo/index.php/profile_confirmation"){
+    Profile_Confirmation_Action_Controller();
+    } 
+    
 
 
 

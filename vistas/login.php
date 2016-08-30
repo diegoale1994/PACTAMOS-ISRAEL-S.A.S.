@@ -23,7 +23,8 @@
              <label>Tipo de documento</label>
              <select class="form-control" name ="tipo_documento" data-live-search="true">
                <option data-tokens="ketchup mustard" value ="CC">CC</option>
-               <option data-tokens="mustard" value= "NIT">NIT</option>
+               <option data-tokens="mustard" value= "NI">NIT</option>
+                <option data-tokens="ketchup mustard" value ="CE">CE</option>
              </select>
             </div>
             <div class="form-group">
