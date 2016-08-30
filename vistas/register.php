@@ -81,7 +81,7 @@
                   <div class="form-group">
                     <label>Tipo de Documento</label>
                                      <select name="type_document" class="form-control">
-                      <option value= "NI" >Nit</option>
+                      
                       <option value= "CC">CC</option>
                       <option value= "CE">CE</option>
                     </select>      

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-08-2016 a las 02:20:17
+-- Tiempo de generación: 31-08-2016 a las 00:07:23
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.6.23
 
@@ -114,7 +114,8 @@ CREATE TABLE `oferta` (
 
 INSERT INTO `oferta` (`id_oferta`, `documento`, `area`, `vacante`, `horario`, `descripcion`, `descrip_prof`, `estado`, `tiempo`, `departamento`, `ciudad`, `fecha_publicacion`) VALUES
 (1, '121323123-9', 'Sistemas', 'Programador java', 'lunes a viernes 7am - 5pm', 'sdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdf', 'Manejo de java,c++,php,arquitectura', 'A', 'I', 'Cundinamarca', 'Fusagasuga', '2016-08-02'),
-(2, '111111111-9', 'marketing', 'Programador phyton', 'lunea a viernes 8 a 8', 'asdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdas', 'asdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdas', 'A', 'I', 'Cundinamarca', 'Fusagasuga', '2016-08-22');
+(2, '111111111-9', 'marketing', 'Programador phyton', 'lunea a viernes 8 a 8', 'asdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdas', 'asdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdas', 'A', 'I', 'Cundinamarca', 'Fusagasuga', '2016-08-22'),
+(3, '121323123-9', 'sistemas', 'Programador en .net', 'sadasddfafasdfasdfadfadf', 'sadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfv', 'sadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadf', 'A', 'DSFSDFSDF', 'Cundinamarca', 'Bogota', '2016-08-14');
 
 -- --------------------------------------------------------
 
@@ -124,22 +125,24 @@ INSERT INTO `oferta` (`id_oferta`, `documento`, `area`, `vacante`, `horario`, `d
 
 CREATE TABLE `persona` (
   `documento` varchar(11) NOT NULL,
-  `tipo_documento` varchar(1) NOT NULL,
+  `tipo_documento` varchar(2) NOT NULL,
   `departamento` varchar(20) NOT NULL,
   `ciudad` varchar(20) NOT NULL,
   `direccion` varchar(75) NOT NULL,
   `foto` varchar(255) NOT NULL,
-  `password` varchar(40) NOT NULL
+  `password` varchar(40) NOT NULL,
+  `verificado` varchar(1) NOT NULL,
+  `rol` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `persona`
 --
 
-INSERT INTO `persona` (`documento`, `tipo_documento`, `departamento`, `ciudad`, `direccion`, `foto`, `password`) VALUES
-('1048850076', 'C', 'Boyaca', 'Garagoa', 'Calle 7 No 9-29', 'http//fotomania.com', 'b674a43d6710dc308bfd53404d88d0b5f46edf15'),
-('111111111-9', 'N', 'Cundinamarca', 'Bogota', 'calle 179 -8-32', 'http//asdasdad.com', 'hangar18'),
-('121323123-9', 'N', 'Cundinamarca', 'Fusagasuga', 'Diagonal 24c No 64a - 33', 'ttp//asdasdad.co', '4fc36204d034036de87815eb8ff296791f50d241');
+INSERT INTO `persona` (`documento`, `tipo_documento`, `departamento`, `ciudad`, `direccion`, `foto`, `password`, `verificado`, `rol`) VALUES
+('1048850076', 'CC', 'Boyaca', 'Garagoa', 'Calle 7 No 9-29', 'http//fotomania.com', 'b674a43d6710dc308bfd53404d88d0b5f46edf15', 'N', 'P'),
+('111111111-9', 'NI', 'Cundinamarca', 'Bogota', 'calle 179 -8-32', 'http//asdasdad.com', 'b674a43d6710dc308bfd53404d88d0b5f46edf15', 'Y', 'E'),
+('121323123-9', 'NI', 'Cundinamarca', 'Fusagasuga', 'Diagonal 24c No 64a - 33', 'ttp//asdasdad.co', '4fc36204d034036de87815eb8ff296791f50d241', 'Y', 'E');
 
 -- --------------------------------------------------------
 
@@ -320,7 +323,7 @@ ALTER TABLE `idioma`
 -- AUTO_INCREMENT de la tabla `oferta`
 --
 ALTER TABLE `oferta`
-  MODIFY `id_oferta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_oferta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Restricciones para tablas volcadas
 --
