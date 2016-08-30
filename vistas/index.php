@@ -12,19 +12,19 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <img src="../images/servicio1.png" alt="Chania">
+      <img src="../images/servicios/servicio1.png" alt="Chania">
     </div>
 
     <div class="item">
-      <img src="../images/servicio1.png" alt="Chania">
+      <img src="../images/servicios/servicio2.png" alt="Chania">
     </div>
 
     <div class="item">
-      <img src="../images/servicio1.png" alt="Flower">
+      <img src="../images/servicios/servicio3.png" alt="Flower">
     </div>
 
     <div class="item">
-      <img src="../images/servicio1.png" alt="Flower">
+      <img src="../images/servicios/servicio4.png" alt="Flower">
     </div>
   </div>
 
@@ -73,111 +73,78 @@
 
             
 
-            <h4>Pactamos ayuda a personas a encontrar trabajo: <a href="#" class="color-white-mute">Es hora de buscar tu futuro.</a></h4>
-            <hr/>
-            <div class="white-space-15"></div>
-            
-
-            <hr/>
-            <div class="white-space-15"></div>
-            <h2>Podemos Ayudarte</h2>
-            <p>Pactamos provee facilidades a todos nuestros clientes.</p>
-            <div class="white-space-15"></div>
-
-            <!-- box with icon center -->
-            <div class="row">
-              <div class="col-md-6">
-                <div class="box-ic-center">
-                  <i class="fa fa-clipboard ic-box"></i>
-                  <h4>Publica tu Oferta</h4>
-                  <p>Muy pronto disponible para Empresarios Exitosos, como tu!</p>
-                  <a href="#" class="btn btn-sm btn-pill btn-theme btn-line dark" disabled>Muy Pronto</a>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="box-ic-center ">
-                  <i class="fa fa-search ic-box"></i>
-                  <h4>Busca Empleo</h4>
-                  <p>Es tan fácil como teclear unas cuantas palabras y hacer un click! </p>
-                  <a href="#" class="btn btn-sm btn-pill btn-theme btn-line dark">Buscar</a>
-                </div>
-              </div>
-            </div><!-- box with icon center -->
+            <h4>Pactamos ayuda a personas a encontrar trabajo: <a href="#" class="color-white-mute">Es hora de buscar tu futuro.</a></h4>           
 
           </div>
         </div><!-- end block top -->
 
-        <!-- testimonial -->
-        <div class="bg-color2 block-section line-bottom">
-          <div class="container text-center">
-            <h2>Nuestros Servicios</h2>
-            <div class="white-space-30"></div>
-            <div class="row">
-
-              <div class="col-md-3">  
-                <div class="panel panel-default" style="padding: 20px">
-                  <p >
-                    <h2><b>Ingreso y Contratación de Personal</b></h2>
-                    <br>
-                    Contratación de personal
-                    Afiliaciones a seguridad social
-                    Exámenes medico ocupacionales
-                    Inducción al trabajador
-                    Exámenes de laboratorio
-                    Bienestar al personal
-                    Procesos adicionales (según requerimiento del cliente, se facturan independiente)
-                    Asesoría en seguridad y salud en el trabajo
-                  </p>
-                  <img src="../images/people/servicio1.png" alt="" width="200">                  
+        <div class="block-section bg-color4">
+          <div class="container">
+            <center><h1 class="color-white">Te preguntarás, ¿Cómo funciona Pactamos?</h1></center>
+            <div class="white-space-10"></div>
+            <center><h3 class="color-white">Tan sencillo como dos clicks!</h3></center>
+            <div class="white-space-50"></div>
+            <!-- Start form Company -->
+            <div class="col-md-6">
+              <div class="panel panel-md">
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <!-- buttons top -->
+                      <p><a href="../index.php/register" class="btn btn-primary btn-theme btn-block">¿Por qué Registrar mi empresa?</a></p>
+                      <!-- end buttons top -->
+                      <div class="white-space-10"></div>
+                      <p class="text-center"><span class="span-line">Te lo Explicamos</span></p>
+                      <ul>
+                        <li>El registro de tu Empresa no tiene costo</li>
+                        <li>Puedes subir tus peticiones</li>
+                        <li>Podemos publicar tu oferta</li>
+                        <li>Te brindamos todo el seguimiento corporativo</li>
+                        <li>Contratamos el personal que requieras</li>
+                        <li>Afiliamos tus empleados a Seguridad social</li>
+                      </ul>                      
+                    </div>
+                  </div>
                 </div>
-              </div>
-
-              <div class="col-md-3">     
-                <div class="panel panel-default" style="padding: 20px">
-                  <h2><b>Administración De Nómina</b></h2>
-                  <p > 
-                    Captura de novedades
-                    Presentación de informes
-                    Pagos electrónicos 
-                    Desprendibles de pago
-                  </p>
-                  <img src="../images/people/servicio2.png" alt="" width="200">  <br> <br> <br> <br> <br> <br> <br> <br> <br>                 
-                </div>
-              </div>
-
-              <div class="col-md-3">
-                
-                <div class="panel panel-default" style="padding: 20px">
-                  <h2><b>Seguridad Social</b></h2>
-                  <p style="padding: 10px"> 
-                    Vinculación a salud, pensión, caja de compensación
-                    Pagos electrónicos
-                  </p>
-                  <img src="../images/people/servicio3.png" alt="" width="200"> <br> <br> <br> <br> <br> <br> <br> <br> <br>                      
-                </div>
-              </div>
-
-              <div class="col-md-3">
-                <div class="panel panel-default" style="padding: 20px">                   
-                    <h2><b>Seguridad y Salud en el Trabajo</b></h2>
-                    <p> 
-                      Documento de Sistema de Seguridad y Salud en el Trabajo
-                      Política de Seguridad
-                      Diagnóstico de condiciones laborales
-                      Matriz de peligros
-                      Reglamento de Higiene y seguridad industrial
-                      Plan de emergencia
-                      Auditorias
-                    </p>
-                    <img src="../images/people/servicio4.png" alt="" width="200"> <br> <br> <br><br>                 
-                </div>                
-              </div>
-
+              </div>   
             </div>
+            <!--End form Company-->
+
+            <!-- Start form Person -->
+            <div class="col-md-6">
+              <div class="panel panel-md">
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <!-- buttons top -->
+                      <p><a href="../index.php/register" class="btn btn-danger btn-theme btn-block">Estoy buscando Empleo</a></p>
+                      <!-- end buttons top -->
+                      <div class="white-space-10"></div>
+                      <p class="text-center"><span class="span-line">¿Qué debo hacer?</span></p>
+                     <ul>
+                       <li>Registrate sin costo</li>
+                       <li>Alimenta tu hoja de vida</li>
+                       <li>Mira las ofertas disponibles para ti</li>
+                       <li>Aplica a cualquier oferta que quieras</li>
+                       <li>Harás parte del proceso de selección</li>
+                       <li>Si cumples con el perfil, serás contratado!</li>
+                     </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>   
+            </div>
+            <div class="col-md-12">
+            <div class="white-space-50"></div>
+              <a href="../index.php/register" class="btn btn-success btn-theme btn-block">¡Quiero Registrarme!</a>
+              <a href="../index.php/contact" class="btn btn-warning btn-theme btn-block">Me gustaria saber un poco más</a>
+                     
+            </div>
+            
+            <!--End form Person -->
+            
           </div>
-        </div> <!-- end testimonial -->
-
-
+        </div>
 
       </div><!--end body-content -->
  <?php if(isset($_GET['state'])){

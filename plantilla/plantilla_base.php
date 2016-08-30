@@ -77,7 +77,7 @@ if($tiempo_actual > $inac){
                 <ul class="nav navbar-nav">
                   <li><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
                   <li class=""><a href="../index.php/home"><strong>Inicio</strong></a></li>
-                  <li class=""><a href="../index.php/job_list"><strong>Ofertas</strong></a></li>
+                  <!--<li class=""><a href="../index.php/job_list"><strong>Ofertas</strong></a></li>-->
                   <li class=""><a href="../index.php/company">¿Quienes somos?</a></li>
                   <li class=""><a href="../index.php/contact">Contáctenos</a></li>                  
                 </ul>
