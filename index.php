@@ -33,6 +33,9 @@
     if($uri=="/empleo/index.php/resume"){
      Resume_Action_Controller();
     } 
+    if($uri=="/empleo/index.php/register_N_form"){
+    Register_N_Action_Controller();
+    } 
 
 
 
@@ -53,6 +56,10 @@
 
      error404();
     } 
+    if($uri=="/empleo/index.php/register_E_form"){
+        Register_E_Action_Controller();
+    } 
+    
 
      if($uri=="/empleo/index.php/loggout?time_session=out"){
      User_Loggout_Time_Out_Action_Controller();

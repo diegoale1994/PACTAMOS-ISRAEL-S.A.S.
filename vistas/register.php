@@ -20,13 +20,13 @@
                 <div class="white-space-10"></div>
                 <p class="text-center"><span class="span-line">Ingresa tus datos</span></p>
                 <!-- form login -->
-                <form method="POST" action="../index.php/register_form">
+                <form method="POST" action="../index.php/register_E_form">
                   <div class="form-group">
                     <label>Tipo de Documento</label>
-                    <select name="type_number" class="form-control">
-                      <option>Nit</option>
-                      <option>CC</option>
-                      <option>CE</option>
+                    <select name="type_document" class="form-control">
+                      <option value= "NIT" >Nit</option>
+                      <option value= "CC">CC</option>
+                      <option value= "CE">CE</option>
                     </select>                    
                   </div>
                   <div class="form-group">
@@ -77,14 +77,14 @@
                 <p class="text-center"><span class="span-line">Ingresa tus datos</span></p>
 
                 <!-- form login -->
-                <form method="POST" action="../index.php/register_form">
+                <form method="POST" action="../index.php/register_N_form">
                   <div class="form-group">
                     <label>Tipo de Documento</label>
-                    <select name="type_number" class="form-control">
-                      <option>Nit</option>
-                      <option>CC</option>
-                      <option>CE</option>
-                    </select>                    
+                                     <select name="type_document" class="form-control">
+                      <option value= "NIT" >Nit</option>
+                      <option value= "CC">CC</option>
+                      <option value= "CE">CE</option>
+                    </select>      
                   </div>
                   <div class="form-group">
                     <label>Documento</label>
@@ -93,11 +93,11 @@
                   <div class="row">
                     <div class="form-group col-md-6">
                       <label>Nombres</label>
-                      <input type="text" class="form-control" placeholder="Nombres" name="name">
+                      <input type="text" class="form-control" placeholder="Nombre" name="name">
                     </div>
                     <div class="form-group col-md-6">
                       <label>Apellidos</label>
-                      <input type="text" class="form-control" placeholder="Apellidos" name="last_name">
+                      <input type="text" class="form-control" placeholder="Apellido" name="last_name">
                     </div>
                   </div>
                   <div class="form-group">

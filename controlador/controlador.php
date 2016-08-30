@@ -20,12 +20,17 @@ Loggin_Action_Model();
 function Login_Fail_Action_Controller(){
 	require "vistas/login.php";
 }
-
+function Register_N_Action_Controller(){
+	Register_N_Action_Model();
+}
+ 
 //Menú usuario logueado
 function Resume_Action_Controller(){
 	require "vistas/resume.php";
 }
-
+function Register_E_Action_Controller(){
+	Register_E_Action_Model();
+}
 
 function Job_List_Action_Controller(){
 	$oferta = Job_List_Action_Model();
