@@ -21,7 +21,7 @@
   <div class="bg-color2 block-section line-bottom">
   <div class="container text-center">
    <div class="white-space-15"></div>
-    <h2>Podemos ayudarte a conseguir tu empleo.</h2>
+    <h2>Conoce un poco más acerca de Nosotros.</h2>
     <p></p>
     <div class="white-space-15"></div>
 
@@ -29,7 +29,7 @@
     <div class="row">
       <div class="col-md-4">
         <div class="box-ic-center">
-          <i class="fa fa-laptop ic-box"></i>
+          <img src="../images/people/mision.png" width="200">
           <h4>Misión</h4>
           <p>Brindar soluciones especializadas a través de procesos eficientes de selección, contratación y administración de nómina para garantizar a nuestras empresas usuarias el talento humano idóneo y de calidad, que les permita competir en el mercado.</p>
           
@@ -37,7 +37,7 @@
       </div>
       <div class="col-md-4">
         <div class="box-ic-center ">
-          <i class="fa fa-envelope-o ic-box"></i>
+          <img src="../images/people/vision.png" width="200">
           <h4>Visión</h4>
           <p>PACTAMOS ISRAEL S.A.S. en el año 2022 será la empresa líder en suministro del recurso humano del departamento; brindando la optimización de los servicios ofertados y cumpliendo con los estándares de calidad de selección, contratación y administración de nómina.  </p>
           
@@ -45,7 +45,7 @@
       </div>
       <div class="col-md-4">
         <div class="box-ic-center">
-          <i class="fa fa-tablet ic-box"></i>
+          <img src="../images/people/nosotros.png" width="200">
           <h4>Acerca de Nosotros</h4>
           <p>PACTAMOS ISRAEL S.A.S., es una empresa líder en proceso de gestión Humana que brinda respaldo y asesoría a nuestros clientes en temas relacionados con selección, contratación de personal y administración de nómina, garantizando así la calidad, confiabilidad, seguridad, eficiencia, responsabilidad y calidez para competir y suplir las exigencias y necesidades de los servicios prestados en el mercado.</p>
          
@@ -66,19 +66,19 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <img src="../images/valor01.png" alt="Chania">
+      <img src="../images/Valores/valor01.png" alt="Chania">
     </div>
 
     <div class="item">
-      <img src="../images/valor02.png" alt="Chania">
+      <img src="../images/Valores/valor02.png" alt="Chania">
     </div>
 
     <div class="item">
-      <img src="../images/valor03.png" alt="Flower">
+      <img src="../images/Valores/valor03.png" alt="Flower">
     </div>
 
     <div class="item">
-      <img src="../images/valor04.png" alt="Flower">
+      <img src="../images/Valores/valor04.png" alt="Flower">
     </div>
   </div>
 

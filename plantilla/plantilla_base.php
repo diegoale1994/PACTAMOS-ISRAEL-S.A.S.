@@ -81,6 +81,7 @@ if($tiempo_actual > $inac){
               if($_SESSION['nivel_de_acceso']=='P'){
               ?>
                 <ul class="nav navbar-nav">
+
                   <li><a href="/empleo/index.php/home"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
                    <li class=""><a href="../index.php/resume"><strong>Perfil</strong></a></li>
                   <li class=""><a href="../index.php/job_list"><strong>Ofertas</strong></a></li>
@@ -107,6 +108,7 @@ if($tiempo_actual > $inac){
                   <li><a href="/empleo/index.php/home"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
                   <li class=""><a href="../index.php/home"><strong>Inicio</strong></a></li>
                   <li class=""><a href="../index.php/job_list"><strong></strong></a></li>
+
                   <li class=""><a href="../index.php/company">¿Quienes somos?</a></li>
                   <li class=""><a href="../index.php/contact">Contáctenos</a></li>                  
                 </ul>

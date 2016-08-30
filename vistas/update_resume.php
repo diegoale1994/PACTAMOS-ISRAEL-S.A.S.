@@ -16,6 +16,18 @@
           <div class="resume-block">
             <div class="img-profile"><img src="./assets/theme/images/people/7.jpg" alt=""></div>><!--Ponga aui la foto-->
             <div class="desc">
+              <form>
+                <div class="form-group">
+                  <label>Nombre</label>
+                  <input type="text" name="name" class="form-control" value="">
+                  <label>Profesión</label>
+                  <input type="text" name="profesion" class="form-control" value="">
+                  <label>Ubicación</label>
+                  <input type="text" name="">
+                </div>
+                
+
+              </form>
               <h2>Diego Alejandro Franco Cuesta</h2>
               <h4>PHP Developer</h4>
               <p>Fusagasugá Cundinamarca</p>
