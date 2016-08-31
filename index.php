@@ -33,6 +33,9 @@
     if($uri=="/empleo/index.php/resume_person"){
      Resume_Action_Controller();
     } 
+    if($uri=="/empleo/index.php/update_resume"){
+     Update_Resume_Action_Controller();
+    } 
     if($uri=="/empleo/index.php/register_N_form"){
     Register_N_Action_Controller();
     } 

@@ -30,6 +30,9 @@ function Profile_Confirmation_Action_Controller(){
 function Resume_Action_Controller(){
 	require "vistas/resume_person.php";
 }
+function Update_Resume_Action_Controller(){
+	require "vistas/update_resume.php";
+}
 function Register_E_Action_Controller(){
 	Register_E_Action_Model();
 }
