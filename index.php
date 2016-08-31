@@ -30,7 +30,7 @@
     } 
 
     //Menú usuario Logueado
-    if($uri=="/empleo/index.php/resume"){
+    if($uri=="/empleo/index.php/resume_person"){
      Resume_Action_Controller();
     } 
     if($uri=="/empleo/index.php/register_N_form"){

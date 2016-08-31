@@ -49,6 +49,11 @@
                     <label>Repite tu Contraseña</label>
                     <input type="password" name="pass_2" class="form-control">
                   </div>
+                
+                  <div class="form-group">
+                  <div class="g-recaptcha" data-theme="dark" data-sitekey="6Lf57igTAAAAAB-LT02lxGZ8f_yO7yYjUdCqDqOS"></div>
+                  </div>
+
                   <div class="white-space-10"></div>
                   <center><h4>En breve verificaremos tu correo</h4></center><br>
                   <div class="form-group no-margin">
@@ -111,6 +116,9 @@
                   <div class="form-group">
                     <label>Repite tu Contraseña</label>
                     <input type="password" name="pass_2" class="form-control">
+                  </div>
+                  <div class="form-group">
+                  <div class="g-recaptcha" data-sitekey="6Lf57igTAAAAAB-LT02lxGZ8f_yO7yYjUdCqDqOS"></div>
                   </div>
                   <div class="white-space-10"></div>
                   <center><h4>En breve verificaremos tu correo</h4></center><br>

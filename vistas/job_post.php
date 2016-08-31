@@ -1,3 +1,9 @@
+<?php 
+if(isset($_SESSION['session_started'])){
+if ($_SESSION['session_started']=='yes') {
+if ( $_SESSION['nivel_de_acceso']=='E') { ?>
+ 
+
  <?php ob_start() ?>
         <div class="container">
           <div class="text-center logo"> <a href="index.html"><img src="../images/logo.png" alt=""></a></div>
@@ -217,3 +223,16 @@
 
 <?php $contenido=ob_get_clean(); ?>
 <?php include "plantilla/plantilla_base.php"; ?>
+
+
+<?php
+}else{
+  header("Location: /empleo/index.php/404_error");
+}}}
+else{
+  header("Location: /empleo/index.php/404_error");
+  
+  }?>
+
+
+     

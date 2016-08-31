@@ -204,7 +204,7 @@ function Loggin_Action_Model(){
     }
     
     if($band==1 and $tipo_documento == "CC"){
-       header("Location: ../index.php/resume");
+       header("Location: ../index.php/resume_person");
     }
       if($band==1 and $tipo_documento == "NI"){
       header("Location: ../index.php/job_post");

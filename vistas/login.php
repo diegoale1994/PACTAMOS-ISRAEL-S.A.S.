@@ -35,7 +35,7 @@
               <label>Password</label>
               <input type="password" name = "password" class="form-control" placeholder="Your Password">
             </div>
-           
+            
             <div class="form-group no-margin">
               <button class="btn btn-theme btn-lg btn-t-primary btn-block">Ingresar</button>
             </div>

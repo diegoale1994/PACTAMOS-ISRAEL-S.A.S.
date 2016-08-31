@@ -22,6 +22,7 @@ if($tiempo_actual > $inac){
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
 
     <!-- bootstrap -->
+   <script src='https://www.google.com/recaptcha/api.js?hl=es'></script>
     <link href="../plugins/bootstrap-3.3.2/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Icons -->
@@ -58,7 +59,7 @@ if($tiempo_actual > $inac){
                   ?>
                 <ul class="nav navbar-nav">
                   <li><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
-                  <li class=""><a href="../index.php/resume"><strong>Perfil</strong></a></li>
+                  <li class=""><a href="../index.php/resume_company"><strong>Perfil</strong></a></li>
                   
                   <li class=""><a href="../index.php/job_post"><strong>Publicar oferta</strong></a></li>
                   <li class=""><a href="../index.php/job_list"><strong>Ofertas Disponibles</strong></a></li>
@@ -83,7 +84,7 @@ if($tiempo_actual > $inac){
                 <ul class="nav navbar-nav">
 
                   <li><a href="/empleo/index.php/home"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
-                   <li class=""><a href="../index.php/resume"><strong>Perfil</strong></a></li>
+                   <li class=""><a href="../index.php/resume_person"><strong>Perfil</strong></a></li>
                   <li class=""><a href="../index.php/job_list"><strong>Ofertas</strong></a></li>
                      
                 </ul>

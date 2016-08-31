@@ -1,7 +1,17 @@
-<?php ob_start() ?>      <!-- main-header -->
-</header><!-- end main-header -->
+     <!-- main-header -->
+
+<?php 
+if(isset($_SESSION['session_started'])){
+if ($_SESSION['session_started']=='yes') {
+if ( $_SESSION['nivel_de_acceso']=='P') { ?>
+ 
 
 
+
+  <!-- main-header -->
+
+
+<?php ob_start() ?> 
 <!-- body-content -->
 <div class="body-content clearfix" >
 <div class="white-space-10"></div>
@@ -14,7 +24,7 @@
         <!-- box item details -->
         <div class="block-section box-item-details">
           <div class="resume-block">
-            <div class="img-profile"><img src="./assets/theme/images/people/7.jpg" alt=""></div>><!--Ponga aui la foto-->
+            <div class="img-profile"><img src="../images/people/7.jpg" alt=""></div>><!--Ponga aui la foto-->
             <div class="desc">
               <h2>Diego Alejandro Franco Cuesta</h2>
               <h4>PHP Developer</h4>
@@ -89,5 +99,18 @@
 
 <?php $contenido=ob_get_clean(); ?>
 <?php include "plantilla/plantilla_base.php"; ?>
-    
+
+
+
+
+<?php
+}else{
+  header("Location: /empleo/index.php/404_error");
+}}}
+else{
+  header("Location: /empleo/index.php/404_error");
+  
+  }?>
+
+
      

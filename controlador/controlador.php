@@ -28,7 +28,7 @@ function Profile_Confirmation_Action_Controller(){
 }
 //Menú usuario logueado
 function Resume_Action_Controller(){
-	require "vistas/resume.php";
+	require "vistas/resume_person.php";
 }
 function Register_E_Action_Controller(){
 	Register_E_Action_Model();
