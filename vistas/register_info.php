@@ -16,7 +16,16 @@
           <div class="container">
             <!-- text centered -->
             <div class="text-center">
-              <h1>we have sended and email of confirmation to your email go and check it!! BEFORE TO CONTINUE</h1>
+            <?php if(isset($_GET['status'])){
+  if($_GET['status']=="verified"){
+    ?>
+    
+   <h1>YOUR ACCOUNT IS NOW ACTIVATED LETS LOG IN</h1>
+    
+    <?php
+  }
+ } ?>
+              
 
               <p>Here are some helpful links instead:</p>
               <ul class="list-inline">

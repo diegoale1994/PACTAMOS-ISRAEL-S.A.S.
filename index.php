@@ -31,6 +31,10 @@
      if($uri=="/empleo/index.php/register_info"){
      Register_Info_Action_Controller();
     } 
+     if($uri=="/empleo/index.php/register_info?status=verified"){
+     Register_Info_Action_Controller();
+    } 
+    
 
     //Menú usuario Logueado
     if($uri=="/empleo/index.php/resume_person"){
@@ -78,6 +82,10 @@
          if($uri[0]=="/empleo/index.php/job_details"){
       
       Show_Job_Action_Controller();
+    }
+    if($uri[0]=="/empleo/index.php/verify"){
+      
+      Verify_Account_Action_Controller();
     }
     
     

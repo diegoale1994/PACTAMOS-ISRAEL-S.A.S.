@@ -24,6 +24,9 @@ Loggin_Action_Model();
 function Login_Fail_Action_Controller(){
 	require "vistas/login.php";
 }
+function Verify_Account_Action_Controller(){
+	Verify_Account_Action_Model();
+}
 function Register_N_Action_Controller(){
 	Register_N_Action_Model();
 }

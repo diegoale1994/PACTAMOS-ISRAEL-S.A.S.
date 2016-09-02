@@ -10,7 +10,40 @@ function cerrar_conexion_db($conexion){
     mysqli_close($conexion);
 }
 
+function Verify_Account_Action_Model(){
+$msg='';
+if(!empty($_GET['code']) && isset($_GET['code']))
+{
 
+  $code = $_GET['code'];
+   $conexion=conectar_base_de_datos();
+   $consulta="SELECT documento FROM persona where activation_code ='$code' and verificado ='N'";
+        $resultado=mysqli_query($conexion,$consulta);
+
+              if(mysqli_num_rows($resultado) > 0)
+{
+$count=mysqli_query($conexion,"SELECT documento FROM persona WHERE activation_code='$code' and verificado ='N'");
+
+if(mysqli_num_rows($count) == 1)
+{
+ 
+mysqli_query($conexion,"UPDATE persona SET verificado='Y' WHERE activation_code='$code'");
+header("Location: /empleo/index.php/register_info?status=verified");
+}
+else
+{
+header("Location: /empleo/index.php/404_error");
+}
+
+}
+else
+{
+$msg ="Wrong activation code.";
+
+}
+}else{
+  header("Location: /empleo/index.php/404_error");
+}}
 
  function Register_N_Action_Model(){
 if($_SERVER['REQUEST_METHOD']=="POST"){
@@ -30,7 +63,7 @@ $pass_2 = htmlentities($_POST['pass_2']);
 $passencript= sha1($pass);
  $conexion=conectar_base_de_datos();
  
-  $consulta = "INSERT INTO persona (documento, tipo_documento, password, verificado, rol, activation_code) values ('$documento','$tipo_documento','$passencript','N','N','$activation')";
+  $consulta = "INSERT INTO persona (documento, tipo_documento, password, verificado, rol, activation_code) values ('$documento','$tipo_documento','$passencript','N','P','$activation')";
     mysqli_query($conexion, $consulta);
    $consulta = "INSERT INTO persona_natural (documento, nombre1, apellido1)VALUES('$documento','$nombre_natural','$apellido_natural')";
    mysqli_query($conexion, $consulta);
