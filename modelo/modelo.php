@@ -14,129 +14,69 @@ function cerrar_conexion_db($conexion){
 
  function Register_N_Action_Model(){
 if($_SERVER['REQUEST_METHOD']=="POST"){
-$tipo_documento = htmlentities($_POST['type_document']);
+if(!empty($_POST['number']) && isset($_POST['name']) &&  !empty($_POST['last_name']) && !empty($_POST['email']) && !empty($_POST['pass']) && !empty($_POST['pass_2']))
+{
+if($_POST['pass'] == $_POST['pass_2']){
+  echo "entre aca<br>";
+  echo $_POST['pass']." == ".$_POST['pass_2']."<br>";
+  $email_natural = htmlentities($_POST['email']);
+  $activation=md5($email_natural.time());
+  $tipo_documento = htmlentities($_POST['type_document']);
 $documento = htmlentities($_POST['number']);
 $nombre_natural = htmlentities($_POST['name']);
 $apellido_natural = htmlentities($_POST['last_name']);
-$email_natural = htmlentities($_POST['email']);
-
 $pass = htmlentities($_POST['pass']);
 $pass_2 = htmlentities($_POST['pass_2']);
-
-if($pass == $pass_2){
 $passencript= sha1($pass);
  $conexion=conectar_base_de_datos();
-  $consulta = "INSERT INTO persona (documento, tipo_documento, password, verificado)VALUES('$documento','$tipo_documento','$passencript','N')";
-  mysqli_query($conexion, $consulta);
+ 
+  $consulta = "INSERT INTO persona (documento, tipo_documento, password, verificado, rol, activation_code) values ('$documento','$tipo_documento','$passencript','N','N','$activation')";
+    mysqli_query($conexion, $consulta);
    $consulta = "INSERT INTO persona_natural (documento, nombre1, apellido1)VALUES('$documento','$nombre_natural','$apellido_natural')";
    mysqli_query($conexion, $consulta);
     $consulta = "INSERT INTO persona_correo (documento, correo)VALUES('$documento','$email_natural')";
     mysqli_query($conexion, $consulta);
 
-$destinatario = $email_natural; 
-$asunto = "Este mensaje es de prueba"; 
-$cuerpo = ' 
-<html> 
-<head> 
-   <title>Prueba de correo</title> 
-</head> 
-<body> 
-<h1>Hola amigos!</h1> 
-<p> 
-<b>Bienvenidos a mi correo electrónico de prueba</b>. Estoy encantado de tener tantos lectores. Este cuerpo del mensaje es del artículo de envío de mails por PHP. Habría que cambiarlo para poner tu propio cuerpo. Por cierto, cambia también las cabeceras del mensaje. 
-</p> 
-</body> 
-</html> 
-'; 
 
-//para el envío en formato HTML 
-$headers = "MIME-Version: 1.0\r\n"; 
-$headers .= "Content-type: text/html; charset=iso-8859-1\r\n"; 
-
-//dirección del remitente 
-$headers .= "From: Miguel Angel Alvarez <pepito@desarrolloweb.com>\r\n"; 
-
-//dirección de respuesta, si queremos que sea distinta que la del remitente 
-$headers .= "Reply-To: mariano@desarrolloweb.com\r\n"; 
-
-//ruta del mensaje desde origen a destino 
-$headers .= "Return-path: holahola@desarrolloweb.com\r\n"; 
-
-//direcciones que recibián copia 
-$headers .= "Cc: maria@desarrolloweb.com\r\n"; 
-
-//direcciones que recibirán copia oculta 
-$headers .= "Bcc: pepe@pepe.com,juan@juan.com\r\n"; 
-
-mail($destinatario,$asunto,$cuerpo,$headers);
-
-
+//NIETO AQUI TIENE QUE ENVIAR UN EMAIL A $EMAIL_NATURAL CON EL SIGUIENTE LINK PACTAMOS.COM/EMPLEO/INDEX.PHP/VERIFY?CODE = $ACTIVATION
+      header("Location: /empleo/index.php/register_info");
+}else{
+  header("Location: /empleo/index.php/404_error");
+}
 }else{
     header("Location: /empleo/index.php/404_error");
 }
-
 }else{
 header("Location: /empleo/index.php/404_error");  
-}
-
-
- }
+}}
 function Register_E_Action_Model(){
 if($_SERVER['REQUEST_METHOD']=="POST"){
-$tipo_documento = htmlentities($_POST['type_document']);
+  if(!empty($_POST['number']) && isset($_POST['name_company']) &&  !empty($_POST['email']) && !empty($_POST['pass']) && !empty($_POST['pass_2']))
+{
+if($_POST['pass'] == $_POST['pass_2']){
+  $email_empresa = htmlentities($_POST['email']);
+  $activation=md5($email_empresa.time());
+  $tipo_documento = htmlentities($_POST['type_document']);
 $documento = htmlentities($_POST['number']);
 $nombre_empresa = htmlentities($_POST['name_company']);
 $email_empresa = htmlentities($_POST['email']);
 $pass = htmlentities($_POST['pass']);
 $pass_2 = htmlentities($_POST['pass_2']);
-
-if($pass == $pass_2){
 $passencript= sha1($pass);
  $conexion=conectar_base_de_datos();
-  $consulta = "INSERT INTO persona (documento, tipo_documento, password, verificado)VALUES('$documento','$tipo_documento','$passencript', 'N')";
-  mysqli_query($conexion, $consulta);
+  $consulta = "INSERT INTO persona (documento, tipo_documento, password, verificado, rol, activation_code) values ('$documento','$tipo_documento','$passencript','N','E','$activation')";
+    mysqli_query($conexion, $consulta);
    $consulta = "INSERT INTO empresa (documento, nombre)VALUES('$documento','$nombre_empresa')";
    mysqli_query($conexion, $consulta);
     $consulta = "INSERT INTO persona_correo (documento, correo)VALUES('$documento','$email_empresa')";
     mysqli_query($conexion, $consulta);
 
-$destinatario = $email_empresa; 
-$asunto = "Este mensaje es de prueba"; 
-$cuerpo = ' 
-<html> 
-<head> 
-   <title>Prueba de correo</title> 
-</head> 
-<body> 
-<h1>Hola amigos!</h1> 
-<p> 
-<b>Bienvenidos a mi correo electrónico de prueba</b>. Estoy encantado de tener tantos lectores. Este cuerpo del mensaje es del artículo de envío de mails por PHP. Habría que cambiarlo para poner tu propio cuerpo. Por cierto, cambia también las cabeceras del mensaje. 
-</p> 
-</body> 
-</html> 
-'; 
+    //NIETO AQUI TIENE QUE ENVIAR UN EMAIL A $EMAIL CON EL SIGUIENTE LINK PACTAMOS.COM/EMPLEO/INDEX.PHP/VERIFY?CODE = $ACTIVATION
 
-//para el envío en formato HTML 
-$headers = "MIME-Version: 1.0\r\n"; 
-$headers .= "Content-type: text/html; charset=iso-8859-1\r\n"; 
-
-//dirección del remitente 
-$headers .= "From: Miguel Angel Alvarez <pepito@desarrolloweb.com>\r\n"; 
-
-//dirección de respuesta, si queremos que sea distinta que la del remitente 
-$headers .= "Reply-To: mariano@desarrolloweb.com\r\n"; 
-
-//ruta del mensaje desde origen a destino 
-$headers .= "Return-path: holahola@desarrolloweb.com\r\n"; 
-
-//direcciones que recibián copia 
-$headers .= "Cc: maria@desarrolloweb.com\r\n"; 
-
-//direcciones que recibirán copia oculta 
-$headers .= "Bcc: pepe@pepe.com,juan@juan.com\r\n"; 
-
-mail($destinatario,$asunto,$cuerpo,$headers);
-
+header("Location: /empleo/index.php/register_info");
+}else{
+   header("Location: /empleo/index.php/404_error");
+}
 
 }else{
     header("Location: /empleo/index.php/404_error");
@@ -173,9 +113,7 @@ function Loggin_Action_Model(){
 
                 if ($documentobase==$documentofinal && $passbase==$claveCodificada) {
 
-                   if($fila['verificado'] =='N'){
-                    $_SESSION['verificado']='N';
-                  }
+                  
                 $niveldeacceso = $fila['rol'];
                     
                     $_SESSION['session_started']='yes';
@@ -197,7 +135,16 @@ function Loggin_Action_Model(){
                 $_SESSION['documento']=$documentofinal;
                 $_SESSION['nivel_de_acceso']=$niveldeacceso;
                 $_SESSION['tiempo'] = time();
+                 if($fila['verificado'] =='N'){
+                  session_destroy();
+                  $band=2;
+                
+                  }
     }
+    }
+    
+    if($band==2){
+       header("Location: ../index.php/register_info");
     }
     if($band==0){
        header("Location: ../index.php/login?state=fail");

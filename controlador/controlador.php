@@ -14,6 +14,10 @@ require "vistas/login.php";
 function Register_Action_Controller(){
 require "vistas/register.php";
 }
+function Register_Info_Action_Controller(){
+
+require "vistas/register_info.php";
+}
 function Login_Form_Action_Controller(){
 Loggin_Action_Model();
 }

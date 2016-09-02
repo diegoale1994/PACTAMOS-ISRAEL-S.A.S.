@@ -28,6 +28,9 @@
     if($uri=="/empleo/index.php/register"){
      Register_Action_Controller();
     } 
+     if($uri=="/empleo/index.php/register_info"){
+     Register_Info_Action_Controller();
+    } 
 
     //Menú usuario Logueado
     if($uri=="/empleo/index.php/resume_person"){

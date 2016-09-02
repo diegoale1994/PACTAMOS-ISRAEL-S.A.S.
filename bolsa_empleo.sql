@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-08-2016 a las 00:07:23
+-- Tiempo de generación: 03-09-2016 a las 01:09:25
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.6.23
 
@@ -132,17 +132,19 @@ CREATE TABLE `persona` (
   `foto` varchar(255) NOT NULL,
   `password` varchar(40) NOT NULL,
   `verificado` varchar(1) NOT NULL,
-  `rol` varchar(1) NOT NULL
+  `rol` varchar(1) NOT NULL,
+  `activation_code` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `persona`
 --
 
-INSERT INTO `persona` (`documento`, `tipo_documento`, `departamento`, `ciudad`, `direccion`, `foto`, `password`, `verificado`, `rol`) VALUES
-('1048850076', 'CC', 'Boyaca', 'Garagoa', 'Calle 7 No 9-29', 'http//fotomania.com', 'b674a43d6710dc308bfd53404d88d0b5f46edf15', 'N', 'P'),
-('111111111-9', 'NI', 'Cundinamarca', 'Bogota', 'calle 179 -8-32', 'http//asdasdad.com', 'b674a43d6710dc308bfd53404d88d0b5f46edf15', 'Y', 'E'),
-('121323123-9', 'NI', 'Cundinamarca', 'Fusagasuga', 'Diagonal 24c No 64a - 33', 'ttp//asdasdad.co', '4fc36204d034036de87815eb8ff296791f50d241', 'Y', 'E');
+INSERT INTO `persona` (`documento`, `tipo_documento`, `departamento`, `ciudad`, `direccion`, `foto`, `password`, `verificado`, `rol`, `activation_code`) VALUES
+('1048850076', 'CC', 'Boyaca', 'Garagoa', 'Calle 7 No 9-29', 'http//fotomania.com', 'b674a43d6710dc308bfd53404d88d0b5f46edf15', 'Y', 'P', NULL),
+('111111111-9', 'NI', 'Cundinamarca', 'Bogota', 'calle 179 -8-32', 'http//asdasdad.com', 'b674a43d6710dc308bfd53404d88d0b5f46edf15', 'Y', 'E', NULL),
+('121323123-9', 'NI', 'Cundinamarca', 'Fusagasuga', 'Diagonal 24c No 64a - 33', 'ttp//asdasdad.co', '4fc36204d034036de87815eb8ff296791f50d241', 'Y', 'E', NULL),
+('5555555555', 'CC', '', '', '', '', 'bccdcb8b25c6422c7a65bb205e3e4acc2fe2eb34', 'N', 'N', '947bb5543a06e7d41e228af0f8cf718f');
 
 -- --------------------------------------------------------
 
@@ -160,7 +162,8 @@ CREATE TABLE `persona_correo` (
 --
 
 INSERT INTO `persona_correo` (`documento`, `correo`) VALUES
-('1048850076', 'diego.fc.1@hotmail.com');
+('1048850076', 'diego.fc.1@hotmail.com'),
+('5555555555', 'juanhernandez@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -184,7 +187,8 @@ CREATE TABLE `persona_natural` (
 --
 
 INSERT INTO `persona_natural` (`documento`, `nombre1`, `nombre2`, `apellido1`, `apellido2`, `estado_civil`, `licencia_conduccion`, `vehiculo`) VALUES
-('1048850076', 'diego', 'alejandro', 'franco', 'cuesta', 'S', 'B1', 'Y');
+('1048850076', 'diego', 'alejandro', 'franco', 'cuesta', 'S', 'B1', 'Y'),
+('5555555555', 'juan', '', 'hernandez', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -267,7 +271,8 @@ ALTER TABLE `oferta`
 -- Indices de la tabla `persona`
 --
 ALTER TABLE `persona`
-  ADD PRIMARY KEY (`documento`);
+  ADD PRIMARY KEY (`documento`),
+  ADD UNIQUE KEY `activation_code` (`activation_code`);
 
 --
 -- Indices de la tabla `persona_correo`
@@ -332,19 +337,19 @@ ALTER TABLE `oferta`
 -- Filtros para la tabla `empresa`
 --
 ALTER TABLE `empresa`
-  ADD CONSTRAINT `empresa_ibfk_1` FOREIGN KEY (`documento`) REFERENCES `persona` (`documento`);
+  ADD CONSTRAINT `empresa_ibfk_1` FOREIGN KEY (`documento`) REFERENCES `persona` (`documento`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `persona_correo`
 --
 ALTER TABLE `persona_correo`
-  ADD CONSTRAINT `persona_correo_ibfk_1` FOREIGN KEY (`documento`) REFERENCES `persona` (`documento`);
+  ADD CONSTRAINT `persona_correo_ibfk_1` FOREIGN KEY (`documento`) REFERENCES `persona` (`documento`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `persona_natural`
 --
 ALTER TABLE `persona_natural`
-  ADD CONSTRAINT `persona_natural_ibfk_1` FOREIGN KEY (`documento`) REFERENCES `persona` (`documento`);
+  ADD CONSTRAINT `persona_natural_ibfk_1` FOREIGN KEY (`documento`) REFERENCES `persona` (`documento`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `persona_natural_oferta`
