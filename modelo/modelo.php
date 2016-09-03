@@ -142,9 +142,9 @@ function Loggin_Action_Model(){
             while ($fila=mysqli_fetch_array($resultado)) {
                 $documentobase= $fila['documento'];
                 $passbase = $fila['password'];
-                
+                $documento_base = $fila['tipo_documento'];
 
-                if ($documentobase==$documentofinal && $passbase==$claveCodificada) {
+                if ($documentobase==$documentofinal && $passbase==$claveCodificada && $tipo_documento==$documento_base) {
 
                   
                 $niveldeacceso = $fila['rol'];
