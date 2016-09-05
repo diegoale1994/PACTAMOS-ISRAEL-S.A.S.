@@ -27,6 +27,9 @@ function Login_Fail_Action_Controller(){
 function Verify_Account_Action_Controller(){
 	Verify_Account_Action_Model();
 }
+  function Register_Exp_Job_Action_Controller(){
+  	Register_Exp_Job_Action_Model();
+  }
 function Register_N_Action_Controller(){
 	Register_N_Action_Model();
 }
@@ -37,12 +40,16 @@ function Profile_Confirmation_Action_Controller(){
 function Resume_Action_Controller(){
 	require "vistas/resume_person.php";
 }
-function Update_Resume_Action_Controller(){
-	require "vistas/update_resume.php";
+function Update_Resume_Person_Action_Controller(){
+	$exp_laboral = Get_Exp_Person_Action_Model();
+	require "vistas/update_resume_person.php";
 }
 function Register_E_Action_Controller(){
 	Register_E_Action_Model();
 }
+ function Exp_Lab_Person_Delete_Action_Controller(){
+Exp_Lab_Person_Delete_Action_Model();
+  }
 
 function Job_List_Action_Controller(){
 	$oferta = Job_List_Action_Model();

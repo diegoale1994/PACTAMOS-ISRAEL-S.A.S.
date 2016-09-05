@@ -9,6 +9,48 @@ function conectar_base_de_datos (){
 function cerrar_conexion_db($conexion){
     mysqli_close($conexion);
 }
+function Exp_Lab_Person_Delete_Action_Model(){
+if (isset($_GET['delete'])){
+  if(isset( $_SESSION['documento'])){
+    $id_exp = $_GET['delete'];
+    $conexion=conectar_base_de_datos();
+    $consulta = "DELETE FROM exp_laboral WHERE id_exp = '$id_exp'";
+     $resultado=mysqli_query($conexion,$consulta);
+     header("Location: /empleo/index.php/update_resume_person");
+  }
+}
+}
+
+function Get_Exp_Person_Action_Model(){
+$conexion=conectar_base_de_datos();
+$exp_laboral = array();
+$documento = $_SESSION['documento'];
+$consulta="SELECT id_exp, nombre_empresa, sector_empresa, cargo, fecha_ini, fecha_fin, logros FROM exp_laboral where documento ='$documento'";
+        $resultado=mysqli_query($conexion,$consulta);
+            while ($fila=mysqli_fetch_array($resultado)) {
+$exp_laboral[]=$fila;
+            }
+            return $exp_laboral;
+}
+function Register_Exp_Job_Action_Model(){
+if($_SERVER['REQUEST_METHOD']=="POST"){
+  $conexion=conectar_base_de_datos();
+  $nombre_empresa = ucwords($_POST['company_exp_name']);
+  $cargo_empresa = ucwords($_POST['cargo']);
+  $fecha_ini_trabajo = $_POST['fecha_ini_job'];
+  $fecha_fin_trabajo = $_POST['fecha_fin_job'];
+  $sector_empresa = $_POST['sector_empresa'];
+  $logro = $_POST['logros'];
+  $documento = $_SESSION['documento'];
+  $consulta = "INSERT INTO exp_laboral (documento, nombre_empresa, sector_empresa, cargo, fecha_ini, fecha_fin, logros) values ('$documento','$nombre_empresa','$sector_empresa','$cargo_empresa','$fecha_ini_trabajo','$fecha_fin_trabajo','$logro')";
+    mysqli_query($conexion, $consulta);
+    header("Location: /empleo/index.php/update_resume_person");
+}
+}
+
+
+
+
 
 function Verify_Account_Action_Model(){
 $msg='';

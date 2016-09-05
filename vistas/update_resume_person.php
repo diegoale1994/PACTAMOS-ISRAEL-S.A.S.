@@ -8,23 +8,30 @@
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
         <h4 class="modal-title" id="project-12-label"><center>Nuevo</center></h4>
       </div>
-      <form action="../index.php/update_jobs" method="post" >
+      <form action="../index.php/update_exp_jobs" method="post" >
         <div class="modal-body">
                  <div class="row">
                      <div class="col-md-12">                         
                       <div class="form-group">
-                        <label>Cargo</label>
-                        <input type="text" name="cargo1" class="form-control">
                         <label>Empresa</label>
-                        <input type="text" name="company1" class="form-control">
+                        <input type="text" name="company_exp_name" class="form-control">
+                        <label>Cargo</label>
+                        <input type="text" name="cargo" class="form-control">
+                        <label>Sector de la empresa</label>
+                        <select class="form-control" name ="sector_empresa" data-live-search="true">
+                        <option data-tokens="ketchup mustard" value ="S">S</option>
+                        <option data-tokens="mustard" value= "E">E</option>
+                        <option data-tokens="ketchup mustard" value ='C'>C</option>
+                         <option data-tokens="ketchup mustard" value ='T'>T</option>
+                          <option data-tokens="ketchup mustard" value ='O'>O</option>
+                           <option data-tokens="ketchup mustard" value ='R'>R</option>
+                        </select>
                         <label>Fecha Inicio</label>
-                        <input type="date" name="fecha_init_job" class="form-control">
+                        <input type="date" name="fecha_ini_job" class="form-control">
                         <label>Fecha Fin</label>
                         <input type="date" name="fecha_fin_job" class="form-control">
-                        <label>Responsabilidades</label>
-                        <textarea class="form-control" name="responsability1"></textarea>
-                        <label>Habilidades usadas</label>
-                        <textarea class="form-control" name="kills1"></textarea>
+                        <label>Logros</label>
+                        <textarea name="logros" rows="10" class="form-control" cols="50"></textarea>
                       </div>              
                      </div>                   
                  </div>
@@ -180,21 +187,34 @@
               <div class="panel panel-default">
                 <div class="panel-heading">
                 <a type="button" class="btn btn-success glyphicon glyphicon-plus" data-toggle="modal"  data-target="#new_job"> </a>
-                <a type="button" class="btn btn-warning glyphicon glyphicon-repeat" data-toggle="modal"  data-target="#update" id="btn_mod1" name="rol"></a>
-                <a type="button" class="btn btn-danger glyphicon glyphicon-remove" data-toggle="modal"  data-target="#delete" id="btn_del" name="rol"></a>
+                
                 </div>
                 <div class="panel-body">
                   <table    class="table table-striped table-bordered table-hover" id="dataTables-example">
                       <thead id="nom2" name="rol">
-                      <tr>                          
+                      <tr> 
+                      <th data-field="name" data-sortable="true" data-align="center" id="status">Empresa</ht>
+                       <th data-field="id" data-sortable="true" data-align="center" id="name">Sector empresa</th>                 
                           <th data-field="id" data-sortable="true" data-align="center" id="name">Cargo</th>
-                          <th data-field="name" data-sortable="true" data-align="center" id="status">Empresa</th>
                           <th data-field="name" data-sortable="true" data-align="center" id="status">Fecha Inicio</th>
                           <th data-field="name" data-sortable="true" data-align="center" id="status">Fecha Fin</th>
-                          <th data-field="name" data-sortable="true" data-align="center" id="status">Responsabilidades</th>
-                          <th data-field="name" data-sortable="true" data-align="center" id="status">Habilidades</th>
-                          <th data-field="name" data-sortable="true" data-align="center" id="status">Acciones</th>
+                          <th data-field="" data-sortable="true" data-align="center" id="status">Logros</th>
                       </tr>
+                       <?php foreach($exp_laboral as $exp): ?>
+                          <tr> 
+                          <th><?php echo $exp["nombre_empresa"] ?></ht>  
+                           <th><?php echo $exp["sector_empresa"] ?></th>               
+                          <th><?php echo $exp["cargo"] ?></th>
+                          <th><?php echo $exp["fecha_ini"] ?></th>
+                          <th><?php echo $exp["fecha_fin"] ?></th>
+                          <th><?php echo $exp["logros"] ?></th>
+
+                          <th>
+                                  <a href="/empleo/index.php/exp_lab_del?delete=<?php echo $exp['id_exp'] ?>" class="btn btn-danger"> Eliminar</a>
+
+                          </th>
+                          </tr>
+                        <?php endforeach ?>
                       </thead>
                   </table>
                 </div>

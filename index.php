@@ -34,14 +34,17 @@
      if($uri=="/empleo/index.php/register_info?status=verified"){
      Register_Info_Action_Controller();
     } 
+      if($uri=="/empleo/index.php/update_exp_jobs"){
+     Register_Exp_Job_Action_Controller();
+    } 
     
 
     //Menú usuario Logueado
     if($uri=="/empleo/index.php/resume_person"){
      Resume_Action_Controller();
     } 
-    if($uri=="/empleo/index.php/update_resume"){
-     Update_Resume_Action_Controller();
+    if($uri=="/empleo/index.php/update_resume_person"){
+     Update_Resume_Person_Action_Controller();
     } 
     if($uri=="/empleo/index.php/register_N_form"){
     Register_N_Action_Controller();
@@ -86,6 +89,10 @@
     if($uri[0]=="/empleo/index.php/verify"){
       
       Verify_Account_Action_Controller();
+    }
+     if($uri[0]=="/empleo/index.php/exp_lab_del"){
+      
+  Exp_Lab_Person_Delete_Action_Controller();
     }
     
     

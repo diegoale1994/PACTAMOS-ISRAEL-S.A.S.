@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-09-2016 a las 01:09:25
+-- Tiempo de generación: 06-09-2016 a las 01:50:02
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.6.23
 
@@ -69,12 +69,19 @@ CREATE TABLE `exp_laboral` (
   `id_exp` int(11) NOT NULL,
   `documento` varchar(11) NOT NULL,
   `nombre_empresa` varchar(50) NOT NULL,
-  `sector_empresa` int(11) NOT NULL,
-  `cargo` int(11) NOT NULL,
+  `sector_empresa` varchar(50) NOT NULL,
+  `cargo` varchar(50) NOT NULL,
   `fecha_ini` date NOT NULL,
   `fecha_fin` date NOT NULL,
   `logros` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `exp_laboral`
+--
+
+INSERT INTO `exp_laboral` (`id_exp`, `documento`, `nombre_empresa`, `sector_empresa`, `cargo`, `fecha_ini`, `fecha_fin`, `logros`) VALUES
+(6, '1048850076', 'Vvv', 'T', 'sdasd', '2016-09-17', '2016-09-30', 'asdasdasd');
 
 -- --------------------------------------------------------
 
@@ -144,7 +151,7 @@ INSERT INTO `persona` (`documento`, `tipo_documento`, `departamento`, `ciudad`, 
 ('1048850076', 'CC', 'Boyaca', 'Garagoa', 'Calle 7 No 9-29', 'http//fotomania.com', 'b674a43d6710dc308bfd53404d88d0b5f46edf15', 'Y', 'P', NULL),
 ('111111111-9', 'NI', 'Cundinamarca', 'Bogota', 'calle 179 -8-32', 'http//asdasdad.com', 'b674a43d6710dc308bfd53404d88d0b5f46edf15', 'Y', 'E', NULL),
 ('121323123-9', 'NI', 'Cundinamarca', 'Fusagasuga', 'Diagonal 24c No 64a - 33', 'ttp//asdasdad.co', '4fc36204d034036de87815eb8ff296791f50d241', 'Y', 'E', NULL),
-('5555555555', 'CC', '', '', '', '', 'bccdcb8b25c6422c7a65bb205e3e4acc2fe2eb34', 'N', 'N', '947bb5543a06e7d41e228af0f8cf718f');
+('5555555555', 'CC', '', '', '', '', 'b674a43d6710dc308bfd53404d88d0b5f46edf15', 'Y', 'P', '947bb5543a06e7d41e228af0f8cf718f');
 
 -- --------------------------------------------------------
 
@@ -318,7 +325,7 @@ ALTER TABLE `estudios`
 -- AUTO_INCREMENT de la tabla `exp_laboral`
 --
 ALTER TABLE `exp_laboral`
-  MODIFY `id_exp` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_exp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `idioma`
 --

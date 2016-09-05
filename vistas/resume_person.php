@@ -74,7 +74,7 @@ if ( $_SESSION['nivel_de_acceso']=='P') { ?>
         <!-- box affix right -->
         <div class="block-section " id="affix-box">
           <div class="text-right">
-            <p><a href="../index.php/update_resume" class="btn btn-theme btn-warning dark btn-block-xs">Actualizar Información</a></p>
+            <p><a href="../index.php/update_resume_person" class="btn btn-theme btn-warning dark btn-block-xs">Actualizar Información</a></p>
             <p>Updated: February 16, 2015</p>
             <p><a href="#modal-apply"  data-toggle="modal" class="btn btn-theme btn-t-primary btn-block-xs">Forward by Email</a></p>
             <p><a href="#" class="btn btn-theme btn-t-primary btn-block-xs">Contact Bryon</a></p>
