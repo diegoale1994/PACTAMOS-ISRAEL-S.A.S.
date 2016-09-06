@@ -15,6 +15,9 @@
     if($uri=="/empleo/index.php/contact"){
      Contact_Action_Controller();
     } 
+    if($uri=="/empleo/index.php/sender"){
+     Contact_Form_Action_Controller();
+    } 
 
     if($uri=="/empleo/index.php/login"){
      Login_Action_Controller();

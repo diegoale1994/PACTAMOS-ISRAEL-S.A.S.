@@ -8,6 +8,9 @@ require "vistas/about.php";
 function Contact_Action_Controller(){
 require "vistas/contact.php";
 }
+function Contact_Form_Action_Controller(){
+Sender_Action_Model();
+}
 function Login_Action_Controller(){
 require "vistas/login.php";
 }

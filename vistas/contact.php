@@ -14,27 +14,27 @@
         <div class="bg-color1 block-section line-bottom">
           <div class="container">
             <h2 class="text-center">¿En que te podemos ayudar?<br/>
-              <small> Escribenos en cualquier momento, atenderemos tu pedido en la amyor brevedad.</small></h2>
+              <small> Escribenos en cualquier momento, atenderemos tu pedido en la mayor brevedad.</small></h2>
             <div class="white-space-20"></div>
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
                 <!-- form contact -->
-                <form>
+                <form method="POST" action="../index.php/sender">
                   <div class="form-group">
                     <label>Nombre</label>
-                    <input type="name" class="form-control" placeholder="Escribe tu nombre" >
+                    <input type="name" class="form-control" placeholder="Escribe tu nombre" name="name">
                   </div>
                   <div class="form-group">
                     <label>Email</label>
-                    <input type="email" class="form-control" placeholder="ejemplo@email.com" >
+                    <input type="email" class="form-control" placeholder="ejemplo@email.com" name="email">
                   </div>
                   <div class="form-group">
                     <label>Asunto</label>
-                    <input type="text" class="form-control" >
+                    <input type="text" class="form-control" name="subj">
                   </div>
                   <div class="form-group">
                     <label>Mensaje</label>
-                    <textarea class="form-control" rows="6"></textarea>
+                    <textarea class="form-control" rows="6" name="mssg"></textarea>
                   </div>
                   <div class="form-group text-center">
                     <div class="white-space-10"></div>
@@ -51,15 +51,18 @@
                     <div class="box-ic-center ">
                       <i class="fa fa-phone ic-box"></i>
                       <h4>Teléfono</h4>
-                      <p>+(57) 1234-123-21</p>
+                      <p>+(57) 315 659 1365 - 3229449452</p>
+                      <h4>Linea Fija</h4>
+                      <p>+(1) 871 8985</p>
                     </div>
 
                   </div>
                   <div class="col-md-6">
                     <div class="box-ic-center ">
-                      <i class="fa fa-skype ic-box"></i>
-                      <h4>Skype</h4>
-                      <p>usuario</p>
+                      <i class="fa fa-user ic-box"></i>
+                      <h4>Dirección</h4>
+                      <p>Calle 17 N° 12 -55</p>
+                      <p>Una cuadra abajo de la Clínica Belen.</p>
                     </div>
 
                   </div>

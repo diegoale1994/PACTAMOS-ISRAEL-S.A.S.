@@ -87,10 +87,38 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     header("Location: /empleo/index.php/update_resume_person");
 }
 }
+function Sender_Action_Model(){
 
+$siteName = "www.pactamos.com";
+if (isset($_POST['name']) &&($_POST['email']) ) {
+  $subject = $_POST['subj'];
+  $nombre=$_POST['name'];
+  $email=$_POST['email']; 
+  $obs=$_POST['mssg'];  
 
+        $mailSub = '[Contacto] [' . $siteName . '] '.$subject;
+  
+  $Contenido="Esta persona quiere contactarle: 
+  \nNombre: " .$nombre .  
+  "\nEmail: " .$email . 
+  "\nMensaje: " .$obs. " ";
 
+  
+        $header = 'From: ' . $mail . "\r\n";
+  $header .= 'Reply-To:  ' . $mail . "\r\n";
+  $header .= 'X-Mailer: PHP/' . phpversion(); 
+  
+  $to="nietoandres03@gmail.com";
+  mail($to,$mailSub ,$Contenido, $header);  
 
+}
+else{
+  echo "error";
+}
+
+header ('Location: ../index.php/contact'); 
+
+}
 
 function Verify_Account_Action_Model(){
 $msg='';
@@ -137,13 +165,13 @@ if($_POST['pass'] == $_POST['pass_2']){
   $email_natural = htmlentities($_POST['email']);
   $activation=md5($email_natural.time());
   $tipo_documento = htmlentities($_POST['type_document']);
-$documento = htmlentities($_POST['number']);
-$nombre_natural = htmlentities($_POST['name']);
-$apellido_natural = htmlentities($_POST['last_name']);
-$pass = htmlentities($_POST['pass']);
-$pass_2 = htmlentities($_POST['pass_2']);
-$passencript= sha1($pass);
- $conexion=conectar_base_de_datos();
+  $documento = htmlentities($_POST['number']);
+  $nombre_natural = htmlentities($_POST['name']);
+  $apellido_natural = htmlentities($_POST['last_name']);
+  $pass = htmlentities($_POST['pass']);
+  $pass_2 = htmlentities($_POST['pass_2']);
+  $passencript= sha1($pass);
+  $conexion=conectar_base_de_datos();
  
   $consulta = "INSERT INTO persona (documento, tipo_documento, password, verificado, rol, activation_code) values ('$documento','$tipo_documento','$passencript','N','P','$activation')";
     mysqli_query($conexion, $consulta);
@@ -152,6 +180,13 @@ $passencript= sha1($pass);
     $consulta = "INSERT INTO persona_correo (documento, correo)VALUES('$documento','$email_natural')";
     mysqli_query($conexion, $consulta);
 
+  $siteName = "www.pactamos.com";
+  $mailSub = '[Código de Verificación] [' . $siteName . '] ';
+  $Contenido="Ingrese a este link Para Verificar su correo: www.pactamos.com/empleo/index.php/verify?code=$activation";
+  $header = 'From: ' . $mail . "\r\n";
+  $header .= 'Reply-To:  ' . $mail . "\r\n";
+  $header .= 'X-Mailer: PHP/' . phpversion();  
+  mail($email_natural,$mailSub ,$Contenido, $header);  
 
 //NIETO AQUI TIENE QUE ENVIAR UN EMAIL A $EMAIL_NATURAL CON EL SIGUIENTE LINK PACTAMOS.COM/EMPLEO/INDEX.PHP/VERIFY?CODE = $ACTIVATION
       header("Location: /empleo/index.php/register_info");
@@ -178,17 +213,25 @@ $email_empresa = htmlentities($_POST['email']);
 $pass = htmlentities($_POST['pass']);
 $pass_2 = htmlentities($_POST['pass_2']);
 $passencript= sha1($pass);
- $conexion=conectar_base_de_datos();
-  $consulta = "INSERT INTO persona (documento, tipo_documento, password, verificado, rol, activation_code) values ('$documento','$tipo_documento','$passencript','N','E','$activation')";
-    mysqli_query($conexion, $consulta);
-   $consulta = "INSERT INTO empresa (documento, nombre)VALUES('$documento','$nombre_empresa')";
-   mysqli_query($conexion, $consulta);
-    $consulta = "INSERT INTO persona_correo (documento, correo)VALUES('$documento','$email_empresa')";
-    mysqli_query($conexion, $consulta);
+$conexion=conectar_base_de_datos();
+$consulta = "INSERT INTO persona (documento, tipo_documento, password, verificado, rol, activation_code) values ('$documento','$tipo_documento','$passencript','N','E','$activation')";
+  mysqli_query($conexion, $consulta);
+$consulta = "INSERT INTO empresa (documento, nombre)VALUES('$documento','$nombre_empresa')";
+ mysqli_query($conexion, $consulta);
+$consulta = "INSERT INTO persona_correo (documento, correo)VALUES('$documento','$email_empresa')";
+  mysqli_query($conexion, $consulta);
+
+$siteName = "www.pactamos.com";
+$mailSub = '[Código de Verificación] [' . $siteName . '] ';
+$Contenido="Ingrese a este link Para Verificar su correo: www.pactamos.com/empleo/index.php/verify?code=$activation";
+$header = 'From: ' . $siteName . "\r\n";
+$header .= 'Reply-To:  ' . $siteName . "\r\n";
+$header .= 'X-Mailer: PHP/' . phpversion();  
+mail($email,$mailSub ,$Contenido, $header); 
 
     //NIETO AQUI TIENE QUE ENVIAR UN EMAIL A $EMAIL CON EL SIGUIENTE LINK PACTAMOS.COM/EMPLEO/INDEX.PHP/VERIFY?CODE = $ACTIVATION
 
-header("Location: /empleo/index.php/register_info");
+header("Location: /empleo/index.php/resume");
 }else{
    header("Location: /empleo/index.php/404_error");
 }
