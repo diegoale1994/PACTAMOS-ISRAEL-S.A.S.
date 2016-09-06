@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-09-2016 a las 01:50:02
+-- Tiempo de generación: 06-09-2016 a las 22:35:40
 -- Versión del servidor: 10.1.13-MariaDB
--- Versión de PHP: 5.6.23
+-- Versión de PHP: 5.6.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -51,6 +51,9 @@ INSERT INTO `empresa` (`documento`, `nombre`, `descripcion`, `sector`, `razon`, 
 
 CREATE TABLE `estudios` (
   `id_estudio` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `departamento` varchar(100) NOT NULL,
+  `municipio` varchar(100) NOT NULL,
   `documento` varchar(11) NOT NULL,
   `centro_educativo` varchar(100) NOT NULL,
   `nivel_estudio` varchar(50) NOT NULL,
@@ -81,7 +84,8 @@ CREATE TABLE `exp_laboral` (
 --
 
 INSERT INTO `exp_laboral` (`id_exp`, `documento`, `nombre_empresa`, `sector_empresa`, `cargo`, `fecha_ini`, `fecha_fin`, `logros`) VALUES
-(6, '1048850076', 'Vvv', 'T', 'sdasd', '2016-09-17', '2016-09-30', 'asdasdasd');
+(7, '1048850076', 'IDeartech', 'C', 'Secretario', '2016-09-01', '2016-09-06', 'Perfecto.'),
+(8, '1048850076', 'Pactamos', 'S', 'Secretario', '1111-11-11', '1111-11-11', 'asdasdasd');
 
 -- --------------------------------------------------------
 
@@ -149,6 +153,7 @@ CREATE TABLE `persona` (
 
 INSERT INTO `persona` (`documento`, `tipo_documento`, `departamento`, `ciudad`, `direccion`, `foto`, `password`, `verificado`, `rol`, `activation_code`) VALUES
 ('1048850076', 'CC', 'Boyaca', 'Garagoa', 'Calle 7 No 9-29', 'http//fotomania.com', 'b674a43d6710dc308bfd53404d88d0b5f46edf15', 'Y', 'P', NULL),
+('1069753420', 'CC', '', '', '', '', 'f72db6d4c1771e2cf0ef0e83fc4b85402363b08f', 'N', 'P', 'cdd01d01d1d3a31fd127c758aac7164e'),
 ('111111111-9', 'NI', 'Cundinamarca', 'Bogota', 'calle 179 -8-32', 'http//asdasdad.com', 'b674a43d6710dc308bfd53404d88d0b5f46edf15', 'Y', 'E', NULL),
 ('121323123-9', 'NI', 'Cundinamarca', 'Fusagasuga', 'Diagonal 24c No 64a - 33', 'ttp//asdasdad.co', '4fc36204d034036de87815eb8ff296791f50d241', 'Y', 'E', NULL),
 ('5555555555', 'CC', '', '', '', '', 'b674a43d6710dc308bfd53404d88d0b5f46edf15', 'Y', 'P', '947bb5543a06e7d41e228af0f8cf718f');
@@ -170,6 +175,7 @@ CREATE TABLE `persona_correo` (
 
 INSERT INTO `persona_correo` (`documento`, `correo`) VALUES
 ('1048850076', 'diego.fc.1@hotmail.com'),
+('1069753420', 'nietoandres03@gmail.com'),
 ('5555555555', 'juanhernandez@gmail.com');
 
 -- --------------------------------------------------------
@@ -195,6 +201,7 @@ CREATE TABLE `persona_natural` (
 
 INSERT INTO `persona_natural` (`documento`, `nombre1`, `nombre2`, `apellido1`, `apellido2`, `estado_civil`, `licencia_conduccion`, `vehiculo`) VALUES
 ('1048850076', 'diego', 'alejandro', 'franco', 'cuesta', 'S', 'B1', 'Y'),
+('1069753420', 'Andres', '', 'Nieto', '', '', '', ''),
 ('5555555555', 'juan', '', 'hernandez', '', '', '', '');
 
 -- --------------------------------------------------------
@@ -325,7 +332,7 @@ ALTER TABLE `estudios`
 -- AUTO_INCREMENT de la tabla `exp_laboral`
 --
 ALTER TABLE `exp_laboral`
-  MODIFY `id_exp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_exp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `idioma`
 --

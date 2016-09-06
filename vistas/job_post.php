@@ -11,6 +11,15 @@ if ( $_SESSION['nivel_de_acceso']=='E') { ?>
 
       </header><!-- end main-header -->
       <!-- body-content -->
+      <?php if(isset($_GET['state'])){
+            if($_GET['state']=="create"){
+              ?>
+              
+              <center><h4>oferta creada Con exito!!!</h4></center>
+              
+              <?php
+            }
+           } ?>
       <div class="body-content clearfix" > 
         <div class="bg-color1 block-section line-bottom">
           <div class="container">
@@ -18,162 +27,55 @@ if ( $_SESSION['nivel_de_acceso']=='E') { ?>
               <div class="col-md-8 col-md-offset-2">
 
                 <!-- form post a job -->
-                <form>                  
+                <form action='../index.php/job_post_new' method='POST'>                  
                   <div class="form-group">
-                    <label>Cargo</label>
-                    <input type="text" class="form-control "  placeholder="Secretaria, Maestro, Doctor, Ingeniero">
+                    <label>Vacante</label>
+                    <input type="text" class="form-control " name="vacante" placeholder="Secretaria, Maestro, Doctor, Ingeniero" Required>
                   </div>
                   <div class="form-group">
                     <label>Descripción</label>
-                    <div class="color-white-mute"><small>Escribe acerca de sus funciones.</small></div>
-                    <textarea class="form-control" rows="6" placeholder="Enter Job Description"></textarea>
+                    <div class="color-white-mute"><small>Escribe acerca de tu empresa</small></div>
+                    <textarea class="form-control" rows="6" name= "descripcion"></textarea>
                   </div>
+                  <div class="form-group">
+                    <label>Descripción profesional</label>
+                    <div class="color-white-mute"><small>Que habilidades buscas en la persona</small></div>
+                    <textarea class="form-control" rows="6" name= "descripcion_profesional"></textarea>
+                  </div>
+                   <div class="form-group">
+                    <label>Horario de Trabajo</label>
+                    <div class="color-white-mute"><small>Describe el horario de trabajo</small></div>
+                     <input type="text" class="form-control " name="horario" placeholder="Lunes a Viernes de 8am - 6pm" Required>
+                  </div>
+                      <div class="form-group">
+                   <select class="form-control" name ="area" data-live-search="true">
+                          <option data-tokens="ketchup mustard" value="A" >A</option>
+                          <option data-tokens="mustard" value= "R">R</option>
+                          <option data-tokens="ketchup mustard" value ="E">E</option>  
+                          <option data-tokens="ketchup mustard" value ="A">A</option>   
+                          <option data-tokens="ketchup mustard" value ="S">S</option>                           
+                        </select>
+                        </div>
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>Departamento</label>
-                        <input type="text" class="form-control "  placeholder="Cundinamarca, Tolima...">
+                        <input type="text" class="form-control " name="departamento" placeholder="Cundinamarca, Tolima...">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>Municipio</label>
-                        <input type="text" class="form-control "  placeholder="Ciudad">
+                        <input type="text" class="form-control " name="ciudad" placeholder="Ciudad">
                       </div>
                     </div>
                   </div>
 
-                  <!-- checkboxs -->
-                  <div class="form-group">
-                    <label>Categorias</label>
-                    <div class="row clearfix">
-                      <div class="col-md-6">
-                        <div class="checkbox flat-checkbox">
-                          <label>
-                            <input type="checkbox"> 
-                            <span class="fa fa-check"></span>
-                            Contador
-                          </label>
-                        </div>
-                        <div class="checkbox flat-checkbox">
-                          <label>
-                            <input type="checkbox"> 
-                            <span class="fa fa-check"></span>
-                            Administrador
-                          </label>
-                        </div>
-                        <div class="checkbox flat-checkbox">
-                          <label>
-                            <input type="checkbox"> 
-                            <span class="fa fa-check"></span>
-                            Cajero
-                          </label>
-                        </div>
-                        <div class="checkbox flat-checkbox">
-                          <label>
-                            <input type="checkbox"> 
-                            <span class="fa fa-check"></span>
-                            SAlud
-                          </label>
-                        </div>
-                        <div class="checkbox flat-checkbox">
-                          <label>
-                            <input type="checkbox"> 
-                            <span class="fa fa-check"></span>
-                            Arquitectura
-                          </label>
-                        </div>
-                        <div class="checkbox flat-checkbox">
-                          <label>
-                            <input type="checkbox"> 
-                            <span class="fa fa-check"></span>
-                            Diseño
-                          </label>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="checkbox flat-checkbox">
-                          <label>
-                            <input type="checkbox"> 
-                            <span class="fa fa-check"></span>
-                            Educación
-                          </label>
-                        </div>
-                        <div class="checkbox flat-checkbox">
-                          <label>
-                            <input type="checkbox"> 
-                            <span class="fa fa-check"></span>
-                            Ingeniero
-                          </label>
-                        </div>
-                        <div class="checkbox flat-checkbox">
-                          <label>
-                            <input type="checkbox"> 
-                            <span class="fa fa-check"></span>
-                            Tecnología
-                          </label>
-                        </div>                                               
-                      
-                        <div class="checkbox flat-checkbox">
-                          <label>
-                            <input type="checkbox"> 
-                            <span class="fa fa-check"></span>
-                            Manufactura
-                          </label>
-                        </div>
-                        <div class="checkbox flat-checkbox">
-                          <label>
-                            <input type="checkbox"> 
-                            <span class="fa fa-check"></span>
-                            Audiovisuales
-                          </label>
-                        </div>                        
-                        <div class="checkbox flat-checkbox">
-                          <label>
-                            <input type="checkbox"> 
-                            <span class="fa fa-check"></span>
-                            Otros
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                  </div><!-- end checkboxs -->
-
-
-                  <div class="form-group">
-                    <label>Salario (Opcional)</label>
-                    <div class="row clearfix">
-                      <div class="col-xs-6">
-                        <input type="text" class="form-control "  placeholder="Ejemplo: 50,000.00">
-                      </div>
-                      <div class="col-xs-6">
-                        <select class="form-control">
-                          <option>Hora</option>
-                          <option>Día</option>
-                          <option>Semana</option>
-                          <option>Mes</option>
-                          <option>Año</option>
-                        </select>
-                      </div>
-                    </div>
+                     <div class="form-group">
+                    <label>Tiempo (no se exactamente que debe ir cambio si algo por select)</label>
+                    <input type="text" class="form-control " name="tiempo" placeholder="tiempo">
                   </div>
-                  <div class="form-group">
-                    <label>Experiencia (opcional)</label>
-                    <div class="row clearfix">
-                      <div class="col-xs-6">
-                        <input type="text" class="form-control "  placeholder="Como Contador, Ingeniero ...">
-                      </div>
-                      <div class="col-xs-6">
-                        <select class="form-control">
-                          <option>1 año</option>
-                          <option>2 años</option>
-                          <option>3 años</option>
-                          <option>4 años</option>
-                          <option>5 años</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>                
+  
 
                   <div class="form-group ">
                     <button class="btn btn-t-primary btn-theme">Enviar</button>

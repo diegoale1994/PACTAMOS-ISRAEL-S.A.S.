@@ -72,6 +72,9 @@
     if($uri=="/empleo/index.php/job_post"){
      Job_Post_Action_Controller();
     } 
+    if($uri=="/empleo/index.php/job_post?state=create"){
+     Job_Post_Create_Ok_Action_Controller();
+    } 
      if($uri=="/empleo/index.php/loggout"){
 
      User_Loggout_Action_Controller();
@@ -83,6 +86,10 @@
     if($uri=="/empleo/index.php/register_E_form"){
         Register_E_Action_Controller();
     } 
+     if($uri=="/empleo/index.php/job_post_new"){
+      Register_New_Job_Action_Controller();
+    } 
+    
     
 
      if($uri=="/empleo/index.php/loggout?time_session=out"){

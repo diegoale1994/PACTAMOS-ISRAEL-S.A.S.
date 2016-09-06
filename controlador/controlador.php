@@ -5,6 +5,12 @@ require "vistas/index.php";
 function Company_Action_Controller(){
 require "vistas/about.php";
 }
+function Register_New_Job_Action_Controller(){
+	Register_New_Job_Action_Model();
+}
+function Job_Post_Create_Ok_Action_Controller(){
+	require "vistas/job_post.php";
+}
 function Contact_Action_Controller(){
 require "vistas/contact.php";
 }

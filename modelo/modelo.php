@@ -9,6 +9,32 @@ function conectar_base_de_datos (){
 function cerrar_conexion_db($conexion){
     mysqli_close($conexion);
 }
+function Register_New_Job_Action_Model(){
+if($_SERVER['REQUEST_METHOD']=="POST"){
+  
+  if(isset($_SESSION['documento'])){
+    echo "entre";
+    $documento = $_SESSION['documento'];
+    $vacante = $_POST['vacante'];
+    $descripcion = $_POST['descripcion'];
+    $descripcion_profesional = $_POST['descripcion_profesional'];
+    $departamento = $_POST['departamento'];
+    $ciudad=$_POST['ciudad'];
+     $area=$_POST['area'];
+      $horario=$_POST['horario'];
+    $tiempo =$_POST['tiempo'];
+    $conexion=conectar_base_de_datos();
+    $fecha =  date("Y-m-d");
+  $consulta = "INSERT INTO oferta (documento, area, vacante, horario, descripcion, descrip_prof, estado, tiempo, departamento, ciudad, fecha_publicacion) values ('$documento','$area','$vacante','$horario','$descripcion','$descripcion_profesional','A','$tiempo','$departamento','$ciudad','$fecha')";
+    mysqli_query($conexion, $consulta);
+     header("Location: /empleo/index.php/job_post?state=create");
+
+  }
+
+}else{
+  header("Location: /empleo/index.php/404_error");
+  }
+}
 function Exp_Lab_Person_Delete_Action_Model(){
 if (isset($_GET['delete'])){
   if(isset( $_SESSION['documento'])){

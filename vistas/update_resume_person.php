@@ -19,9 +19,9 @@
                         <input type="text" name="cargo" class="form-control">
                         <label>Sector de la empresa</label>
                         <select class="form-control" name ="sector_empresa" data-live-search="true">
-                          <option data-tokens="ketchup mustard" >Industrial</option>
-                          <option data-tokens="mustard" value= "">Comercial</option>
-                          <option data-tokens="ketchup mustard" value =''>Administrativo</option>                          
+                          <option data-tokens="ketchup mustard" value="Industrial" >Industrial</option>
+                          <option data-tokens="mustard" value= "Comercial">Comercial</option>
+                          <option data-tokens="ketchup mustard" value ="Administrativo">Administrativo</option>                          
                         </select>
                         <label>Fecha Inicio</label>
                         <input type="date" name="fecha_ini_job" class="form-control">
@@ -211,9 +211,9 @@
                 <div class="panel-body">
                   <table    class="table table-striped table-bordered table-hover" id="dataTables-example">
                       <thead id="nom2" name="rol">
-                        <tr> 
+                        <tr>
+                          <th data-field="id" data-sortable="true" data-align="center" id="name">Sector empresa</th> 
                           <th data-field="name" data-sortable="true" data-align="center" id="status">Empresa</ht>
-                          <th data-field="id" data-sortable="true" data-align="center" id="name">Sector empresa</th>
                           <th data-field="id" data-sortable="true" data-align="center" id="name">Cargo</th>
                           <th data-field="name" data-sortable="true" data-align="center" id="status">Fecha Inicio</th>
                           <th data-field="name" data-sortable="true" data-align="center" id="status">Fecha Fin</th>
@@ -224,8 +224,8 @@
                       <tbody>
                         <?php foreach($exp_laboral as $exp): ?>
                           <tr> 
+                            <th><?php echo $exp["sector_empresa"] ?></th> 
                             <th><?php echo $exp["nombre_empresa"] ?></ht>  
-                            <th><?php echo $exp["sector_empresa"] ?></th>               
                             <th><?php echo $exp["cargo"] ?></th>
                             <th><?php echo $exp["fecha_ini"] ?></th>
                             <th><?php echo $exp["fecha_fin"] ?></th>
@@ -244,13 +244,13 @@
                <div class="panel panel-default">
                 <div class="panel-heading">
                 <a type="button" class="btn btn-success glyphicon glyphicon-plus" data-toggle="modal"  data-target="#new_study"> </a>
-                <a type="button" class="btn btn-warning glyphicon glyphicon-repeat" data-toggle="modal"  data-target="#update" id="btn_mod1" name="rol"></a>
-                <a type="button" class="btn btn-danger glyphicon glyphicon-remove" data-toggle="modal"  data-target="#delete" id="btn_del" name="rol"></a>
+                
                 </div>
                 <div class="panel-body">
                   <table    class="table table-striped table-bordered table-hover" id="dataTables-example">
                       <thead id="nom2" name="rol">
-                      <tr>                          
+                      <tr>         
+                       <th data-field="id" data-sortable="true" data-align="center" id="name">Nivel de Estudios</th>                 
                           <th data-field="id" data-sortable="true" data-align="center" id="name">Titulo Obtenido</th>
                           <th data-field="name" data-sortable="true" data-align="center" id="status">Entidad</th>
                           <th data-field="name" data-sortable="true" data-align="center" id="status">Departamento</th>
@@ -263,6 +263,7 @@
                       <tbody>
                         <?php foreach($estudies as $est): ?>
                           <tr> 
+                          <th><?php echo $est["nivel_estudio"] ?></ht> 
                             <th><?php echo $est["title"] ?></ht>  
                             <th><?php echo $est["centro_educativo"] ?></th>               
                             <th><?php echo $est["departamento"] ?></th>
