@@ -120,7 +120,7 @@ if($tiempo_actual > $inac){
               </div>
             </div>
           </nav><!-- end main navbar -->
-                <<?php }?>  
+                <?php }?>  
               
 
         <!-- mobile navbar -->

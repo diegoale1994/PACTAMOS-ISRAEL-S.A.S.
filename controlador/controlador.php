@@ -40,6 +40,9 @@ function Profile_Confirmation_Action_Controller(){
 function Resume_Action_Controller(){
 	require "vistas/resume_person.php";
 }
+function Resume_Company_Action_Controller(){
+	require "vistas/resume_company.php";
+}
 function Update_Resume_Person_Action_Controller(){
 	$exp_laboral = Get_Exp_Person_Action_Model();
 	require "vistas/update_resume_person.php";

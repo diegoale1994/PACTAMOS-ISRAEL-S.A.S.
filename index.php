@@ -52,7 +52,9 @@
     if($uri=="/empleo/index.php/profile_confirmation"){
     Profile_Confirmation_Action_Controller();
     } 
-    
+    if($uri=="/empleo/index.php/resume_company"){
+     Resume_Company_Action_Controller();
+    } 
 
 
 

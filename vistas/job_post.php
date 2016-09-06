@@ -6,166 +6,133 @@ if ( $_SESSION['nivel_de_acceso']=='E') { ?>
 
  <?php ob_start() ?>
         <div class="container">
-          <div class="text-center logo"> <a href="index.html"><img src="../images/logo.png" alt=""></a></div>
+          <div class="text-center logo"><h1 class="color-white">Solcitar Requerimiento</h1></div>
         </div>
 
       </header><!-- end main-header -->
-
-
       <!-- body-content -->
-      <div class="body-content clearfix" >
-
-        <div class="bg-color2 block-section line-bottom">
-          <div class="container">
-            <h1 class="text-center no-margin">Post a Job</h1>
-          </div>
-        </div>
-
+      <div class="body-content clearfix" > 
         <div class="bg-color1 block-section line-bottom">
           <div class="container">
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
 
                 <!-- form post a job -->
-                <form>
+                <form>                  
                   <div class="form-group">
-                    <label>Company</label>
-                    <input type="text" class="form-control "  placeholder="Enter Company Name">
+                    <label>Cargo</label>
+                    <input type="text" class="form-control "  placeholder="Secretaria, Maestro, Doctor, Ingeniero">
                   </div>
                   <div class="form-group">
-                    <label>Job title</label>
-                    <input type="text" class="form-control "  placeholder="Enter Job Title">
-                  </div>
-                  <div class="form-group">
-                    <label>Job description</label>
-                    <div class="color-white-mute"><small>Describe the responsibilities of this job, required work experience, skills, or education.</small></div>
+                    <label>Descripción</label>
+                    <div class="color-white-mute"><small>Escribe acerca de sus funciones.</small></div>
                     <textarea class="form-control" rows="6" placeholder="Enter Job Description"></textarea>
-                    <small class="color-white-mute">Formatting Options:    ##heading      *bold*          _italic_          * bulleted list</small>
                   </div>
-                  <div class="form-group">
-                    <label>Locations (optional)</label>
-                    <input type="text" class="form-control "  placeholder="Enter Location">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Departamento</label>
+                        <input type="text" class="form-control "  placeholder="Cundinamarca, Tolima...">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Municipio</label>
+                        <input type="text" class="form-control "  placeholder="Ciudad">
+                      </div>
+                    </div>
                   </div>
 
                   <!-- checkboxs -->
                   <div class="form-group">
-                    <label>Job Categories</label>
+                    <label>Categorias</label>
                     <div class="row clearfix">
-                      <div class="col-md-4">
+                      <div class="col-md-6">
                         <div class="checkbox flat-checkbox">
                           <label>
                             <input type="checkbox"> 
                             <span class="fa fa-check"></span>
-                            Accounting
+                            Contador
                           </label>
                         </div>
                         <div class="checkbox flat-checkbox">
                           <label>
                             <input type="checkbox"> 
                             <span class="fa fa-check"></span>
-                            Admin & HR
+                            Administrador
                           </label>
                         </div>
                         <div class="checkbox flat-checkbox">
                           <label>
                             <input type="checkbox"> 
                             <span class="fa fa-check"></span>
-                            Banking  /  Finance
+                            Cajero
                           </label>
                         </div>
                         <div class="checkbox flat-checkbox">
                           <label>
                             <input type="checkbox"> 
                             <span class="fa fa-check"></span>
-                            Beauty Care  /  Health
+                            SAlud
                           </label>
                         </div>
                         <div class="checkbox flat-checkbox">
                           <label>
                             <input type="checkbox"> 
                             <span class="fa fa-check"></span>
-                            Building & Construction
+                            Arquitectura
                           </label>
                         </div>
                         <div class="checkbox flat-checkbox">
                           <label>
                             <input type="checkbox"> 
                             <span class="fa fa-check"></span>
-                            Design
-                          </label>
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="checkbox flat-checkbox">
-                          <label>
-                            <input type="checkbox"> 
-                            <span class="fa fa-check"></span>
-                            Education
-                          </label>
-                        </div>
-                        <div class="checkbox flat-checkbox">
-                          <label>
-                            <input type="checkbox"> 
-                            <span class="fa fa-check"></span>
-                            Engineering
-                          </label>
-                        </div>
-                        <div class="checkbox flat-checkbox">
-                          <label>
-                            <input type="checkbox"> 
-                            <span class="fa fa-check"></span>
-                            Hospitality  /  F & B
-                          </label>
-                        </div>
-                        <div class="checkbox flat-checkbox">
-                          <label>
-                            <input type="checkbox"> 
-                            <span class="fa fa-check"></span>
-                            Information Technology (IT)
-                          </label>
-                        </div>
-                        <div class="checkbox flat-checkbox">
-                          <label>
-                            <input type="checkbox"> 
-                            <span class="fa fa-check"></span>
-                            Insurance
-                          </label>
-                        </div>
-                        <div class="checkbox flat-checkbox">
-                          <label>
-                            <input type="checkbox"> 
-                            <span class="fa fa-check"></span>
-                            Management
+                            Diseño
                           </label>
                         </div>
                       </div>
-                      <div class="col-md-4">
+                      <div class="col-md-6">
                         <div class="checkbox flat-checkbox">
                           <label>
                             <input type="checkbox"> 
                             <span class="fa fa-check"></span>
-                            Manufacturing
+                            Educación
                           </label>
                         </div>
                         <div class="checkbox flat-checkbox">
                           <label>
                             <input type="checkbox"> 
                             <span class="fa fa-check"></span>
-                            Media & Advertising
+                            Ingeniero
                           </label>
                         </div>
                         <div class="checkbox flat-checkbox">
                           <label>
                             <input type="checkbox"> 
                             <span class="fa fa-check"></span>
-                            Property
+                            Tecnología
+                          </label>
+                        </div>                                               
+                      
+                        <div class="checkbox flat-checkbox">
+                          <label>
+                            <input type="checkbox"> 
+                            <span class="fa fa-check"></span>
+                            Manufactura
                           </label>
                         </div>
                         <div class="checkbox flat-checkbox">
                           <label>
                             <input type="checkbox"> 
                             <span class="fa fa-check"></span>
-                            Others
+                            Audiovisuales
+                          </label>
+                        </div>                        
+                        <div class="checkbox flat-checkbox">
+                          <label>
+                            <input type="checkbox"> 
+                            <span class="fa fa-check"></span>
+                            Otros
                           </label>
                         </div>
                       </div>
@@ -174,43 +141,42 @@ if ( $_SESSION['nivel_de_acceso']=='E') { ?>
 
 
                   <div class="form-group">
-                    <label>Salary (optional)</label>
+                    <label>Salario (Opcional)</label>
                     <div class="row clearfix">
                       <div class="col-xs-6">
-                        <input type="text" class="form-control "  placeholder="Example: 50,000.00">
+                        <input type="text" class="form-control "  placeholder="Ejemplo: 50,000.00">
                       </div>
                       <div class="col-xs-6">
                         <select class="form-control">
-                          <option>per hour</option>
-                          <option>per day</option>
-                          <option>per week</option>
-                          <option>per month</option>
-                          <option>per year</option>
+                          <option>Hora</option>
+                          <option>Día</option>
+                          <option>Semana</option>
+                          <option>Mes</option>
+                          <option>Año</option>
                         </select>
                       </div>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label>Experience (optional)</label>
+                    <label>Experiencia (opcional)</label>
                     <div class="row clearfix">
                       <div class="col-xs-6">
-                        <input type="text" class="form-control "  placeholder="Example: Accounting">
+                        <input type="text" class="form-control "  placeholder="Como Contador, Ingeniero ...">
                       </div>
                       <div class="col-xs-6">
                         <select class="form-control">
-                          <option>1 year</option>
-                          <option>2 years</option>
-                          <option>3 years</option>
-                          <option>4 years</option>
-                          <option>5 years</option>
+                          <option>1 año</option>
+                          <option>2 años</option>
+                          <option>3 años</option>
+                          <option>4 años</option>
+                          <option>5 años</option>
                         </select>
                       </div>
                     </div>
-                  </div>
-                  <p>Applications will be emailed to: <a href="#">your@email.com</a> – <a href="#">change email</a></p>
+                  </div>                
 
                   <div class="form-group ">
-                    <button class="btn btn-t-primary btn-theme">Continue</button>
+                    <button class="btn btn-t-primary btn-theme">Enviar</button>
                   </div>
 
 
