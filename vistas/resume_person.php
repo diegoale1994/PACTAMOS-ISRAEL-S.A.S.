@@ -4,13 +4,6 @@
 if(isset($_SESSION['session_started'])){
 if ($_SESSION['session_started']=='yes') {
 if ( $_SESSION['nivel_de_acceso']=='P') { ?>
- 
-
-
-
-  <!-- main-header -->
-
-
 <?php ob_start() ?> 
 <!-- body-content -->
 <div class="body-content clearfix" >
@@ -24,44 +17,43 @@ if ( $_SESSION['nivel_de_acceso']=='P') { ?>
         <!-- box item details -->
         <div class="block-section box-item-details">
           <div class="resume-block">
-            <div class="img-profile"><img src="../images/people/7.jpg" alt=""></div>><!--Ponga aui la foto-->
+            <div class="img-profile"><img src="../images/user/user1.png" alt=""></div><!--Ponga aui la foto-->
             <div class="desc">
-              <h2>Diego Alejandro Franco Cuesta</h2>
-              <h4>PHP Developer</h4>
+              <h2>Andrés Felipe Nieto</h2>
+              <h4>Ingeniero de Sistemas</h4>
               <p>Fusagasugá Cundinamarca</p>
 
               <h3 class="resume-sub-title"><span>Experiencia Laboral</span></h3>
 
-              <h4>PHP Developer</h4>
-              <h5>Barcode Giant <span class="color-white-mute"> - Chicago, IL</span></h5>
-              <p  class="color-white-mute">March 2014 to August 2014</p>
-              <h5>Responsibilities :</h5>
-              <p>Magento/PHP development for a Point-of-sale equiptment dealer. I worked on setting up VMware ESX sandbox developer environment. I also built their quote system in Magento. They have 8 other websites that sell the same equipment so I also worked on keeping them up to date with the main website that brings in revenue. </p>
-              <h5>Skills Used :</h5>
-              <p>PHP, Javascript, XML, JSON, Linux Apache Mysql and Python</p>           
+              <h4>Desarrollador PHP</h4>
+              <h5>iDeartech<span class="color-white-mute"> Fusagasugá - Cundinamarca</span></h5>
+              <p  class="color-white-mute">Febrero 2016 - Actualmente</p>
+              <h5>Responsibilidades :</h5>
+              <p>Desarrollo de plataformas Web responsive PHP usando Laravel como Framework principal.</p>
+              <h5>Habilidades usadas:</h5>
+              <p>PHP, Javascript, XML, JSON, Linux Apache Mysql y Python</p>           
 
 
               <h3 class="resume-sub-title"><span>Educacion</span></h3>
-              <h4>Bachelor in Computer Science</h4>
-              <h5>Telkom University <span class="color-white-mute">- Bloomington, IN</span></h5>
+              <h4>Ingeniero de Sistemas</h4>
+              <h5>Universidad de Cundinamarca<span class="color-white-mute">- Fusagasugá Cundinamarca</span></h5>
               
 
               <h3 class="resume-sub-title"><span>Referencias Personales</span></h3>
-              <h4>Bachelor in Computer Science</h4>
-              <h5>Telkom University <span class="color-white-mute">- Bloomington, IN</span></h5>
+              <h4>Carlos Alberto Guampe</h4>
+              <h5>Adminsitrador de Empresas <span class="color-white-mute">- Fusagasugá Cundinamarca</span></h5>
 
               <h3  class="resume-sub-title"><span>Información Adicional</span></h3>
-              <h4>SKILLS:</h4>
+              <h4>Habilidades:</h4>
               <ul>
-                <li> PHP 5, Perl and Python scripting </li>
+                <li>PHP 5, Perl and Python scripting </li>
                 <li>Java</li>
                 <li>SQL, Mysql, MongoDB </li>
                 <li>Revision control/source code management using Mercurial, GIT, RCS/CVS </li>
                 <li>JavaScript Libraries</li>
                 <li>Apache Solr search engine </li>
                 <li>Wordpress, Drupal, Joomla, Mambo, CMS </li>
-                <li>Adobe Photoshop & GIMP </li>
-                <li> Working in a Linux / Unix environment (shell scripting and command line utilities)</li>
+                <li>Adobe Photoshop & GIMP </li>                
               </ul>
             </div>
           </div>

@@ -20,6 +20,17 @@ if (isset($_GET['delete'])){
   }
 }
 }
+function Studies_Person_Delete_Action_Model(){
+if (isset($_GET['delete'])){
+  if(isset( $_SESSION['documento'])){
+    $id_est = $_GET['delete'];
+    $conexion=conectar_base_de_datos();
+    $consulta = "DELETE FROM estudios WHERE id_estudio = '$id_est'";
+     $resultado=mysqli_query($conexion,$consulta);
+     header("Location: /empleo/index.php/update_resume_person");
+  }
+}
+}
 
 function Get_Exp_Person_Action_Model(){
 $conexion=conectar_base_de_datos();
@@ -32,6 +43,18 @@ $exp_laboral[]=$fila;
             }
             return $exp_laboral;
 }
+function Get_Estudies_Action_Model(){
+$conexion=conectar_base_de_datos();
+$estudies = array();
+$documento = $_SESSION['documento'];
+$consulta="SELECT * FROM estudios where documento ='$documento'";
+$resultado=mysqli_query($conexion,$consulta);
+while ($fila=mysqli_fetch_array($resultado)) {
+  $estudies[]=$fila;
+              }
+return $estudies;
+}
+
 function Register_Exp_Job_Action_Model(){
 if($_SERVER['REQUEST_METHOD']=="POST"){
   $conexion=conectar_base_de_datos();
@@ -43,6 +66,23 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
   $logro = $_POST['logros'];
   $documento = $_SESSION['documento'];
   $consulta = "INSERT INTO exp_laboral (documento, nombre_empresa, sector_empresa, cargo, fecha_ini, fecha_fin, logros) values ('$documento','$nombre_empresa','$sector_empresa','$cargo_empresa','$fecha_ini_trabajo','$fecha_fin_trabajo','$logro')";
+    mysqli_query($conexion, $consulta);
+    header("Location: /empleo/index.php/update_resume_person");
+}
+}
+
+function Register_Estudies_Action_Model(){
+if($_SERVER['REQUEST_METHOD']=="POST"){
+  $conexion=conectar_base_de_datos();
+  $titulo = ucwords($_POST['title']);
+  $nivel_estudio = $_POST['nivel_estudio'];
+  $entidad = ucwords($_POST['entity']);
+  $fecha_ini= $_POST['fecha_ini_stu'];
+  $fecha_fin = $_POST['fecha_fin_stu'];
+  $dpto = $_POST['departamento_study'];
+  $mun = $_POST['municipio_study'];
+  $documento = $_SESSION['documento'];
+  $consulta = "INSERT INTO estudios (documento, title, nivel_estudio, centro_educativo, departamento, municipio, fecha_ini, fecha_fin) values ('$documento','$titulo','$nivel_estudio','$entidad','$dpto','$mun','$fecha_ini','$fecha_fin')";
     mysqli_query($conexion, $consulta);
     header("Location: /empleo/index.php/update_resume_person");
 }

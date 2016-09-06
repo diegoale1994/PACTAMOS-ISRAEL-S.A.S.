@@ -91,7 +91,7 @@ if($tiempo_actual > $inac){
                 <ul class="nav navbar-nav navbar-right">
                   <li class="dropdown">
                     <a href="#" class="link-profile dropdown-toggle"  data-toggle="dropdown" >
-                      <img src="../images/people/4.jpg" alt="" class="img-profile"><?php echo $_SESSION['nombre'];?><b class="caret"></b>
+                      <img src="../images/user/user1.png" alt="" class="img-profile"><?php echo $_SESSION['nombre'];?><b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu" role="menu">
                       <li><a href="my_alerts.html"> My Alerts </a></li>

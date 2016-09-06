@@ -19,12 +19,9 @@
                         <input type="text" name="cargo" class="form-control">
                         <label>Sector de la empresa</label>
                         <select class="form-control" name ="sector_empresa" data-live-search="true">
-                        <option data-tokens="ketchup mustard" value ="S">S</option>
-                        <option data-tokens="mustard" value= "E">E</option>
-                        <option data-tokens="ketchup mustard" value ='C'>C</option>
-                         <option data-tokens="ketchup mustard" value ='T'>T</option>
-                          <option data-tokens="ketchup mustard" value ='O'>O</option>
-                           <option data-tokens="ketchup mustard" value ='R'>R</option>
+                          <option data-tokens="ketchup mustard" >Industrial</option>
+                          <option data-tokens="mustard" value= "">Comercial</option>
+                          <option data-tokens="ketchup mustard" value =''>Administrativo</option>                          
                         </select>
                         <label>Fecha Inicio</label>
                         <input type="date" name="fecha_ini_job" class="form-control">
@@ -54,23 +51,32 @@
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
         <h4 class="modal-title" id="project-12-label"><center>Nuevo</center></h4>
       </div>
-      <form action="../index.php/update_jobs" method="post" >
+      <form action="../index.php/update_estudies" method="post" >
         <div class="modal-body">
                  <div class="row">
                      <div class="col-md-12">                         
                       <div class="form-group">
+                        <label>Nivel de Estudios</label>
+                        <select class="form-control" name="nivel_estudio">
+                          <option>Profesional</option>
+                          <option>Técnologo</option>
+                          <option>Técnico</option>
+                          <option>Bachiller</option>
+                          <option>Educación Media</option>
+                          <option>Otro</option>
+                        </select>                        
                         <label>Titulo Obtenido</label>
                         <input type="text" name="title" class="form-control">
                         <label>Entidad</label>
                         <input type="text" name="entity" class="form-control">
                         <label>Departamento</label>
-                        <input type="text" name="dpto_study" class="form-control">
+                        <input type="text" name="departamento_study" class="form-control">
                         <label>Municipio</label>
-                        <input type="text" name="mun_study" class="form-control">
+                        <input type="text" name="municipio_study" class="form-control">
                         <label>Fecha Inicio</label>
-                        <input type="date" name="fecha_init_study" class="form-control">
+                        <input type="date" name="fecha_ini_stu" class="form-control">
                         <label>Fecha Fin</label>
-                        <input type="date" name="fecha_fin_study" class="form-control">
+                        <input type="date" name="fecha_fin_stu" class="form-control">
                       </div>             
                      </div>                   
                  </div>
@@ -162,25 +168,38 @@
         <!-- box item details -->
         <div class="block-section box-item-details">
           <div class="resume-block">
-            <div class="img-profile"><img src="./assets/theme/images/people/7.jpg" alt=""></div>><!--Ponga aui la foto-->
+            <div class="img-profile"><img src="../images/user/user1.png" alt=""></div><!--Ponga aui la foto-->
             <div class="desc">
               <form>
-                <div class="form-group col-md-6">
-                  <label>Nombre</label>
-                  <input type="text" name="name" class="form-control" value="" class="form-control">
+                <h3 class="resume-sub-title"><span>Información Laboral</span></h3>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group ">
+                      <label>Nombre</label>
+                      <input type="text" name="name" class="form-control"  value="Andrés Felipe Nieto">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Profesión</label>
+                      <input type="text" name="profesion" class="form-control" value=" Ingeniero de Sistemas">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Departamento</label>
+                      <input type="text" name="dpto" class="form-control" value=" Cundinamarca">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Municipio</label>
+                      <input type="text" name="mun" class="form-control" value="Fusagasuga">
+                    </div>
+                  </div>
+                </div> 
                 </div>
-                <div class="form-group col-md-6">
-                  <label>Profesión</label>
-                  <input type="text" name="profesion" class="form-control" value="" class="form-control">
-                </div>
-                <div class="form-group col-md-6">
-                  <label>Departamento</label>
-                  <input type="text" name="dpto" class="form-control">
-                </div>
-                <div class="form-group col-md-6">
-                  <label>Municipio</label>
-                  <input type="text" name="mun" class="form-control">
-                </div>
+                           
               </form>            
 
               <h3 class="resume-sub-title"><span>Experiencia Laboral</span></h3>
@@ -192,30 +211,29 @@
                 <div class="panel-body">
                   <table    class="table table-striped table-bordered table-hover" id="dataTables-example">
                       <thead id="nom2" name="rol">
-                      <tr> 
-                      <th data-field="name" data-sortable="true" data-align="center" id="status">Empresa</ht>
-                       <th data-field="id" data-sortable="true" data-align="center" id="name">Sector empresa</th>                 
+                        <tr> 
+                          <th data-field="name" data-sortable="true" data-align="center" id="status">Empresa</ht>
+                          <th data-field="id" data-sortable="true" data-align="center" id="name">Sector empresa</th>
                           <th data-field="id" data-sortable="true" data-align="center" id="name">Cargo</th>
                           <th data-field="name" data-sortable="true" data-align="center" id="status">Fecha Inicio</th>
                           <th data-field="name" data-sortable="true" data-align="center" id="status">Fecha Fin</th>
                           <th data-field="" data-sortable="true" data-align="center" id="status">Logros</th>
-                      </tr>
-                       <?php foreach($exp_laboral as $exp): ?>
+                          <th>Acciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php foreach($exp_laboral as $exp): ?>
                           <tr> 
-                          <th><?php echo $exp["nombre_empresa"] ?></ht>  
-                           <th><?php echo $exp["sector_empresa"] ?></th>               
-                          <th><?php echo $exp["cargo"] ?></th>
-                          <th><?php echo $exp["fecha_ini"] ?></th>
-                          <th><?php echo $exp["fecha_fin"] ?></th>
-                          <th><?php echo $exp["logros"] ?></th>
-
-                          <th>
-                                  <a href="/empleo/index.php/exp_lab_del?delete=<?php echo $exp['id_exp'] ?>" class="btn btn-danger"> Eliminar</a>
-
-                          </th>
+                            <th><?php echo $exp["nombre_empresa"] ?></ht>  
+                            <th><?php echo $exp["sector_empresa"] ?></th>               
+                            <th><?php echo $exp["cargo"] ?></th>
+                            <th><?php echo $exp["fecha_ini"] ?></th>
+                            <th><?php echo $exp["fecha_fin"] ?></th>
+                            <th><?php echo $exp["logros"] ?></th>
+                            <th><a href="/empleo/index.php/exp_lab_del?delete=<?php echo $exp['id_exp'] ?>" class="btn btn-danger"> Eliminar</a></th>
                           </tr>
                         <?php endforeach ?>
-                      </thead>
+                      </tbody>
                   </table>
                 </div>
               </div>
@@ -242,6 +260,19 @@
                           <th data-field="name" data-sortable="true" data-align="center" id="status">Acciones</th>
                       </tr>
                       </thead>
+                      <tbody>
+                        <?php foreach($estudies as $est): ?>
+                          <tr> 
+                            <th><?php echo $est["title"] ?></ht>  
+                            <th><?php echo $est["centro_educativo"] ?></th>               
+                            <th><?php echo $est["departamento"] ?></th>
+                            <th><?php echo $est["municipio"] ?></th>
+                            <th><?php echo $est["fecha_ini"] ?></th>
+                            <th><?php echo $est["fecha_fin"] ?></th>                            
+                            <th><a href="/empleo/index.php/studies_del?delete=<?php echo $est['id_estudio'] ?>" class="btn btn-danger"> Eliminar</a></th>
+                          </tr>
+                        <?php endforeach ?>
+                      </tbody>
                   </table>
                 </div>
               </div>
