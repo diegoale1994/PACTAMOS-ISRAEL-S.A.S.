@@ -171,19 +171,28 @@
             <div class="img-profile"><img src="../images/user/user1.png" alt=""></div><!--Ponga aui la foto-->
             <div class="desc">
               <form>
-                <h3 class="resume-sub-title"><span>Información Laboral</span></h3>
+                <h3 class="resume-sub-title"><span>Información Personal</span></h3>
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group ">
-                      <label>Nombre</label>
-                      <input type="text" name="name" class="form-control"  value="Andrés Felipe Nieto">
+                      <label>Primer Nombre</label>
+                      <input type="text" name="name1" class="form-control"  value="">
+                    </div>
+                    <div class="form-group ">
+                      <label>Segundo Nombre</label>
+                      <input type="text" name="name2" class="form-control"  value="">
+                    </div>
+                    <div class="form-group ">
+                      <label>Primer Apellido</label>
+                      <input type="text" name="name3" class="form-control"  value="">
+                    </div>
+                    <div class="form-group ">
+                      <label>Segundo Apellido</label>
+                      <input type="text" name="name4" class="form-control"  value="">
                     </div>
                   </div>
                   <div class="col-md-6">
-                    <div class="form-group">
-                      <label>Profesión</label>
-                      <input type="text" name="profesion" class="form-control" value=" Ingeniero de Sistemas">
-                    </div>
+                    
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">

@@ -70,6 +70,7 @@ function Resume_Company_Action_Controller(){
 	require "vistas/resume_company.php";
 }
 function Update_Resume_Person_Action_Controller(){
+//	$Basic_information = Get_Basic_Information_Person_Action_Model();
 	$exp_laboral = Get_Exp_Person_Action_Model();
 	$estudies= Get_Estudies_Action_Model();
 	require "vistas/update_resume_person.php";
