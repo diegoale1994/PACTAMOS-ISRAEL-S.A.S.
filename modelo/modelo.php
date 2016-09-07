@@ -9,23 +9,91 @@ function conectar_base_de_datos (){
 function cerrar_conexion_db($conexion){
     mysqli_close($conexion);
 }
+function Update_Offer_Action_Model(){
+if($_SERVER['REQUEST_METHOD']=="POST"){
+
+  if(isset($_SESSION['documento'])){
+    $documento = $_SESSION['documento'];
+    $vacante = htmlentities($_POST['vacante']);
+    $descripcion = htmlentities($_POST['descripcion']);
+    $descripcion_profesional = htmlentities($_POST['descripcion_profesional']);
+    $departamento = $_POST['departamento'];
+    $ciudad=$_POST['ciudad'];
+     $area=$_POST['area'];
+     $id_oferta=$_POST['id'];
+      $horario=htmlentities($_POST['horario']);
+    $tiempo = htmlentities($_POST['tiempo']);
+    $vacantes =$_POST['vacantes'];
+    $conexion=conectar_base_de_datos();
+    echo $documento." -> ".$vacante." -> ".$descripcion;
+  $consulta = "UPDATE oferta Set vacante='$vacante', descripcion='$descripcion', descrip_prof='$descripcion_profesional', departamento='$departamento', ciudad='$ciudad', area='$area', horario='$horario' , tiempo='$tiempo', vacantes='$vacantes' Where id_oferta='$id_oferta'";
+    mysqli_query($conexion, $consulta);
+     header("Location: /empleo/index.php/my_offers");
+
+  }
+
+}else{
+  header("Location: /empleo/index.php/404_error");
+  }
+
+}
+function Get_Individual_Offer_Action_Model(){
+  if (isset($_GET['update'])){
+  if(isset( $_SESSION['documento'])){
+$conexion=conectar_base_de_datos();
+$offer_No = array();
+$id_oferta=$_GET['update'];
+$consulta="SELECT id_oferta, area, vacante, horario, descripcion, descrip_prof, tiempo, departamento, ciudad, vacantes FROM oferta where id_oferta ='$id_oferta'";
+        $resultado=mysqli_query($conexion,$consulta);
+            while ($fila=mysqli_fetch_array($resultado)) {
+             $offer_No[]=$fila;   
+            }
+      
+          return $offer_No;
+}}}
+
+function Get_Offers_Action_Model(){
+$conexion=conectar_base_de_datos();
+$my_offers = array();
+$documento = $_SESSION['documento'];
+$consulta="SELECT id_oferta, vacante, fecha_publicacion FROM oferta where documento ='$documento'";
+        $resultado=mysqli_query($conexion,$consulta);
+            while ($fila=mysqli_fetch_array($resultado)) {
+$my_offers[]=$fila;
+            }
+            return $my_offers;
+}
+function Offer_Delete_Action_Model(){
+if (isset($_GET['delete'])){
+  if(isset( $_SESSION['documento'])){
+    $id_oferta = $_GET['delete'];
+    $conexion=conectar_base_de_datos();
+    $consulta = "DELETE FROM oferta WHERE id_oferta = '$id_oferta'";
+     $resultado=mysqli_query($conexion,$consulta);
+     header("Location: /empleo/index.php/my_offers");
+  }
+}
+}
+
 function Register_New_Job_Action_Model(){
 if($_SERVER['REQUEST_METHOD']=="POST"){
   
   if(isset($_SESSION['documento'])){
-    echo "entre";
     $documento = $_SESSION['documento'];
-    $vacante = $_POST['vacante'];
-    $descripcion = $_POST['descripcion'];
-    $descripcion_profesional = $_POST['descripcion_profesional'];
+    $vacante = htmlentities($_POST['vacante']);
+    $descripcion = htmlentities($_POST['descripcion']);
+    $descripcion_profesional = htmlentities($_POST['descripcion_profesional']);
     $departamento = $_POST['departamento'];
     $ciudad=$_POST['ciudad'];
      $area=$_POST['area'];
-      $horario=$_POST['horario'];
-    $tiempo =$_POST['tiempo'];
+      $horario=htmlentities($_POST['horario']);
+    $tiempo = htmlentities($_POST['tiempo']);
+    $vacantes =$_POST['vacantes'];
     $conexion=conectar_base_de_datos();
+    date_default_timezone_set('America/Bogota');
     $fecha =  date("Y-m-d");
-  $consulta = "INSERT INTO oferta (documento, area, vacante, horario, descripcion, descrip_prof, estado, tiempo, departamento, ciudad, fecha_publicacion) values ('$documento','$area','$vacante','$horario','$descripcion','$descripcion_profesional','A','$tiempo','$departamento','$ciudad','$fecha')";
+    echo $documento." -> ".$vacante." -> ".$descripcion;
+  $consulta = "INSERT INTO oferta (documento, area, vacante, horario, descripcion, descrip_prof, estado, tiempo, departamento, ciudad, vacantes, fecha_publicacion) values ('$documento','$area','$vacante','$horario','$descripcion','$descripcion_profesional','A','$tiempo','$departamento','$ciudad','$vacantes','$fecha')";
     mysqli_query($conexion, $consulta);
      header("Location: /empleo/index.php/job_post?state=create");
 

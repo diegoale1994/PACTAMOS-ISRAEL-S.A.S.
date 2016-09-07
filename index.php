@@ -18,6 +18,10 @@
     if($uri=="/empleo/index.php/sender"){
      Contact_Form_Action_Controller();
     } 
+     if($uri=="/empleo/index.php/update_offer"){
+     Update_Offer_Final_Action_Controller();
+    } 
+    
 
     if($uri=="/empleo/index.php/login"){
      Login_Action_Controller();
@@ -43,6 +47,10 @@
     if($uri=="/empleo/index.php/update_estudies"){
      Register_Estudies_Action_Controller();
     }
+     if($uri=="/empleo/index.php/my_offers"){
+     Show_My_Offers_Action_Controller();
+    }
+    
 
     //Menú usuario Logueado
     if($uri=="/empleo/index.php/resume_person"){
@@ -110,6 +118,13 @@
     if($uri[0]=="/empleo/index.php/studies_del"){      
         Studies_Person_Delete_Action_Controller();
     }
+     if($uri[0]=="/empleo/index.php/offer_del"){      
+        Offer_Delete_Action_Controller();
+    }
+     if($uri[0]=="/empleo/index.php/offer_update"){      
+        Update_Offer_Action_Controller();
+    }
+    
     
     
     ?>

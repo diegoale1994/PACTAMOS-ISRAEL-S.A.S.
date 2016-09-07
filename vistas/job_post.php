@@ -13,10 +13,8 @@ if ( $_SESSION['nivel_de_acceso']=='E') { ?>
       <!-- body-content -->
       <?php if(isset($_GET['state'])){
             if($_GET['state']=="create"){
-              ?>
-              
-              <center><h4>oferta creada Con exito!!!</h4></center>
-              
+              ?>        
+              <center><h4>oferta creada Con exito!!!</h4></center>      
               <?php
             }
            } ?>
@@ -70,7 +68,10 @@ if ( $_SESSION['nivel_de_acceso']=='E') { ?>
                       </div>
                     </div>
                   </div>
-
+                <div class="form-group">
+                    <label>Vacantes</label>
+                    <input type="number" class="form-control " name="vacantes", min="1" Required>
+                  </div>
                      <div class="form-group">
                     <label>Tiempo (no se exactamente que debe ir cambio si algo por select)</label>
                     <input type="text" class="form-control " name="tiempo" placeholder="tiempo">

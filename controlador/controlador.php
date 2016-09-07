@@ -11,6 +11,20 @@ function Register_New_Job_Action_Controller(){
 function Job_Post_Create_Ok_Action_Controller(){
 	require "vistas/job_post.php";
 }
+function Show_My_Offers_Action_Controller(){
+$myoffers= Get_Offers_Action_Model();
+require "vistas/my_offers.php";
+}
+function Update_Offer_Final_Action_Controller(){
+Update_Offer_Action_Model();
+}
+function Offer_Delete_Action_Controller(){
+Offer_Delete_Action_Model();
+}
+function Update_Offer_Action_Controller(){
+$offer=Get_Individual_Offer_Action_Model();
+require "vistas/my_offers.php";
+}
 function Contact_Action_Controller(){
 require "vistas/contact.php";
 }
