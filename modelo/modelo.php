@@ -9,6 +9,28 @@ function conectar_base_de_datos (){
 function cerrar_conexion_db($conexion){
     mysqli_close($conexion);
 }
+function Get_Basic_Information_Person_Action_Model(){
+$conexion=conectar_base_de_datos();
+$my_offers = array();
+$documento = $_SESSION['documento'];
+$consulta="SELECT id_oferta, vacante, fecha_publicacion FROM oferta where documento ='$documento'";
+        $resultado=mysqli_query($conexion,$consulta);
+            while ($fila=mysqli_fetch_array($resultado)) {
+$my_offers[]=$fila;
+            }
+            return $my_offers;
+}
+function Offer_Delete_Action_Model(){
+if (isset($_GET['delete'])){
+  if(isset( $_SESSION['documento'])){
+    $id_oferta = $_GET['delete'];
+    $conexion=conectar_base_de_datos();
+    $consulta = "DELETE FROM oferta WHERE id_oferta = '$id_oferta'";
+     $resultado=mysqli_query($conexion,$consulta);
+     header("Location: /empleo/index.php/my_offers");
+  }
+}
+}
 function Update_Offer_Action_Model(){
 if($_SERVER['REQUEST_METHOD']=="POST"){
 
