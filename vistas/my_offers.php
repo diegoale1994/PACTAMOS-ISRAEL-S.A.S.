@@ -33,7 +33,8 @@ if ( $_SESSION['nivel_de_acceso']=='E') { ?>
                             <th><?php echo $offer["fecha_publicacion"] ?></ht>  
                             
                             <th><a href="/empleo/index.php/offer_update?update=<?php echo $offer['id_oferta'] ?>" class="btn btn-warning"> Modificar</a>
-                            <a href="/empleo/index.php/offer_del?delete=<?php echo $offer['id_oferta'] ?>" class="btn btn-danger"> Eliminar</a></th>
+                            <a href="/empleo/index.php/offer_del?delete=<?php echo $offer['id_oferta'] ?>" class="btn btn-danger"> Eliminar</a>
+                            <a href="/empleo/index.php/job_details?offerNo=<?php echo $offer['id_oferta'] ?>" class="btn btn-success"> Ver</a></th>
                           </tr>
                         <?php endforeach ?>
                       </tbody>
