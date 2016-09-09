@@ -24,7 +24,13 @@
     
     <?php
   }
- } ?>
+ }else{ ?>
+  <h1>Log in into your mail account and activate your account !!!</h1>
+  <H2>THIS IS YOUR EMAIL GO AND CHECK IT ! <?php 
+  if (isset($_SESSION['correo_sin_activacion'])){
+  echo $_SESSION['correo_sin_activacion'];
+  }?></H2>
+  <?php } ?>
               
 
               <p>Here are some helpful links instead:</p>

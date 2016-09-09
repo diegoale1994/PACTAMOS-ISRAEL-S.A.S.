@@ -334,10 +334,10 @@ $header = 'From: ' . $siteName . "\r\n";
 $header .= 'Reply-To:  ' . $siteName . "\r\n";
 $header .= 'X-Mailer: PHP/' . phpversion();  
 mail($email,$mailSub ,$Contenido, $header); 
-
+$_SESSION['correo_sin_activacion'] = $email_empresa;
     //NIETO AQUI TIENE QUE ENVIAR UN EMAIL A $EMAIL CON EL SIGUIENTE LINK PACTAMOS.COM/EMPLEO/INDEX.PHP/VERIFY?CODE = $ACTIVATION
 
-header("Location: /empleo/index.php/resume");
+ header("Location: /empleo/index.php/register_info");
 }else{
    header("Location: /empleo/index.php/404_error");
 }
@@ -402,7 +402,14 @@ function Loggin_Action_Model(){
                  if($fila['verificado'] =='N'){
                   session_destroy();
                   $band=2;
+                   $consulta_datos="SELECT correo from persona_correo where documento = '".$documentofinal."'";
+                         $resultado1=mysqli_query($conexion,$consulta_datos);
+            while ($fila1=mysqli_fetch_array($resultado1)) {
+                session_start();
+                        $_SESSION['correo_sin_activacion']=$fila1['correo'];
+                    }
                 
+               
                   }
     }
     }
