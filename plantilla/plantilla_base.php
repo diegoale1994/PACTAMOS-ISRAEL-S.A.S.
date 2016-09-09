@@ -15,8 +15,10 @@ if($tiempo_actual > $inac){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Pactamos</title>
+    <title>Pactamos, Web site de Empleo y Contratacion</title>
+    <meta name="description" content="Busqueda de empleo en colombia, empleo en fusagasuga, hojas de vida, contratacion de pesonal, publica tu empleo">
 
+    <meta name="keywords" content="empleo, encontrar empleo, empleo en colombia, empleo fusagasuga, empleo fusa, empleo sumapaz, empleo cundinamarca, contratacion, personal, hoja de vida">
     <!--favicon-->
     <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
