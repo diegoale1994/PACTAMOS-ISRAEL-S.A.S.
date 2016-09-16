@@ -57,6 +57,73 @@ if($tiempo_actual > $inac){
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">                  
               <?php 
                 if (isset($_SESSION['nivel_de_acceso'])){ 
+                  if($_SESSION['nivel_de_acceso']=='A'){
+                  ?>
+                <ul class="nav navbar-nav">
+                  <li><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>                    
+                  <li class=""><a href="../index.php/job_list"><strong>Requerimientos</strong></a></li>
+                  <li class=""><a href="../index.php/my_offers">Hojas de Vida</a></li> 
+                  <li class=""><a href="../index.php/my_offers">Empresas</a></li> 
+                  <li class=""><a href="../index.php/my_offers">Usuarios</a></li>                
+                </ul>  
+                <ul class="nav navbar-nav navbar-right">
+                  <li class="dropdown">
+                    <a href="#" class="link-profile dropdown-toggle"  data-toggle="dropdown" >
+                      <img src="../images/people/4.jpg" alt="" class="img-profile"><?php echo $_SESSION['nombre'];?><b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="my_alerts.html"> My Alerts </a></li>
+                      <li><a href="my_notifications.html"> Notifications <span class="badge ">5</span></a></li>
+                      <li><a href="change_password.html"> Cambiar contraseña</a></li>
+                      <li><a href="/empleo/index.php/loggout"> SAlir</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              <?php }
+                if($_SESSION['nivel_de_acceso']=='Cm'){
+                  ?>
+                    <ul class="nav navbar-nav">
+                      <li><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
+                      <li class=""><a href="../index.php/resume_company"><strong>Perfil</strong></a></li>  
+                      <li class=""><a href="../index.php/job_list"><strong>Clientes</strong></a></li>
+                      <li class=""><a href="../index.php/my_offers">Hojas de Vida</a></li> 
+                    </ul>  
+                    <ul class="nav navbar-nav navbar-right">
+                      <li class="dropdown">
+                        <a href="#" class="link-profile dropdown-toggle"  data-toggle="dropdown" >
+                          <img src="../images/people/4.jpg" alt="" class="img-profile"><?php echo $_SESSION['nombre'];?><b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="my_alerts.html"> My Alerts </a></li>
+                          <li><a href="my_notifications.html"> Notifications <span class="badge ">5</span></a></li>
+                          <li><a href="change_password.html"> Cambiar contraseña</a></li>
+                          <li><a href="/empleo/index.php/loggout"> SAlir</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  <?php } 
+                  if($_SESSION['nivel_de_acceso']=='Cn'){
+                  ?>
+                    <ul class="nav navbar-nav">
+                      <li><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
+                      <li class=""><a href="../index.php/resume_company"><strong>Perfil</strong></a></li>  
+                      <li class=""><a href="../index.php/job_list"><strong>Empresas</strong></a></li>
+                      <li class=""><a href="../index.php/my_offers">Contabilidad</a></li> 
+                    </ul>  
+                    <ul class="nav navbar-nav navbar-right">
+                      <li class="dropdown">
+                        <a href="#" class="link-profile dropdown-toggle"  data-toggle="dropdown" >
+                          <img src="../images/people/4.jpg" alt="" class="img-profile"><?php echo $_SESSION['nombre'];?><b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="my_alerts.html"> My Alerts </a></li>
+                          <li><a href="my_notifications.html"> Notifications <span class="badge ">5</span></a></li>
+                          <li><a href="change_password.html"> Cambiar contraseña</a></li>
+                          <li><a href="/empleo/index.php/loggout"> SAlir</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  <?php } 
                   if($_SESSION['nivel_de_acceso']=='E'){
                   ?>
                 <ul class="nav navbar-nav">
