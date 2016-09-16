@@ -72,7 +72,9 @@
      Resume_Company_Action_Controller();
     } 
 
-
+if($uri=="/empleo/index.php/Assing_comercial"){
+     Add_comercial_Action_Controller();
+    } 
 
     if($uri=="/empleo/index.php/sistem"){
      echo "aqui vamos";

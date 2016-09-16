@@ -3,8 +3,14 @@ function Home_Action_Controller(){
 require "vistas/index.php";
 }
 function Requeriment_Action_Controller(){
+	$comercials = Get_comercials();
+	$requeriment = Requeriment_List();
+
 require "vistas/requeriment.php";
 }
+ function Add_comercial_Action_Controller(){
+ 		Add_comercial_Action_Model();
+   }
 function Company_Action_Controller(){
 require "vistas/about.php";
 }

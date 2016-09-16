@@ -20,7 +20,35 @@ $my_offers[]=$fila;
             }
             return $my_offers;
 }
+function Add_comercial_Action_Model(){
+  if($_SERVER['REQUEST_METHOD']=="POST"){
+  $oferta = $_POST['oferta'];
+    $comercial = $_POST['comercial'];
+  $conexion=conectar_base_de_datos();
+  $consulta = "UPDATE oferta Set comercial='$comercial', estado = 'P' Where id_oferta='$oferta'";
+    mysqli_query($conexion, $consulta);
+ header("Location: /empleo/index.php/requeriment");
+}else{
+  header("Location: /empleo/index.php/404_error");
+  }
 
+}
+function Get_comercials(){
+
+$conexion=conectar_base_de_datos();
+$comercials = array();
+$consulta="SELECT nombre1, apellido1, n.documento FROM persona AS n
+JOIN persona_natural AS pn WHERE pn.documento = n.documento AND
+n.rol = 'C'";
+      
+
+        $resultado=mysqli_query($conexion,$consulta);
+            while ($fila=mysqli_fetch_array($resultado)) {
+$comercials[]=$fila;
+            }
+            return $comercials;
+
+}
 function Update_Offer_Action_Model(){
 if($_SERVER['REQUEST_METHOD']=="POST"){
 
@@ -105,7 +133,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     date_default_timezone_set('America/Bogota');
     $fecha =  date("Y-m-d");
     echo $documento." -> ".$vacante." -> ".$descripcion;
-  $consulta = "INSERT INTO oferta (documento, area, vacante, horario, descripcion, descrip_prof, estado, tiempo, departamento, ciudad, vacantes, fecha_publicacion) values ('$documento','$area','$vacante','$horario','$descripcion','$descripcion_profesional','A','$tiempo','$departamento','$ciudad','$vacantes','$fecha')";
+  $consulta = "INSERT INTO oferta (documento, area, vacante, horario, descripcion, descrip_prof, estado, tiempo, departamento, ciudad, vacantes, fecha_publicacion) values ('$documento','$area','$vacante','$horario','$descripcion','$descripcion_profesional','N','$tiempo','$departamento','$ciudad','$vacantes','$fecha')";
     mysqli_query($conexion, $consulta);
      header("Location: /empleo/index.php/job_post?state=create");
 
@@ -427,6 +455,7 @@ function Loggin_Action_Model(){
       if($band==1 and $tipo_documento == "NI"){
       header("Location: ../index.php/job_post");
     }
+
     
    cerrar_conexion_db($conexion);
 }}
@@ -469,7 +498,21 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 
 return $oferta;
 }
+  function Requeriment_List(){
+        $oferta = array();  
 
+        $conexion=conectar_base_de_datos();
+      
+        $consulta = "SELECT vacante vacante, fecha_publicacion fecha, id_oferta id_oferta, estado estado, nombre nombre FROM oferta v, empresa e  where v.documento = e.documento";
+        $resultado=mysqli_query($conexion,$consulta);
+        $requeriment = array();
+            while ($fila=mysqli_fetch_array($resultado)) {
+              $requeriment[]= $fila;
+                 }
+
+return $requeriment;
+
+}
 function Show_Job_Action_Model(){
 if (isset($_GET['offerNo'])){
 if($_GET['offerNo']=="" ){

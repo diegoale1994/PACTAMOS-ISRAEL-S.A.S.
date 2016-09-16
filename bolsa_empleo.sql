@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-09-2016 a las 22:35:40
+-- Tiempo de generación: 16-09-2016 a las 22:47:00
 -- Versión del servidor: 10.1.13-MariaDB
--- Versión de PHP: 5.6.21
+-- Versión de PHP: 5.6.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -41,7 +41,8 @@ CREATE TABLE `empresa` (
 
 INSERT INTO `empresa` (`documento`, `nombre`, `descripcion`, `sector`, `razon`, `website`) VALUES
 ('111111111-9', 'Solutionsforyou', 'asdasdasdasdasdasdasdasdasdasdasdqsdqdwdqwdqsdqwdqwdqwdqwdqwdqwdqwdqwdqwd', 'dasdasdasda', 'qwdqwdqwdqwdqwdqwdqwdqwd', 'adasdasdasdasdasdad.com'),
-('121323123-9', 'Universidad De Cundinamarca', 'asdasdasdasdasdasdasdqwdqdqweqweqweqweqwedqsdasdasdqsdqeqweqwqd', 'Educacion', 'sadasdasdasdasdasdasdasdasdasdasdasd', 'http://www.unicundi.edu.co/');
+('121323123-9', 'Universidad De Cundinamarca', 'asdasdasdasdasdasdasdqwdqdqweqweqweqweqwedqsdasdasdqsdqeqweqwqd', 'Educacion', 'sadasdasdasdasdasdasdasdasdasdasdasd', 'http://www.unicundi.edu.co/'),
+('666-6', 'HANGAR18', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -61,6 +62,14 @@ CREATE TABLE `estudios` (
   `fecha_ini` date NOT NULL,
   `fecha_fin` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `estudios`
+--
+
+INSERT INTO `estudios` (`id_estudio`, `title`, `departamento`, `municipio`, `documento`, `centro_educativo`, `nivel_estudio`, `estado`, `fecha_ini`, `fecha_fin`) VALUES
+(3, 'Asdasd', 'asdasd', 'asdasdasd', '1048850076', 'Asdasdas', 'TÃ©cnico', '', '2016-09-01', '2016-09-23'),
+(4, 'Asdas', 'asdas', 'dasda', '1048850076', 'Asd', 'Otro', '', '2016-09-16', '2016-09-08');
 
 -- --------------------------------------------------------
 
@@ -85,7 +94,8 @@ CREATE TABLE `exp_laboral` (
 
 INSERT INTO `exp_laboral` (`id_exp`, `documento`, `nombre_empresa`, `sector_empresa`, `cargo`, `fecha_ini`, `fecha_fin`, `logros`) VALUES
 (7, '1048850076', 'IDeartech', 'C', 'Secretario', '2016-09-01', '2016-09-06', 'Perfecto.'),
-(8, '1048850076', 'Pactamos', 'S', 'Secretario', '1111-11-11', '1111-11-11', 'asdasdasd');
+(8, '1048850076', 'Pactamos', 'S', 'Secretario', '1111-11-11', '1111-11-11', 'asdasdasd'),
+(10, '1048850076', 'Solutions', 'Administrativo', 'Sadasd', '2016-09-20', '2016-09-24', 'asdasdasdasd');
 
 -- --------------------------------------------------------
 
@@ -116,17 +126,19 @@ CREATE TABLE `oferta` (
   `tiempo` varchar(10) NOT NULL,
   `departamento` varchar(50) NOT NULL,
   `ciudad` varchar(75) NOT NULL,
-  `fecha_publicacion` date NOT NULL
+  `vacantes` varchar(2) NOT NULL,
+  `fecha_publicacion` date NOT NULL,
+  `comercial` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `oferta`
 --
 
-INSERT INTO `oferta` (`id_oferta`, `documento`, `area`, `vacante`, `horario`, `descripcion`, `descrip_prof`, `estado`, `tiempo`, `departamento`, `ciudad`, `fecha_publicacion`) VALUES
-(1, '121323123-9', 'Sistemas', 'Programador java', 'lunes a viernes 7am - 5pm', 'sdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdf', 'Manejo de java,c++,php,arquitectura', 'A', 'I', 'Cundinamarca', 'Fusagasuga', '2016-08-02'),
-(2, '111111111-9', 'marketing', 'Programador phyton', 'lunea a viernes 8 a 8', 'asdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdas', 'asdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdasasdasdasdasdsadasdas', 'A', 'I', 'Cundinamarca', 'Fusagasuga', '2016-08-22'),
-(3, '121323123-9', 'sistemas', 'Programador en .net', 'sadasddfafasdfasdfadfadf', 'sadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfv', 'sadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadf', 'A', 'DSFSDFSDF', 'Cundinamarca', 'Bogota', '2016-08-14');
+INSERT INTO `oferta` (`id_oferta`, `documento`, `area`, `vacante`, `horario`, `descripcion`, `descrip_prof`, `estado`, `tiempo`, `departamento`, `ciudad`, `vacantes`, `fecha_publicacion`, `comercial`) VALUES
+(1, '121323123-9', 'Sistemas', 'Programador java', 'lunes a viernes 7am - 5pm', 'sdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdf', 'Manejo de java,c++,php,arquitectura', 'P', 'I', 'Cundinamarca', 'Fusagasuga', '', '2016-08-02', ''),
+(3, '121323123-9', 'sistemas', 'Programador en .net', 'sadasddfafasdfasdfadfadf', 'sadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfv', 'sadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadfsadasddfafasdfasdfadfadf', 'N', 'DSFSDFSDF', 'Cundinamarca', 'Bogota', '', '2016-08-14', ''),
+(11, '111111111-9', 'A', 'Contador', 'asdsd', 'sdasd', 'C++', 'N', '23', 'asdasd', 'Garagoa', '1', '2016-09-06', '');
 
 -- --------------------------------------------------------
 
@@ -155,8 +167,13 @@ INSERT INTO `persona` (`documento`, `tipo_documento`, `departamento`, `ciudad`, 
 ('1048850076', 'CC', 'Boyaca', 'Garagoa', 'Calle 7 No 9-29', 'http//fotomania.com', 'b674a43d6710dc308bfd53404d88d0b5f46edf15', 'Y', 'P', NULL),
 ('1069753420', 'CC', '', '', '', '', 'f72db6d4c1771e2cf0ef0e83fc4b85402363b08f', 'N', 'P', 'cdd01d01d1d3a31fd127c758aac7164e'),
 ('111111111-9', 'NI', 'Cundinamarca', 'Bogota', 'calle 179 -8-32', 'http//asdasdad.com', 'b674a43d6710dc308bfd53404d88d0b5f46edf15', 'Y', 'E', NULL),
-('121323123-9', 'NI', 'Cundinamarca', 'Fusagasuga', 'Diagonal 24c No 64a - 33', 'ttp//asdasdad.co', '4fc36204d034036de87815eb8ff296791f50d241', 'Y', 'E', NULL),
-('5555555555', 'CC', '', '', '', '', 'b674a43d6710dc308bfd53404d88d0b5f46edf15', 'Y', 'P', '947bb5543a06e7d41e228af0f8cf718f');
+('121323123-9', 'NI', 'Cundinamarca', 'Fusagasuga', 'Diagonal 24c No 64a - 33', 'ttp//asdasdad.co', '4fc36204d034036de87815eb8ff296791f50d241', 'N', 'E', NULL),
+('123', 'CC', '', '', '', '', 'b674a43d6710dc308bfd53404d88d0b5f46edf15', 'Y', 'A', NULL),
+('5555555555', 'CC', '', '', '', '', 'b674a43d6710dc308bfd53404d88d0b5f46edf15', 'Y', 'P', '947bb5543a06e7d41e228af0f8cf718f'),
+('666', 'CC', '', '', '', '', 'b674a43d6710dc308bfd53404d88d0b5f46edf15', 'N', 'P', 'ad3969c5ae45e36744b26fa73a325616'),
+('666-6', 'NI', '', '', '', '', 'b674a43d6710dc308bfd53404d88d0b5f46edf15', 'Y', 'E', '1afc9921405d0314cbc4461da095470c'),
+('888', 'CC', 'cundinamarca', '', '', '', 'b674a43d6710dc308bfd53404d88d0b5f46edf15', 'Y', 'C', NULL),
+('999', 'CC', '', '', '', '', 'b674a43d6710dc308bfd53404d88d0b5f46edf15', 'Y', 'C', NULL);
 
 -- --------------------------------------------------------
 
@@ -176,7 +193,9 @@ CREATE TABLE `persona_correo` (
 INSERT INTO `persona_correo` (`documento`, `correo`) VALUES
 ('1048850076', 'diego.fc.1@hotmail.com'),
 ('1069753420', 'nietoandres03@gmail.com'),
-('5555555555', 'juanhernandez@gmail.com');
+('5555555555', 'juanhernandez@gmail.com'),
+('666', 'robledo@asdasd.com'),
+('666-6', 'ASDASDAS@ASDASD.COM');
 
 -- --------------------------------------------------------
 
@@ -202,7 +221,10 @@ CREATE TABLE `persona_natural` (
 INSERT INTO `persona_natural` (`documento`, `nombre1`, `nombre2`, `apellido1`, `apellido2`, `estado_civil`, `licencia_conduccion`, `vehiculo`) VALUES
 ('1048850076', 'diego', 'alejandro', 'franco', 'cuesta', 'S', 'B1', 'Y'),
 ('1069753420', 'Andres', '', 'Nieto', '', '', '', ''),
-('5555555555', 'juan', '', 'hernandez', '', '', '', '');
+('5555555555', 'juan', '', 'hernandez', '', '', '', ''),
+('666', 'juan', '', 'robledo', '', '', '', ''),
+('888', 'Juan', '', 'martinez', '', '', '', ''),
+('999', 'andres', '', 'nieto', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -327,12 +349,12 @@ ALTER TABLE `persona_telefono`
 -- AUTO_INCREMENT de la tabla `estudios`
 --
 ALTER TABLE `estudios`
-  MODIFY `id_estudio` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_estudio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `exp_laboral`
 --
 ALTER TABLE `exp_laboral`
-  MODIFY `id_exp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_exp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `idioma`
 --
@@ -342,7 +364,7 @@ ALTER TABLE `idioma`
 -- AUTO_INCREMENT de la tabla `oferta`
 --
 ALTER TABLE `oferta`
-  MODIFY `id_oferta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_oferta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- Restricciones para tablas volcadas
 --

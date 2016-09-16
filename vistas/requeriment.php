@@ -1,4 +1,5 @@
 
+
    <?php ob_start() ?>
  
 </header><!-- end main-header -->
@@ -30,37 +31,45 @@
                     <a type="button" class="btn btn-primary glyphicon glyphicon-list-alt" data-toggle="modal"  data-target="#info" id="btn_permission"></a>          
                     </div>
                     <div class="panel-body">
-                      
-                          <div class="row">
-                            <div class="col-md-1 hidden-sm hidden-xs"><div class="img-item"><img src="./assets/theme/images/company-logo/1.jpg" alt=""></div></div>
-                            <div class="col-md-11">
-                              <h3 class="no-margin-top"><a href="job_details.html" class="">Backend Developer <i class="fa fa-link color-white-mute font-1x"></i></a></h3>
-                              <h5><span class="color-black">CollegeHumor</span> - <span class="color-white-mute">New York, NY 10011 (Chelsea area)</span></h5>
-                              <p class="text-truncate ">Back-end development experience in PHP 5, and a strong understanding of Object Oriented Programming within an MVC framework</p>
-                              <div>
-                                <span class="color-white-mute">16 hours ago</span> - 
-                                <a href="#need-login" data-toggle="modal" class="btn btn-xs btn-theme btn-default">save job</a> - 
-                                <a href="#modal-email" data-toggle="modal"  class="btn btn-theme btn-xs btn-default">email</a> - 
-                                <a href="#" class="btn btn-theme btn-xs btn-default">more ...</a>
-                              </div>
-                            </div>
-                          </div>
+                      <?php foreach($requeriment as $value): 
+                      if ($value['estado']=='N') { ?>
+              <div class="item">
+                <div class="row">
+                  <div class="col-md-1 hidden-sm hidden-xs"><div class="img-item"><img src="" alt=""></div></div>
+                  <div class="col-md-11">
+                    <h3 class="no-margin-top"><a href="/empleo/index.php/job_details?offerNo=<?php echo $value["id_oferta"] ?>" class=""><?php echo $value["vacante"] ?><i class="fa fa-link color-white-mute font-1x"></i></a></h3>
+                     <p class="text-truncate "><?php echo $value["nombre"] ?></p>
+                          <span class="color-white-mute"><?php echo $value["fecha"] ?></span> - 
+                    
+                                          </div>
+                                        </div>
+                                      </div><!-- end item list -->
+                                       <div class="panel panel-default">
+                    <div class="panel-body">
+                      <form action = "/empleo/index.php/Assing_comercial" method ="POST">
+                        <label>Asignar Comercial</label>
+                        <input type="hidden" name= "oferta" value = "<?php echo $value["id_oferta"] ?>">
+                        <select class="form-control" name="comercial">
+                        <?php 
+                          foreach($comercials as $value1): ?>
+                            <option value= '<?php echo $value1['documento'];?>'><?php echo $value1['nombre1']." ".$value1['apellido1']?> </option>
+                        <?php  endforeach?>
+                          
+                          
+                        </select>   
+                       <div class="form-group no-margin">
+                    <button class="btn btn-theme btn-lg btn-t-primary btn-block">Asignar</button>
+                  </div>                     
+                      </form>
+                    </div>
+                  </div>
+                                         <?php   }endforeach ?>
                         
                     </div>
                   </div>
                 </div>
                 <div class="col-md-3">
-                  <div class="panel panel-default">
-                    <div class="panel-body">
-                      <form>
-                        <label>Asignar Comercial</label>
-                        <select class="form-control" name="comercial">
-                          <option>Pepito perez liste aqui los user tipo comercial</option>
-                          <option>Pepito perez liste aqui los user tipo comercial</option>
-                        </select>                        
-                      </form>
-                    </div>
-                  </div>
+                 
                 </div>
               </div>
             </div>
@@ -77,20 +86,20 @@
                     </div>
                     <div class="panel-body">
                       
-                          <div class="row">
-                            <div class="col-md-1 hidden-sm hidden-xs"><div class="img-item"><img src="./assets/theme/images/company-logo/1.jpg" alt=""></div></div>
-                            <div class="col-md-11">
-                              <h3 class="no-margin-top"><a href="job_details.html" class="">Backend Developer <i class="fa fa-link color-white-mute font-1x"></i></a></h3>
-                              <h5><span class="color-black">CollegeHumor</span> - <span class="color-white-mute">New York, NY 10011 (Chelsea area)</span></h5>
-                              <p class="text-truncate ">Back-end development experience in PHP 5, and a strong understanding of Object Oriented Programming within an MVC framework</p>
-                              <div>
-                                <span class="color-white-mute">16 hours ago</span> - 
-                                <a href="#need-login" data-toggle="modal" class="btn btn-xs btn-theme btn-default">save job</a> - 
-                                <a href="#modal-email" data-toggle="modal"  class="btn btn-theme btn-xs btn-default">email</a> - 
-                                <a href="#" class="btn btn-theme btn-xs btn-default">more ...</a>
-                              </div>
-                            </div>
-                          </div>
+                             <?php foreach($requeriment as $value): 
+                      if ($value['estado']=='P') { ?>
+              <div class="item">
+                <div class="row">
+                  <div class="col-md-1 hidden-sm hidden-xs"><div class="img-item"><img src="" alt=""></div></div>
+                  <div class="col-md-11">
+                    <h3 class="no-margin-top"><a href="/empleo/index.php/job_details?offerNo=<?php echo $value["id_oferta"] ?>" class=""><?php echo $value["vacante"] ?><i class="fa fa-link color-white-mute font-1x"></i></a></h3>
+                     <p class="text-truncate "><?php echo $value["nombre"] ?></p>
+                     <span class="color-white-mute"><?php echo $value["fecha"] ?></span> -
+                     
+                                          </div>
+                                        </div>
+                                      </div><!-- end item list -->
+                                         <?php   }endforeach ?>
                         
                     </div>
                   </div>
@@ -108,21 +117,19 @@
                     <a type="button"class="btn btn-primary glyphicon glyphicon-list-alt" data-toggle="modal"  data-target="#info" id="btn_permission"></a>          
                     </div>
                     <div class="panel-body">
-                      
-                          <div class="row">
-                            <div class="col-md-1 hidden-sm hidden-xs"><div class="img-item"><img src="./assets/theme/images/company-logo/1.jpg" alt=""></div></div>
-                            <div class="col-md-11">
-                              <h3 class="no-margin-top"><a href="job_details.html" class="">Backend Developer <i class="fa fa-link color-white-mute font-1x"></i></a></h3>
-                              <h5><span class="color-black">CollegeHumor</span> - <span class="color-white-mute">New York, NY 10011 (Chelsea area)</span></h5>
-                              <p class="text-truncate ">Back-end development experience in PHP 5, and a strong understanding of Object Oriented Programming within an MVC framework</p>
-                              <div>
-                                <span class="color-white-mute">16 hours ago</span> - 
-                                <a href="#need-login" data-toggle="modal" class="btn btn-xs btn-theme btn-default">save job</a> - 
-                                <a href="#modal-email" data-toggle="modal"  class="btn btn-theme btn-xs btn-default">email</a> - 
-                                <a href="#" class="btn btn-theme btn-xs btn-default">more ...</a>
-                              </div>
-                            </div>
-                          </div>
+                      <?php foreach($requeriment as $value): 
+                      if ($value['estado']=='F') { ?>
+              <div class="item">
+                <div class="row">
+                  <div class="col-md-1 hidden-sm hidden-xs"><div class="img-item"><img src="" alt=""></div></div>
+                  <div class="col-md-11">
+                    <h3 class="no-margin-top"><a href="/empleo/index.php/job_details?offerNo=<?php echo $value["id_oferta"] ?>" class=""><?php echo $value["vacante"] ?><i class="fa fa-link color-white-mute font-1x"></i></a></h3>
+                     <p class="text-truncate "><?php echo $value["nombre"] ?></p>
+                    <span class="color-white-mute"><?php echo $value["fecha"] ?></span> -
+                                          </div>
+                                        </div>
+                                      </div><!-- end item list -->
+                                         <?php   }endforeach ?>
                         
                     </div>
                   </div>
@@ -290,3 +297,5 @@
 </div><!--end body-content -->
 <?php $contenido=ob_get_clean(); ?>
 <?php include "plantilla/plantilla_base.php"; ?>
+
+
