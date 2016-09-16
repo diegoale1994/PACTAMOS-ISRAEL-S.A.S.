@@ -50,6 +50,9 @@
      if($uri=="/empleo/index.php/my_offers"){
      Show_My_Offers_Action_Controller();
     }
+    if($uri=="/empleo/index.php/requeriment"){
+     Requeriment_Action_Controller();
+    }
     
 
     //Menú usuario Logueado

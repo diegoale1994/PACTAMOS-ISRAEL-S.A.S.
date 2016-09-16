@@ -61,7 +61,7 @@ if($tiempo_actual > $inac){
                   ?>
                 <ul class="nav navbar-nav">
                   <li><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>                    
-                  <li class=""><a href="../index.php/job_list"><strong>Requerimientos</strong></a></li>
+                  <li class=""><a href="../index.php/requeriment"><strong>Requerimientos</strong></a></li>
                   <li class=""><a href="../index.php/my_offers">Hojas de Vida</a></li> 
                   <li class=""><a href="../index.php/my_offers">Empresas</a></li> 
                   <li class=""><a href="../index.php/my_offers">Usuarios</a></li>                
