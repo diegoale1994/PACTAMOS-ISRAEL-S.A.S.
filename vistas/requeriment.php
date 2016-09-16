@@ -1,41 +1,6 @@
 
    <?php ob_start() ?>
-        <!-- form search area-->
  
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <!-- logo -->
-        <div class="logo text-center-sm"> <a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="100"></a></div>
-      </div>
-
-      <div class="col-md-8">
-        <!-- form search -->
-        <form class="form-search-list" action = "/empleo/index.php/job_list" method ="post">
-          <div class="row">
-            <div class="col-sm-5 col-xs-6 ">
-              <div class="form-group">
-                <label class="color-white">¿Qué buscas?</label>
-                <input class="form-control" name = "trabajo" placeholder="Nombre del empleo" required >
-              </div>
-            </div>
-            <div class="col-sm-5 col-xs-6 ">
-              <div class="form-group">
-                <label class="color-white">¿Donde?</label>
-                <input class="form-control" name = "donde" placeholder="Lugar">
-              </div>
-            </div>
-            <div class="col-sm-2 col-xs-12 ">
-              <div class="form-group">
-                <label class="hidden-xs">&nbsp;</label>
-                <button class="btn btn-block btn-theme  btn-success">Buscar</button>
-              </div>
-            </div>
-          </div>
-        </form>  <!-- form search -->
-      </div>
-    </div>
-  </div><!-- end form search area-->
 </header><!-- end main-header -->
 
 <!-- body-content -->
@@ -44,7 +9,128 @@
   <div class="bg-color2">
     <div class="container">
       <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-12">
+
+        <div class="panel-body tabs">
+      
+        <ul class="nav nav-pills">
+          <li class="active"><a href="#pilltab1" data-toggle="tab">Nuevos</a></li>
+          <li><a href="#pilltab2" data-toggle="tab" id="tarea">En proceso</a></li>
+          <li><a href="#pilltab3" data-toggle="tab" id="tarea">Terminado</a></li>
+        </ul>
+
+        <div class="tab-content">
+          <div class="tab-pane fade in active" id="pilltab1">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-lg-9">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">  
+                    <a type="button" class="btn btn-danger glyphicon glyphicon-remove" data-toggle="modal"  data-target="#update" id="btn_mod1" name="rol"></a>
+                    <a type="button" class="btn btn-primary glyphicon glyphicon-list-alt" data-toggle="modal"  data-target="#info" id="btn_permission"></a>          
+                    </div>
+                    <div class="panel-body">
+                      
+                          <div class="row">
+                            <div class="col-md-1 hidden-sm hidden-xs"><div class="img-item"><img src="./assets/theme/images/company-logo/1.jpg" alt=""></div></div>
+                            <div class="col-md-11">
+                              <h3 class="no-margin-top"><a href="job_details.html" class="">Backend Developer <i class="fa fa-link color-white-mute font-1x"></i></a></h3>
+                              <h5><span class="color-black">CollegeHumor</span> - <span class="color-white-mute">New York, NY 10011 (Chelsea area)</span></h5>
+                              <p class="text-truncate ">Back-end development experience in PHP 5, and a strong understanding of Object Oriented Programming within an MVC framework</p>
+                              <div>
+                                <span class="color-white-mute">16 hours ago</span> - 
+                                <a href="#need-login" data-toggle="modal" class="btn btn-xs btn-theme btn-default">save job</a> - 
+                                <a href="#modal-email" data-toggle="modal"  class="btn btn-theme btn-xs btn-default">email</a> - 
+                                <a href="#" class="btn btn-theme btn-xs btn-default">more ...</a>
+                              </div>
+                            </div>
+                          </div>
+                        
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="panel panel-default">
+                    <div class="panel-body">
+                      <form>
+                        <label>Asignar Comercial</label>
+                        <select class="form-control" name="comercial">
+                          <option>Pepito perez liste aqui los user tipo comercial</option>
+                          <option>Pepito perez liste aqui los user tipo comercial</option>
+                        </select>                        
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane " id="pilltab2">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-lg-12">                  
+                  <div class="panel panel-default">
+                    <div class="panel-heading">  
+                    <a type="button"class="btn btn-warning glyphicon glyphicon-repeat" data-toggle="modal"  data-target="#update" id="btn_mod1" name="rol"></a>
+                    <a type="button"class="btn btn-primary glyphicon glyphicon-list-alt" data-toggle="modal"  data-target="#info" id="btn_permission"></a>          
+                    </div>
+                    <div class="panel-body">
+                      
+                          <div class="row">
+                            <div class="col-md-1 hidden-sm hidden-xs"><div class="img-item"><img src="./assets/theme/images/company-logo/1.jpg" alt=""></div></div>
+                            <div class="col-md-11">
+                              <h3 class="no-margin-top"><a href="job_details.html" class="">Backend Developer <i class="fa fa-link color-white-mute font-1x"></i></a></h3>
+                              <h5><span class="color-black">CollegeHumor</span> - <span class="color-white-mute">New York, NY 10011 (Chelsea area)</span></h5>
+                              <p class="text-truncate ">Back-end development experience in PHP 5, and a strong understanding of Object Oriented Programming within an MVC framework</p>
+                              <div>
+                                <span class="color-white-mute">16 hours ago</span> - 
+                                <a href="#need-login" data-toggle="modal" class="btn btn-xs btn-theme btn-default">save job</a> - 
+                                <a href="#modal-email" data-toggle="modal"  class="btn btn-theme btn-xs btn-default">email</a> - 
+                                <a href="#" class="btn btn-theme btn-xs btn-default">more ...</a>
+                              </div>
+                            </div>
+                          </div>
+                        
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane " id="pilltab3">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-lg-12">                  
+                  <div class="panel panel-default">
+                    <div class="panel-heading"> 
+                    <a type="button"class="btn btn-primary glyphicon glyphicon-list-alt" data-toggle="modal"  data-target="#info" id="btn_permission"></a>          
+                    </div>
+                    <div class="panel-body">
+                      
+                          <div class="row">
+                            <div class="col-md-1 hidden-sm hidden-xs"><div class="img-item"><img src="./assets/theme/images/company-logo/1.jpg" alt=""></div></div>
+                            <div class="col-md-11">
+                              <h3 class="no-margin-top"><a href="job_details.html" class="">Backend Developer <i class="fa fa-link color-white-mute font-1x"></i></a></h3>
+                              <h5><span class="color-black">CollegeHumor</span> - <span class="color-white-mute">New York, NY 10011 (Chelsea area)</span></h5>
+                              <p class="text-truncate ">Back-end development experience in PHP 5, and a strong understanding of Object Oriented Programming within an MVC framework</p>
+                              <div>
+                                <span class="color-white-mute">16 hours ago</span> - 
+                                <a href="#need-login" data-toggle="modal" class="btn btn-xs btn-theme btn-default">save job</a> - 
+                                <a href="#modal-email" data-toggle="modal"  class="btn btn-theme btn-xs btn-default">email</a> - 
+                                <a href="#" class="btn btn-theme btn-xs btn-default">more ...</a>
+                              </div>
+                            </div>
+                          </div>
+                        
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
 
           <!-- box listing -->
           <div class="block-section-sm box-list-area">
