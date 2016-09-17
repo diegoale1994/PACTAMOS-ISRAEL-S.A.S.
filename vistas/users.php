@@ -66,13 +66,22 @@ if ( $_SESSION['nivel_de_acceso']=='A') { ?>
                   </tr>
                 </thead>
                 <tbody>
+
                   <?php foreach($users as $value): ?>
                     <tr> 
                       <th><?php echo $value['documento'];?></th> 
                       <th><?php echo $value['nombre1'];?></ht>  
                       <th><?php echo $value['apellido1'];?></th>
-                      <th><?php echo $value['rol'];?></th>                    
-                      <th><a href="/empleo/index.php/user_del?delete=<?php echo $exp['id_exp'] ?>" class="btn btn-danger"> Eliminar</a></th>
+                      <th><?php 
+                      if ($value['rol'] == 'C') {
+                      echo "COMERCIAL";
+                      }
+                       if ($value['rol'] == 'V') {
+                      echo "VENTAS";
+                      }
+                      	?>
+                      </th>                    
+                      <th><a href="/empleo/index.php/user_del?delete=<?php echo $value['documento'] ?>" class="btn btn-danger"> Eliminar</a></th>
                     </tr>
                   <?php endforeach ?>
                 </tbody>

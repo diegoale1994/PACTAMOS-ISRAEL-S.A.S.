@@ -25,8 +25,8 @@
             <div class="panel-body">
               <div class="row">
                 <div class="col-lg-12">
-                <?php foreach($requeriment as $value): 
-                      if ($value['estado']=='N') { ?>
+                <?php foreach($requeriment_news as $value): ?>
+                    
                   <div class="panel panel-success">
                     <div class="panel-heading">  
                     <a type="button" class="btn btn-danger glyphicon glyphicon-remove" data-toggle="modal"  data-target="#update" id="btn_mod1" name="rol"></a>
@@ -56,7 +56,7 @@
                               </form>
                          </div> 
                         </div>
-                      </div><!-- end item list --><?php   }endforeach ?>
+                      </div><!-- end item list --><?php   endforeach ?>
                     </div>
                   </div>
                 </div>
@@ -66,7 +66,7 @@
             <div class="panel-body">
               <div class="row">
                 <div class="col-lg-12"> 
-                  <?php foreach($requeriment as $value): 
+                  <?php foreach($requeriment_process as $value): 
                   if ($value['estado']=='P') { ?>                 
                   <div class="panel panel-default">                   
                     <div class="panel-body">
@@ -79,6 +79,10 @@
                              <span class="color-white-mute"><?php echo $value["fecha"] ?></span> -
                           </div>
                           <div class="col-md-5">
+                          <label>Comercial Asignado Actualmente:</label><br>
+                          <form action = "/empleo/index.php/Change_comercial" method ="POST">
+                          <input type="hidden" name='oferta' value="<?php  echo $value['id_oferta']?>">
+                            <p class="text-truncate "><?php echo $value["nombre1"]." ".$value['apellido1']; ?></p>
                             <label>Cambiar de Comercial</label>
                             <select class="form-control" name="comercial">
                             <?php 
@@ -87,6 +91,7 @@
                             <?php  endforeach?>
                             </select><br>
                             <button class="btn btn-theme btn-lg btn-warning btn-block">Modificar</button>
+                            </form>
                           </div>
                         </div>
                       </div><!-- end item list -->

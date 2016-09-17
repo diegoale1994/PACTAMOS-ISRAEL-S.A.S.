@@ -110,7 +110,9 @@ if($uri=="/empleo/index.php/Assing_comercial"){
      if($uri=="/empleo/index.php/job_post_new"){
       Register_New_Job_Action_Controller();
     } 
-    
+     if($uri=="/empleo/index.php/Change_comercial"){
+      Change_Comercial_Action_Controller();
+    } 
     
 
      if($uri=="/empleo/index.php/loggout?time_session=out"){
@@ -137,7 +139,9 @@ if($uri=="/empleo/index.php/Assing_comercial"){
      if($uri[0]=="/empleo/index.php/offer_update"){      
         Update_Offer_Action_Controller();
     }
-    
+      if($uri[0]=="/empleo/index.php/user_del"){      
+        Delete_User_Action_Controller();
+    }
     
     
     ?>

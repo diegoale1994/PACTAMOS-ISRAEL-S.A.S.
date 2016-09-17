@@ -11,6 +11,39 @@ function cerrar_conexion_db($conexion){
 }
 
 
+function Change_Comercial_Action_Model(){
+ if($_SERVER['REQUEST_METHOD']=="POST"){
+  $comercial = $_POST['comercial'];
+  $oferta = $_POST['oferta'];
+  $conexion=conectar_base_de_datos();
+ $consulta = "UPDATE oferta Set comercial = '$comercial' Where id_oferta='$oferta'";
+    mysqli_query($conexion, $consulta);
+
+ header("Location: /empleo/index.php/requeriment");
+}else{
+  header("Location: /empleo/index.php/404_error");
+  }
+}
+
+
+function Delete_User_Action_Model(){
+if (isset($_GET['delete'])){
+  if(isset( $_SESSION['documento'])){
+    $user = $_GET['delete'];
+    $conexion=conectar_base_de_datos();
+    $consulta = "DELETE FROM persona WHERE documento = '$user'";
+     $resultado=mysqli_query($conexion,$consulta);
+     $consulta = "UPDATE oferta Set estado = 'N' Where comercial='$user'";
+    mysqli_query($conexion, $consulta);
+     $resultado=mysqli_query($conexion,$consulta);
+    $consulta = "UPDATE oferta Set comercial = '' Where comercial='$user'";
+     $resultado=mysqli_query($conexion,$consulta);
+     header("Location: /empleo/index.php/manage_users");
+  }
+}
+
+
+}
 
 function Get_users_Action_Model(){
 
@@ -567,12 +600,12 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 
 return $oferta;
 }
-  function Requeriment_List(){
+  function Requeriment_List_News(){
         $oferta = array();  
 
         $conexion=conectar_base_de_datos();
       
-        $consulta = "SELECT vacante vacante, fecha_publicacion fecha, id_oferta id_oferta, estado estado, nombre nombre FROM oferta v, empresa e  where v.documento = e.documento";
+        $consulta = "SELECT vacante vacante, fecha_publicacion fecha, id_oferta id_oferta, estado estado, nombre nombre FROM oferta v, empresa e  where v.documento = e.documento and v.estado= 'N'";
         $resultado=mysqli_query($conexion,$consulta);
         $requeriment = array();
             while ($fila=mysqli_fetch_array($resultado)) {
@@ -581,6 +614,20 @@ return $oferta;
 
 return $requeriment;
 
+}
+function Requeriment_List_Process(){
+$oferta = array();  
+
+        $conexion=conectar_base_de_datos();
+      
+        $consulta = "SELECT vacante vacante, fecha_publicacion fecha, id_oferta id_oferta, estado estado, nombre nombre, nombre1 nombre1, apellido1 apellido1 FROM oferta v, empresa e, persona_natural p where v.documento = e.documento and v.estado= 'P' and p.documento = v.comercial";
+        $resultado=mysqli_query($conexion,$consulta);
+        $requeriment = array();
+            while ($fila=mysqli_fetch_array($resultado)) {
+              $requeriment[]= $fila;
+                 }
+
+return $requeriment;
 }
 function Show_Job_Action_Model(){
 if (isset($_GET['offerNo'])){

@@ -4,10 +4,17 @@ require "vistas/index.php";
 }
 function Requeriment_Action_Controller(){
 	$comercials = Get_comercials();
-	$requeriment = Requeriment_List();
+	$requeriment_news = Requeriment_List_News();
+	$requeriment_process = Requeriment_List_Process();
 
 require "vistas/requeriment.php";
 }
+  function Change_Comercial_Action_Controller(){
+  		Change_Comercial_Action_Model();
+   }
+ function Delete_User_Action_Controller(){
+Delete_User_Action_Model();
+ }
  function Manage_Users_Action_Controller(){
  	$users = Get_users_Action_Model();
 require "vistas/users.php";
