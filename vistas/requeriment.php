@@ -106,7 +106,7 @@
             <div class="panel-body">
               <div class="row">
                 <div class="col-lg-12">    
-                  <?php foreach($requeriment as $value): 
+                  <?php foreach($requeriment_finished as $value): 
                   if ($value['estado']=='F') { ?>              
                   <div class="panel panel-default">                    
                     <div class="panel-body">
@@ -117,6 +117,9 @@
                               <h3 class="no-margin-top"><a href="/empleo/index.php/job_details?offerNo=<?php echo $value["id_oferta"] ?>" class=""><?php echo $value["vacante"] ?><i class="fa fa-link color-white-mute font-1x"></i></a></h3>
                                <p class="text-truncate "><?php echo $value["nombre"] ?></p>
                               <span class="color-white-mute"><?php echo $value["fecha"] ?></span> -
+                               <BR><label>Comercial:</label><br>
+                               <p class="text-truncate "><?php echo $value["nombre1"]." ".$value['apellido1']; ?></p>
+
                             </div>
                           </div>
                         </div><!-- end item list -->

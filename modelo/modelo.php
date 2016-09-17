@@ -601,7 +601,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 return $oferta;
 }
   function Requeriment_List_News(){
-        $oferta = array();  
+          
 
         $conexion=conectar_base_de_datos();
       
@@ -616,11 +616,25 @@ return $requeriment;
 
 }
 function Requeriment_List_Process(){
-$oferta = array();  
+
 
         $conexion=conectar_base_de_datos();
       
         $consulta = "SELECT vacante vacante, fecha_publicacion fecha, id_oferta id_oferta, estado estado, nombre nombre, nombre1 nombre1, apellido1 apellido1 FROM oferta v, empresa e, persona_natural p where v.documento = e.documento and v.estado= 'P' and p.documento = v.comercial";
+        $resultado=mysqli_query($conexion,$consulta);
+        $requeriment = array();
+            while ($fila=mysqli_fetch_array($resultado)) {
+              $requeriment[]= $fila;
+                 }
+
+return $requeriment;
+}
+function Requeriment_List_Finished(){
+ 
+
+        $conexion=conectar_base_de_datos();
+      
+        $consulta = "SELECT vacante vacante, fecha_publicacion fecha, id_oferta id_oferta, estado estado, nombre nombre, nombre1 nombre1, apellido1 apellido1 FROM oferta v, empresa e, persona_natural p where v.documento = e.documento and v.estado= 'F' and p.documento = v.comercial";
         $resultado=mysqli_query($conexion,$consulta);
         $requeriment = array();
             while ($fila=mysqli_fetch_array($resultado)) {

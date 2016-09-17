@@ -6,7 +6,7 @@ function Requeriment_Action_Controller(){
 	$comercials = Get_comercials();
 	$requeriment_news = Requeriment_List_News();
 	$requeriment_process = Requeriment_List_Process();
-
+	$requeriment_finished = Requeriment_List_Finished();
 require "vistas/requeriment.php";
 }
   function Change_Comercial_Action_Controller(){
