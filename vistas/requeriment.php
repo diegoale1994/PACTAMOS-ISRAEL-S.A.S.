@@ -24,85 +24,74 @@
           <div class="tab-pane fade in active" id="pilltab1">
             <div class="panel-body">
               <div class="row">
-                <div class="col-lg-9">
-                  <div class="panel panel-default">
+                <div class="col-lg-12">
+                <?php foreach($requeriment as $value): 
+                      if ($value['estado']=='N') { ?>
+                  <div class="panel panel-success">
                     <div class="panel-heading">  
                     <a type="button" class="btn btn-danger glyphicon glyphicon-remove" data-toggle="modal"  data-target="#update" id="btn_mod1" name="rol"></a>
-                    <a type="button" class="btn btn-primary glyphicon glyphicon-list-alt" data-toggle="modal"  data-target="#info" id="btn_permission"></a>          
                     </div>
-                    <div class="panel-body">
-                      <?php foreach($requeriment as $value): 
-                      if ($value['estado']=='N') { ?>
-              <div class="item">
-                <div class="row">
-                  <div class="col-md-1 hidden-sm hidden-xs"><div class="img-item"><img src="" alt=""></div></div>
-                  <div class="col-md-11">
-                    <h3 class="no-margin-top"><a href="/empleo/index.php/job_details?offerNo=<?php echo $value["id_oferta"] ?>" class=""><?php echo $value["vacante"] ?><i class="fa fa-link color-white-mute font-1x"></i></a></h3>
-                     <p class="text-truncate "><?php echo $value["nombre"] ?></p>
-                          <span class="color-white-mute"><?php echo $value["fecha"] ?></span> - 
-                    
-                                          </div>
-                                        </div>
-                                      </div><!-- end item list -->
-                                       <div class="panel panel-default">
-                    <div class="panel-body">
-                      <form action = "/empleo/index.php/Assing_comercial" method ="POST">
-                        <label>Asignar Comercial</label>
-                        <input type="hidden" name= "oferta" value = "<?php echo $value["id_oferta"] ?>">
-                        <select class="form-control" name="comercial">
-                        <?php 
-                          foreach($comercials as $value1): ?>
-                            <option value= '<?php echo $value1['documento'];?>'><?php echo $value1['nombre1']." ".$value1['apellido1']?> </option>
-                        <?php  endforeach?>
-                          
-                          
-                        </select>   
-                       <div class="form-group no-margin">
-                    <button class="btn btn-theme btn-lg btn-t-primary btn-block">Asignar</button>
-                  </div>                     
-                      </form>
+                    <div class="panel-body">                      
+                      <div class="item">
+                        <div class="row">
+                          <div class="col-md-1 hidden-sm hidden-xs"><div class="img-item"><img src="" alt=""></div></div>
+                            <div class="col-md-6">
+                              <h3 class="no-margin-top"><a href="/empleo/index.php/job_details?offerNo=<?php echo $value["id_oferta"] ?>" class=""><?php echo $value["vacante"] ?>  <i class="fa fa-link color-white-mute font-1x"></i></a></h3>
+                              <p class="text-truncate "><?php echo $value["nombre"] ?></p>
+                              <span class="color-white-mute"><?php echo $value["fecha"] ?></span> 
+                              </div>
+                              <div class="col-md-5">
+                              <form action = "/empleo/index.php/Assing_comercial" method ="POST">
+                                  <label>Asignar Comercial</label>
+                                  <input type="hidden" name= "oferta" value = "<?php echo $value["id_oferta"] ?>">
+                                  <select class="form-control" name="comercial">
+                                  <?php 
+                                    foreach($comercials as $value1): ?>
+                                    <option value= '<?php echo $value1['documento'];?>'><?php echo $value1['nombre1']." ".$value1['apellido1']?> </option>
+                                  <?php  endforeach?>
+                                  </select><br>
+                                <button class="btn btn-theme btn-lg btn-t-primary btn-block">Asignar</button>
+                                  </div>
+                                </div>                     
+                              </form>
+                         </div> 
+                        </div>
+                      </div><!-- end item list --><?php   }endforeach ?>
                     </div>
                   </div>
-                                         <?php   }endforeach ?>
-                        
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                 
                 </div>
               </div>
-            </div>
-          </div>
 
           <div class="tab-pane " id="pilltab2">
             <div class="panel-body">
               <div class="row">
-                <div class="col-lg-12">                  
-                  <div class="panel panel-default">
-                    <div class="panel-heading">  
-                    <a type="button"class="btn btn-warning glyphicon glyphicon-repeat" data-toggle="modal"  data-target="#update" id="btn_mod1" name="rol"></a>
-                    <a type="button"class="btn btn-primary glyphicon glyphicon-list-alt" data-toggle="modal"  data-target="#info" id="btn_permission"></a>          
-                    </div>
+                <div class="col-lg-12"> 
+                  <?php foreach($requeriment as $value): 
+                  if ($value['estado']=='P') { ?>                 
+                  <div class="panel panel-default">                   
                     <div class="panel-body">
-                      
-                             <?php foreach($requeriment as $value): 
-                      if ($value['estado']=='P') { ?>
-              <div class="item">
-                <div class="row">
-                  <div class="col-md-1 hidden-sm hidden-xs"><div class="img-item"><img src="" alt=""></div></div>
-                  <div class="col-md-11">
-                    <h3 class="no-margin-top"><a href="/empleo/index.php/job_details?offerNo=<?php echo $value["id_oferta"] ?>" class=""><?php echo $value["vacante"] ?><i class="fa fa-link color-white-mute font-1x"></i></a></h3>
-                     <p class="text-truncate "><?php echo $value["nombre"] ?></p>
-                     <span class="color-white-mute"><?php echo $value["fecha"] ?></span> -
-                     
-                                          </div>
-                                        </div>
-                                      </div><!-- end item list -->
-                                         <?php   }endforeach ?>
-                        
+                      <div class="item">
+                        <div class="row">
+                          <div class="col-md-1 hidden-sm hidden-xs"><div class="img-item"><img src="" alt=""></div></div>
+                          <div class="col-md-6">
+                            <h3 class="no-margin-top"><a href="/empleo/index.php/job_details?offerNo=<?php echo $value["id_oferta"] ?>" class=""><?php echo $value["vacante"] ?><i class="fa fa-link color-white-mute font-1x"></i></a></h3>
+                             <p class="text-truncate "><?php echo $value["nombre"] ?></p>
+                             <span class="color-white-mute"><?php echo $value["fecha"] ?></span> -
+                          </div>
+                          <div class="col-md-5">
+                            <label>Cambiar de Comercial</label>
+                            <select class="form-control" name="comercial">
+                            <?php 
+                              foreach($comercials as $value1): ?>
+                              <option value= '<?php echo $value1['documento'];?>'><?php echo $value1['nombre1']." ".$value1['apellido1']?> </option>
+                            <?php  endforeach?>
+                            </select><br>
+                            <button class="btn btn-theme btn-lg btn-warning btn-block">Modificar</button>
+                          </div>
+                        </div>
+                      </div><!-- end item list -->
                     </div>
-                  </div>
+                  </div><?php   }endforeach ?>
                 </div>
               </div>
             </div>
@@ -111,48 +100,35 @@
           <div class="tab-pane " id="pilltab3">
             <div class="panel-body">
               <div class="row">
-                <div class="col-lg-12">                  
-                  <div class="panel panel-default">
-                    <div class="panel-heading"> 
-                    <a type="button"class="btn btn-primary glyphicon glyphicon-list-alt" data-toggle="modal"  data-target="#info" id="btn_permission"></a>          
-                    </div>
+                <div class="col-lg-12">    
+                  <?php foreach($requeriment as $value): 
+                  if ($value['estado']=='F') { ?>              
+                  <div class="panel panel-default">                    
                     <div class="panel-body">
-                      <?php foreach($requeriment as $value): 
-                      if ($value['estado']=='F') { ?>
-              <div class="item">
-                <div class="row">
-                  <div class="col-md-1 hidden-sm hidden-xs"><div class="img-item"><img src="" alt=""></div></div>
-                  <div class="col-md-11">
-                    <h3 class="no-margin-top"><a href="/empleo/index.php/job_details?offerNo=<?php echo $value["id_oferta"] ?>" class=""><?php echo $value["vacante"] ?><i class="fa fa-link color-white-mute font-1x"></i></a></h3>
-                     <p class="text-truncate "><?php echo $value["nombre"] ?></p>
-                    <span class="color-white-mute"><?php echo $value["fecha"] ?></span> -
-                                          </div>
-                                        </div>
-                                      </div><!-- end item list -->
-                                         <?php   }endforeach ?>
-                        
+                      <div class="item">
+                        <div class="row">
+                          <div class="col-md-1 hidden-sm hidden-xs"><div class="img-item"><img src="" alt=""></div></div>
+                            <div class="col-md-11">
+                              <h3 class="no-margin-top"><a href="/empleo/index.php/job_details?offerNo=<?php echo $value["id_oferta"] ?>" class=""><?php echo $value["vacante"] ?><i class="fa fa-link color-white-mute font-1x"></i></a></h3>
+                               <p class="text-truncate "><?php echo $value["nombre"] ?></p>
+                              <span class="color-white-mute"><?php echo $value["fecha"] ?></span> -
+                            </div>
+                          </div>
+                        </div><!-- end item list -->
+                      </div>
                     </div>
                   </div>
-                </div>
+                </div><?php   }endforeach ?>
               </div>
             </div>
           </div>
-      </div>
+        </div>
 
           <!-- box listing -->
           <div class="block-section-sm box-list-area">
 
             <!-- desc top -->
-            <div class="row hidden-xs">
-              <div class="col-sm-6  ">
-                <p><strong class="color-black">Ofertas Disponibles</strong></p>
-              </div>
-              <div class="col-sm-6">
-                <p class="text-right">
-                  Jobs 1 to 10 of 578
-                </p>
-              </div>
-            </div><!-- end desc top -->
+            
             <?php
 
               if (empty($oferta)) {
