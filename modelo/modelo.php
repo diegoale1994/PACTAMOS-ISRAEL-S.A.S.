@@ -9,6 +9,75 @@ function conectar_base_de_datos (){
 function cerrar_conexion_db($conexion){
     mysqli_close($conexion);
 }
+
+
+
+function Get_users_Action_Model(){
+
+
+$conexion=conectar_base_de_datos();
+$users = array();
+$consulta="SELECT nombre1, apellido1, n.documento, rol FROM persona AS n
+JOIN persona_natural AS pn WHERE pn.documento = n.documento AND
+n.rol = 'C'";
+        $resultado=mysqli_query($conexion,$consulta);
+            while ($fila=mysqli_fetch_array($resultado)) {
+$users[]=$fila;
+            }
+            $consulta="SELECT nombre1, apellido1, n.documento, rol FROM persona AS n
+JOIN persona_natural AS pn WHERE pn.documento = n.documento AND
+n.rol = 'V'";
+        $resultado=mysqli_query($conexion,$consulta);
+            while ($fila=mysqli_fetch_array($resultado)) {
+$users[]=$fila;
+            }
+            return $users;
+}
+
+
+function Create_User_Action_Model(){
+
+ if($_SERVER['REQUEST_METHOD']=="POST"){
+  $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
+        $tipo_user = $_POST['Tipo_user'];
+$documento = $_POST['documento'];
+$passencript=sha1($_POST['pass']);
+
+
+  $conexion=conectar_base_de_datos();
+  $consulta = "INSERT INTO persona (documento, tipo_documento, password, verificado, rol) values ('$documento','CC','$passencript','Y','$tipo_user')";
+  $resultado=mysqli_query($conexion,$consulta);
+  $consulta = "INSERT INTO persona_natural (documento, nombre1, apellido1) values ('$documento','$nombre','$apellido')";
+  $resultado=mysqli_query($conexion,$consulta);
+ header("Location: /empleo/index.php/manage_users");
+}else{
+  header("Location: /empleo/index.php/404_error");
+  }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function Get_Basic_Information_Person_Action_Model(){
 $conexion=conectar_base_de_datos();
 $my_offers = array();

@@ -8,9 +8,17 @@ function Requeriment_Action_Controller(){
 
 require "vistas/requeriment.php";
 }
+ function Manage_Users_Action_Controller(){
+ 	$users = Get_users_Action_Model();
+require "vistas/users.php";
+ }
  function Add_comercial_Action_Controller(){
  		Add_comercial_Action_Model();
    }
+  function Create_User_Action_Controller(){
+
+  	Create_User_Action_Model();
+    }
 function Company_Action_Controller(){
 require "vistas/about.php";
 }

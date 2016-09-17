@@ -53,6 +53,14 @@
     if($uri=="/empleo/index.php/requeriment"){
      Requeriment_Action_Controller();
     }
+    if($uri=="/empleo/index.php/manage_users"){
+     Manage_Users_Action_Controller();
+    }
+     if($uri=="/empleo/index.php/create_user"){
+     Create_User_Action_Controller();
+    }
+    
+    
     
 
     //Menú usuario Logueado
