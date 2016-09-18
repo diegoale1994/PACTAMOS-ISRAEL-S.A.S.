@@ -518,7 +518,7 @@ function Loggin_Action_Model(){
                      $_SESSION['nombre']=$fila1['nombre'];
                     }
                 }
-                   if($niveldeacceso=="P"){
+                   if($niveldeacceso=="P" or $niveldeacceso=="A" or $niveldeacceso=="E"){
                         $consulta_datos="SELECT nombre1 FROM persona_natural where documento = '".$documentofinal."'";
                          $resultado1=mysqli_query($conexion,$consulta_datos);
             while ($fila1=mysqli_fetch_array($resultado1)) {

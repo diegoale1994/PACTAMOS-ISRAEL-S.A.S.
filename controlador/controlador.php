@@ -9,15 +9,15 @@ function Requeriment_Action_Controller(){
 	$requeriment_finished = Requeriment_List_Finished();
 require "vistas/requeriment.php";
 }
-  function Change_Comercial_Action_Controller(){
-  		Change_Comercial_Action_Model();
-   }
- function Delete_User_Action_Controller(){
-Delete_User_Action_Model();
- }
+function Change_Comercial_Action_Controller(){
+	Change_Comercial_Action_Model();
+}
+function Delete_User_Action_Controller(){
+	Delete_User_Action_Model();
+}
  function Manage_Users_Action_Controller(){
  	$users = Get_users_Action_Model();
-require "vistas/users.php";
+	require "vistas/users.php";
  }
  function Add_comercial_Action_Controller(){
  		Add_comercial_Action_Model();
@@ -98,6 +98,10 @@ function Update_Resume_Person_Action_Controller(){
 	$exp_laboral = Get_Exp_Person_Action_Model();
 	$estudies= Get_Estudies_Action_Model();
 	require "vistas/update_resume_person.php";
+}
+function Update_Resume_Company_Action_Controller(){
+
+	require "vistas/update_resume_company.php";
 }
 function Register_E_Action_Controller(){
 	Register_E_Action_Model();
