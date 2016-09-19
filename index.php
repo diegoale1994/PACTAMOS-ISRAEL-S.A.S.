@@ -32,6 +32,10 @@
     if($uri=="/empleo/index.php/login?state=fail"){
      Login_Fail_Action_Controller();
     } 
+    if($uri=="/empleo/index.php/update_resume_company_do"){
+     Update_Resume_Company_Do_Action_Controller();
+    } 
+    
     if($uri=="/empleo/index.php/register"){
      Register_Action_Controller();
     } 

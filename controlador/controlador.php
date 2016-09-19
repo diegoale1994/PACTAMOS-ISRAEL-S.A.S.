@@ -12,6 +12,9 @@ require "vistas/requeriment.php";
 function Change_Comercial_Action_Controller(){
 	Change_Comercial_Action_Model();
 }
+ function Update_Resume_Company_Do_Action_Controller(){
+Update_Resume_Company_Do_Action_Model();
+ }
 function Delete_User_Action_Controller(){
 	Delete_User_Action_Model();
 }
@@ -91,6 +94,7 @@ function Resume_Action_Controller(){
 	require "vistas/resume_person.php";
 }
 function Resume_Company_Action_Controller(){
+	$company = Get_company_Profile();
 	require "vistas/resume_company.php";
 }
 function Update_Resume_Person_Action_Controller(){
@@ -100,7 +104,7 @@ function Update_Resume_Person_Action_Controller(){
 	require "vistas/update_resume_person.php";
 }
 function Update_Resume_Company_Action_Controller(){
-
+$company = Get_company_Profile();
 	require "vistas/update_resume_company.php";
 }
 function Register_E_Action_Controller(){

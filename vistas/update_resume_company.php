@@ -27,28 +27,31 @@ if ( $_SESSION['nivel_de_acceso']=='E') { ?>
                     </div>                    
                   </div><!-- end logo company-->
                   <!-- Bout Company-->
-                  <form></form>
+                  <form action ="../index.php/update_resume_company_do" method="post">
+                   <?php foreach ($company as $value): ?>
+                 
                   <h3 class="title " id="cp-about">Acerca de Nosotros</h3>
                   <h4>Razon Social:</h4>
-                  <input class="form-control" name="">
+                  <input class="form-control" name="razon" value="<?php echo $value['razon']?>">
                   <h4>Sector:</h4>
-                  <input class="form-control" name="">
+                  <input class="form-control" name="sector" value="<?php echo $value['sector']?>">
                   <h4>Descripción:</h4>
-                  <textarea class="form-control" rows="30"></textarea>
+                  <textarea class="form-control" name ="descripcion" rows="30"><?php echo $value['descripcion']?></textarea>
                   
                   <h3 class="title" id="cp-contact">Contacto</h3>
                   <h4>Teléfono:</h4>
-                  <input class="form-control" name="">
-                  <h4>Dirección: <strong>info</strong></h4>
-                  <input class="form-control" name="">
+                  <input class="form-control" name="telefono" value="<?php echo $value['telefono']?>">
+                  <h4>Dirección: </h4>
+                  <input class="form-control" name="direccion" value="<?php echo $value['direccion']?>">
                   <h4>E-mail:</h4>
-                  <input class="form-control" name="">
+                  <input class="form-control" name="correo" value="<?php echo $value['correo']?>">
                   <h4>Sitio Web:</h4>
-                  <input class="form-control" name="">
-                  
+                  <input class="form-control" name="website" value="<?php echo $value['website']?>">
+                   <?php   endforeach ?> 
                   <!-- jobs list-->
-                  <h3 class="title" id="cp-jobs">Requerimientos <small>(303)</small></h3>
-                  <a href="../index.php/job_post" class="btn btn-theme btn-t-primary btn-block">Solcitar Nuevo Requerimiento</a>           
+                 
+                   <button class="btn btn-theme btn-lg btn-t-primary btn-block">Actualizar</button>   
+                  </form>      
                 </div><!-- end box item details -->
 
 

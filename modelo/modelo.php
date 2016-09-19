@@ -11,6 +11,29 @@ function cerrar_conexion_db($conexion){
 }
 
 
+function Update_Resume_Company_Do_Action_Model(){
+ if($_SERVER['REQUEST_METHOD']=="POST"){
+  $documento = $_SESSION['documento'];
+ $email = htmlentities($_POST['email']);
+  $telefono = htmlentities($_POST['telefono']);
+  $direccion = htmlentities($_POST['direccion']);
+  $website = htmlentities($_POST['website']);
+  $sector = htmlentities($_POST['sector']);
+  $descripcion = htmlentities($_POST['descripcion']);
+  $razon = htmlentities($_POST['razon']);
+  $conexion=conectar_base_de_datos();
+ $consulta = "UPDATE persona Set direccion = '$direccion' Where documento='$documento'";
+    mysqli_query($conexion, $consulta);
+    $consulta = "UPDATE empresa Set descripcion = '$descripcion', sector = '$sector', razon = '$razon', website = '$website' Where documento='$documento'";
+    mysqli_query($conexion, $consulta);
+
+header("Location: /empleo/index.php/update_resume_company");
+}else{
+  
+ header("Location: /empleo/index.php/404_error");
+  }
+}
+
 function Change_Comercial_Action_Model(){
  if($_SERVER['REQUEST_METHOD']=="POST"){
   $comercial = $_POST['comercial'];
@@ -133,6 +156,26 @@ function Add_comercial_Action_Model(){
 }else{
   header("Location: /empleo/index.php/404_error");
   }
+
+}
+function Get_company_Profile(){
+
+$conexion=conectar_base_de_datos();
+$company = array();
+$company_document = $_SESSION['documento'];
+$consulta="SELECT departamento, ciudad, direccion, nombre, descripcion, sector, razon, website, correo, telefono FROM persona p, empresa e, persona_correo pc, persona_telefono pt where p.documento=e.documento and pc.documento = e.documento and pt.documento = e.documento and e.documento= '$company_document'";
+        $resultado=mysqli_query($conexion,$consulta);
+            while ($fila=mysqli_fetch_array($resultado)) {
+$company[]=$fila;
+
+            }
+
+
+            
+
+
+
+            return $company;
 
 }
 function Get_comercials(){
@@ -393,7 +436,7 @@ $msg ="Wrong activation code.";
 
  function Register_N_Action_Model(){
 if($_SERVER['REQUEST_METHOD']=="POST"){
-if(!empty($_POST['number']) && isset($_POST['name']) &&  !empty($_POST['last_name']) && !empty($_POST['email']) && !empty($_POST['pass']) && !empty($_POST['pass_2']))
+if(!empty($_POST['number']) && isset($_POST['name']) &&  !empty($_POST['last_name']) && !empty($_POST['email']) && !empty($_POST['pass']) && !empty($_POST['pass_2']) && !empty($_POST['telefono']))
 {
 if($_POST['pass'] == $_POST['pass_2']){
   echo "entre aca<br>";
@@ -401,6 +444,7 @@ if($_POST['pass'] == $_POST['pass_2']){
   $email_natural = htmlentities($_POST['email']);
   $activation=md5($email_natural.time());
   $tipo_documento = htmlentities($_POST['type_document']);
+  $telefono = $_POST['telefono'];
   $documento = htmlentities($_POST['number']);
   $nombre_natural = htmlentities($_POST['name']);
   $apellido_natural = htmlentities($_POST['last_name']);
@@ -415,7 +459,8 @@ if($_POST['pass'] == $_POST['pass_2']){
    mysqli_query($conexion, $consulta);
     $consulta = "INSERT INTO persona_correo (documento, correo)VALUES('$documento','$email_natural')";
     mysqli_query($conexion, $consulta);
-
+    $consulta = "INSERT INTO persona_telefono (documento, telefono)VALUES('$documento','$telefono')";
+    mysqli_query($conexion, $consulta);
   $siteName = "www.pactamos.com";
   $mailSub = '[Código de Verificación] [' . $siteName . '] ';
   $Contenido="Ingrese a este link Para Verificar su correo: www.pactamos.com/empleo/index.php/verify?code=$activation";
@@ -437,7 +482,7 @@ header("Location: /empleo/index.php/404_error");
 }}
 function Register_E_Action_Model(){
 if($_SERVER['REQUEST_METHOD']=="POST"){
-  if(!empty($_POST['number']) && isset($_POST['name_company']) &&  !empty($_POST['email']) && !empty($_POST['pass']) && !empty($_POST['pass_2']))
+  if(!empty($_POST['number']) && isset($_POST['name_company']) &&  !empty($_POST['email']) && !empty($_POST['pass']) && !empty($_POST['pass_2']) && !empty($_POST['telefono']))
 {
 if($_POST['pass'] == $_POST['pass_2']){
   $email_empresa = htmlentities($_POST['email']);
@@ -447,6 +492,7 @@ $documento = htmlentities($_POST['number']);
 $nombre_empresa = htmlentities($_POST['name_company']);
 $email_empresa = htmlentities($_POST['email']);
 $pass = htmlentities($_POST['pass']);
+$telefono = $_POST['telefono'];
 $pass_2 = htmlentities($_POST['pass_2']);
 $passencript= sha1($pass);
 $conexion=conectar_base_de_datos();
@@ -455,6 +501,8 @@ $consulta = "INSERT INTO persona (documento, tipo_documento, password, verificad
 $consulta = "INSERT INTO empresa (documento, nombre)VALUES('$documento','$nombre_empresa')";
  mysqli_query($conexion, $consulta);
 $consulta = "INSERT INTO persona_correo (documento, correo)VALUES('$documento','$email_empresa')";
+  mysqli_query($conexion, $consulta);
+  $consulta = "INSERT INTO persona_telefono (documento, telefono)VALUES('$documento','$telefono')";
   mysqli_query($conexion, $consulta);
 
 $siteName = "www.pactamos.com";

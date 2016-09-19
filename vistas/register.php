@@ -42,6 +42,10 @@
                     <input type="email" class="form-control" placeholder="Correo para contáctarte" name="email">
                   </div>
                   <div class="form-group">
+                    <label>Telefono:</label>
+                    <input type="number" class="form-control" placeholder="" name="telefono" required>
+                  </div>
+                  <div class="form-group">
                     <label>Contraseña</label>
                     <input type="password" name="pass" class="form-control">
                   </div>
@@ -108,6 +112,10 @@
                   <div class="form-group">
                     <label>Correo</label>
                     <input type="email" class="form-control" placeholder="Correo para contáctarte" name="email">
+                  </div>
+                    <div class="form-group">
+                    <label>Telefono:</label>
+                    <input type="number" class="form-control" placeholder="" name="telefono" required>
                   </div>
                   <div class="form-group">
                     <label>Contraseña</label>
