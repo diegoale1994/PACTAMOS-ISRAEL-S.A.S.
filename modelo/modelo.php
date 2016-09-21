@@ -9,6 +9,51 @@ function conectar_base_de_datos (){
 function cerrar_conexion_db($conexion){
     mysqli_close($conexion);
 }
+function Get_My_Applys_Action_Model(){
+$conexion=conectar_base_de_datos();
+$my_aplys = array();
+$documento = $_SESSION['documento'];
+$consulta="SELECT id_oferta from persona_natural_oferta where documento = '$documento'";
+        $resultado=mysqli_query($conexion,$consulta);
+            while ($fila=mysqli_fetch_array($resultado)) {
+$my_aplys[]=$fila;
+            }
+            return $my_aplys;
+}
+
+
+ function Desaply_For_Offer_Action_Model(){
+ if($_SERVER['REQUEST_METHOD']=="POST"){
+  $id_oferta = $_POST['oferta'];
+   $documento = $_SESSION['documento'];
+   $fecha =  date("Y-m-d");
+   $conexion=conectar_base_de_datos();
+ $consulta = "DELETE FROM persona_natural_oferta
+
+WHERE documento = '$documento' and id_oferta ='$id_oferta';";
+    mysqli_query($conexion, $consulta);
+    echo "llegue";
+header("Location: /empleo/index.php/job_list");
+}else{
+  
+ header("Location: /empleo/index.php/404_error");
+  }
+ }
+ function Apply_For_Offer_Action_Model(){
+ if($_SERVER['REQUEST_METHOD']=="POST"){
+  $id_oferta = $_POST['oferta'];
+   $documento = $_SESSION['documento'];
+   $fecha =  date("Y-m-d");
+   echo $id_oferta."->".$documento;
+   $conexion=conectar_base_de_datos();
+ $consulta = "INSERT INTO persona_natural_oferta (documento, id_oferta, fecha_aplicaciom) values ('$documento','$id_oferta','$fecha')";
+    mysqli_query($conexion, $consulta);
+header("Location: /empleo/index.php/job_list");
+}else{
+  
+ header("Location: /empleo/index.php/404_error");
+  }
+ }
 
 
 function Update_Resume_Company_Do_Action_Model(){

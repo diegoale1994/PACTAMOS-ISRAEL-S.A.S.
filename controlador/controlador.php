@@ -2,6 +2,12 @@
 function Home_Action_Controller(){
 require "vistas/index.php";
 }
+function Apply_For_Offer_Action_Controller(){
+	Apply_For_Offer_Action_Model();
+}
+function Desaply_For_Offer_Action_Controller(){
+	Desaply_For_Offer_Action_Model();
+}
 function Requeriment_Action_Controller(){
 	$comercials = Get_comercials();
 	$requeriment_news = Requeriment_List_News();
@@ -119,7 +125,10 @@ function Studies_Person_Delete_Action_Controller(){
 }
 
 function Job_List_Action_Controller(){
+	$mys_applys =Get_My_Applys_Action_Model();
 	$oferta = Job_List_Action_Model();
+
+	
 require "vistas/job_list.php";
 }
 function Job_Post_Action_Controller(){

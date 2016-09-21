@@ -23,6 +23,13 @@
     } 
     
 
+
+ if($uri=="/empleo/index.php/desaplicar_oferta"){
+     Desaply_For_Offer_Action_Controller();
+    } 
+  if($uri=="/empleo/index.php/aplicar_oferta"){
+     Apply_For_Offer_Action_Controller();
+    } 
     if($uri=="/empleo/index.php/login"){
      Login_Action_Controller();
     } 
