@@ -99,17 +99,17 @@
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
         <h4 class="modal-title" id="project-12-label"><center>Nuevo</center></h4>
       </div>
-      <form action="../index.php/update_jobs" method="post" >
+      <form action="../index.php/update_reference" method="post" >
         <div class="modal-body">
                  <div class="row">
                      <div class="col-md-12">                         
                       <div class="form-group">
                         <label>Nombre</label>
-                        <input type="text" name="name_person" class="form-control">
+                        <input type="text" name="name_reference" class="form-control">
                         <label>Profesion</label>
-                        <input type="text" name="profesion_person" class="form-control">
+                        <input type="text" name="profesion_reference" class="form-control">
                         <label>Teléfono</label>
-                        <input type="text" name="tel_person" class="form-control">
+                        <input type="text" name="tel_reference" class="form-control">
                       </div>             
                      </div>                   
                  </div>
@@ -132,15 +132,15 @@
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
         <h4 class="modal-title" id="project-12-label"><center>Nuevo</center></h4>
       </div>
-      <form action="../index.php/update_jobs" method="post" >
+      <form action="../index.php/update_skills" method="post" >
         <div class="modal-body">
                  <div class="row">
                      <div class="col-md-12">                         
                       <div class="form-group">
                         <label>Habilidad</label>
-                        <input type="text" name="skill_person" class="form-control">
+                        <input type="text" name="name_skill" class="form-control">
                         <label>Descripción</label>
-                        <textarea type="text" name="skill_description" class="form-control"></textarea>
+                        <textarea type="text" name="description_skill" class="form-control"></textarea>
                       </div>             
                      </div>                   
                  </div>
@@ -155,6 +155,7 @@
     </div>
   </div>
 </div>
+
 
 
 <div class="body-content clearfix" >
@@ -178,19 +179,26 @@
                       <label>Primer Nombre</label>
                       <input type="text" name="name1" class="form-control"  value="">
                     </div>
+                  </div>
+                  <div class="col-md-6">
                     <div class="form-group ">
                       <label>Segundo Nombre</label>
                       <input type="text" name="name2" class="form-control"  value="">
                     </div>
+                  </div>
+                  <div class="col-md-6">
                     <div class="form-group ">
                       <label>Primer Apellido</label>
                       <input type="text" name="name3" class="form-control"  value="">
                     </div>
+                  </div>
+                  <div class="col-md-6">
                     <div class="form-group ">
                       <label>Segundo Apellido</label>
                       <input type="text" name="name4" class="form-control"  value="">
                     </div>
                   </div>
+
                   <div class="col-md-6">
                     
                   </div>
@@ -290,8 +298,7 @@
               <div class="panel panel-default">
                 <div class="panel-heading">
                 <a type="button" class="btn btn-success glyphicon glyphicon-plus" data-toggle="modal"  data-target="#new_reference"> </a>
-                <a type="button" class="btn btn-warning glyphicon glyphicon-repeat" data-toggle="modal"  data-target="#update" id="btn_mod1" name="rol"></a>
-                <a type="button" class="btn btn-danger glyphicon glyphicon-remove" data-toggle="modal"  data-target="#delete" id="btn_del" name="rol"></a>
+               
                 </div>
                 <div class="panel-body">
                   <table    class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -302,6 +309,16 @@
                           <th data-field="name" data-sortable="true" data-align="center" id="status">Teléfono</th>
                       </tr>
                       </thead>
+                       <tbody>
+                        <?php foreach($ref as $ref): ?>
+                          <tr> 
+                          <th><?php echo $ref["name"] ?></th> 
+                            <th><?php echo $ref["profesion"] ?></th>   
+                            <th><?php echo $ref["telefono"] ?></th>                                                
+                            <th><a href="/empleo/index.php/reference_del?delete=<?php echo $ref['id'] ?>" class="btn btn-danger"> Eliminar</a></th>
+                          </tr>
+                        <?php endforeach ?>
+                      </tbody>
                   </table>
                 </div>
               </div>
@@ -310,8 +327,7 @@
               <div class="panel panel-default">
                 <div class="panel-heading">
                 <a type="button" class="btn btn-success glyphicon glyphicon-plus" data-toggle="modal"  data-target="#new_skill"> </a>
-                <a type="button" class="btn btn-warning glyphicon glyphicon-repeat" data-toggle="modal"  data-target="#update" id="btn_mod1" name="rol"></a>
-                <a type="button" class="btn btn-danger glyphicon glyphicon-remove" data-toggle="modal"  data-target="#delete" id="btn_del" name="rol"></a>
+                
                 </div>
                 <div class="panel-body">
                   <table    class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -319,8 +335,18 @@
                       <tr>                          
                           <th data-field="id" data-sortable="true" data-align="center" id="name">Habilidad</th>
                           <th data-field="name" data-sortable="true" data-align="center" id="status">Descripción</th>
+                          <th data-field="name" data-sortable="true" data-align="center" id="status">Acciones</th>
                       </tr>
                       </thead>
+                      <tbody>
+                        <?php foreach($skills as $skills): ?>
+                          <tr> 
+                          <th><?php echo $skills["nombre"] ?></ht> 
+                            <th><?php echo $skills["descripcion"] ?></ht>                                                   
+                            <th><a href="/empleo/index.php/skills_del?delete=<?php echo $skills['id'] ?>" class="btn btn-danger"> Eliminar</a></th>
+                          </tr>
+                        <?php endforeach ?>
+                      </tbody>
                   </table>
                 </div>
               </div>

@@ -159,26 +159,6 @@ $passencript=sha1($_POST['pass']);
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function Get_Basic_Information_Person_Action_Model(){
 $conexion=conectar_base_de_datos();
 $my_offers = array();
@@ -214,11 +194,6 @@ $consulta="SELECT departamento, ciudad, direccion, nombre, descripcion, sector, 
 $company[]=$fila;
 
             }
-
-
-            
-
-
 
             return $company;
 
@@ -356,6 +331,30 @@ if (isset($_GET['delete'])){
 }
 }
 
+function Skills_Person_Delete_Action_Model(){
+if (isset($_GET['delete'])){
+  if(isset( $_SESSION['documento'])){
+    $id_skill = $_GET['delete']; echo  $id_skill;
+    $conexion=conectar_base_de_datos();
+    $consulta = "DELETE FROM skills WHERE id = '$id_skill'";
+     $resultado=mysqli_query($conexion,$consulta);
+    // header("Location: /empleo/index.php/update_resume_person");
+  }
+}
+}
+
+function Reference_Person_Delete_Action_Model(){
+if (isset($_GET['delete'])){
+  if(isset( $_SESSION['documento'])){
+    $id_ref = $_GET['delete']; 
+    $conexion=conectar_base_de_datos();
+    $consulta = "DELETE FROM reference WHERE id = '$id_ref'";
+     $resultado=mysqli_query($conexion,$consulta);
+    header("Location: /empleo/index.php/update_resume_person");
+  }
+}
+}
+
 function Get_Exp_Person_Action_Model(){
 $conexion=conectar_base_de_datos();
 $exp_laboral = array();
@@ -379,6 +378,30 @@ while ($fila=mysqli_fetch_array($resultado)) {
 return $estudies;
 }
 
+function Get_Skills_Action_Model(){
+$conexion=conectar_base_de_datos();
+$skills = array();
+$documento = $_SESSION['documento'];
+$consulta="SELECT * FROM skills where documento ='$documento'";
+$resultado=mysqli_query($conexion,$consulta);
+while ($fila=mysqli_fetch_array($resultado)) {
+  $skills[]=$fila;
+              }
+return $skills;
+}
+
+function Get_Reference_Action_Model(){
+$conexion=conectar_base_de_datos();
+$ref = array();
+$documento = $_SESSION['documento'];
+$consulta="SELECT * FROM reference where documento ='$documento'";
+$resultado=mysqli_query($conexion,$consulta);
+while ($fila=mysqli_fetch_array($resultado)) {
+  $ref[]=$fila;
+              }
+return $ref;
+}
+
 function Register_Exp_Job_Action_Model(){
 if($_SERVER['REQUEST_METHOD']=="POST"){
   $conexion=conectar_base_de_datos();
@@ -390,6 +413,31 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
   $logro = $_POST['logros'];
   $documento = $_SESSION['documento'];
   $consulta = "INSERT INTO exp_laboral (documento, nombre_empresa, sector_empresa, cargo, fecha_ini, fecha_fin, logros) values ('$documento','$nombre_empresa','$sector_empresa','$cargo_empresa','$fecha_ini_trabajo','$fecha_fin_trabajo','$logro')";
+    mysqli_query($conexion, $consulta);
+    header("Location: /empleo/index.php/update_resume_person");
+}
+}
+
+function Register_Skills_Action_Model(){
+if($_SERVER['REQUEST_METHOD']=="POST"){
+  $conexion=conectar_base_de_datos();
+  $nombre_skill = $_POST['name_skill'];
+  $descripcion_skill = ucwords($_POST['description_skill']); 
+  $documento = $_SESSION['documento'];
+  $consulta = "INSERT INTO skills (documento, nombre, descripcion) values ('$documento','$nombre_skill','$descripcion_skill')";
+    mysqli_query($conexion, $consulta);
+    header("Location: /empleo/index.php/update_resume_person");
+}
+}
+
+function Register_Reference_Action_Model(){
+if($_SERVER['REQUEST_METHOD']=="POST"){
+  $conexion=conectar_base_de_datos();
+  $name_reference = $_POST['name_reference'];
+  $profesion_reference = $_POST['profesion_reference']; 
+  $tel_reference = $_POST['tel_reference'];
+  $documento = $_SESSION['documento']; echo  $documento;
+  $consulta = "INSERT INTO reference (documento, name, profesion, telefono) values ('$documento','$name_reference','$profesion_reference','$tel_reference')";
     mysqli_query($conexion, $consulta);
     header("Location: /empleo/index.php/update_resume_person");
 }

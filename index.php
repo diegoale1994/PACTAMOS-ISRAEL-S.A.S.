@@ -12,6 +12,9 @@
     if($uri=="/empleo/index.php/company"){
      Company_Action_Controller();
     } 
+    if($uri=="/empleo/index.php/services"){
+     Services_Action_Controller();
+    } 
     if($uri=="/empleo/index.php/contact"){
      Contact_Action_Controller();
     } 
@@ -55,8 +58,14 @@
     if($uri=="/empleo/index.php/update_exp_jobs"){
      Register_Exp_Job_Action_Controller();
     } 
+    if($uri=="/empleo/index.php/update_skills"){
+     Register_Skills_Action_Controller();
+    }
     if($uri=="/empleo/index.php/update_estudies"){
      Register_Estudies_Action_Controller();
+    }
+    if($uri=="/empleo/index.php/update_reference"){
+     Register_Reference_Action_Controller();
     }
      if($uri=="/empleo/index.php/my_offers"){
      Show_My_Offers_Action_Controller();
@@ -146,6 +155,12 @@ if($uri=="/empleo/index.php/Assing_comercial"){
     }
     if($uri[0]=="/empleo/index.php/studies_del"){      
         Studies_Person_Delete_Action_Controller();
+    }
+    if($uri[0]=="/empleo/index.php/skills_del"){      
+        Skills_Person_Delete_Action_Controller();
+    }
+    if($uri[0]=="/empleo/index.php/reference_del"){      
+        Reference_Person_Delete_Action_Controller();
     }
      if($uri[0]=="/empleo/index.php/offer_del"){      
         Offer_Delete_Action_Controller();

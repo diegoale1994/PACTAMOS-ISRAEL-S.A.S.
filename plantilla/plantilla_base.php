@@ -145,7 +145,7 @@ if($tiempo_actual > $inac){
                       <li><a href="my_alerts.html"> My Alerts </a></li>
                       <li><a href="my_notifications.html"> Notifications <span class="badge ">5</span></a></li>
                       <li><a href="change_password.html"> Cambiar contraseña</a></li>
-                      <li><a href="/empleo/index.php/loggout"> SAlir</a></li>
+                      <li><a href="/empleo/index.php/loggout"> Salir</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -172,26 +172,25 @@ if($tiempo_actual > $inac){
                     </ul>
                   </li>
                 </ul>
-              </div>
-            </div>
-          </nav><!-- end main navbar -->
               <?php }}else{ ?>
                 <ul class="nav navbar-nav">
                   <li><a href="/empleo/index.php/home"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
                   <li class=""><a href="../index.php/home"><strong>Inicio</strong></a></li>
-                  <li class=""><a href="../index.php/job_list"><strong>Ofertas</strong></a></li>
+                  <!--<li class=""><a href="../index.php/job_list"><strong>Ofertas</strong></a></li>-->
 
                   <li class=""><a href="../index.php/company">¿Quienes somos?</a></li>
+                  <li class=""><a href="../brochure/brochure pactamos proyecto.html" target="_blank">Servicios</a></li>
                   <li class=""><a href="../index.php/contact">Contáctenos</a></li>                  
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                   <li class="link-btn"><a href="../index.php/login"><span class="btn btn-theme btn-pill btn-xs btn-line">Ingresar</span></a></li>
                   <li class="link-btn"><a href="../index.php/register"><span class="btn btn-theme  btn-pill btn-xs btn-line">Registro</span></a></li>
                 </ul>
-              </div>
+          <!-- end main navbar -->
+                <?php }?> 
+                </div>
             </div>
-          </nav><!-- end main navbar -->
-                <?php }?>  
+          </nav> 
               
 
         <!-- mobile navbar -->

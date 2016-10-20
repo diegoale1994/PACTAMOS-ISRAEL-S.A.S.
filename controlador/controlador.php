@@ -38,6 +38,9 @@ function Delete_User_Action_Controller(){
 function Company_Action_Controller(){
 require "vistas/about.php";
 }
+function Services_Action_Controller(){
+require "vistas/services.php";
+}
 function Register_New_Job_Action_Controller(){
 	Register_New_Job_Action_Model();
 }
@@ -86,8 +89,14 @@ function Verify_Account_Action_Controller(){
 function Register_Exp_Job_Action_Controller(){
 	Register_Exp_Job_Action_Model();
 }
+function Register_Skills_Action_Controller(){
+	Register_Skills_Action_Model();
+}
 function Register_Estudies_Action_Controller(){
   	Register_Estudies_Action_Model();
+}
+function Register_Reference_Action_Controller(){
+  	Register_Reference_Action_Model();
 }
 function Register_N_Action_Controller(){
 	Register_N_Action_Model();
@@ -107,6 +116,8 @@ function Update_Resume_Person_Action_Controller(){
 //	$Basic_information = Get_Basic_Information_Person_Action_Model();
 	$exp_laboral = Get_Exp_Person_Action_Model();
 	$estudies= Get_Estudies_Action_Model();
+	$skills= Get_Skills_Action_Model();
+	$ref= Get_Reference_Action_Model();
 	require "vistas/update_resume_person.php";
 }
 function Update_Resume_Company_Action_Controller(){
@@ -122,6 +133,12 @@ Exp_Lab_Person_Delete_Action_Model();
 
 function Studies_Person_Delete_Action_Controller(){
   Studies_Person_Delete_Action_Model();
+}
+function Skills_Person_Delete_Action_Controller(){
+  Skills_Person_Delete_Action_Model();
+}
+function Reference_Person_Delete_Action_Controller(){
+  Reference_Person_Delete_Action_Model();
 }
 
 function Job_List_Action_Controller(){

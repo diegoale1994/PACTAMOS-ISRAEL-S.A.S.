@@ -97,7 +97,8 @@
                                     if ($value1['id_oferta']==$value['id_oferta']) { $cont++;?>
                                      <form action ="/empleo/index.php/desaplicar_oferta" method ="POST">
                                     <input type="hidden" name ="oferta" value ="<?php echo $value["id_oferta"] ?>">
-                                     <input type="submit" value="DESAPLICAR" />
+                                     <button class="btn btn-theme btn-lg btn-danger btn-block">Desaplicar</button>
+                                     
                                     </form>
                                   
                                
@@ -105,7 +106,7 @@
                           if ($cont==0) {?>
                                     <form action ="/empleo/index.php/aplicar_oferta" method ="POST">
                                     <input type="hidden" name ="oferta" value ="<?php echo $value["id_oferta"] ?>">
-                                     <input type="submit" value="APLICAR" />
+                                     <button class="btn btn-theme btn-lg btn-success btn-block">Aplicar</button>
                                      </form>
                           <?php }
 
