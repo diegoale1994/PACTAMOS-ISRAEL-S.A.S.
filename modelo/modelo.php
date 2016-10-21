@@ -173,7 +173,7 @@ $my_offers[]=$fila;
 function Add_comercial_Action_Model(){
   if($_SERVER['REQUEST_METHOD']=="POST"){
   $oferta = $_POST['oferta'];
-    $comercial = $_POST['comercial'];
+  $comercial = $_POST['comercial'];
   $conexion=conectar_base_de_datos();
   $consulta = "UPDATE oferta Set comercial='$comercial', estado = 'P' Where id_oferta='$oferta'";
     mysqli_query($conexion, $consulta);
@@ -182,6 +182,22 @@ function Add_comercial_Action_Model(){
   header("Location: /empleo/index.php/404_error");
   }
 
+}
+
+function Person_Update_Action_Model(){
+  $nombre1 = $_POST['nombre1'];
+  $nombre2 = $_POST['nombre2'];
+  $apellido1 = $_POST['apellido1'];
+  $apellido2 = $_POST['apellido2'];
+  $departamento = $_POST['departamento'];
+  $ciudad = $_POST['ciudad'];
+  $documento = $_SESSION['documento'];
+
+  $conexion=conectar_base_de_datos();
+  $consulta = "UPDATE persona_natural Set nombre1='$nombre1',nombre2='$nombre2', apellido2='$apellido2', apellido1='$apellido1' Where documento='$documento'";
+
+    mysqli_query($conexion, $consulta);
+ header("Location: /empleo/index.php/requeriment");
 }
 function Get_company_Profile(){
 
@@ -355,6 +371,18 @@ if (isset($_GET['delete'])){
 }
 }
 
+function Get_Person_Action_Model(){
+$conexion=conectar_base_de_datos();
+$person = array();
+$documento = $_SESSION['documento'];
+$consulta="SELECT * FROM persona_natural, persona where persona_natural.documento=persona.documento AND persona.documento ='$documento'";
+$resultado=mysqli_query($conexion,$consulta);
+while ($fila=mysqli_fetch_array($resultado)) {
+  $person[]=$fila;
+              }
+return $person;
+}
+
 function Get_Exp_Person_Action_Model(){
 $conexion=conectar_base_de_datos();
 $exp_laboral = array();
@@ -366,6 +394,7 @@ $exp_laboral[]=$fila;
             }
             return $exp_laboral;
 }
+
 function Get_Estudies_Action_Model(){
 $conexion=conectar_base_de_datos();
 $estudies = array();

@@ -60,7 +60,7 @@ if($tiempo_actual > $inac){
                   if($_SESSION['nivel_de_acceso']=='A'){
                   ?>
                 <ul class="nav navbar-nav">
-                  <li><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>                    
+                  <li style="padding:5px"><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="50"></a></li>                    
                   <li class=""><a href="../index.php/requeriment"><strong>Requerimientos</strong>
                  
                   </a></li>
@@ -154,10 +154,11 @@ if($tiempo_actual > $inac){
               ?>
                 <ul class="nav navbar-nav">
 
-                  <li><a href="/empleo/index.php/home"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
-                   <li class=""><a href="../index.php/resume_person"><strong>Perfil</strong></a></li>
-                  <li class=""><a href="../index.php/job_list"><strong>Ofertas</strong></a></li>
-                     
+                  <li ><a href="/empleo/index.php/home"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
+                   <li class=""><a href="../index.php/resume_person">Perfil</a></li>
+                  <li class=""><a href="#">Busca Ofertas</a></li>
+                  
+                  <li style="padding:15px"><form  action = "/empleo/index.php/job_list" method ="post"> <div class="col-md-5"> <input class="form-control" name = "trabajo" placeholder="Nombre del empleo" required ></div><div class="col-md-4"> <input class="form-control" name = "donde" placeholder="Lugar"></div> <div class="col-md-3"><button class="btn btn-block btn-theme  btn-success">Buscar</button> </div></form></li> 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                   <li class="dropdown">

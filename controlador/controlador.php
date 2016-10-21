@@ -70,7 +70,7 @@ Sender_Action_Model();
 function Login_Action_Controller(){
 require "vistas/login.php";
 }
-function Register_Action_Controller(){
+function Register_Action_Controller(){	
 require "vistas/register.php";
 }
 function Register_Info_Action_Controller(){
@@ -106,6 +106,11 @@ function Profile_Confirmation_Action_Controller(){
 }
 //Menú usuario logueado
 function Resume_Action_Controller(){
+	$person=Get_Person_Action_Model();
+	$exp_laboral = Get_Exp_Person_Action_Model();
+	$estudies= Get_Estudies_Action_Model();
+	$skills= Get_Skills_Action_Model();
+	$ref= Get_Reference_Action_Model();
 	require "vistas/resume_person.php";
 }
 function Resume_Company_Action_Controller(){
@@ -114,11 +119,15 @@ function Resume_Company_Action_Controller(){
 }
 function Update_Resume_Person_Action_Controller(){
 //	$Basic_information = Get_Basic_Information_Person_Action_Model();
+	$person=Get_Person_Action_Model();
 	$exp_laboral = Get_Exp_Person_Action_Model();
 	$estudies= Get_Estudies_Action_Model();
 	$skills= Get_Skills_Action_Model();
 	$ref= Get_Reference_Action_Model();
 	require "vistas/update_resume_person.php";
+}
+function Update_Person_Action_Controller(){
+	Person_Update_Action_Model();
 }
 function Update_Resume_Company_Action_Controller(){
 $company = Get_company_Profile();

@@ -89,7 +89,10 @@
     } 
     if($uri=="/empleo/index.php/update_resume_person"){
      Update_Resume_Person_Action_Controller();
-    } 
+    }
+    if($uri=="/empleo/index.php/update_person"){
+     Update_Person_Action_Controller();
+    }  
     if($uri=="/empleo/index.php/update_resume_company"){
      Update_Resume_Company_Action_Controller();
     }

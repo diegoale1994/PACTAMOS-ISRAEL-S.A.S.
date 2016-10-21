@@ -170,53 +170,51 @@
         <div class="block-section box-item-details">
           <div class="resume-block">
             <div class="img-profile"><img src="../images/user/user1.png" alt=""></div><!--Ponga aui la foto-->
-            <div class="desc">
-              <form>
+            <div class="desc"><br><br>
+              <form action="../index.php/update_person" method="POST">
                 <h3 class="resume-sub-title"><span>Información Personal</span></h3>
                 <div class="row">
+                <?php foreach($person as $person): ?>
                   <div class="col-md-6">
                     <div class="form-group ">
                       <label>Primer Nombre</label>
-                      <input type="text" name="name1" class="form-control"  value="">
+                      <input type="text" name="nombre1" class="form-control"  value="<?php echo $person["nombre1"]?>">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group ">
                       <label>Segundo Nombre</label>
-                      <input type="text" name="name2" class="form-control"  value="">
+                      <input type="text" name="nombre2" class="form-control"  value="<?php echo $person["nombre2"]?>">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group ">
                       <label>Primer Apellido</label>
-                      <input type="text" name="name3" class="form-control"  value="">
+                      <input type="text" name="apellido1" class="form-control"  value="<?php echo $person["apellido1"]?>">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group ">
                       <label>Segundo Apellido</label>
-                      <input type="text" name="name4" class="form-control"  value="">
+                      <input type="text" name="apellido2" class="form-control"  value="<?php echo $person["apellido2"]?>">
                     </div>
-                  </div>
-
-                  <div class="col-md-6">
-                    
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Departamento</label>
-                      <input type="text" name="dpto" class="form-control" value=" Cundinamarca">
+                      <input type="text" name="departamento" class="form-control" value="<?php echo $person["departamento"]?>">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Municipio</label>
-                      <input type="text" name="mun" class="form-control" value="Fusagasuga">
+                      <input type="text" name="ciudad" class="form-control" value="<?php echo $person["ciudad"]?>">
                     </div>
                   </div>
+                <?php endforeach ?>
                 </div> 
                 </div>
-                           
+                      <button type="submit" class="btn btn-success">Ingresar</button>     
               </form>            
 
               <h3 class="resume-sub-title"><span>Experiencia Laboral</span></h3>
