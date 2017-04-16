@@ -16,89 +16,65 @@
     <div class="container">
       <div class="row">
         <div class="col-md-9">
-
-          <!-- box listing -->
           <div class="block-section-sm box-list-area">
-
-            <!-- desc top -->
             <div class="row hidden-xs">
               <div class="col-sm-6  ">
                 <p><strong class="color-black"></strong></p>
               </div>
               <div class="col-sm-6">
                 <p class="text-right">
-                 
                 </p>
               </div>
             </div><!-- end desc top -->
             <?php
-
               if (empty($oferta)) {
               
                   }else{
                     if($oferta[0]=="N"){
                       ?>
-                     <div id="no_result" >
-                     <center>
-            
-                      <p>No se encontraron resultados</p>
-                    </center>
-             </div>
+                      <div id="no_result">
+                        <center><h1>No se encontraron resultados</h1> </center>
+                      </div>
                       <?php
                     }else{
             ?>
             <!-- item list -->  
-            <div class="box-list">
-            
+            <div class="box-list">            
             <?php foreach($oferta as $value): ?>
               <div class="item">
                 <div class="row">
-                 
                   <div class="col-md-12">
                     <h3 class="no-margin-top"><a href="/empleo/index.php/job_details?offerNo=<?php echo $value["id_oferta"] ?>" class=""><?php echo $value["vacante"] ?> <i class="fa fa-link color-white-mute font-1x"></i></a></h3>
                     <h5><span class="color-black"><?php echo $value["nombre"] ?></span> - <span class="color-white-mute"><?php echo $value["departamento"] ?>, <?php echo $value["ciudad"] ?></span></h5>
                     <p class="text-truncate "><?php echo $value["descripcion_profesional"] ?></p>
                     <!--<span class="color-white-mute"><?php echo $value["fecha"] ?></span>-->
                  <?php
-                          if (isset($_SESSION['nivel_de_acceso'])){
-                                if ($_SESSION['nivel_de_acceso'] == 'P') {?>
-  
-                                  <?php 
-                                  $cont=0; 
-                                  foreach($mys_applys as $value1){
-                                    if ($value1['id_oferta']==$value['id_oferta']) { $cont++;?>
-                                     <form action ="/empleo/index.php/desaplicar_oferta" method ="POST">
-                                    <input type="hidden" name ="oferta" value ="<?php echo $value["id_oferta"] ?>">
-                                     <button class="btn btn-theme btn-lg btn-danger btn-block">Desaplicar</button>
-                                     
-                                    </form>
-                                  
-                               
+                  if (isset($_SESSION['nivel_de_acceso'])){
+                        if ($_SESSION['nivel_de_acceso'] == 'P') { 
+                          $cont=0; 
+                          foreach($mys_applys as $value1){
+                            if ($value1['id_oferta']==$value['id_oferta']) { $cont++;?>
+                            <form action ="/empleo/index.php/desaplicar_oferta" method ="POST">
+                              <input type="hidden" name ="oferta" value ="<?php echo $value["id_oferta"] ?>">
+                              <button class="btn btn-theme btn-lg btn-danger btn-block">Desaplicar</button>
+                            </form>
                           <?php } }
                           if ($cont==0) {?>
-                                    <form action ="/empleo/index.php/aplicar_oferta" method ="POST">
-                                    <input type="hidden" name ="oferta" value ="<?php echo $value["id_oferta"] ?>">
-                                     <button class="btn btn-theme btn-lg btn-success btn-block">Aplicar</button>
-                                     </form>
+                            <form action ="/empleo/index.php/aplicar_oferta" method ="POST">
+                              <input type="hidden" name ="oferta" value ="<?php echo $value["id_oferta"] ?>">
+                              <button class="btn btn-theme btn-lg btn-success btn-block">Aplicar</button>
+                            </form>
                           <?php }
-
-
                            }}?>
                       
                     
-                                          </div>
-                                        </div>
-                                      </div><!-- end item list -->
-                                         <?php endforeach ?>
-                                    </div>
-
-                  <?php }} ?>
-
-            
-
+                  </div>
+                </div>
+              </div><br><!-- end item list -->
+              <?php endforeach ?>
+            </div>
+          <?php }} ?>
           </div><!-- end box listing -->
-
-
         </div>
         <div class="col-md-3">
         <div class="block-section-sm side-right">

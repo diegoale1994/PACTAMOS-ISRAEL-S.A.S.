@@ -18,6 +18,10 @@
     if($uri=="/empleo/index.php/contact"){
      Contact_Action_Controller();
     } 
+
+    if($uri=="/empleo/index.php/resumes"){
+     Resumes_Action_Controller();
+    } 
     if($uri=="/empleo/index.php/sender"){
      Contact_Form_Action_Controller();
     } 
@@ -55,6 +59,9 @@
      if($uri=="/empleo/index.php/register_info?status=verified"){
      Register_Info_Action_Controller();
     } 
+    if($uri=="/empleo/index.php/update_resume"){
+     Update_Resume_Action_Controller();
+    } 
     if($uri=="/empleo/index.php/update_exp_jobs"){
      Register_Exp_Job_Action_Controller();
     } 
@@ -79,7 +86,9 @@
      if($uri=="/empleo/index.php/create_user"){
      Create_User_Action_Controller();
     }
-    
+    if($uri=="/empleo/index.php/create_resume"){
+     Create_Resume_Action_Controller();
+    }
     
     
 
@@ -127,7 +136,6 @@ if($uri=="/empleo/index.php/Assing_comercial"){
      User_Loggout_Action_Controller();
     } 
      if($uri=="/empleo/index.php/404_error"){
-
      error404();
     } 
     if($uri=="/empleo/index.php/register_E_form"){
@@ -145,12 +153,11 @@ if($uri=="/empleo/index.php/Assing_comercial"){
      User_Loggout_Time_Out_Action_Controller();
     } 
     $uri = explode("?", $_SERVER['REQUEST_URI']);
-         if($uri[0]=="/empleo/index.php/job_details"){
-      
+    
+    if($uri[0]=="/empleo/index.php/job_details"){      
       Show_Job_Action_Controller();
     }
-    if($uri[0]=="/empleo/index.php/verify"){
-      
+    if($uri[0]=="/empleo/index.php/verify"){      
       Verify_Account_Action_Controller();
     }
     if($uri[0]=="/empleo/index.php/exp_lab_del"){      
@@ -173,6 +180,12 @@ if($uri=="/empleo/index.php/Assing_comercial"){
     }
       if($uri[0]=="/empleo/index.php/user_del"){      
         Delete_User_Action_Controller();
+    }
+    if($uri[0]=="/empleo/index.php/resume_view"){      
+        Resume_Action_Controller();
+    }
+    if($uri[0]=="/empleo/index.php/resume_del"){      
+        Delete_Resume_Action_Controller();
     }
     
     

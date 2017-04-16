@@ -3,7 +3,7 @@
 <?php 
 if(isset($_SESSION['session_started'])){
 if ($_SESSION['session_started']=='yes') {
-if ( $_SESSION['nivel_de_acceso']=='P') { ?>
+if ( $_SESSION['nivel_de_acceso']=='P' || $_SESSION['nivel_de_acceso']=='A') { ?>
 <?php ob_start() ?> 
 <!-- body-content -->
 <div class="body-content clearfix" >
@@ -11,23 +11,24 @@ if ( $_SESSION['nivel_de_acceso']=='P') { ?>
 <div class="col-md-1" >
     
     </div>
-<div class="bg-color2">
+<div class="bg-color1 block-section line-bottom">
   <div class="container">
     <div class="row">
     
-      <div class="col-md-10">
+      <div class="col-md-12">
 
         <!-- box item details -->
         <div class="block-section box-item-details">
           <div class="resume-block">
-            <p><a href="../index.php/update_resume_person" class="btn btn-theme btn-warning dark btn-block-xs">Actualizar Información</a></p>
-            <div class="img-profile"><img src="../images/user/user1.png" alt=""></div><!--Ponga aui la foto-->
-            <div class="desc">
             <?php foreach($person as $person): ?>
+            
+            <div class="img-profile"><img src="../images/Person/<?php echo $person["name_image"];?>" alt=""></div><!--Ponga aui la foto-->
+            <div class="desc">
+            <?php if($_SESSION['nivel_de_acceso']=='P'){?><p><a href="../index.php/update_resume_person" class="btn btn-theme btn-warning dark btn-block-xs">Actualizar Información</a></p><?php } ?>
               <h2><?php echo $person["nombre1"].' '.$person["nombre2"].' '.$person["apellido1"].' '.$person["apellido2"] ?></h2>
               <p><?php echo $person["ciudad"].' - '.$person["departamento"]?></p>
             <?php endforeach ?>
-
+            
               <h3 class="resume-sub-title"><span>Experiencia Laboral</span></h3>
 
             <?php foreach($exp_laboral as $job): ?>

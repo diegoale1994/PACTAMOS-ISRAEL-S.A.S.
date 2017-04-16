@@ -31,55 +31,110 @@ if ( $_SESSION['nivel_de_acceso']=='E') { ?>
                     <input type="text" class="form-control " name="vacante" placeholder="Secretaria, Maestro, Doctor, Ingeniero" Required>
                   </div>
                   <div class="form-group">
-                    <label>Descripción</label>
-                    <div class="color-white-mute"><small>Escribe acerca de tu empresa</small></div>
-                    <textarea class="form-control" rows="6" name= "descripcion"></textarea>
+                    <label>Descripción de la Oferta</label>
+                    <div class="color-white-mute"><small>Qué se debe hacer</small></div>
+                    <textarea class="form-control" id="pub_content" rows="6" name= "descripcion" required></textarea>
+                       <script type="text/javascript">
+                          CKEDITOR.replace("pub_content");
+                       </script>
                   </div>
                   <div class="form-group">
                     <label>Descripción profesional</label>
-                    <div class="color-white-mute"><small>Que habilidades buscas en la persona</small></div>
-                    <textarea class="form-control" rows="6" name= "descripcion_profesional"></textarea>
+                    <div class="color-white-mute"><small>Que habilidades se requieren</small></div>                   
+                    <textarea class="form-control" id="pub_content1" rows="6" name= "descripcion_profesional" required></textarea>
+                       <script type="text/javascript">
+                          CKEDITOR.replace("pub_content1");
+                       </script>
                   </div>
-                   <div class="form-group">
-                    <label>Horario de Trabajo</label>
-                    <div class="color-white-mute"><small>Describe el horario de trabajo</small></div>
-                     <input type="text" class="form-control " name="horario" placeholder="Lunes a Viernes de 8am - 6pm" Required>
-                  </div>
-                      <div class="form-group">
-                   <select class="form-control" name ="area" data-live-search="true">
-                          <option data-tokens="ketchup mustard" value="A" >A</option>
-                          <option data-tokens="mustard" value= "R">R</option>
-                          <option data-tokens="ketchup mustard" value ="E">E</option>  
-                          <option data-tokens="ketchup mustard" value ="A">A</option>   
-                          <option data-tokens="ketchup mustard" value ="S">S</option>                           
-                        </select>
-                        </div>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label>Departamento</label>
-                        <input type="text" class="form-control " name="departamento" placeholder="Cundinamarca, Tolima...">
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <label>Horario de Trabajo</label>
+                      <div class="color-white-mute"><small>Ejemplo: Lunes a Viernes de 8am - 6pm</small></div>                     
+                    </div>
+                    <div class="col-md-2">
+                      <label>De</label>
+                      <select class="form-control" name="diainicio">
+                        <option>Lunes</option>
+                        <option>Martes</option>
+                        <option>Miércoles</option>
+                        <option>Jueves</option>
+                        <option>Viernes</option>
+                        <option>Sábado</option>
+                        <option>Domingo</option>
+                      </select>
+                    </div>
+                    <div class="col-md-2">
+                      <label>A</label>
+                      <select class="form-control" name="diafinal">
+                        <option>Lunes</option>
+                        <option>Martes</option>
+                        <option>Miércoles</option>
+                        <option>Jueves</option>
+                        <option>Viernes</option>
+                        <option>Sábado</option>
+                        <option>Domingo</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <label>Desde las</label>
+                      <div class="input-group">
+                        <input class="form-control" type="number" name="horainicio">
+                        <span class="input-group-addon" style="padding: 0; width: 30%" >
+                          <select class="form-control input-sm" name="hora1">
+                            <option>am</option>
+                            <option>pm</option>
+                          </select>
+                        </span>
                       </div>
                     </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label>Municipio</label>
-                        <input type="text" class="form-control " name="ciudad" placeholder="Ciudad">
+                    <div class="col-md-4">
+                      <label>Hasta las</label>
+                      <div class="input-group">
+                        <input class="form-control" type="number" name="horafinal">
+                        <span class="input-group-addon" style="padding: 0; width: 30%" >
+                          <select class="form-control input-sm" name="hora2">
+                            <option>am</option>
+                            <option>pm</option>
+                          </select>
+                        </span>
                       </div>
+                    </div>                    
+                  </div>
+                  <div class="form-group">
+                    <div class="col-md-6"><br>
+                     <label>Departamento</label>
+                      <select class="form-control" name="departamento">
+                      <?php foreach($dpto as $dpto): ?>
+                        <option><?php echo $dpto["departamento"]?></option>
+                      <?php endforeach ?>
+                      </select>
                     </div>
                   </div>
-                <div class="form-group">
+                  <div class="form-group">
+                    <div class="col-md-6"><br>
+                      <label>Ciudad</label>
+                      <select class="form-control" name="ciudad">
+                      <?php foreach($mun as $mun): ?>
+                        <option><?php echo $mun["municipio"]?></option>
+                      <?php endforeach ?>
+                      </select> 
+                    </div>
+                  </div>
+                  
+                <div class="form-group col-md-6"><br>
                     <label>Vacantes</label>
-                    <input type="number" class="form-control " name="vacantes", min="1" Required>
+                    <input type="number" class="form-control " name="vacantes"  min="1" Required>
                   </div>
-                     <div class="form-group">
-                    <label>Tiempo (no se exactamente que debe ir cambio si algo por select)</label>
-                    <input type="text" class="form-control " name="tiempo" placeholder="tiempo">
-                  </div>
-  
+                  <div class="form-group col-md-6"><br>
+                    <label>Salario</label>
+                    <div class="input-group">
+                      <span class="input-group-addon">$</span>
+                      <input type="number" class="form-control" placeholder="700.000" name="salario" Required>
+                    </div>
+                  </div> 
 
                   <div class="form-group ">
-                    <button class="btn btn-t-primary btn-theme">Enviar</button>
+                    <button class="btn btn-t-primary btn-theme btn-block">Enviar</button>
                   </div>
 
 

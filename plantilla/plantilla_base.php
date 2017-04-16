@@ -15,29 +15,18 @@ if($tiempo_actual > $inac){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Pactamos, Web site de Empleo y Contratacion</title>
+    <title>Pactamos Israel SAS</title>
     <meta name="description" content="Busqueda de empleo en colombia, empleo en fusagasuga, hojas de vida, contratacion de pesonal, publica tu empleo">
-
     <meta name="keywords" content="empleo, encontrar empleo, empleo en colombia, empleo fusagasuga, empleo fusa, empleo sumapaz, empleo cundinamarca, contratacion, personal, hoja de vida">
-    <!--favicon-->
-    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
-    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
-
-    <!-- bootstrap -->
+    <link rel="apple-touch-icon" href="../images/logo_pactamos.png">
+    <link rel="shortcut icon" href="../images/logo_pactamos.png" type="image/x-icon">
    <script src='https://www.google.com/recaptcha/api.js?hl=es'></script>
     <link href="../plugins/bootstrap-3.3.2/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Icons -->
     <link href="../plugins/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
-
-    <!-- lightbox -->
     <link href="../plugins/magnific-popup/magnific-popup.css" rel="stylesheet">
-
-
-    <!-- Themes styles-->
     <link href="../css/theme.css" rel="stylesheet">  
-    <!-- Your custom css -->
     <link href="../css/theme-custom.css" rel="stylesheet">
+    <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script> 
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -64,20 +53,17 @@ if($tiempo_actual > $inac){
                   <li class=""><a href="../index.php/requeriment"><strong>Requerimientos</strong>
                  
                   </a></li>
-                  <li class=""><a href="../index.php/my_offers">Hojas de Vida</a></li> 
-                  <li class=""><a href="../index.php/my_offers">Empresas</a></li> 
+                  <li class=""><a href="../index.php/resumes">Hojas de Vida</a></li> 
+                  <li class=""><a href="../index.php/clients">Empresas</a></li> 
                   <li class=""><a href="../index.php/manage_users">Usuarios</a></li>                
                 </ul>  
                 <ul class="nav navbar-nav navbar-right">
                   <li class="dropdown">
                     <a href="#" class="link-profile dropdown-toggle"  data-toggle="dropdown" >
-                      <img src="../images/people/4.jpg" alt="" class="img-profile"><?php echo $_SESSION['nombre'];?><b class="caret"></b>
+                      <img src="../images/logo_pactamos.png" alt="" class="img-profile"><?php echo $_SESSION['nombre'];?><b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu" role="menu">
-                      <li><a href="my_alerts.html"> My Alerts </a></li>
-                      <li><a href="my_notifications.html"> Notifications <span class="badge ">5</span></a></li>
-                      <li><a href="change_password.html"> Cambiar contraseña</a></li>
-                      <li><a href="/empleo/index.php/loggout"> SAlir</a></li>
+                      <li><a href="/empleo/index.php/loggout"> Salir</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -93,13 +79,10 @@ if($tiempo_actual > $inac){
                     <ul class="nav navbar-nav navbar-right">
                       <li class="dropdown">
                         <a href="#" class="link-profile dropdown-toggle"  data-toggle="dropdown" >
-                          <img src="../images/people/4.jpg" alt="" class="img-profile"><?php echo $_SESSION['nombre'];?><b class="caret"></b>
+                          <img src="../images/logo_pactamos.png" alt="" class="img-profile"><?php echo $_SESSION['nombre'];?><b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                          <li><a href="my_alerts.html"> My Alerts </a></li>
-                          <li><a href="my_notifications.html"> Notifications <span class="badge ">5</span></a></li>
-                          <li><a href="change_password.html"> Cambiar contraseña</a></li>
-                          <li><a href="/empleo/index.php/loggout"> SAlir</a></li>
+                          <li><a href="/empleo/index.php/loggout"> Salir</a></li>
                         </ul>
                       </li>
                     </ul>
@@ -118,10 +101,7 @@ if($tiempo_actual > $inac){
                           <img src="../images/people/4.jpg" alt="" class="img-profile"><?php echo $_SESSION['nombre'];?><b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                          <li><a href="my_alerts.html"> My Alerts </a></li>
-                          <li><a href="my_notifications.html"> Notifications <span class="badge ">5</span></a></li>
-                          <li><a href="change_password.html"> Cambiar contraseña</a></li>
-                          <li><a href="/empleo/index.php/loggout"> SAlir</a></li>
+                          <li><a href="/empleo/index.php/loggout"> Salir</a></li>
                         </ul>
                       </li>
                     </ul>
@@ -131,20 +111,16 @@ if($tiempo_actual > $inac){
                 <ul class="nav navbar-nav">
                   <li><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
                   <li class=""><a href="../index.php/resume_company"><strong>Perfil</strong></a></li>
-                  
                   <li class=""><a href="../index.php/job_post"><strong>Publicar oferta</strong></a></li>
-                  <li class=""><a href="../index.php/job_list"><strong>Ofertas Disponibles</strong></a></li>
-                  <li class=""><a href="../index.php/my_offers">Mis Ofertas</a></li>                  
+                  <li class=""><a href="../index.php/my_offers">Mis Ofertas</a></li>   
+                  <li class=""><a href="../index.php/my_account">Estado de Cuenta</a></li>               
                 </ul>  
                 <ul class="nav navbar-nav navbar-right">
                   <li class="dropdown">
                     <a href="#" class="link-profile dropdown-toggle"  data-toggle="dropdown" >
-                      <img src="../images/people/4.jpg" alt="" class="img-profile"><?php echo $_SESSION['nombre'];?><b class="caret"></b>
+                      <img src="../images/logo_pactamos.png" alt="" class="img-profile"><?php echo $_SESSION['nombre'];?><b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu" role="menu">
-                      <li><a href="my_alerts.html"> My Alerts </a></li>
-                      <li><a href="my_notifications.html"> Notifications <span class="badge ">5</span></a></li>
-                      <li><a href="change_password.html"> Cambiar contraseña</a></li>
                       <li><a href="/empleo/index.php/loggout"> Salir</a></li>
                     </ul>
                   </li>
@@ -163,7 +139,7 @@ if($tiempo_actual > $inac){
                 <ul class="nav navbar-nav navbar-right">
                   <li class="dropdown">
                     <a href="#" class="link-profile dropdown-toggle"  data-toggle="dropdown" >
-                      <img src="../images/user/user1.png" alt="" class="img-profile"><?php echo $_SESSION['nombre'];?><b class="caret"></b>
+                      <img src="../images/logo_pactamos.png" alt="" class="img-profile"><?php echo $_SESSION['nombre'];?><b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu" role="menu">
                       <li><a href="my_alerts.html"> My Alerts </a></li>
@@ -188,8 +164,8 @@ if($tiempo_actual > $inac){
                   <li class="link-btn"><a href="../index.php/register"><span class="btn btn-theme  btn-pill btn-xs btn-line">Registro</span></a></li>
                 </ul>
           <!-- end main navbar -->
-                <?php }?> 
-                </div>
+              <?php }?> 
+              </div>
             </div>
           </nav> 
               
@@ -229,31 +205,30 @@ if($tiempo_actual > $inac){
         echo $contenido;
        ?>
       <!-- main-footer -->
-      <footer class="main-footer">
-
+<footer class="main-footer">
   <div class="container">
-          <div class="row">
-            <div class="col-sm-6">
-              <ul class="list-inline link-footer text-center-xs">
-                <li><a href="../index.php/home">Inicio</a></li>                
-                <li><a href="../index.php/company">¿Quienes Somos?</a></li>
-                <li><a href="../index.php/contact">Contáctenos</a></li>
-              </ul>
-            </div>
-            <div class="col-sm-6 ">
-              <p class="text-center-xs hidden-lg hidden-md hidden-sm">Permanece conectado</p>
-              <div class="socials text-right text-center-xs">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-youtube-play"></i></a>
-                <a href="#"><i class="fa fa-linkedin"></i></a>
-              </div>
-            </div>
-          </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <ul class="list-inline link-footer text-center-xs">
+          <li><a href="../index.php/home">Inicio</a></li>                
+          <li><a href="../index.php/company">¿Quienes Somos?</a></li>
+          <li><a href="../index.php/contact">Contáctenos</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-6 ">
+        <p class="text-center-xs hidden-lg hidden-md hidden-sm">Permanece conectado</p>
+        <div class="socials text-right text-center-xs">
+          <a href="#"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+          <a href="#"><i class="fa fa-youtube-play"></i></a>
+          <a href="#"><i class="fa fa-linkedin"></i></a>
         </div>
-      </footer><!-- end main-footer -->
+      </div>
+    </div>
+  </div>
+</footer><!-- end main-footer -->
 
-    </div><!-- end wrapper page -->
+</div><!-- end wrapper page -->
 
 
 

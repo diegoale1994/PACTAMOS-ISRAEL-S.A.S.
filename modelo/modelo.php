@@ -2,7 +2,7 @@
 function conectar_base_de_datos (){
     $conexion=mysqli_connect("localhost","root","","bolsa_empleo");
     if(!$conexion){
-        echo 'No se pudo conectar con la jodida BD';
+        echo 'No se pudo conectar con la BD';
     }
     return $conexion;
 }
@@ -32,7 +32,7 @@ $my_aplys[]=$fila;
 
 WHERE documento = '$documento' and id_oferta ='$id_oferta';";
     mysqli_query($conexion, $consulta);
-    echo "llegue";
+    
 header("Location: /empleo/index.php/job_list");
 }else{
   
@@ -44,7 +44,7 @@ header("Location: /empleo/index.php/job_list");
   $id_oferta = $_POST['oferta'];
    $documento = $_SESSION['documento'];
    $fecha =  date("Y-m-d");
-   echo $id_oferta."->".$documento;
+   
    $conexion=conectar_base_de_datos();
  $consulta = "INSERT INTO persona_natural_oferta (documento, id_oferta, fecha_aplicaciom) values ('$documento','$id_oferta','$fecha')";
     mysqli_query($conexion, $consulta);
@@ -135,6 +135,21 @@ $users[]=$fila;
             return $users;
 }
 
+function Get_Resumes_Action_Model(){
+
+
+$conexion=conectar_base_de_datos();
+$resume = array();
+$consulta="SELECT * FROM persona, persona_natural WHERE persona.documento=persona_natural.documento AND
+persona.rol = 'P'";
+$resultado=mysqli_query($conexion,$consulta);
+  while ($fila=mysqli_fetch_array($resultado)) {
+$resume[]=$fila;
+            }
+            
+            return $resume;
+}
+
 
 function Create_User_Action_Model(){
 
@@ -152,6 +167,38 @@ $passencript=sha1($_POST['pass']);
   $consulta = "INSERT INTO persona_natural (documento, nombre1, apellido1) values ('$documento','$nombre','$apellido')";
   $resultado=mysqli_query($conexion,$consulta);
  header("Location: /empleo/index.php/manage_users");
+}else{
+  header("Location: /empleo/index.php/404_error");
+  }
+
+
+}
+
+function Create_Resume_Action_Model(){
+
+ if($_SERVER['REQUEST_METHOD']=="POST"){
+
+$nombre1 = $_POST['nombre1'];
+$nombre2 = $_POST['nombre2'];
+$apellido1 = $_POST['apellido1'];
+$apellido2 = $_POST['apellido2'];
+$tipo_doc = $_POST['tipo_documento'];
+$documento = $_POST['documento'];
+$passencript=sha1($_POST['documento']);
+$departamento=$_POST['departamento'];
+$ciudad=$_POST['ciudad'];
+$direccion=$_POST['direccion'];
+$telefono=$_POST['telefono'];
+$profesion=$_POST['profesion'];
+
+
+
+  $conexion=conectar_base_de_datos();
+  $consulta = "INSERT INTO persona (documento, tipo_documento, password, verificado, rol, departamento, ciudad, direccion) values ('$documento','$tipo_doc','$passencript','Y','P','$departamento', '$ciudad', '$direccion')";
+  $resultado=mysqli_query($conexion,$consulta);
+  $consulta = "INSERT INTO persona_natural (documento, nombre1, nombre2, apellido1, apellido2, profesion) values ('$documento','$nombre1','$nombre2','$apellido1','$apellido2','$profesion')";
+  $resultado=mysqli_query($conexion,$consulta);
+ header("Location: /empleo/index.php/resumes");
 }else{
   header("Location: /empleo/index.php/404_error");
   }
@@ -184,7 +231,8 @@ function Add_comercial_Action_Model(){
 
 }
 
-function Person_Update_Action_Model(){
+function Person_Update_Action_Model(){ 
+  $conexion=conectar_base_de_datos();
   $nombre1 = $_POST['nombre1'];
   $nombre2 = $_POST['nombre2'];
   $apellido1 = $_POST['apellido1'];
@@ -192,13 +240,29 @@ function Person_Update_Action_Model(){
   $departamento = $_POST['departamento'];
   $ciudad = $_POST['ciudad'];
   $documento = $_SESSION['documento'];
-
-  $conexion=conectar_base_de_datos();
-  $consulta = "UPDATE persona_natural Set nombre1='$nombre1',nombre2='$nombre2', apellido2='$apellido2', apellido1='$apellido1' Where documento='$documento'";
-
-    mysqli_query($conexion, $consulta);
- header("Location: /empleo/index.php/requeriment");
+  //$documento1=$_POST['doc'];
+  $foto=$_FILES["foto"]["name"];
+  $ruta=$_FILES['foto']['tmp_name'];
+  $destino="./images/Person/".$foto;
+  move_uploaded_file($ruta, $destino);
+  if (isset($documento1)) {
+    $documento=$documento1;
+  }
+ 
+   if ($foto!="") {
+   
+    $consulta = "UPDATE persona_natural Set nombre1='$nombre1',nombre2='$nombre2', apellido2='$apellido2', apellido1='$apellido1', image='$destino', name_image='$foto' Where documento='$documento'";
+  }
+  else{
+    $consulta = "UPDATE persona_natural Set nombre1='$nombre1',nombre2='$nombre2', apellido2='$apellido2', apellido1='$apellido1' Where documento='$documento'";
+  }
+  $resultado=mysqli_query($conexion,$consulta); 
+  $consulta="UPDATE persona Set departamento='$departamento', ciudad='$ciudad' Where documento='$documento'";
+  $resultado=mysqli_query($conexion,$consulta);       
+  cerrar_conexion_db($conexion);
+ //header("Location: /empleo/index.php/update_resume_person");
 }
+
 function Get_company_Profile(){
 
 $conexion=conectar_base_de_datos();
@@ -240,14 +304,14 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     $descripcion_profesional = htmlentities($_POST['descripcion_profesional']);
     $departamento = $_POST['departamento'];
     $ciudad=$_POST['ciudad'];
-     $area=$_POST['area'];
-     $id_oferta=$_POST['id'];
-      $horario=htmlentities($_POST['horario']);
-    $tiempo = htmlentities($_POST['tiempo']);
+    $salario=$_POST['salario'];
+    $id_oferta=$_POST['id'];
+    $horario=htmlentities($_POST['horario']);
+   
     $vacantes =$_POST['vacantes'];
     $conexion=conectar_base_de_datos();
-    echo $documento." -> ".$vacante." -> ".$descripcion;
-  $consulta = "UPDATE oferta Set vacante='$vacante', descripcion='$descripcion', descrip_prof='$descripcion_profesional', departamento='$departamento', ciudad='$ciudad', area='$area', horario='$horario' , tiempo='$tiempo', vacantes='$vacantes' Where id_oferta='$id_oferta'";
+    
+    $consulta = "UPDATE oferta Set vacante='$vacante', descripcion='$descripcion', descrip_prof='$descripcion_profesional', departamento='$departamento', ciudad='$ciudad', salario='$salario', horario='$horario' , vacantes='$vacantes' Where id_oferta='$id_oferta'";
     mysqli_query($conexion, $consulta);
      header("Location: /empleo/index.php/my_offers");
 
@@ -264,7 +328,7 @@ function Get_Individual_Offer_Action_Model(){
 $conexion=conectar_base_de_datos();
 $offer_No = array();
 $id_oferta=$_GET['update'];
-$consulta="SELECT id_oferta, area, vacante, horario, descripcion, descrip_prof, tiempo, departamento, ciudad, vacantes FROM oferta where id_oferta ='$id_oferta'";
+$consulta="SELECT id_oferta, salario, vacante, horario, descripcion, descrip_prof, departamento, ciudad, vacantes FROM oferta where id_oferta ='$id_oferta'";
         $resultado=mysqli_query($conexion,$consulta);
             while ($fila=mysqli_fetch_array($resultado)) {
              $offer_No[]=$fila;   
@@ -277,7 +341,7 @@ function Get_Offers_Action_Model(){
 $conexion=conectar_base_de_datos();
 $my_offers = array();
 $documento = $_SESSION['documento'];
-$consulta="SELECT id_oferta, vacante, fecha_publicacion FROM oferta where documento ='$documento'";
+$consulta="SELECT id_oferta, vacante, fecha_publicacion, departamento, ciudad FROM oferta where documento ='$documento'";
         $resultado=mysqli_query($conexion,$consulta);
             while ($fila=mysqli_fetch_array($resultado)) {
 $my_offers[]=$fila;
@@ -302,19 +366,25 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
   if(isset($_SESSION['documento'])){
     $documento = $_SESSION['documento'];
     $vacante = htmlentities($_POST['vacante']);
-    $descripcion = htmlentities($_POST['descripcion']);
-    $descripcion_profesional = htmlentities($_POST['descripcion_profesional']);
+    $descripcion = $_POST['descripcion'];
+    $descripcion_profesional = $_POST['descripcion_profesional'];
     $departamento = $_POST['departamento'];
     $ciudad=$_POST['ciudad'];
-     $area=$_POST['area'];
-      $horario=htmlentities($_POST['horario']);
-    $tiempo = htmlentities($_POST['tiempo']);
+    $salario=$_POST['salario'];
+
+    $diainicio=$_POST['diainicio'];
+    $diafin=$_POST['diafinal'];
+    $horainicio=$_POST['horainicio'];
+    $horafin=$_POST¨['horafinal'];
+    $hora1=$_POST¨['hora1'];
+    $hora2=$_POST¨['hora2'];
+
+    $horario=$diainicio." a ".$diafin." de ".$horainicio.$hora1." a ".$horafin.$hora2;   
     $vacantes =$_POST['vacantes'];
     $conexion=conectar_base_de_datos();
     date_default_timezone_set('America/Bogota');
-    $fecha =  date("Y-m-d");
-    echo $documento." -> ".$vacante." -> ".$descripcion;
-  $consulta = "INSERT INTO oferta (documento, area, vacante, horario, descripcion, descrip_prof, estado, tiempo, departamento, ciudad, vacantes, fecha_publicacion) values ('$documento','$area','$vacante','$horario','$descripcion','$descripcion_profesional','N','$tiempo','$departamento','$ciudad','$vacantes','$fecha')";
+    $fecha =  date("Y-m-d");    
+    $consulta = "INSERT INTO oferta (documento, salario, vacante, horario, descripcion, descrip_prof, estado,  departamento, ciudad, vacantes, fecha_publicacion) values ('$documento','$salario','$vacante','$horario','$descripcion','$descripcion_profesional','N','$departamento','$ciudad','$vacantes','$fecha')";
     mysqli_query($conexion, $consulta);
      header("Location: /empleo/index.php/job_post?state=create");
 
@@ -370,24 +440,62 @@ if (isset($_GET['delete'])){
   }
 }
 }
+function Get_Department_Action_Model(){
+  $conexion=conectar_base_de_datos();
+  $dpto = array();
+  $consulta="SELECT * FROM departamento";
+  $resultado=mysqli_query($conexion,$consulta);
+  while ($fila=mysqli_fetch_array($resultado)) {
+    $dpto[]=$fila;}
+  return $dpto;
+}
+function Get_City_Action_Model(){
+  $conexion=conectar_base_de_datos();
+  $mun = array();
+  $consulta="SELECT * FROM municipios";
+  $resultado=mysqli_query($conexion,$consulta);
+  while ($fila=mysqli_fetch_array($resultado)) {
+    $mun[]=$fila;}
+  return $mun;
+}
 
 function Get_Person_Action_Model(){
-$conexion=conectar_base_de_datos();
-$person = array();
-$documento = $_SESSION['documento'];
-$consulta="SELECT * FROM persona_natural, persona where persona_natural.documento=persona.documento AND persona.documento ='$documento'";
-$resultado=mysqli_query($conexion,$consulta);
-while ($fila=mysqli_fetch_array($resultado)) {
-  $person[]=$fila;
-              }
-return $person;
+  $conexion=conectar_base_de_datos();
+  $person = array();
+  $documento = $_SESSION['documento'];
+  if (isset($_GET['doc'])) {
+  $documento=$_GET['doc'];;
+  }
+  $consulta="SELECT * FROM persona_natural, persona where persona_natural.documento=persona.documento AND persona.documento ='$documento'";
+  $resultado=mysqli_query($conexion,$consulta);
+  while ($fila=mysqli_fetch_array($resultado)) {
+    $person[]=$fila;
+                }
+  return $person;
 }
 
 function Get_Exp_Person_Action_Model(){
 $conexion=conectar_base_de_datos();
 $exp_laboral = array();
 $documento = $_SESSION['documento'];
+if (isset($_GET['doc'])) {
+  $documento=$_GET['doc'];;
+}
 $consulta="SELECT id_exp, nombre_empresa, sector_empresa, cargo, fecha_ini, fecha_fin, logros FROM exp_laboral where documento ='$documento'";
+        $resultado=mysqli_query($conexion,$consulta);
+            while ($fila=mysqli_fetch_array($resultado)) {
+$exp_laboral[]=$fila;
+            }
+  return $exp_laboral;
+
+}
+function Get_Exp_Person_Action_Model_Individual(){
+$conexion=conectar_base_de_datos();
+$exp_laboral = array();
+if (isset($_GET['doc'])) {
+  $documento=$_GET['doc'];;
+}
+$consulta="SELECT id_exp, nombre_empresa, sector_empresa, cargo, fecha_ini, fecha_fin, logros, documento FROM exp_laboral ";
         $resultado=mysqli_query($conexion,$consulta);
             while ($fila=mysqli_fetch_array($resultado)) {
 $exp_laboral[]=$fila;
@@ -399,6 +507,9 @@ function Get_Estudies_Action_Model(){
 $conexion=conectar_base_de_datos();
 $estudies = array();
 $documento = $_SESSION['documento'];
+if (isset($_GET['doc'])) {
+  $documento=$_GET['doc'];;
+}
 $consulta="SELECT * FROM estudios where documento ='$documento'";
 $resultado=mysqli_query($conexion,$consulta);
 while ($fila=mysqli_fetch_array($resultado)) {
@@ -411,6 +522,9 @@ function Get_Skills_Action_Model(){
 $conexion=conectar_base_de_datos();
 $skills = array();
 $documento = $_SESSION['documento'];
+if (isset($_GET['doc'])) {
+  $documento=$_GET['doc'];;
+  }
 $consulta="SELECT * FROM skills where documento ='$documento'";
 $resultado=mysqli_query($conexion,$consulta);
 while ($fila=mysqli_fetch_array($resultado)) {
@@ -423,6 +537,9 @@ function Get_Reference_Action_Model(){
 $conexion=conectar_base_de_datos();
 $ref = array();
 $documento = $_SESSION['documento'];
+if (isset($_GET['doc'])) {
+  $documento=$_GET['doc'];;
+  }
 $consulta="SELECT * FROM reference where documento ='$documento'";
 $resultado=mysqli_query($conexion,$consulta);
 while ($fila=mysqli_fetch_array($resultado)) {
@@ -441,9 +558,15 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
   $sector_empresa = $_POST['sector_empresa'];
   $logro = $_POST['logros'];
   $documento = $_SESSION['documento'];
+  $documento1=$_POST['doc'];
+  $ruta="update_resume_person";
+  if (isset($documento1)) {
+    $documento=$documento1;
+    $ruta="update_resume";
+  }
   $consulta = "INSERT INTO exp_laboral (documento, nombre_empresa, sector_empresa, cargo, fecha_ini, fecha_fin, logros) values ('$documento','$nombre_empresa','$sector_empresa','$cargo_empresa','$fecha_ini_trabajo','$fecha_fin_trabajo','$logro')";
     mysqli_query($conexion, $consulta);
-    header("Location: /empleo/index.php/update_resume_person");
+    header("Location: /empleo/index.php/".$ruta);
 }
 }
 
@@ -453,9 +576,15 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
   $nombre_skill = $_POST['name_skill'];
   $descripcion_skill = ucwords($_POST['description_skill']); 
   $documento = $_SESSION['documento'];
+  $documento1=$_POST['doc'];
+  $ruta="update_resume_person";
+  if (isset($documento1)) {
+    $documento=$documento1;
+    $ruta="update_resume";
+  }
   $consulta = "INSERT INTO skills (documento, nombre, descripcion) values ('$documento','$nombre_skill','$descripcion_skill')";
     mysqli_query($conexion, $consulta);
-    header("Location: /empleo/index.php/update_resume_person");
+    header("Location: /empleo/index.php/".$ruta);
 }
 }
 
@@ -465,10 +594,16 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
   $name_reference = $_POST['name_reference'];
   $profesion_reference = $_POST['profesion_reference']; 
   $tel_reference = $_POST['tel_reference'];
-  $documento = $_SESSION['documento']; echo  $documento;
+  $documento = $_SESSION['documento']; 
+  $documento1=$_POST['doc'];
+  $ruta="update_resume_person";
+  if (isset($documento1)) {
+    $documento=$documento1;
+    $ruta="update_resume";
+  }
   $consulta = "INSERT INTO reference (documento, name, profesion, telefono) values ('$documento','$name_reference','$profesion_reference','$tel_reference')";
     mysqli_query($conexion, $consulta);
-    header("Location: /empleo/index.php/update_resume_person");
+    header("Location: /empleo/index.php/".$ruta);
 }
 }
 
@@ -483,9 +618,15 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
   $dpto = $_POST['departamento_study'];
   $mun = $_POST['municipio_study'];
   $documento = $_SESSION['documento'];
+  $documento1=$_POST['doc'];
+  $ruta="update_resume_person";
+  if (isset($documento1)) {
+    $documento=$documento1;
+    $ruta="update_resume";
+  }
   $consulta = "INSERT INTO estudios (documento, title, nivel_estudio, centro_educativo, departamento, municipio, fecha_ini, fecha_fin) values ('$documento','$titulo','$nivel_estudio','$entidad','$dpto','$mun','$fecha_ini','$fecha_fin')";
     mysqli_query($conexion, $consulta);
-    header("Location: /empleo/index.php/update_resume_person");
+    header("Location: /empleo/index.php/".$ruta);
 }
 }
 function Sender_Action_Model(){
@@ -558,18 +699,19 @@ $msg ="Wrong activation code.";
 
  function Register_N_Action_Model(){
 if($_SERVER['REQUEST_METHOD']=="POST"){
-if(!empty($_POST['number']) && isset($_POST['name']) &&  !empty($_POST['last_name']) && !empty($_POST['email']) && !empty($_POST['pass']) && !empty($_POST['pass_2']) && !empty($_POST['telefono']))
+if(!empty($_POST['number']) && isset($_POST['name1']) &&  !empty($_POST['last_name1']) && !empty($_POST['email']) && !empty($_POST['pass']) && !empty($_POST['pass_2']) && !empty($_POST['telefono']))
 {
 if($_POST['pass'] == $_POST['pass_2']){
-  echo "entre aca<br>";
-  echo $_POST['pass']." == ".$_POST['pass_2']."<br>";
+  
   $email_natural = htmlentities($_POST['email']);
   $activation=md5($email_natural.time());
   $tipo_documento = htmlentities($_POST['type_document']);
   $telefono = $_POST['telefono'];
   $documento = htmlentities($_POST['number']);
-  $nombre_natural = htmlentities($_POST['name']);
-  $apellido_natural = htmlentities($_POST['last_name']);
+  $nombre_natural1 = htmlentities($_POST['name1']);
+  $nombre_natural2 = htmlentities($_POST['name2']);
+  $apellido_natural1 = htmlentities($_POST['last_name1']);
+  $apellido_natural2 = htmlentities($_POST['last_name2']);
   $pass = htmlentities($_POST['pass']);
   $pass_2 = htmlentities($_POST['pass_2']);
   $passencript= sha1($pass);
@@ -577,7 +719,7 @@ if($_POST['pass'] == $_POST['pass_2']){
  
   $consulta = "INSERT INTO persona (documento, tipo_documento, password, verificado, rol, activation_code) values ('$documento','$tipo_documento','$passencript','N','P','$activation')";
     mysqli_query($conexion, $consulta);
-   $consulta = "INSERT INTO persona_natural (documento, nombre1, apellido1)VALUES('$documento','$nombre_natural','$apellido_natural')";
+   $consulta = "INSERT INTO persona_natural (documento, nombre1, nombre2, apellido1, apellido2)VALUES('$documento','$nombre_natural1','$nombre_natural2','$apellido_natural1','$apellido_natural2')";
    mysqli_query($conexion, $consulta);
     $consulta = "INSERT INTO persona_correo (documento, correo)VALUES('$documento','$email_natural')";
     mysqli_query($conexion, $consulta);
@@ -586,13 +728,12 @@ if($_POST['pass'] == $_POST['pass_2']){
   $siteName = "www.pactamos.com";
   $mailSub = '[Código de Verificación] [' . $siteName . '] ';
   $Contenido="Ingrese a este link Para Verificar su correo: www.pactamos.com/empleo/index.php/verify?code=$activation";
-  $header = 'From: ' . $mail . "\r\n";
-  $header .= 'Reply-To:  ' . $mail . "\r\n";
-  $header .= 'X-Mailer: PHP/' . phpversion();  
-  mail($email_natural,$mailSub ,$Contenido, $header);  
+  $heade = 'From: www.pactamos.com'."\r\n";
+  $heade .= 'Reply-To:  ' . $mail . "\r\n";
+  $heade .= 'X-Mailer: PHP/' . phpversion();  
+  mail($email_natural,$mailSub ,$Contenido, $heade);  
 
-//NIETO AQUI TIENE QUE ENVIAR UN EMAIL A $EMAIL_NATURAL CON EL SIGUIENTE LINK PACTAMOS.COM/EMPLEO/INDEX.PHP/VERIFY?CODE = $ACTIVATION
-      header("Location: /empleo/index.php/register_info");
+  header("Location: /empleo/index.php/register_info");
 }else{
   header("Location: /empleo/index.php/404_error");
 }
@@ -601,7 +742,10 @@ if($_POST['pass'] == $_POST['pass_2']){
 }
 }else{
 header("Location: /empleo/index.php/404_error");  
-}}
+}
+
+}
+
 function Register_E_Action_Model(){
 if($_SERVER['REQUEST_METHOD']=="POST"){
   if(!empty($_POST['number']) && isset($_POST['name_company']) &&  !empty($_POST['email']) && !empty($_POST['pass']) && !empty($_POST['pass_2']) && !empty($_POST['telefono']))
@@ -676,25 +820,24 @@ function Loggin_Action_Model(){
                 $documento_base = $fila['tipo_documento'];
 
                 if ($documentobase==$documentofinal && $passbase==$claveCodificada && $tipo_documento==$documento_base) {
-
-                  
-                $niveldeacceso = $fila['rol'];
-                    
+                    $niveldeacceso = $fila['rol'];
                     $_SESSION['session_started']='yes';
                     if($niveldeacceso=="E"){
                         $consulta_datos="SELECT nombre FROM empresa where documento = '".$documentofinal."'";
                          $resultado1=mysqli_query($conexion,$consulta_datos);
-            while ($fila1=mysqli_fetch_array($resultado1)) {
-                     $_SESSION['nombre']=$fila1['nombre'];
+                      while ($fila1=mysqli_fetch_array($resultado1)) {
+                               $_SESSION['nombre']=$fila1['nombre'];
+                              }
                     }
-                }
-                   if($niveldeacceso=="P" or $niveldeacceso=="A" or $niveldeacceso=="E"){
+
+                    if($niveldeacceso=="P" or $niveldeacceso=="A" or $niveldeacceso=="E"){
                         $consulta_datos="SELECT nombre1 FROM persona_natural where documento = '".$documentofinal."'";
                          $resultado1=mysqli_query($conexion,$consulta_datos);
-            while ($fila1=mysqli_fetch_array($resultado1)) {
-                     $_SESSION['nombre']=$fila1['nombre1'];
+                      while ($fila1=mysqli_fetch_array($resultado1)) {
+                               $_SESSION['nombre']=$fila1['nombre1'];
+                              }
                     }
-                }
+
                 $band=1;
                 $_SESSION['documento']=$documentofinal;
                 $_SESSION['nivel_de_acceso']=$niveldeacceso;
@@ -702,12 +845,12 @@ function Loggin_Action_Model(){
                  if($fila['verificado'] =='N'){
                   session_destroy();
                   $band=2;
-                   $consulta_datos="SELECT correo from persona_correo where documento = '".$documentofinal."'";
+                  $consulta_datos="SELECT correo from persona_correo where documento = '".$documentofinal."'";
                          $resultado1=mysqli_query($conexion,$consulta_datos);
-            while ($fila1=mysqli_fetch_array($resultado1)) {
-                session_start();
-                        $_SESSION['correo_sin_activacion']=$fila1['correo'];
-                    }
+                  while ($fila1=mysqli_fetch_array($resultado1)) {
+                      session_start();
+                              $_SESSION['correo_sin_activacion']=$fila1['correo'];
+                          }
                 
                
                   }
@@ -821,7 +964,7 @@ if (isset($_GET['offerNo'])){
 if($_GET['offerNo']=="" ){
 header("Location: /empleo/index.php/404_error");
 }
- $conexion=conectar_base_de_datos();
+$conexion=conectar_base_de_datos();
 $oferta_detailed=array();
 $No_oferta = $_GET['offerNo'];
 $cont = 0;

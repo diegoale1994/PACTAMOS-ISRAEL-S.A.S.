@@ -119,7 +119,6 @@
                               <span class="color-white-mute"><?php echo $value["fecha"] ?></span> -
                                <BR><label>Comercial:</label><br>
                                <p class="text-truncate "><?php echo $value["nombre1"]." ".$value['apellido1']; ?></p>
-
                             </div>
                           </div>
                         </div><!-- end item list -->
@@ -186,29 +185,6 @@
                                          <?php endforeach ?>
                                     </div>
                   <?php }} ?>
-
-            
-
-            <!-- pagination -->
-            <nav >
-              <ul class="pagination pagination-theme  no-margin">
-                <li>
-                  <a href="#" aria-label="Previous">
-                    <span aria-hidden="true">&larr;</span>
-                  </a>
-                </li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><span>...</span></li>
-                <li><a href="#">50</a></li>
-                <li>
-                  <a href="#" aria-label="Next">
-                    <span aria-hidden="true">&rarr;</span>
-                  </a>
-                </li>
-              </ul>
-            </nav><!-- pagination -->
-
           </div><!-- end box listing -->
 
 

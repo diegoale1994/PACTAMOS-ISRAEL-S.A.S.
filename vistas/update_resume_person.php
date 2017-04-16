@@ -161,20 +161,21 @@
 <div class="body-content clearfix" >
 
 
-<div class="bg-color2">
+<div class="bg-color1 block-section line-bottom">
   <div class="container">
     <div class="row">
-      <div class="col-md-12 bg-color2">
-
-        <!-- box item details -->
+      <div class="col-md-12">
         <div class="block-section box-item-details">
           <div class="resume-block">
-            <div class="img-profile"><img src="../images/user/user1.png" alt=""></div><!--Ponga aui la foto-->
             <div class="desc"><br><br>
-              <form action="../index.php/update_person" method="POST">
+               <form action="../index.php/update_person" method="POST" enctype="multipart/form-data">
+              <?php foreach($person as $person): ?>
+              <div class="img-profile"><img src="../images/Person/<?php echo $person["name_image"];?>" alt="Imagen de Perfil"></div>
+              <h3 class="resume-sub-title"><span>Imagen</span></h3>
+              <input type="file" name="foto" class="form-control" size="30px">
                 <h3 class="resume-sub-title"><span>Información Personal</span></h3>
                 <div class="row">
-                <?php foreach($person as $person): ?>
+                
                   <div class="col-md-6">
                     <div class="form-group ">
                       <label>Primer Nombre</label>
@@ -199,19 +200,27 @@
                       <input type="text" name="apellido2" class="form-control"  value="<?php echo $person["apellido2"]?>">
                     </div>
                   </div>
+                  <?php endforeach ?>                 
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Departamento</label>
-                      <input type="text" name="departamento" class="form-control" value="<?php echo $person["departamento"]?>">
+                      <select class="form-control" name="departamento">
+                      <?php foreach($dpto as $dpto): ?>
+                        <option><?php echo $dpto["departamento"]?></option>
+                      <?php endforeach ?>
+                      </select>                      
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Municipio</label>
-                      <input type="text" name="ciudad" class="form-control" value="<?php echo $person["ciudad"]?>">
+                      <select class="form-control" name="ciudad">
+                      <?php foreach($mun as $mun): ?>
+                        <option><?php echo $mun["municipio"]?></option>
+                      <?php endforeach ?>
+                      </select> 
                     </div>
                   </div>
-                <?php endforeach ?>
                 </div> 
                 </div>
                       <button type="submit" class="btn btn-success">Ingresar</button>     

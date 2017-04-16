@@ -2,6 +2,11 @@
 function Home_Action_Controller(){
 require "vistas/index.php";
 }
+function Resumes_Action_Controller(){
+	$resume=Get_Resumes_Action_Model();
+	$exp_laboral = Get_Exp_Person_Action_Model_Individual();
+require "vistas/resumes.php";
+}
 function Apply_For_Offer_Action_Controller(){
 	Apply_For_Offer_Action_Model();
 }
@@ -31,10 +36,12 @@ function Delete_User_Action_Controller(){
  function Add_comercial_Action_Controller(){
  		Add_comercial_Action_Model();
    }
-  function Create_User_Action_Controller(){
-
-  	Create_User_Action_Model();
-    }
+function Create_User_Action_Controller(){
+  Create_User_Action_Model();
+}
+function Create_Resume_Action_Controller(){
+  Create_Resume_Action_Model();
+}
 function Company_Action_Controller(){
 require "vistas/about.php";
 }
@@ -59,6 +66,8 @@ Offer_Delete_Action_Model();
 }
 function Update_Offer_Action_Controller(){
 $offer=Get_Individual_Offer_Action_Model();
+$dpto=Get_Department_Action_Model();
+$mun=Get_City_Action_Model();
 require "vistas/my_offers.php";
 }
 function Contact_Action_Controller(){
@@ -106,7 +115,10 @@ function Profile_Confirmation_Action_Controller(){
 }
 //Menú usuario logueado
 function Resume_Action_Controller(){
+	
 	$person=Get_Person_Action_Model();
+	$dpto=Get_Department_Action_Model();
+	$mun=Get_City_Action_Model();
 	$exp_laboral = Get_Exp_Person_Action_Model();
 	$estudies= Get_Estudies_Action_Model();
 	$skills= Get_Skills_Action_Model();
@@ -120,11 +132,22 @@ function Resume_Company_Action_Controller(){
 function Update_Resume_Person_Action_Controller(){
 //	$Basic_information = Get_Basic_Information_Person_Action_Model();
 	$person=Get_Person_Action_Model();
+	$dpto=Get_Department_Action_Model();
+	$mun=Get_City_Action_Model(); 	
 	$exp_laboral = Get_Exp_Person_Action_Model();
 	$estudies= Get_Estudies_Action_Model();
 	$skills= Get_Skills_Action_Model();
 	$ref= Get_Reference_Action_Model();
 	require "vistas/update_resume_person.php";
+}
+function Update_Resume_Action_Controller(){
+//	$Basic_information = Get_Basic_Information_Person_Action_Model();
+	$person=Get_Person_Action_Model();
+	$exp_laboral = Get_Exp_Person_Action_Model();
+	$estudies= Get_Estudies_Action_Model();
+	$skills= Get_Skills_Action_Model();
+	$ref= Get_Reference_Action_Model();
+	require "vistas/update_resume.php";
 }
 function Update_Person_Action_Controller(){
 	Person_Update_Action_Model();
@@ -158,6 +181,8 @@ function Job_List_Action_Controller(){
 require "vistas/job_list.php";
 }
 function Job_Post_Action_Controller(){
+	$dpto=Get_Department_Action_Model();
+	$mun=Get_City_Action_Model(); 
 	require "vistas/job_post.php";
   }
  function User_Loggout_Action_Controller(){
@@ -173,7 +198,7 @@ function Job_Post_Action_Controller(){
  }
  function Show_Job_Action_Controller(){
  	$oferta_detailed = Show_Job_Action_Model();
-require "vistas/job_details.php";
+	require "vistas/job_details.php";
  }
   function  error404(){
  	

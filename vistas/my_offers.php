@@ -2,45 +2,46 @@
 if(isset($_SESSION['session_started'])){
 if ($_SESSION['session_started']=='yes') {
 if ( $_SESSION['nivel_de_acceso']=='E') { ?>
- 
 
  <?php ob_start() ?>
-  
-           
-       
         <div class="container">
           <div class="text-center logo"><h1 class="color-white">Mis offertas</h1></div>
         </div>
-
       </header><!-- end main-header -->
 <?php if(!isset($_GET['update'])){ ?>
-<div class="panel panel-default">
-                <div class="panel-heading">
-                </div>
-                <div class="panel-body">
-                  <table    class="table table-striped table-bordered table-hover" id="dataTables-example">
-                      <thead id="nom2" name="rol">
-                        <tr>
-                          <th data-field="id" data-sortable="true" data-align="center" id="name">vacante</th> 
-                          <th data-field="name" data-sortable="true" data-align="center" id="status">fecha_publicacion</ht>
-                          <th>Acciones</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php foreach($myoffers as $offer): ?>
-                          <tr> 
-                            <th><?php echo $offer["vacante"] ?></th> 
-                            <th><?php echo $offer["fecha_publicacion"] ?></ht>  
-                            
-                            <th><a href="/empleo/index.php/offer_update?update=<?php echo $offer['id_oferta'] ?>" class="btn btn-warning"> Modificar</a>
-                            <a href="/empleo/index.php/offer_del?delete=<?php echo $offer['id_oferta'] ?>" class="btn btn-danger"> Eliminar</a>
-                            <a href="/empleo/index.php/job_details?offerNo=<?php echo $offer['id_oferta'] ?>" class="btn btn-success"> Ver</a></th>
-                          </tr>
-                        <?php endforeach ?>
-                      </tbody>
-                  </table>
-                </div>
+<div class="body-content clearfix" >
+  <div class="bg-color1 block-section line-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="col-md-12 col-md-offset-0">
+            <div class="box-list">
+              <?php if (isset($myoffers)): 
+              foreach($myoffers as $offer): ?>
+              <div class="item">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h3 class="no-margin-top"><a href="resume_details.html" class=""><?php echo $offer["vacante"] ?>  <i class="fa fa-link color-white-mute font-1x"></i></a></h3>
+                    <h5><span class="color-black"><?php echo $offer['ciudad']?>, <?php echo $offer['departamento']?></span></h5>
+                    <p><span class="color-white-mute"><?php echo $offer['fecha_publicacion']?></span></p>
+                    <div class="col-md-10 col-md-offset-0">
+                      <a href="/empleo/index.php/offer_update?update=<?php echo $offer['id_oferta'] ?>" class="btn btn-warning"> Modificar</a>   
+                      <a href="/empleo/index.php/offer_del?delete=<?php echo $offer['id_oferta'] ?>" class="btn btn-danger"> Eliminar</a>  
+                      <a href="/empleo/index.php/job_details?offerNo=<?php echo $offer['id_oferta'] ?>" class="btn btn-success"> Ver</a>                   
+                    </div>
+                    </div>
+                  </div>
+                </div><br>
+               <?php endforeach;  endif?>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
    <?php }else{ ?>
 
@@ -61,54 +62,63 @@ if ( $_SESSION['nivel_de_acceso']=='E') { ?>
                   <div class="form-group">
                     <label>Descripción</label>
                     <div class="color-white-mute"><small>Escribe acerca de tu empresa</small></div>
-                    <textarea class="form-control" rows="6" name= "descripcion"><?php echo $offer[0]['descripcion'] ?></textarea>
+                    <textarea class="form-control" id="pub_content" rows="6" name= "descripcion" required><?php echo $offer[0]['descripcion'] ?></textarea>
+                       <script type="text/javascript">
+                          CKEDITOR.replace("pub_content");
+                       </script>
                   </div>
                   <div class="form-group">
                     <label>Descripción profesional</label>
                     <div class="color-white-mute"><small>Que habilidades buscas en la persona</small></div>
-                    <textarea class="form-control" rows="6" name= "descripcion_profesional"><?php echo $offer[0]['descrip_prof'] ?></textarea>
+                    <textarea class="form-control" id="pub_content1" rows="6" name= "descripcion_profesional" required><?php echo $offer[0]['descrip_prof'] ?></textarea>
+                       <script type="text/javascript">
+                          CKEDITOR.replace("pub_content1");
+                       </script>
                   </div>
                    <div class="form-group">
                     <label>Horario de Trabajo</label>
                     <div class="color-white-mute"><small>Describe el horario de trabajo</small></div>
                      <input type="text" class="form-control " name="horario" placeholder="Lunes a Viernes de 8am - 6pm" value="<?php echo $offer[0]['horario'] ?>" Required>
-                  </div>
-                      <div class="form-group">
-                      <label>Area</label>
-                   <select class="form-control" name ="area" data-live-search="true">
-                          <option data-tokens="ketchup mustard" value="A" >A</option>
-                          <option data-tokens="mustard" value= "R">R</option>
-                          <option data-tokens="ketchup mustard" value ="E">E</option>  
-                          <option data-tokens="ketchup mustard" value ="A">A</option>   
-                          <option data-tokens="ketchup mustard" value ="S">S</option>                           
-                        </select>
-                        </div>
+                  </div>                      
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label>Departamento</label>
-                        <input type="text" class="form-control " name="departamento" value= "<?php echo $offer[0]['departamento'] ?>" placeholder="Cundinamarca, Tolima...">
+                        <label>Departamento: <?php echo $offer[0]['departamento'] ?></label>
+                        <select class="form-control" name="departamento">
+                        <?php foreach($dpto as $dpto): ?>
+                          <option><?php echo $dpto["departamento"]?></option>
+                        <?php endforeach ?>
+                        </select>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label>Municipio</label>
-                        <input type="text" class="form-control " name="ciudad" value= "<?php echo $offer[0]['ciudad'] ?>" placeholder="Ciudad">
+                        <label>Ciudad: <?php echo $offer[0]['ciudad']?></label>
+                        <select class="form-control" name="ciudad">
+
+                        <?php foreach($mun as $mun): ?>
+                          <option <?php if ($mun==$offer[0]['ciudad']) {echo 'selected="selected"';};?>><?php echo $mun["municipio"]?></option>
+                        <?php endforeach ?>
+                        </select>
                       </div>
                     </div>
                   </div>
-                <div class="form-group">
-                    <label>Vacantes</label>
-                    <input type="number" class="form-control " name="vacantes", min="1" value = "<?php echo $offer[0]['vacantes'] ?>" Required>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Vacantes</label>
+                      <input type="number" class="form-control " name="vacantes", min="1" value = "<?php echo $offer[0]['vacantes'] ?>" Required>
+                    </div>
                   </div>
-                     <div class="form-group">
-                    <label>Tiempo (no se exactamente que debe ir cambio si algo por select)</label>
-                    <input type="text" class="form-control " name="tiempo" placeholder="tiempo" value= "<?php echo $offer[0]['tiempo'] ?>">
-                  </div>
-  
+                  <div class="col-md-6">
+                    <label>Salario</label>
+                    <div class="input-group">
+                      <span class="input-group-addon">$</span>
+                      <input type="number" class="form-control" name="salario" value = "<?php echo $offer[0]['salario'] ?>"  Required>
+                    </div>
+                  </div> 
 
                   <div class="form-group ">
-                    <button class="btn btn-t-primary btn-theme">Modificar</button>
+                    <button class="btn btn-warning btn-theme btn-block">Modificar</button>
                   </div>
 
 

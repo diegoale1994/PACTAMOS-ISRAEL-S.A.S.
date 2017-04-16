@@ -2,53 +2,32 @@
 
 <?php ob_start() ?>
         <div class="container">
-          <div class="text-center logo no-margin-bottom"> <a href="index.html"><img src="../images/logo.png" alt=""></a></div>
-          <h3 class="color-white text-center ">Page Not Found</h3>
+          <div class="text-center logo no-margin-bottom"> <a href="#"><img src="../images/logo_pactamos.png" alt="" width="30%"></a></div>
+          <h3 class="color-white text-center "></h3>
           <div class="white-space-50"></div>
         </div>
       </header><!-- end main-header -->
-
-
-      <!-- body-content -->
       <div class="body-content clearfix" >
-
         <div class="block-section bg-color2">
           <div class="container">
             <!-- text centered -->
             <div class="text-center">
             <?php if(isset($_GET['status'])){
-  if($_GET['status']=="verified"){
-    ?>
-    
-   <h1>YOUR ACCOUNT IS NOW ACTIVATED LETS LOG IN</h1>
-    
-    <?php
-  }
- }else{ ?>
-  <h1>Log in into your mail account and activate your account !!!</h1>
-  <H2>THIS IS YOUR EMAIL GO AND CHECK IT ! <?php 
-  if (isset($_SESSION['correo_sin_activacion'])){
-  echo $_SESSION['correo_sin_activacion'];
-  }?></H2>
-  <?php } ?>
-              
-
-              <p>Here are some helpful links instead:</p>
-              <ul class="list-inline">
-                <li> <a href="#">Home</a></li>
-                <li><a href="#">Find a Job</a></li>
-                <li> <a href="#">Blog</a></li>
-                <li> <a href="#">Contact Us</a></li>
-              </ul>
-            </div><!-- end text centered -->
-
-            <!-- big text error -->
-            <div class="big-error">404</div><!-- end big text error -->
+              if($_GET['status']=="verified"){
+                ?>
+               <h1>Tu cuenta ha sido Activada, <a href="/empleo/index.php/loggin">Ingresa.</a></h1>
+                
+                <?php
+              }
+             }else{ ?>
+              <h1>Revisa tu bandeja de Entrada, para terminar el registro.</h1>
+             <H2> <?php 
+              if (isset($_SESSION['correo_sin_activacion'])){
+              echo $_SESSION['correo_sin_activacion'];
+              }?></H2>
+              <?php } ?>
           </div>
         </div>        
       </div><!--end body-content -->
-
-
-
 <?php $contenido=ob_get_clean(); ?>
 <?php include "plantilla/plantilla_base.php"; ?>

@@ -29,14 +29,15 @@ if ( $_SESSION['nivel_de_acceso']=='A') { ?>
                     <input class="form-control" type="text" name="apellido" required>
                   </div>
                   <div class="col-md-2">
-                    <label>Password</label>
+                    <label>Contraseña</label>
                     <input class="form-control" type="text" name="pass">
                   </div>
                   <div class="col-md-2">
                     <label>Tipo de Usuario</label>
                     <select class="form-control"  name="Tipo_user">
-                     <option value= "C">COMERCIAL</option>
-                     <option value= "V">VENTAS</option>
+                     <option value= "A">Adminsitrador</option>
+                     <option value= "V">Ventas</option>
+                     <option value= "C">Contabilidad</option>
                     </select>
                   </div>
                   <div class="col-md-2">
@@ -78,6 +79,9 @@ if ( $_SESSION['nivel_de_acceso']=='A') { ?>
                       }
                        if ($value['rol'] == 'V') {
                       echo "VENTAS";
+                      }
+                       if ($value['rol'] == 'A') {
+                      echo "ADMINISTRADOR";
                       }
                       	?>
                       </th>                    

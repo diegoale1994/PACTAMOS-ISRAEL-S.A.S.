@@ -89,8 +89,7 @@
                 <form method="POST" action="../index.php/register_N_form">
                   <div class="form-group">
                     <label>Tipo de Documento</label>
-                                     <select name="type_document" class="form-control">
-                      
+                    <select name="type_document" class="form-control">
                       <option value= "CC">CC</option>
                       <option value= "CE">CE</option>
                     </select>      
@@ -101,12 +100,20 @@
                   </div>
                   <div class="row">
                     <div class="form-group col-md-6">
-                      <label>Nombres</label>
-                      <input type="text" class="form-control" placeholder="Nombre" name="name">
+                      <label>Primer Nombre</label>
+                      <input type="text" class="form-control" placeholder="Nombre" name="name1">
                     </div>
                     <div class="form-group col-md-6">
-                      <label>Apellidos</label>
-                      <input type="text" class="form-control" placeholder="Apellido" name="last_name">
+                      <label>Segundo Nombre</label>
+                      <input type="text" class="form-control" placeholder="Nombre" name="name2">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label>Primer Apellidos</label>
+                      <input type="text" class="form-control" placeholder="Apellido" name="last_name1">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label>Segundo Apellidos</label>
+                      <input type="text" class="form-control" placeholder="Apellido" name="last_name2">
                     </div>
                   </div>
                   <div class="form-group">
