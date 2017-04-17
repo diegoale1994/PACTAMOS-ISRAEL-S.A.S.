@@ -227,7 +227,7 @@
                 <?php endforeach ?>
                 </div> 
                 </div>
-                      <button type="submit" class="btn btn-success">Ingresar</button>     
+                <button type="submit" class="btn btn-success">Ingresar</button>     
               </form>            
 
               <h3 class="resume-sub-title"><span>Experiencia Laboral</span></h3>

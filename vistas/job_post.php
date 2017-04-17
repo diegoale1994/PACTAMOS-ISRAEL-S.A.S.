@@ -35,7 +35,7 @@ if ( $_SESSION['nivel_de_acceso']=='E') { ?>
                     <div class="color-white-mute"><small>Qué se debe hacer</small></div>
                     <textarea class="form-control" id="pub_content" rows="6" name= "descripcion" required></textarea>
                        <script type="text/javascript">
-                          CKEDITOR.replace("pub_content");
+                          //CKEDITOR.replace("pub_content");
                        </script>
                   </div>
                   <div class="form-group">
@@ -43,7 +43,7 @@ if ( $_SESSION['nivel_de_acceso']=='E') { ?>
                     <div class="color-white-mute"><small>Que habilidades se requieren</small></div>                   
                     <textarea class="form-control" id="pub_content1" rows="6" name= "descripcion_profesional" required></textarea>
                        <script type="text/javascript">
-                          CKEDITOR.replace("pub_content1");
+                          //CKEDITOR.replace("pub_content1");
                        </script>
                   </div>
                   <div class="form-group">

@@ -59,20 +59,29 @@ header("Location: /empleo/index.php/job_list");
 function Update_Resume_Company_Do_Action_Model(){
  if($_SERVER['REQUEST_METHOD']=="POST"){
   $documento = $_SESSION['documento'];
- $email = htmlentities($_POST['email']);
+  $email = htmlentities($_POST['email']);
   $telefono = htmlentities($_POST['telefono']);
   $direccion = htmlentities($_POST['direccion']);
   $website = htmlentities($_POST['website']);
   $sector = htmlentities($_POST['sector']);
   $descripcion = htmlentities($_POST['descripcion']);
   $razon = htmlentities($_POST['razon']);
+  $foto=$_FILES["foto"]["name"];
+  $ruta=$_FILES['foto']['tmp_name'];
+  $destino="./images/Company/".$foto;
+  move_uploaded_file($ruta, $destino);
+  if(isset($_POST['doc1'])){$documento=$_POST['doc1'];}
+
+
   $conexion=conectar_base_de_datos();
- $consulta = "UPDATE persona Set direccion = '$direccion' Where documento='$documento'";
+    if ($foto==!""){$consulta = "UPDATE persona Set direccion = '$direccion', image='$destino', name_image='$foto', correo='$email', telefono='$telefono' Where documento='$documento'";}
+    else{$consulta = "UPDATE persona Set direccion = '$direccion', correo='$email', telefono='$telefono' Where documento='$documento'";}
     mysqli_query($conexion, $consulta);
     $consulta = "UPDATE empresa Set descripcion = '$descripcion', sector = '$sector', razon = '$razon', website = '$website' Where documento='$documento'";
     mysqli_query($conexion, $consulta);
+    if(isset($_POST['doc1'])){header("Location: /empleo/index.php/clients");}
+    else{header("Location: /empleo/index.php/update_resume_company");}
 
-header("Location: /empleo/index.php/update_resume_company");
 }else{
   
  header("Location: /empleo/index.php/404_error");
@@ -148,6 +157,21 @@ $resume[]=$fila;
             }
             
             return $resume;
+}
+
+function Get_Company_Action_Model(){
+
+
+$conexion=conectar_base_de_datos();
+$company = array();
+$consulta="SELECT * FROM persona, empresa WHERE persona.documento=empresa.documento AND
+persona.rol = 'E'";
+$resultado=mysqli_query($conexion,$consulta);
+  while ($fila=mysqli_fetch_array($resultado)) {
+$company[]=$fila;
+            }
+            
+            return $company;
 }
 
 
@@ -245,13 +269,15 @@ function Person_Update_Action_Model(){
   $ruta=$_FILES['foto']['tmp_name'];
   $destino="./images/Person/".$foto;
   move_uploaded_file($ruta, $destino);
-  if (isset($documento1)) {
-    $documento=$documento1;
+  if (isset($_POST['doc'])) {
+    $documento=$_POST['doc'];
   }
  
    if ($foto!="") {
    
-    $consulta = "UPDATE persona_natural Set nombre1='$nombre1',nombre2='$nombre2', apellido2='$apellido2', apellido1='$apellido1', image='$destino', name_image='$foto' Where documento='$documento'";
+    $consulta = "UPDATE persona_natural Set nombre1='$nombre1',nombre2='$nombre2', apellido2='$apellido2', apellido1='$apellido1' Where documento='$documento'";
+    $resultado=mysqli_query($conexion,$consulta); 
+    $consulta = "UPDATE persona Set image='$destino', name_image='$foto' Where documento='$documento'";
   }
   else{
     $consulta = "UPDATE persona_natural Set nombre1='$nombre1',nombre2='$nombre2', apellido2='$apellido2', apellido1='$apellido1' Where documento='$documento'";
@@ -268,13 +294,13 @@ function Get_company_Profile(){
 $conexion=conectar_base_de_datos();
 $company = array();
 $company_document = $_SESSION['documento'];
-$consulta="SELECT departamento, ciudad, direccion, nombre, descripcion, sector, razon, website, correo, telefono FROM persona p, empresa e, persona_correo pc, persona_telefono pt where p.documento=e.documento and pc.documento = e.documento and pt.documento = e.documento and e.documento= '$company_document'";
+if (isset($_GET['doc'])){$company_document=$_GET['doc'];}
+$consulta="SELECT * FROM persona, empresa where persona.documento=empresa.documento and empresa.documento= '$company_document'";
         $resultado=mysqli_query($conexion,$consulta);
             while ($fila=mysqli_fetch_array($resultado)) {
 $company[]=$fila;
 
             }
-
             return $company;
 
 }
@@ -746,14 +772,41 @@ header("Location: /empleo/index.php/404_error");
 
 }
 
+function Register_Company_Action_Model(){
+  if($_SERVER['REQUEST_METHOD']=="POST"){
+    $tipo_documento = htmlentities($_POST['type_number']);
+    $documento = htmlentities($_POST['number']);
+    $nombre_empresa = htmlentities($_POST['name_company']);
+    $descripcion=$_POST['description'];
+    $razon=$_POST['razon'];
+    $sector=$_POST['sector'];
+    $departamento=$_POST['departamento'];
+    $ciudad=$_POST['ciudad'];
+    $direccion=$_POST['direccion'];
+    $telefono = $_POST['telefono'];
+    $email_empresa = htmlentities($_POST['email']);
+    $website=$_POST['website'];
+    $activation=md5($email_empresa.time());
+    $passencript= sha1($nombre_empresa);
+
+    $conexion=conectar_base_de_datos();
+    $consulta = "INSERT INTO persona (documento, tipo_documento, password, verificado, rol, activation_code, departamento, ciudad, direccion ,telefono) values ('$documento','$tipo_documento','$passencript','Y','E','$activation', '$departamento', '$ciudad','$direccion', '$telefono')";
+    mysqli_query($conexion, $consulta);
+    $consulta = "INSERT INTO empresa (documento, nombre, descripcion, sector, razon, website)VALUES('$documento','$nombre_empresa','$descripcion','$sector','$razon','$website')";
+    mysqli_query($conexion, $consulta);
+
+
+  }
+}
+
 function Register_E_Action_Model(){
 if($_SERVER['REQUEST_METHOD']=="POST"){
   if(!empty($_POST['number']) && isset($_POST['name_company']) &&  !empty($_POST['email']) && !empty($_POST['pass']) && !empty($_POST['pass_2']) && !empty($_POST['telefono']))
 {
 if($_POST['pass'] == $_POST['pass_2']){
-  $email_empresa = htmlentities($_POST['email']);
-  $activation=md5($email_empresa.time());
-  $tipo_documento = htmlentities($_POST['type_document']);
+$email_empresa = htmlentities($_POST['email']);
+$activation=md5($email_empresa.time());
+$tipo_documento = htmlentities($_POST['type_document']);
 $documento = htmlentities($_POST['number']);
 $nombre_empresa = htmlentities($_POST['name_company']);
 $email_empresa = htmlentities($_POST['email']);

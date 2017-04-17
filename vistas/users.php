@@ -30,7 +30,7 @@ if ( $_SESSION['nivel_de_acceso']=='A') { ?>
                   </div>
                   <div class="col-md-2">
                     <label>Contraseña</label>
-                    <input class="form-control" type="text" name="pass">
+                    <input class="form-control" type="password" name="pass">
                   </div>
                   <div class="col-md-2">
                     <label>Tipo de Usuario</label>

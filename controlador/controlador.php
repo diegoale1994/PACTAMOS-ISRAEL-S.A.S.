@@ -7,6 +7,12 @@ function Resumes_Action_Controller(){
 	$exp_laboral = Get_Exp_Person_Action_Model_Individual();
 require "vistas/resumes.php";
 }
+function View_Company_Action_Controller(){
+	$company=Get_Company_Action_Model();
+	$dpto=Get_Department_Action_Model();
+	$mun=Get_City_Action_Model();
+require "vistas/company.php";
+}
 function Apply_For_Offer_Action_Controller(){
 	Apply_For_Offer_Action_Model();
 }
@@ -24,7 +30,7 @@ function Change_Comercial_Action_Controller(){
 	Change_Comercial_Action_Model();
 }
  function Update_Resume_Company_Do_Action_Controller(){
-Update_Resume_Company_Do_Action_Model();
+	Update_Resume_Company_Do_Action_Model();
  }
 function Delete_User_Action_Controller(){
 	Delete_User_Action_Model();
@@ -129,6 +135,7 @@ function Resume_Company_Action_Controller(){
 	$company = Get_company_Profile();
 	require "vistas/resume_company.php";
 }
+
 function Update_Resume_Person_Action_Controller(){
 //	$Basic_information = Get_Basic_Information_Person_Action_Model();
 	$person=Get_Person_Action_Model();
@@ -153,8 +160,11 @@ function Update_Person_Action_Controller(){
 	Person_Update_Action_Model();
 }
 function Update_Resume_Company_Action_Controller(){
-$company = Get_company_Profile();
+	$company = Get_company_Profile();
 	require "vistas/update_resume_company.php";
+}
+function Register_Company_Action_Controller(){
+	Register_Company_Action_Model();
 }
 function Register_E_Action_Controller(){
 	Register_E_Action_Model();

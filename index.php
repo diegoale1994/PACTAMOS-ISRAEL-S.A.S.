@@ -96,6 +96,9 @@
     if($uri=="/empleo/index.php/resume_person"){
      Resume_Action_Controller();
     } 
+    if($uri=="/empleo/index.php/clients"){
+     View_Company_Action_Controller();
+    } 
     if($uri=="/empleo/index.php/update_resume_person"){
      Update_Resume_Person_Action_Controller();
     }
@@ -114,6 +117,9 @@
     if($uri=="/empleo/index.php/resume_company"){
      Resume_Company_Action_Controller();
     } 
+    if($uri=="/empleo/index.php/create_company"){
+     Register_Company_Action_Controller();
+    }
 
 if($uri=="/empleo/index.php/Assing_comercial"){
      Add_comercial_Action_Controller();
@@ -184,6 +190,13 @@ if($uri=="/empleo/index.php/Assing_comercial"){
     if($uri[0]=="/empleo/index.php/resume_view"){      
         Resume_Action_Controller();
     }
+    if($uri[0]=="/empleo/index.php/company_view"){      
+        Resume_Company_Action_Controller();
+    }
+    if($uri[0]=="/empleo/index.php/company_update"){      
+        Update_Resume_Company_Action_Controller();
+    }
+    
     if($uri[0]=="/empleo/index.php/resume_del"){      
         Delete_Resume_Action_Controller();
     }

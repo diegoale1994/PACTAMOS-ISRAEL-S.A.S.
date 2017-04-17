@@ -1,13 +1,11 @@
 <?php 
 if(isset($_SESSION['session_started'])){
 if ($_SESSION['session_started']=='yes') {
-if ( $_SESSION['nivel_de_acceso']=='E') { ?>
+if ( $_SESSION['nivel_de_acceso']=='E' || $_SESSION['nivel_de_acceso']=='A') { ?>
  
 
  <?php ob_start() ?>
-        <div class="container">
-          <div class="text-center logo"><h1 class="color-white">Nombre de La Empresa</h1></div>
-        </div>
+        
 
       </header><!-- end main-header -->
       <!-- body-content -->
@@ -22,21 +20,21 @@ if ( $_SESSION['nivel_de_acceso']=='E') { ?>
                 <div class="block-section box-item-details">
                   <!-- logo company-->
                   <div class="row">
+                  <form action ="../index.php/update_resume_company_do" method="post" enctype="multipart/form-data">
+                   <?php foreach ($company as $value): ?>       
                     <div class="col-md-8">
-                      <a href=""><img src="./assets/theme/images/patner/4.png" alt=""></a>
+                      <a href=""><img src="../images/Company/<?php echo $value["name_image"];?>" alt="Imagen de Perfil" width="50%"></a>                      
+                      <h3 class="resume-sub-title"><span>Imagen</span></h3>
+                      <input type="file" name="foto" class="form-control" size="30px">
                     </div>                    
-                  </div><!-- end logo company-->
-                  <!-- Bout Company-->
-                  <form action ="../index.php/update_resume_company_do" method="post">
-                   <?php foreach ($company as $value): ?>
-                 
+                  </div>
                   <h3 class="title " id="cp-about">Acerca de Nosotros</h3>
                   <h4>Razon Social:</h4>
                   <input class="form-control" name="razon" value="<?php echo $value['razon']?>">
                   <h4>Sector:</h4>
                   <input class="form-control" name="sector" value="<?php echo $value['sector']?>">
                   <h4>Descripción:</h4>
-                  <textarea class="form-control" name ="descripcion" rows="30"><?php echo $value['descripcion']?></textarea>
+                  <textarea class="form-control" name ="descripcion" rows="6"><?php echo $value['descripcion']?></textarea>
                   
                   <h3 class="title" id="cp-contact">Contacto</h3>
                   <h4>Teléfono:</h4>
@@ -44,18 +42,19 @@ if ( $_SESSION['nivel_de_acceso']=='E') { ?>
                   <h4>Dirección: </h4>
                   <input class="form-control" name="direccion" value="<?php echo $value['direccion']?>">
                   <h4>E-mail:</h4>
-                  <input class="form-control" name="correo" value="<?php echo $value['correo']?>">
+                  <input class="form-control" name="email" value="<?php echo $value['correo']?>">
                   <h4>Sitio Web:</h4>
                   <input class="form-control" name="website" value="<?php echo $value['website']?>">
-                   <?php   endforeach ?> 
-                  <!-- jobs list-->
+                  <?php if (isset($value['documento'])){?><input type="" name="doc1" hidden value="<?php echo $value['documento']?>"><?php } ?>
+                   <?php   endforeach ?> <br>                  <!-- jobs list-->
                  
-                   <button class="btn btn-theme btn-lg btn-t-primary btn-block">Actualizar</button>   
+                   <button class="btn btn-theme btn-lg btn-warning btn-block">Actualizar</button>   
                   </form>      
                 </div><!-- end box item details -->
 
 
               </div>
+              <?php if ( $_SESSION['nivel_de_acceso']=='E') { ?>
               <div class="col-md-3">
 
                 <!-- box afix right -->
@@ -70,22 +69,11 @@ if ( $_SESSION['nivel_de_acceso']=='E') { ?>
                       <li>
                         <a href="#cp-contact" class="link-innerpage">Contacto</a>
                       </li>
-                      <li>
-                        <a href="#cp-jobs" class="link-innerpage">Requerimientos</a>
-                      </li>
-                    </ul>
-                    <p>Share This Company </p>
-                    <p class="share-btns">
-                      <a href="#" class="btn btn-primary"><i class="fa fa-facebook"></i></a>
-                      <a href="#" class="btn btn-info"><i class="fa fa-twitter"></i></a>
-                      <a href="#" class="btn btn-danger"><i class="fa fa-google-plus"></i></a>
-                      <a href="#" class="btn btn-warning"><i class="fa fa-envelope"></i></a>
-                    </p>
+                    </ul>                    
                   </div>
-                </div><!-- end box afix right -->
-
-
+                </div>
               </div>
+               <?php } ?>
             </div>
           </div>
         </div> <!-- end company profile -->

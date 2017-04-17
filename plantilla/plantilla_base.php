@@ -44,8 +44,8 @@ if($tiempo_actual > $inac){
         <nav class="navbar navbar-default main-navbar hidden-sm hidden-xs">
           <div class="container">
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">                  
-              <?php 
-                if (isset($_SESSION['nivel_de_acceso'])){ 
+              <?php $acceso=0;
+                if (isset($_SESSION['nivel_de_acceso'])){ $acceso=1;
                   if($_SESSION['nivel_de_acceso']=='A'){
                   ?>
                 <ul class="nav navbar-nav">
@@ -55,7 +55,8 @@ if($tiempo_actual > $inac){
                   </a></li>
                   <li class=""><a href="../index.php/resumes">Hojas de Vida</a></li> 
                   <li class=""><a href="../index.php/clients">Empresas</a></li> 
-                  <li class=""><a href="../index.php/manage_users">Usuarios</a></li>                
+                  <li class=""><a href="../index.php/manage_users">Usuarios</a></li>   
+                  <li class=""><a href="#">Estados de Cuenta</a></li>              
                 </ul>  
                 <ul class="nav navbar-nav navbar-right">
                   <li class="dropdown">
@@ -67,109 +68,85 @@ if($tiempo_actual > $inac){
                     </ul>
                   </li>
                 </ul>
-              <?php }
-                if($_SESSION['nivel_de_acceso']=='Cm'){
-                  ?>
-                    <ul class="nav navbar-nav">
-                      <li><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
-                      <li class=""><a href="../index.php/resume_company"><strong>Perfil</strong></a></li>  
-                      <li class=""><a href="../index.php/job_list"><strong>Clientes</strong></a></li>
-                      <li class=""><a href="../index.php/my_offers">Hojas de Vida</a></li> 
-                    </ul>  
-                    <ul class="nav navbar-nav navbar-right">
-                      <li class="dropdown">
-                        <a href="#" class="link-profile dropdown-toggle"  data-toggle="dropdown" >
-                          <img src="../images/logo_pactamos.png" alt="" class="img-profile"><?php echo $_SESSION['nombre'];?><b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="/empleo/index.php/loggout"> Salir</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  <?php } 
-                  if($_SESSION['nivel_de_acceso']=='Cn'){
-                  ?>
-                    <ul class="nav navbar-nav">
-                      <li><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
-                      <li class=""><a href="../index.php/resume_company"><strong>Perfil</strong></a></li>  
-                      <li class=""><a href="../index.php/job_list"><strong>Empresas</strong></a></li>
-                      <li class=""><a href="../index.php/my_offers">Contabilidad</a></li> 
-                    </ul>  
-                    <ul class="nav navbar-nav navbar-right">
-                      <li class="dropdown">
-                        <a href="#" class="link-profile dropdown-toggle"  data-toggle="dropdown" >
-                          <img src="../images/people/4.jpg" alt="" class="img-profile"><?php echo $_SESSION['nombre'];?><b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="/empleo/index.php/loggout"> Salir</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  <?php } 
-                  if($_SESSION['nivel_de_acceso']=='E'){
-                  ?>
-                <ul class="nav navbar-nav">
-                  <li><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
-                  <li class=""><a href="../index.php/resume_company"><strong>Perfil</strong></a></li>
-                  <li class=""><a href="../index.php/job_post"><strong>Publicar oferta</strong></a></li>
-                  <li class=""><a href="../index.php/my_offers">Mis Ofertas</a></li>   
-                  <li class=""><a href="../index.php/my_account">Estado de Cuenta</a></li>               
-                </ul>  
-                <ul class="nav navbar-nav navbar-right">
-                  <li class="dropdown">
-                    <a href="#" class="link-profile dropdown-toggle"  data-toggle="dropdown" >
-                      <img src="../images/logo_pactamos.png" alt="" class="img-profile"><?php echo $_SESSION['nombre'];?><b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="/empleo/index.php/loggout"> Salir</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              <?php } 
-              if($_SESSION['nivel_de_acceso']=='P'){
-              ?>
-                <ul class="nav navbar-nav">
+              <?php } ?>
+              <?php if($_SESSION['nivel_de_acceso']=='Cm'){
+                ?>
+                  <ul class="nav navbar-nav">
+                    <li><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
+                    <li class=""><a href="../index.php/resume_company"><strong>Perfil</strong></a></li>  
+                    <li class=""><a href="../index.php/job_list"><strong>Clientes</strong></a></li>
+                    <li class=""><a href="../index.php/my_offers">Hojas de Vida</a></li> 
+                  </ul>  
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                      <a href="#" class="link-profile dropdown-toggle"  data-toggle="dropdown" >
+                        <img src="../images/logo_pactamos.png" alt="" class="img-profile"><?php echo $_SESSION['nombre'];?><b class="caret"></b>
+                      </a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="/empleo/index.php/loggout"> Salir</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                <?php } ?>
+                
+                <?php  if($_SESSION['nivel_de_acceso']=='E'){ ?>
+                  <ul class="nav navbar-nav">
+                    <li><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
+                    <li class=""><a href="../index.php/resume_company"><strong>Perfil</strong></a></li>
+                    <li class=""><a href="../index.php/job_post"><strong>Publicar oferta</strong></a></li>
+                    <li class=""><a href="../index.php/my_offers">Mis Ofertas</a></li>   
+                    <li class=""><a href="../index.php/my_account">Estado de Cuenta</a></li>               
+                  </ul>  
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                      <a href="#" class="link-profile dropdown-toggle"  data-toggle="dropdown" >
+                        <img src="../images/logo_pactamos.png" alt="" class="img-profile"><?php echo $_SESSION['nombre'];?><b class="caret"></b>
+                      </a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="/empleo/index.php/loggout"> Salir</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                <?php } ?>
+                <?php if($_SESSION['nivel_de_acceso']=='P'){ ?>
+                  <ul class="nav navbar-nav">
 
-                  <li ><a href="/empleo/index.php/home"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
-                   <li class=""><a href="../index.php/resume_person">Perfil</a></li>
-                  <li class=""><a href="#">Busca Ofertas</a></li>
-                  
-                  <li style="padding:15px"><form  action = "/empleo/index.php/job_list" method ="post"> <div class="col-md-5"> <input class="form-control" name = "trabajo" placeholder="Nombre del empleo" required ></div><div class="col-md-4"> <input class="form-control" name = "donde" placeholder="Lugar"></div> <div class="col-md-3"><button class="btn btn-block btn-theme  btn-success">Buscar</button> </div></form></li> 
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                  <li class="dropdown">
-                    <a href="#" class="link-profile dropdown-toggle"  data-toggle="dropdown" >
-                      <img src="../images/logo_pactamos.png" alt="" class="img-profile"><?php echo $_SESSION['nombre'];?><b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="my_alerts.html"> My Alerts </a></li>
-                      <li><a href="my_notifications.html"> Notifications <span class="badge ">5</span></a></li>
-                      <li><a href="change_password.html"> Cambiar contraseña</a></li>
-                      <li><a href="/empleo/index.php/loggout"> SAlir</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              <?php }}else{ ?>
-                <ul class="nav navbar-nav">
-                  <li><a href="/empleo/index.php/home"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
-                  <li class=""><a href="../index.php/home"><strong>Inicio</strong></a></li>
-                  <!--<li class=""><a href="../index.php/job_list"><strong>Ofertas</strong></a></li>-->
+                    <li ><a href="/empleo/index.php/home"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
+                     <li class=""><a href="../index.php/resume_person">Perfil</a></li>
+                    <li class=""><a href="#">Busca Ofertas</a></li>
+                    
+                    <li style="padding:15px"><form  action = "/empleo/index.php/job_list" method ="post"> <div class="col-md-5"> <input class="form-control" name = "trabajo" placeholder="Nombre del empleo" required ></div><div class="col-md-4"> <input class="form-control" name = "donde" placeholder="Lugar"></div> <div class="col-md-3"><button class="btn btn-block btn-theme  btn-success">Buscar</button> </div></form></li> 
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                      <a href="#" class="link-profile dropdown-toggle"  data-toggle="dropdown" >
+                        <img src="../images/logo_pactamos.png" alt="" class="img-profile"><?php echo $_SESSION['nombre'];?><b class="caret"></b>
+                      </a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="/empleo/index.php/loggout"> Salir</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                <?php }}?>
+                <?php if($acceso==0) {?>
+                  <ul class="nav navbar-nav">
+                    <li><a href="/empleo/index.php/home"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
+                    <li class=""><a href="../index.php/home"><strong>Inicio</strong></a></li>
+                    <!--<li class=""><a href="../index.php/job_list"><strong>Ofertas</strong></a></li>-->
 
-                  <li class=""><a href="../index.php/company">¿Quienes somos?</a></li>
-                  <li class=""><a href="../brochure/brochure pactamos proyecto.html" target="_blank">Servicios</a></li>
-                  <li class=""><a href="../index.php/contact">Contáctenos</a></li>                  
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                  <li class="link-btn"><a href="../index.php/login"><span class="btn btn-theme btn-pill btn-xs btn-line">Ingresar</span></a></li>
-                  <li class="link-btn"><a href="../index.php/register"><span class="btn btn-theme  btn-pill btn-xs btn-line">Registro</span></a></li>
-                </ul>
-          <!-- end main navbar -->
-              <?php }?> 
+                    <li class=""><a href="../index.php/company">¿Quienes somos?</a></li>
+                    <li class=""><a href="../brochure/brochure pactamos proyecto.html" target="_blank">Servicios</a></li>
+                    <li class=""><a href="../index.php/contact">Contáctenos</a></li>                  
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="link-btn"><a href="../index.php/login"><span class="btn btn-theme btn-pill btn-xs btn-line">Ingresar</span></a></li>
+                    <li class="link-btn"><a href="../index.php/register"><span class="btn btn-theme  btn-pill btn-xs btn-line">Registro</span></a></li>
+                  </ul>
+            <!-- end main navbar -->
+                <?php }?> 
               </div>
             </div>
-          </nav> 
-              
-
+        </nav> 
         <!-- mobile navbar -->
         <div class="container">
           <nav class="mobile-nav hidden-md hidden-lg">
