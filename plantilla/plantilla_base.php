@@ -95,7 +95,7 @@ if($tiempo_actual > $inac){
                     <li class=""><a href="../index.php/resume_company"><strong>Perfil</strong></a></li>
                     <li class=""><a href="../index.php/job_post"><strong>Publicar oferta</strong></a></li>
                     <li class=""><a href="../index.php/my_offers">Mis Ofertas</a></li>   
-                    <li class=""><a href="../index.php/my_account">Estado de Cuenta</a></li>               
+                    <li class=""><a href="../index.php/account">Estado de Cuenta</a></li>               
                   </ul>  
                   <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">

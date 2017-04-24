@@ -157,6 +157,9 @@
                             <div class="col-md-3">
                               <a href="/empleo/index.php/company_del?doc=<?php echo $comp["documento"] ?>" class="btn btn-danger"> Eliminar</a>
                             </div>
+                            <div class="col-md-3">
+                              <a href="/empleo/index.php/account?doc=<?php echo $comp["documento"] ?>" class="btn btn-primary"> Facturar</a>
+                            </div>
                           </div>
                         </div>
                       </div>

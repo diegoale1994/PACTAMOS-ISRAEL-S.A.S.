@@ -13,6 +13,11 @@ function View_Company_Action_Controller(){
 	$mun=Get_City_Action_Model();
 require "vistas/company.php";
 }
+function View_Account_Action_Controller(){
+	$account=Get_Account_Action_Model();
+	$document=Get_Account_Action_Model();
+require "vistas/accounting.php";
+}
 function Apply_For_Offer_Action_Controller(){
 	Apply_For_Offer_Action_Model();
 }
@@ -47,6 +52,9 @@ function Create_User_Action_Controller(){
 }
 function Create_Resume_Action_Controller(){
   Create_Resume_Action_Model();
+}
+function Create_Account_Action_Controller(){
+  Create_Account_Action_Model();
 }
 function Company_Action_Controller(){
 require "vistas/about.php";

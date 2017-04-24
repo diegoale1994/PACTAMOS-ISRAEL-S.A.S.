@@ -230,6 +230,7 @@ $profesion=$_POST['profesion'];
 
 }
 
+
 function Get_Basic_Information_Person_Action_Model(){
 $conexion=conectar_base_de_datos();
 $my_offers = array();
@@ -484,6 +485,32 @@ function Get_City_Action_Model(){
     $mun[]=$fila;}
   return $mun;
 }
+function Get_Document_Action_Model(){
+  
+  if (isset($_GET['doc'])) {
+  $documento=$_GET['doc'];;
+  }
+  
+  return $documento;
+}
+function Get_Account_Action_Model(){
+  $conexion=conectar_base_de_datos();
+  $account = array();
+  $documento = $_SESSION['documento'];
+  if (isset($_GET['doc'])) {
+  $documento=$_GET['doc'];
+  }
+  $consulta="SELECT * FROM account where documento ='$documento'";
+  $resultado=mysqli_query($conexion,$consulta);
+  while ($fila=mysqli_fetch_array($resultado)) {
+    $account[]=$fila;
+                }
+  $account[0]['doc']=$documento;
+  if (isset($_GET['doc'])) {
+  $account[0]['doc']=$_GET['doc'];
+  }
+  return $account;
+}
 
 function Get_Person_Action_Model(){
   $conexion=conectar_base_de_datos();
@@ -572,6 +599,35 @@ while ($fila=mysqli_fetch_array($resultado)) {
   $ref[]=$fila;
               }
 return $ref;
+}
+
+function Create_Account_Action_Model(){
+if($_SERVER['REQUEST_METHOD']=="POST"){
+  $conexion=conectar_base_de_datos();
+  $documento = $_SESSION['documento'];
+  if (isset($_POST['doc'])) {
+      $documento=$_POST['doc'];
+      $ruta="update_resume";
+    }
+  $description = $_POST['description'];
+  $fecha_inicio=$_POST['fecha_inicio'];
+  $fecha_fin=$_POST['fecha_fin'];
+  $fecha_pago=$_POST['fecha_pago'];
+  $valor=$_POST['value'];
+  $state="Pendiente";
+
+  $destino="./Documents/Account/".$documento."/";
+  if (!file_exists($destino)) {  mkdir($destino,0777, true );}  
+
+  $file=$_FILES["file"]["name"];
+  $ruta=$_FILES['file']['tmp_name'];
+  $ruta_fin=$destino.$file;
+  move_uploaded_file($ruta, $ruta_fin);
+
+  $consulta = "INSERT INTO account (documento, description, fecha_inicio, fecha_fin, fecha_payment, value, file, name_file, state) values ('$documento','$description', '$fecha_inicio', '$fecha_fin', '$fecha_pago','$valor', '$ruta_fin', '$file', '$state')";
+    mysqli_query($conexion, $consulta);
+    //header("Location: /empleo/index.php/account";
+}
 }
 
 function Register_Exp_Job_Action_Model(){

@@ -89,6 +89,9 @@
     if($uri=="/empleo/index.php/create_resume"){
      Create_Resume_Action_Controller();
     }
+    if($uri=="/empleo/index.php/create_account"){
+     Create_Account_Action_Controller();
+    }
     
     
 
@@ -195,10 +198,12 @@ if($uri=="/empleo/index.php/Assing_comercial"){
     }
     if($uri[0]=="/empleo/index.php/company_update"){      
         Update_Resume_Company_Action_Controller();
-    }
-    
+    }    
     if($uri[0]=="/empleo/index.php/resume_del"){      
         Delete_Resume_Action_Controller();
+    }
+    if($uri[0]=="/empleo/index.php/account"){      
+        View_Account_Action_Controller();
     }
     
     
