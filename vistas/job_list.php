@@ -77,7 +77,7 @@
           </div><!-- end box listing -->
         </div>
         <div class="col-md-3">
-        <div class="block-section-sm side-right">
+          <div class="block-section-sm side-right">
           <div class="row">
             <form class="form-search-list" action = "/empleo/index.php/job_list" method ="post">
               <div class="form-group">

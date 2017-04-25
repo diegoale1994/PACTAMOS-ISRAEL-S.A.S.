@@ -265,10 +265,12 @@ function Person_Update_Action_Model(){
   $departamento = $_POST['departamento'];
   $ciudad = $_POST['ciudad'];
   $documento = $_SESSION['documento'];
+  if(isset($_GET['doc'])){$documento=$_GET['doc'];}
   //$documento1=$_POST['doc'];
   $foto=$_FILES["foto"]["name"];
   $ruta=$_FILES['foto']['tmp_name'];
   $destino="./images/Person/".$foto;
+
   move_uploaded_file($ruta, $destino);
   if (isset($_POST['doc'])) {
     $documento=$_POST['doc'];
@@ -626,7 +628,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 
   $consulta = "INSERT INTO account (documento, description, fecha_inicio, fecha_fin, fecha_payment, value, file, name_file, state) values ('$documento','$description', '$fecha_inicio', '$fecha_fin', '$fecha_pago','$valor', '$ruta_fin', '$file', '$state')";
     mysqli_query($conexion, $consulta);
-    //header("Location: /empleo/index.php/account";
+  header("Location: /empleo/index.php/account");
 }
 }
 
@@ -642,9 +644,9 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
   $documento = $_SESSION['documento'];
   $documento1=$_POST['doc'];
   $ruta="update_resume_person";
-  if (isset($documento1)) {
-    $documento=$documento1;
-    $ruta="update_resume";
+  if (isset($_GET['doc'])) {
+    $documento=$_GET['doc'];
+    $ruta="update_resume_person;";
   }
   $consulta = "INSERT INTO exp_laboral (documento, nombre_empresa, sector_empresa, cargo, fecha_ini, fecha_fin, logros) values ('$documento','$nombre_empresa','$sector_empresa','$cargo_empresa','$fecha_ini_trabajo','$fecha_fin_trabajo','$logro')";
     mysqli_query($conexion, $consulta);

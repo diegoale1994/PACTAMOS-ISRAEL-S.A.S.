@@ -149,16 +149,16 @@
                           <p><?php echo $comp["descripcion"] ?></p>
                           <div>
                             <div class="col-md-3">
-                              <a href="/empleo/index.php/company_view?doc=<?php echo $comp['documento'] ?>" class="btn btn-success">Ver Más</a>
+                              <a href="/empleo/index.php/company_view?doc=<?php echo $comp['documento'] ?>" class="btn btn-success btn-block">Ver Más</a>
                             </div>
                             <div class="col-md-3">
-                              <a href="/empleo/index.php/company_update?doc=<?php echo $comp['documento'] ?>" class="btn btn-warning">Actualizar</a>
+                              <a href="/empleo/index.php/company_update?doc=<?php echo $comp['documento'] ?>" class="btn btn-warning btn-block">Actualizar</a>
                             </div>
                             <div class="col-md-3">
-                              <a href="/empleo/index.php/company_del?doc=<?php echo $comp["documento"] ?>" class="btn btn-danger"> Eliminar</a>
+                              <a href="/empleo/index.php/company_del?doc=<?php echo $comp["documento"] ?>" class="btn btn-danger btn-block"> Eliminar</a>
                             </div>
                             <div class="col-md-3">
-                              <a href="/empleo/index.php/account?doc=<?php echo $comp["documento"] ?>" class="btn btn-primary"> Facturar</a>
+                              <a href="/empleo/index.php/account?doc=<?php echo $comp["documento"] ?>" class="btn btn-primary btn-block"> Facturar</a>
                             </div>
                           </div>
                         </div>
@@ -166,24 +166,6 @@
                     </div><br>
                     <?php endforeach ;}?>
                   <!-- pagination -->
-                  <nav >
-                    <ul class="pagination pagination-theme  no-margin">
-                      <li>
-                        <a href="#" aria-label="Previous">
-                          <span aria-hidden="true">&larr;</span>
-                        </a>
-                      </li>
-                      <li class="active"><a href="#">1</a></li>
-                      <li><a href="#">2</a></li>
-                      <li><span>...</span></li>
-                      <li><a href="#">50</a></li>
-                      <li>
-                        <a href="#" aria-label="Next">
-                          <span aria-hidden="true">&rarr;</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </nav><!-- pagination -->
 
                 </div><!-- end  box listing  -->
                 </div>
@@ -200,11 +182,13 @@
                     </div>
                   </div>
                   <div class="result-filter">
-                    <h5 class="font-bold  margin-b-20" ><a href="#s_collapse_2" data-toggle="collapse">Profesion<i class="fa ic-arrow-toogle fa-angle-right pull-right"></i> </a></h5>
+                    <h5 class="font-bold  margin-b-20" ><a href="#s_collapse_2" data-toggle="collapse">Sector de Empresa<i class="fa ic-arrow-toogle fa-angle-right pull-right"></i> </a></h5>
                     <div class="collapse in" id="s_collapse_2">
                       <div class="list-area">
                         <ul class="list-unstyled ">
-                          <li><a  href="#" >Software Engineer</a> (558)</li>
+                          <li><a  href="#" >Industrial</a> (558)</li>
+                          <li><a  href="#" >Comercial</a> (558)</li>
+                          <li><a  href="#" >Académico</a> (558)</li>
                         </ul>
 
                       </div>

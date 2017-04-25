@@ -49,14 +49,11 @@ if($tiempo_actual > $inac){
                   if($_SESSION['nivel_de_acceso']=='A'){
                   ?>
                 <ul class="nav navbar-nav">
-                  <li style="padding:5px"><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="50"></a></li>                    
-                  <li class=""><a href="../index.php/requeriment"><strong>Requerimientos</strong>
-                 
-                  </a></li>
+                  <li style="padding:5px"><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>                    
+                  <li class=""><a href="../index.php/requeriment">Requerimientos</a></li>
                   <li class=""><a href="../index.php/resumes">Hojas de Vida</a></li> 
                   <li class=""><a href="../index.php/clients">Empresas</a></li> 
-                  <li class=""><a href="../index.php/manage_users">Usuarios</a></li>   
-                  <li class=""><a href="#">Estados de Cuenta</a></li>              
+                  <li class=""><a href="../index.php/manage_users">Usuarios</a></li>    
                 </ul>  
                 <ul class="nav navbar-nav navbar-right">
                   <li class="dropdown">
@@ -182,9 +179,9 @@ if($tiempo_actual > $inac){
         echo $contenido;
        ?>
       <!-- main-footer -->
-<footer class="main-footer">
+<footer class="main-footer" >
   <div class="container">
-    <div class="row">
+    <div class="row"> 
       <div class="col-sm-6">
         <ul class="list-inline link-footer text-center-xs">
           <li><a href="../index.php/home">Inicio</a></li>                

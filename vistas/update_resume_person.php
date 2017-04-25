@@ -8,7 +8,7 @@
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
         <h4 class="modal-title" id="project-12-label"><center>Nuevo</center></h4>
       </div>
-      <form action="../index.php/update_exp_jobs" method="post" >
+      <form action="../index.php/update_exp_jobs?doc=<?php echo $person['documento'] ?>" method="post" >
         <div class="modal-body">
                  <div class="row">
                      <div class="col-md-12">                         
@@ -168,14 +168,14 @@
         <div class="block-section box-item-details">
           <div class="resume-block">
             <div class="desc"><br><br>
-               <form action="../index.php/update_person" method="POST" enctype="multipart/form-data">
+               <form action="../index.php/update_person?doc=<?php echo $person['documento'] ?>" method="POST" enctype="multipart/form-data">
               <?php foreach($person as $person): ?>
               <div class="img-profile"><img src="../images/Person/<?php echo $person["name_image"];?>" alt="Imagen de Perfil"></div>
               <h3 class="resume-sub-title"><span>Imagen</span></h3>
               <input type="file" name="foto" class="form-control" size="30px">
                 <h3 class="resume-sub-title"><span>Información Personal</span></h3>
                 <div class="row">
-                
+                  <input name="doc" value="<?php echo $person["documento"]?>" hidden>
                   <div class="col-md-6">
                     <div class="form-group ">
                       <label>Primer Nombre</label>

@@ -1,4 +1,4 @@
-<?php ob_start() ?>
+  <?php ob_start() ?>
 </header><!-- end main-header -->
 
 <div class="modal fade" id="new_company" tabindex="-1" role="dialog" aria-labelledby="crediavales-label" aria-hidden="true">
@@ -119,7 +119,7 @@
                     <div class="collapse in" id="s_collapse_2">
                       <div class="list-area">
                         <ul class="list-unstyled ">
-                          <li><a  href="#" >Software Engineer</a> (558)</li>
+                          <li><a  href="#" ></a> </li>
                         </ul>
 
                       </div>

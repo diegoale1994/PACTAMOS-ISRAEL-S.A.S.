@@ -1,50 +1,74 @@
    <?php ob_start() ?>
-<div class="">
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-    <li data-target="#myCarousel" data-slide-to="3"></li>
-  </ol>
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img src="../images/servicios/servicio1.png" alt="Chania">
-    </div>
-
-    <div class="item">
-      <img src="../images/servicios/servicio2.png" alt="Chania">
-    </div>
-
-    <div class="item">
-      <img src="../images/servicios/servicio3.png" alt="Flower">
-    </div>
-
-    <div class="item">
-      <img src="../images/servicios/servicio4.png" alt="Flower">
-    </div>
-  </div>
-
-  <!-- Left and right controls -->
-  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-
-</div>
 </header><!-- end main-header -->
-
-
       <!-- body-content -->
-     <div class="body-content clearfix" >
+     <div class="body-content clearfix" style="background: #fff  ">
+      <div class="row">
+      <div class="col-md-7" style="padding=0" width="20%">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" style="heigth:30%">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <img src="../images/servicios/servicio1.png" alt="Chania">
+            </div>
+
+            <div class="item">
+              <img src="../images/servicios/servicio2.png" alt="Chania">
+            </div>
+
+            <div class="item">
+              <img src="../images/servicios/servicio3.png" alt="Flower">
+            </div>
+
+            <div class="item">
+              <img src="../images/servicios/servicio4.png" alt="Flower">
+            </div>
+          </div>
+
+          <!-- Left and right controls -->
+          <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    
+     <div class="col-md-5">
+          <div class="block-section-sm side-right">
+          <div class="row">
+            <form class="form-search-list" action = "/empleo/index.php/job_list" method ="post">
+              <div class="form-group">
+               <p><strong>¿Qué Buscas?</strong></p>
+                <input class="form-control" name = "trabajo" placeholder="Nombre del empleo" required >
+              </div>
+           
+              <div class="form-group">
+                <p><strong>¿Donde?</strong></p>
+                <input class="form-control" name = "donde" placeholder="Lugar">
+              </div>
+           
+              <div class="form-group">
+                <label class="hidden-xs">&nbsp;</label>
+                <button class="btn btn-block btn-theme  btn-success">Buscar</button>
+              </div>
+            </form>  <!-- form search -->
+            <div class="logo text-center-sm"> <center><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="100"></a></center></div>
+          </div>
+        </div>
+      </div>
+
 
         <!--<div class="block-section bg-color1">
           <div class="container">
@@ -64,7 +88,7 @@
             </div>
           </div>
         </div>-->
-
+        <div class="col-md-12"> 
         <div class="bg-color1 block-section line-bottom">
           <div class="container text-center">
             <h2 class="">La calidad del servicio la brinda nuestro Recurso Humano.</h2>
@@ -156,6 +180,8 @@
               <?php
             }
            } ?>
+        </div>
+      </div>
 
 <?php $contenido=ob_get_clean(); ?>
 <?php include "plantilla/plantilla_base.php"; ?>

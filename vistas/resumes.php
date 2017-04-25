@@ -21,7 +21,7 @@
             <div class="col-sm-2 col-xs-12">
               <div class="form-group">
                 <label class="hidden-xs">&nbsp;</label>
-                <button class="btn btn-block btn-theme  btn-success">Buscar</button>
+                <button class="btn btn-block btn-theme  btn-success" disabled>Buscar</button>
               </div>
             </div>
           </div>
@@ -138,10 +138,8 @@
                               <a href="/empleo/index.php/resume_view?doc=<?php echo $res['documento'] ?>" class="btn btn-success">Ver Más</a>
                             </div>
                             <div class="col-md-3">
-                              <form action="../index.php/update_resume" method="POST">
-                                  <input type="hidden" name="doc" value="<?php echo $res["documento"] ?>">
-                                  <input type="submit" class="btn btn-warning" value="Actualizar"> 
-                              </form> 
+                              <a href="/empleo/index.php/update_resume_person?doc=<?php echo $res['documento'] ?>" class="btn btn-warning">Actualizar</a>                              
+                              
                             </div>
                             <div class="col-md-3">
                               <a href="/empleo/index.php/resume_del?doc=<?php echo $res["documento"] ?>" class="btn btn-danger"> Eliminar</a>
@@ -191,22 +189,7 @@
                       <div class="list-area">
                         <ul class="list-unstyled ">
                           <li>
-                            <a  href="#" >Software Engineer</a> (558)
-                          </li>
-                          <li>
-                            <a  href="#" >PHP Developer</a> (438)
-                          </li>
-                          <li>
-                            <a  href="#" >Software Engineer </a> (313)
-                          </li>
-                          <li>
-                            <a  href="#" >Senior Software Engineer </a> (169)
-                          </li>
-                          <li>
-                            <a  href="#" >Front End Developer </a> (156)
-                          </li>
-                          <li>
-                            <a  href="#" >More ... </a> 
+                            <a  href="#" ></a> 
                           </li>
                         </ul>
 
