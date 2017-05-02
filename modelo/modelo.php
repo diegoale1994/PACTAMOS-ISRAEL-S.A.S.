@@ -1044,15 +1044,13 @@ return $requeriment;
 }
 function Requeriment_List_Process(){
 
-
-        $conexion=conectar_base_de_datos();
-      
-        $consulta = "SELECT vacante vacante, fecha_publicacion fecha, id_oferta id_oferta, estado estado, nombre nombre, nombre1 nombre1, apellido1 apellido1 FROM oferta v, empresa e, persona_natural p where v.documento = e.documento and v.estado= 'P' and p.documento = v.comercial";
-        $resultado=mysqli_query($conexion,$consulta);
-        $requeriment = array();
-            while ($fila=mysqli_fetch_array($resultado)) {
-              $requeriment[]= $fila;
-                 }
+  $conexion=conectar_base_de_datos();
+  $consulta = "SELECT * FROM oferta v, empresa e, persona_natural pn , persona p where v.documento = e.documento and v.estado= 'P' and pn.documento = v.comercial and p.documento=e.documento";
+  $resultado=mysqli_query($conexion,$consulta);
+  $requeriment = array();
+      while ($fila=mysqli_fetch_array($resultado)) {
+        $requeriment[]= $fila;
+           }
 
 return $requeriment;
 }

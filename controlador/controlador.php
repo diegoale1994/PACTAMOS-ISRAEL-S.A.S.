@@ -25,6 +25,7 @@ function Desaply_For_Offer_Action_Controller(){
 	Desaply_For_Offer_Action_Model();
 }
 function Requeriment_Action_Controller(){
+	$resume=Get_Resumes_Action_Model();
 	$comercials = Get_comercials();
 	$requeriment_news = Requeriment_List_News();
 	$requeriment_process = Requeriment_List_Process();
