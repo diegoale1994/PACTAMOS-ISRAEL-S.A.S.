@@ -34,41 +34,43 @@
                       <div class="item">
                         <div class="row">
                           <div class="col-md-1 hidden-sm hidden-xs"><div class="img-item"><img src="" alt=""></div></div>
-                            <div class="col-md-6">
-                              <h3 class="no-margin-top"><a href="/empleo/index.php/job_details?offerNo=<?php echo $value["id_oferta"] ?>" class=""><?php echo $value["vacante"] ?>  <i class="fa fa-link color-white-mute font-1x"></i></a></h3>
-                              <p class="text-truncate "><?php echo $value["nombre"] ?></p>
-                              <span class="color-white-mute"><?php echo $value["fecha"] ?></span> 
-                              </div>
-                              <div class="col-md-5">
-                              <form action = "/empleo/index.php/Assing_comercial" method ="POST">
-                                  <label>Asignar Comercial</label>
-                                  <input type="hidden" name= "oferta" value = "<?php echo $value["id_oferta"] ?>">
-                                  <select class="form-control" name="comercial">
-                                  <?php 
-                                    foreach($comercials as $value1): ?>
-                                    <option value= '<?php echo $value1['documento'];?>'><?php echo $value1['nombre1']." ".$value1['apellido1']?> </option>
-                                  <?php  endforeach?>
-                                  </select><br>
+                          <div class="col-md-6">
+                            <h3 class="no-margin-top"><a href="/empleo/index.php/job_details?offerNo=<?php echo $value["id_oferta"] ?>" class=""><?php echo $value["vacante"] ?>  <i class="fa fa-link color-white-mute font-1x"></i></a></h3>
+                            <p class="text-truncate "><?php echo $value["nombre"] ?></p>
+                            <span class="color-white-mute"><?php echo $value["fecha"] ?></span> 
+                          </div>
+                          <div class="col-md-5">
+                            <form action = "/empleo/index.php/Assing_comercial" method ="POST">
+                                <label>Asignar Comercial</label>
+                                <input type="hidden" name= "oferta" value = "<?php echo $value["id_oferta"] ?>">
+                                <select class="form-control" name="comercial">
+                                <?php 
+                                  foreach($comercials as $value1): ?>
+                                  <option value= '<?php echo $value1['documento'];?>'><?php echo $value1['nombre1']." ".$value1['apellido1']?> </option>
+                                <?php  endforeach?>
+                                </select><br>
                                 <button class="btn btn-theme btn-lg btn-t-primary btn-block">Asignar</button>
-                                  </div>
-                                </div>                     
-                              </form>
-                         </div> 
+                            </form>
+                          </div>
                         </div>
-                      </div><!-- end item list --><?php   endforeach ?>
+                      </div> 
                     </div>
-                  </div>
+                  </div><!-- end item list --><?php   endforeach ?>
                 </div>
               </div>
+            </div>
+          </div>
 
           <div class="tab-pane " id="pilltab2">
             <div class="panel-body">
               <div class="row">
-                <div class="col-lg-12"> 
-                  <?php foreach($requeriment_process as $value): $vacantes=$value["vacantes"]; $documento_empresa=$value["documento"];
-                  if ($value['estado']=='P') { ?>                 
+              <?php foreach($requeriment_process as $value): 
+                $vacantes=$value["vacantes"]; $documento_empresa=$value["documento"];$offer=$value['id_oferta'];
+                  if ($value['estado']=='P') { ?>   
+                <div class="col-lg-8"> 
+                                 
                   <div class="panel panel-info">                   
-                    <div class="panel-body">
+                    <div class="panel panel-body">
                       <div class="item">
                         <div class="row">
                           <div class="col-md-2 hidden-sm hidden-xs"><div class="img-item"><img src=".<?php echo $value["image"] ?>" alt="" width="100%"></div></div>
@@ -90,33 +92,26 @@
                               </select><br>
                               <button class="btn btn-theme btn btn-warning btn-block">Modificar</button>
                             </form>
-                          </div>
-                          <div class="panel-footer">
-                            <div class="col-md-12"><br><center><h3>Asignar Vacantes : <?php echo $vacantes; ?></h3></center></div>
-                            <form method="POST" action="/empleo/index.php/asignar_vacante">                           
-                              <?php for ($i=1; $i<=$vacantes ; $i++) { ?>
-                                <div class="col-md-3"> 
-                                  <input type="hidden" name="doc_emp" value="<?php echo $documento_empresa; ?>">
-                                  <h4>Seleccionar Vacante: <?php echo $i; ?> </h4>
-                                </div>
-                                <div class="col-md-5">
-                                  <select class="form-control" name="persona">
-                                    <?php foreach($resume as $person): ?>
-                                      <option value="<?php echo $person['documento'] ?>"><?php echo $person['documento'] ?> - <?php echo $person['nombre1']." ".$person['nombre1']." ".$person['apellido1']." ".$person['apellido2']?></option>
-                                    <?php endforeach ?>
-                                  </select>
-                                </div> 
-                                <div class="col-md-4">
-                                  <input type="submit" name="" class="btn btn-success btn-block" value="Asignar">
-                                </div>   
-                              <?php } ?>
-                            </form>              
-                          </div>
+                          </div>                          
                         </div>
                       </div><!-- end item list -->
-                    </div>
-                  </div><?php   }endforeach ?>
+                    </div>                    
+                  </div>
                 </div>
+                <div class="col-md-4">
+                  <div class="panel panel-warning">
+                    <div class="panel-body">
+                      <form method="POST" action="/empleo/index.php/asignar_vacante?offer=<?php echo $offer;?>"> 
+                        <center><h4>Vacantes pedientes: <?php echo $vacantes; ?></h4></center>                          
+                        <?php for ($i=1; $i<=$vacantes ; $i++) { ?>                          
+                          <div class="col-md-12">
+                            <br><input type="submit" name="" class="btn btn-success btn-block" value="Asignar vacante ">
+                          </div>   
+                        <?php } ?>
+                      </form>
+                    </div>
+                  </div>
+                </div><?php   }endforeach ?>   
               </div>
             </div>
           </div>

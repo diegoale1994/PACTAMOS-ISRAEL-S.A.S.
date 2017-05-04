@@ -13,6 +13,10 @@ function View_Company_Action_Controller(){
 	$mun=Get_City_Action_Model();
 require "vistas/company.php";
 }
+function Asignar_Vacante_Action_Controller(){
+	$resume=Get_Resumes_Action_Model();
+	require "vistas/vacantes.php";
+}
 function View_Account_Action_Controller(){
 	$account=Get_Account_Action_Model();
 	$document=Get_Account_Action_Model();

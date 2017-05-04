@@ -209,6 +209,9 @@ if($uri=="/empleo/index.php/Assing_comercial"){
     if($uri[0]=="/empleo/index.php/update_exp_jobs"){
      Register_Exp_Job_Action_Controller();
     } 
+    if($uri[0]=="/empleo/index.php/asignar_vacante"){
+     Asignar_Vacante_Action_Controller();
+    } 
     
     
     ?>

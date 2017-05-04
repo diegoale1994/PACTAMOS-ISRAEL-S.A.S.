@@ -1,6 +1,6 @@
 <?php
  
-$inac = 900;
+$inac = 9000;
 if (isset($_SESSION['tiempo'])){ 
 $tiempo_actual = time() - $_SESSION['tiempo'];
 if($tiempo_actual > $inac){
@@ -26,7 +26,12 @@ if($tiempo_actual > $inac){
     <link href="../plugins/magnific-popup/magnific-popup.css" rel="stylesheet">
     <link href="../css/theme.css" rel="stylesheet">  
     <link href="../css/theme-custom.css" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap4.min.css">
     <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script> 
+    <script type="" src="//code.jquery.com/jquery-1.12.4.js"</script>
+    <script type="" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"</script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -222,6 +227,14 @@ if($tiempo_actual > $inac){
     <script src="../plugins/gmap3.min.js"></script>
     <!-- maps single marker -->
     <script src="../js/map-detail.js"></script>
+    <script type="" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"</script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+    </script>
 
   </body>
 </html>
