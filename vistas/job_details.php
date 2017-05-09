@@ -14,24 +14,23 @@
                       <li><i class="fa fa-map-marker"></i> <?php echo $oferta_detailed[0]['departamento']; ?>, <?php echo $oferta_detailed[0]['ciudad']; ?></li>
                       <li><i class="fa fa-money"></i> A convenir</li>
                     </ul>
-                  </div>
-                  <p>Empresa de Servicios temporales requiere <strong>Auxiliar de Carnes</strong></p>
+                  </div>                 
                   <?php echo $oferta_detailed[0]['descripcion'];?>
                   <h4>Perfil Requerido</h4>
-                  <?php echo $oferta_detailed[0]['descrip_prof']; ?>
-                  <div class="col-md-4">
-                    <h4>Área</h4>
-                    <?php echo $oferta_detailed[0]['area']; ?>
+                  <?php echo utf8_decode($oferta_detailed[0]['descrip_prof']) ?>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <h4>Fecha de Solicitud</h4>
+                      <p><?php echo $oferta_detailed[0]['fecha_publicacion']; ?></p>
+                    </div>
+                    <div class="col-md-4">
+                      <h4>Vacantes</h4>
+                      <p><?php echo $oferta_detailed[0]['vacantes']; ?></p>
+                    </div>
                   </div>
-                  <div class="col-md-4">
-                    <h4>Horario</h4>
-                    <p><?php echo $oferta_detailed[0]['horario']; ?></p>
-                  </div>
-                  <div class="col-md-4">
-                    <h4>Fecha</h4>
-                    <p><?php echo $oferta_detailed[0]['fecha_publicacion']; ?></p>
-                  </div>
-                  <div class=""><br><br><br><br><br><br><br><br><br><br></div>
+                  
+
+                  <div class=""><br><br><br><br><br><br><br></div>
                 </div><!-- end box item details -->
               </div>
               <div class="col-md-3">

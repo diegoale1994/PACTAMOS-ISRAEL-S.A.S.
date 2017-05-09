@@ -21,7 +21,7 @@
             <div class="col-sm-2 col-xs-12">
               <div class="form-group">
                 <label class="hidden-xs">&nbsp;</label>
-                <button class="btn btn-block btn-theme  btn-success">Buscar</button>
+                <button class="btn btn-block btn-theme  btn-success" disabled>Buscar</button>
               </div>
             </div>
           </div>

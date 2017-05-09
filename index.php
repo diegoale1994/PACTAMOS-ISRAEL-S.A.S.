@@ -18,10 +18,11 @@
     if($uri=="/empleo/index.php/contact"){
      Contact_Action_Controller();
     } 
-
-    if($uri=="/empleo/index.php/resumes"){
-     Resumes_Action_Controller();
+    if($uri=="/empleo/index.php/nomina"){
+     Nomina_Action_Controller();
     } 
+
+    
     if($uri=="/empleo/index.php/sender"){
      Contact_Form_Action_Controller();
     } 
@@ -88,6 +89,9 @@
     }
     if($uri=="/empleo/index.php/create_account"){
      Create_Account_Action_Controller();
+    }
+    if($uri=="/empleo/index.php/create_nomina"){
+     Create_Nomina_Action_Controller();
     }
     
     
@@ -210,8 +214,20 @@ if($uri=="/empleo/index.php/Assing_comercial"){
      Register_Exp_Job_Action_Controller();
     } 
     if($uri[0]=="/empleo/index.php/asignar_vacante"){
+     Asignar_Vacante_View_Action_Controller();
+    } 
+    if($uri[0]=="/empleo/index.php/assign"){
      Asignar_Vacante_Action_Controller();
     } 
+    if($uri[0]=="/empleo/index.php/resumes"){
+     Resumes_Action_Controller();
+    } 
+    if($uri[0]=="/empleo/index.php/certificate"){
+     Certificate_Action_Controller();
+    } 
+    if($uri[0]=="/empleo/index.php/view_nomina"){      
+        View_Nomina_Action_Controller();
+    }
     
     
     ?>

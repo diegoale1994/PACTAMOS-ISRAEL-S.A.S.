@@ -32,6 +32,7 @@ if($tiempo_actual > $inac){
     <script type="" src="//code.jquery.com/jquery-1.12.4.js"</script>
     <script type="" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"</script>
     <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -56,9 +57,10 @@ if($tiempo_actual > $inac){
                 <ul class="nav navbar-nav">
                   <li style="padding:5px"><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>                    
                   <li class=""><a href="../index.php/requeriment">Requerimientos</a></li>
-                  <li class=""><a href="../index.php/resumes">Hojas de Vida</a></li> 
+                  <li class=""><a href="../index.php/resumes">Personas</a></li> 
                   <li class=""><a href="../index.php/clients">Empresas</a></li> 
                   <li class=""><a href="../index.php/manage_users">Usuarios</a></li>    
+                  <li class=""><a href="../index.php/nomina">Nómina</a></li>  
                 </ul>  
                 <ul class="nav navbar-nav navbar-right">
                   <li class="dropdown">
@@ -125,6 +127,9 @@ if($tiempo_actual > $inac){
                         <img src="../images/logo_pactamos.png" alt="" class="img-profile"><?php echo $_SESSION['nombre'];?><b class="caret"></b>
                       </a>
                       <ul class="dropdown-menu" role="menu">
+                        <li><a href="/empleo/index.php/certificate"> Certificación laboral</a></li>
+                        <li><a href="/empleo/index.php/view_nomina" onclick="document.FormMedicos.target='_blank'"> Desprendible de nómina</a></li>
+                        <li><a href="/empleo/index.php/#"> Peticiones</a></li>
                         <li><a href="/empleo/index.php/loggout"> Salir</a></li>
                       </ul>
                     </li>
@@ -211,7 +216,7 @@ if($tiempo_actual > $inac){
 
 
 
-
+    
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="../plugins/jquery.js"></script>
     <script src="../plugins/jquery.easing-1.3.pack.js"></script>

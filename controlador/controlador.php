@@ -5,7 +5,16 @@ require "vistas/index.php";
 function Resumes_Action_Controller(){
 	$resume=Get_Resumes_Action_Model();
 	$exp_laboral = Get_Exp_Person_Action_Model_Individual();
-require "vistas/resumes.php";
+	require "vistas/resumes.php";
+}
+function Certificate_Action_Controller(){
+	Certificate_Action_Model();
+	
+}
+function Nomina_Action_Controller(){
+	$rol="Contratado";
+	$resume=Get_Resumes_Job_Action_Model($rol);
+	require "vistas/nomina.php";
 }
 function View_Company_Action_Controller(){
 	$company=Get_Company_Action_Model();
@@ -13,14 +22,23 @@ function View_Company_Action_Controller(){
 	$mun=Get_City_Action_Model();
 require "vistas/company.php";
 }
-function Asignar_Vacante_Action_Controller(){
-	$resume=Get_Resumes_Action_Model();
+function Asignar_Vacante_View_Action_Controller(){
+	$rol="";
+	$resume=Get_Resumes_Job_Action_Model($rol);
 	require "vistas/vacantes.php";
+}
+function Asignar_Vacante_Action_Controller(){
+	Assign_Action_Model();
 }
 function View_Account_Action_Controller(){
 	$account=Get_Account_Action_Model();
 	$document=Get_Account_Action_Model();
 require "vistas/accounting.php";
+}
+function View_Nomina_Action_Controller(){
+	$nomina=Get_Nomina_Action_Model();
+	$document=Get_Account_Action_Model();
+require "vistas/add_nomina.php";
 }
 function Apply_For_Offer_Action_Controller(){
 	Apply_For_Offer_Action_Model();
@@ -60,6 +78,9 @@ function Create_Resume_Action_Controller(){
 }
 function Create_Account_Action_Controller(){
   Create_Account_Action_Model();
+}
+function Create_Nomina_Action_Controller(){
+  Create_Nomina_Action_Model();
 }
 function Company_Action_Controller(){
 require "vistas/about.php";

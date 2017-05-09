@@ -1,20 +1,20 @@
 <?php ob_start() ?>
 
-  <div class="container">
+  <div class="container" ng-app="">
     <div class="row">
       <div class="col-md-4"><br><br><h1 class="color-white">Hojas de Vida</h1></div>
       <div class="col-md-8">
         <form class="form-search-list">
           <div class="row">
             <div class="col-sm-5 col-xs-6">
-              <div class="form-group">
-                <label class="color-white">Profesion</label>
-                <input class="form-control" placeholder="Ingeniero, Arquitecto etc" >
+              <div class="form-group" >
+                <label class="color-white">Profesion </label>
+                <input class="form-control" placeholder="Ingeniero, Arquitecto etc" ng-model="name">
               </div>
             </div>
-            <div class="col-sm-5 col-xs-6">
+            <div class="col-sm-5 col-xs-6 " >
               <div class="form-group">
-                <label class="color-white">Donde</label>
+                <label class="color-white">Donde </label>
                 <input class="form-control" placeholder="Ciudad o Departamento">
               </div>
             </div>
@@ -88,7 +88,6 @@
               <label>Teléfono</label>
               <input class="form-control" type="text" name="telefono" required>
             </div>
-
             <div class="col-md-12">
               <br>
               <input class="form-control " type="submit" value="Crear">

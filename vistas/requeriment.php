@@ -25,7 +25,8 @@
             <div class="panel-body">
               <div class="row">
                 <div class="col-lg-12">
-                <?php foreach($requeriment_news as $value):?>                    
+                <?php    
+                foreach($requeriment_news as $value):?>                    
                   <div class="panel panel-success">
                     <div class="panel-heading">  
                     <a type="button" class="btn btn-danger glyphicon glyphicon-remove" data-toggle="modal"  data-target="#update" id="btn_mod1" name="rol"></a>
@@ -33,11 +34,12 @@
                     <div class="panel-body">                      
                       <div class="item">
                         <div class="row">
-                          <div class="col-md-1 hidden-sm hidden-xs"><div class="img-item"><img src="" alt=""></div></div>
-                          <div class="col-md-6">
+                          <div class="col-md-2 hidden-sm hidden-xs"><div class="img-item"><img src=".<?php echo $value["image"] ?>" alt="" width="100%"></div></div>
+                          <div class="col-md-5">
                             <h3 class="no-margin-top"><a href="/empleo/index.php/job_details?offerNo=<?php echo $value["id_oferta"] ?>" class=""><?php echo $value["vacante"] ?>  <i class="fa fa-link color-white-mute font-1x"></i></a></h3>
                             <p class="text-truncate "><?php echo $value["nombre"] ?></p>
-                            <span class="color-white-mute"><?php echo $value["fecha"] ?></span> 
+                            <p class="text-truncate ">$<?php echo $value["salario"] ?></p>
+                            <span class="color-white-mute"><?php echo $value["fecha_publicacion"] ?></span> 
                           </div>
                           <div class="col-md-5">
                             <form action = "/empleo/index.php/Assing_comercial" method ="POST">
@@ -126,13 +128,14 @@
                     <div class="panel-body">
                       <div class="item">
                         <div class="row">
-                          <div class="col-md-1 hidden-sm hidden-xs"><div class="img-item"><img src="" alt=""></div></div>
-                            <div class="col-md-11">
-                              <h3 class="no-margin-top"><a href="/empleo/index.php/job_details?offerNo=<?php echo $value["id_oferta"] ?>" class=""><?php echo $value["vacante"] ?><i class="fa fa-link color-white-mute font-1x"></i></a></h3>
-                               <p class="text-truncate "><?php echo $value["nombre"] ?></p>
-                              <span class="color-white-mute"><?php echo $value["fecha"] ?></span> -
-                               <BR><label>Comercial:</label><br>
-                               <p class="text-truncate "><?php echo $value["nombre1"]." ".$value['apellido1']; ?></p>
+                          <div class="col-md-2 hidden-sm hidden-xs"><div class="img-item"><img src=".<?php echo $value["image"] ?>" alt="" width="100%"></div></div>
+                            <div class="col-md-5">
+                              <h3 class="no-margin-top"><a href="/empleo/index.php/job_details?offerNo=<?php echo $value["id_oferta"] ?>" class=""><?php echo $value["vacante"] ?> <i class="fa fa-link color-white-mute font-1x"></i></a></h3>
+                               <p class="text-truncate ">Empresa: <?php echo $value["nombre"] ?></p>
+                              <span class="color-white-mute">Fecha inicio: <?php echo $value["fecha_terminacion"] ?></span> 
+                            </div>
+                            <div class="col-md-5">                              
+                                <a href="/empleo/index.php/resumes?doc=<?php echo $value["id_oferta"] ?>" class="btn btn-primary btn-block btn-lg" disabled>Ver personal asignado</a>
                             </div>
                           </div>
                         </div><!-- end item list -->

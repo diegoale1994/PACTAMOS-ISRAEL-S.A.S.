@@ -1,4 +1,6 @@
 <?php
+require('./pdf/fpdf.php');
+
 function conectar_base_de_datos (){
     $conexion=mysqli_connect("localhost","root","","bolsa_empleo");
     if(!$conexion){
@@ -149,14 +151,124 @@ function Get_Resumes_Action_Model(){
 
 $conexion=conectar_base_de_datos();
 $resume = array();
-$consulta="SELECT * FROM persona, persona_natural WHERE persona.documento=persona_natural.documento AND
-persona.rol = 'P'";
+if (isset($_GET['doc'])) {
+  $offer=$_GET['doc'];
+  $consulta="SELECT * FROM persona_natural p, persona pe, oferta_vacante ov where ov.vacante=p.documento and p.documento=pe.documento and ov.oferta='13')"; echo $offer;
+}
+else{$consulta="SELECT * FROM persona, persona_natural WHERE persona.documento=persona_natural.documento AND
+persona.rol = 'P'";}
+
 $resultado=mysqli_query($conexion,$consulta);
   while ($fila=mysqli_fetch_array($resultado)) {
 $resume[]=$fila;
             }
             
             return $resume;
+            echo $resume;
+}
+function Get_Resumes_Job_Action_Model($rol){
+
+$state=$rol;
+$conexion=conectar_base_de_datos();
+$resume = array();
+$consulta="SELECT * FROM persona, persona_natural WHERE persona.documento=persona_natural.documento AND
+persona.rol = 'P' AND Estado='$state'";
+$resultado=mysqli_query($conexion,$consulta);
+  while ($fila=mysqli_fetch_array($resultado)) {
+$resume[]=$fila;
+            }
+            
+            return $resume;
+            echo $resume;
+}
+
+function Certificate_Action_Model(){
+  $documento = $_SESSION['documento'];
+  $conexion=conectar_base_de_datos();
+  $resume = array();
+  $consulta="SELECT * FROM persona_natural p, persona pe, oferta_vacante ov where ov.vacante=p.documento and p.documento=pe.documento AND pe.documento='$documento'";
+  $resultado=mysqli_query($conexion,$consulta);
+    while ($fila=mysqli_fetch_array($resultado)) {
+  $resume[]=$fila;
+              }
+  $dia_ini=substr($resume[0]['fecha_inicio'], 8, 11);
+  $mes_ini=substr($resume[0]['fecha_inicio'], 5, 2);
+  $año_ini=substr($resume[0]['fecha_inicio'], 0, 4);
+
+  $dia_fin=substr($resume[0]['fecha_fin'], 8, 11);
+  $mes_fin=substr($resume[0]['fecha_fin'], 5, 2);
+  $año_fin=substr($resume[0]['fecha_fin'], 0, 4);
+
+    if($mes_ini==01){$mes_ini="Enero";};
+    if($mes_ini==02){$mes_ini="Febrero";};
+    if($mes_ini==03){$mes_ini="Marzo";};
+    if($mes_ini==04){$mes_ini="Abril";};
+    if($mes_ini==05){$mes_ini="Mayo";};
+    if($mes_ini==6){$mes_ini="Junio";};
+    if($mes_ini==07){$mes_ini="Julio";};
+    if($mes_ini==08){$mes_ini="Agosto";};
+    if($mes_ini==09){$mes_ini="Septiembre";};
+    if($mes_ini==10){$mes_ini="Octubre";};
+    if($mes_ini==11){$mes_ini="Noviembre";};
+    if($mes_ini==12){$mes_ini="Diciembre";};
+
+    if($mes_fin==01){$mes_fin="Enero";};
+    if($mes_fin==02){$mes_fin="Febrero";};
+    if($mes_fin==03){$mes_fin="Marzo";};
+    if($mes_fin==04){$mes_fin="Abril";};
+    if($mes_fin==05){$mes_fin="Mayo";};
+    if($mes_fin==6){$mes_fin="Junio";};
+    if($mes_fin==07){$mes_fin="Julio";};
+    if($mes_fin==08){$mes_fin="Agosto";};
+    if($mes_fin==09){$mes_fin="Septiembre";};
+    if($mes_fin==10){$mes_fin="Octubre";};
+    if($mes_fin==11){$mes_fin="Noviembre";};
+    if($mes_fin==12){$mes_fin="Diciembre";};
+
+  $fecha =  date("Y-m-d");
+  $dia=substr($fecha, 8, 11);
+  $mes=substr($fecha, 5, 2);
+  $año=substr($fecha, 0, 4);
+
+    if($mes==01){$mes="Enero";};
+    if($mes==02){$mes="Febrero";};
+    if($mes==03){$mes="Marzo";};
+    if($mes==04){$mes="Abril";};
+    if($mes==05){$mes="Mayo";};
+    if($mes==6){$mes="Junio";};
+    if($mes==07){$mes="Julio";};
+    if($mes==08){$mes="Agosto";};
+    if($mes==09){$mes="Septiembre";};
+    if($mes==10){$mes="Octubre";};
+    if($mes==11){$mes="Noviembre";};
+    if($mes==12){$mes="Diciembre";};
+    
+
+
+$pdf=new FPDF();
+$pdf->AddPage();
+$pdf->SetFont('Helvetica','',14);
+$pdf-> Ln();
+
+$pdf->Image('./pdf/header.png',10,0,190);
+$pdf->Write (7,'.');
+$pdf-> Ln();$pdf-> Ln();$pdf-> Ln();$pdf-> Ln();$pdf-> Ln();$pdf-> Ln();
+$pdf->MultiCell(0,10,'EL SUSCRITO REPRESENTANTE', 0,'C');
+$pdf->MultiCell(0,0,'LEGAL DE LA EMPRESA PACTAMOS ISRAEL S.A.S.', 0,'C');
+$pdf->MultiCell(0,50,'CERTIFICA', 0,'C');
+$pdf->MultiCell(0,5,utf8_decode('Que el señor '.$resume[0]['nombre1'].' '.$resume[0]['nombre2'].' '.$resume[0]['apellido1'].' '.$resume[0]['apellido2'].' Identificado(a) con Cedula de Ciudadania No  '.$resume[0]['documento'].' laboro en la Empresa desde el dia '.$dia_ini.' del mes de '.$mes_ini.' del '.$año_ini.', hasta el '.$dia_fin.' del mes de '.$mes_fin.' del '.$año_fin.' desempenando el cargo de '.$resume[0]['cargo'].', con un contrato por obra o labor. Y devengando un salario mensual de $'.$resume[0]['salario'].' pesos m/cte'), 0,'J');
+$pdf->MultiCell(0,20,'Este documento se expide a solicitud del interesado.', 0,'L');
+$pdf->MultiCell(0,5,utf8_decode('Para constancia de lo anterior se firma en Fusagasugá, a los '.$dia.' dias del mes de '.$mes.' de  '.$año.'.'), 0,'J');
+$pdf->MultiCell(0,30,'Cordialmente ', 0,'L');
+$pdf->Line(10,195,80,195);//impresión de linea
+$pdf->MultiCell(0,5,'HAMILTON GRANADA ', 0,'L');
+$pdf->MultiCell(0,5,utf8_decode('Dirección De Calidad '), 0,'L');
+$pdf->MultiCell(0,5,'Pactamos Israel S.A.S ', 0,'L');
+$pdf->Image('./pdf/footer.png',10,280,190);
+
+
+$pdf->Output();
+
 }
 
 function Get_Company_Action_Model(){
@@ -404,18 +516,18 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     $diainicio=$_POST['diainicio'];
     $diafin=$_POST['diafinal'];
     $horainicio=$_POST['horainicio'];
-    $horafin=$_POST¨['horafinal'];
-    $hora1=$_POST¨['hora1'];
-    $hora2=$_POST¨['hora2'];
+    $horafin=$_POST['horafinal'];
+    $hora1=$_POST['hora1'];
+    $hora2=$_POST['hora2'];
 
-    $horario=$diainicio." a ".$diafin." de ".$horainicio.$hora1." a ".$horafin.$hora2;   
+    $horario=$diainicio." a ".$diafin." de ".$horainicio.$hora1." a ".$horafin.$hora2;   echo $horario;
     $vacantes =$_POST['vacantes'];
     $conexion=conectar_base_de_datos();
     date_default_timezone_set('America/Bogota');
     $fecha =  date("Y-m-d");    
     $consulta = "INSERT INTO oferta (documento, salario, vacante, horario, descripcion, descrip_prof, estado,  departamento, ciudad, vacantes, fecha_publicacion) values ('$documento','$salario','$vacante','$horario','$descripcion','$descripcion_profesional','N','$departamento','$ciudad','$vacantes','$fecha')";
-    mysqli_query($conexion, $consulta);
-     header("Location: /empleo/index.php/job_post?state=create");
+    //mysqli_query($conexion, $consulta);
+     //header("Location: /empleo/index.php/job_post?state=create");
 
   }
 
@@ -503,6 +615,24 @@ function Get_Account_Action_Model(){
   $documento=$_GET['doc'];
   }
   $consulta="SELECT * FROM account where documento ='$documento'";
+  $resultado=mysqli_query($conexion,$consulta);
+  while ($fila=mysqli_fetch_array($resultado)) {
+    $account[]=$fila;
+                }
+  $account[0]['doc']=$documento;
+  if (isset($_GET['doc'])) {
+  $account[0]['doc']=$_GET['doc'];
+  }
+  return $account;
+}
+function Get_Nomina_Action_Model(){
+  $conexion=conectar_base_de_datos();
+  $account = array();
+  $documento = $_SESSION['documento'];
+  if (isset($_GET['doc'])) {
+  $documento=$_GET['doc'];
+  }
+  $consulta="SELECT * FROM nomina where documento ='$documento'";
   $resultado=mysqli_query($conexion,$consulta);
   while ($fila=mysqli_fetch_array($resultado)) {
     $account[]=$fila;
@@ -603,6 +733,43 @@ while ($fila=mysqli_fetch_array($resultado)) {
 return $ref;
 }
 
+function Assign_Action_Model(){
+
+  $conexion=conectar_base_de_datos();
+  $oferta=$_GET['offer'];
+  $fecha_inicio = substr($_GET['fi'], 1, 10);
+  $fecha_fin=substr($_GET['ff'], 1, 10);
+  $salario=$_GET['sa']; 
+  $cargo=$_GET['ca']; 
+  $vacante = $_GET['doc']; 
+  
+    $consulta = "INSERT INTO oferta_vacante (oferta, vacante, fecha_inicio, fecha_fin, salario, cargo) values ('$oferta', '$vacante', '$fecha_inicio', '$fecha_fin', '$salario', '$cargo')";
+    mysqli_query($conexion, $consulta);
+
+    $consulta="SELECT * FROM oferta where id_oferta ='$oferta'";
+    $ref = array();
+    $resultado=mysqli_query($conexion,$consulta);
+    while ($fila=mysqli_fetch_array($resultado)) {
+      $ref[]=$fila;
+                  }
+    $vacantes=$ref[0]['vacantes']-1;
+
+    if ($vacantes==0) {
+      $consulta = "UPDATE oferta Set estado='F', fecha_terminacion= '$fecha_inicio'Where id_oferta ='$oferta'";
+       mysqli_query($conexion, $consulta);
+    }
+
+    $consulta = "UPDATE oferta Set vacantes='$vacantes' Where id_oferta ='$oferta'";
+    mysqli_query($conexion, $consulta);
+
+    $consulta = "UPDATE persona_natural Set Estado='Contratado' Where documento ='$vacante'";
+    mysqli_query($conexion, $consulta);
+
+
+    header("Location: /empleo/index.php/requeriment");
+
+}
+
 function Create_Account_Action_Model(){
 if($_SERVER['REQUEST_METHOD']=="POST"){
   $conexion=conectar_base_de_datos();
@@ -629,6 +796,31 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
   $consulta = "INSERT INTO account (documento, description, fecha_inicio, fecha_fin, fecha_payment, value, file, name_file, state) values ('$documento','$description', '$fecha_inicio', '$fecha_fin', '$fecha_pago','$valor', '$ruta_fin', '$file', '$state')";
     mysqli_query($conexion, $consulta);
   header("Location: /empleo/index.php/account");
+}
+}
+function Create_Nomina_Action_Model(){
+if($_SERVER['REQUEST_METHOD']=="POST"){
+  $conexion=conectar_base_de_datos();
+  $documento = $_SESSION['documento'];
+  if (isset($_POST['doc'])) {
+      $documento=$_POST['doc'];
+    }
+  $description = $_POST['description'];
+  $fecha_inicio=$_POST['fecha_inicio'];
+  $fecha_fin=$_POST['fecha_fin'];
+  
+
+  $destino="./Documents/Nomina/".$documento."/";
+  if (!file_exists($destino)) {  mkdir($destino,0777, true );}  
+
+  $file=$_FILES["file"]["name"];
+  $ruta=$_FILES['file']['tmp_name'];
+  $ruta_fin=$destino.$file;
+  move_uploaded_file($ruta, $ruta_fin);
+
+  $consulta = "INSERT INTO nomina (documento, description, fecha_inicio, fecha_fin, file, name_file ) values ('$documento','$description', '$fecha_inicio', '$fecha_fin', '$ruta_fin', '$file')";
+    mysqli_query($conexion, $consulta);
+  //header("Location: /empleo/index.php/nomina");
 }
 }
 
@@ -801,7 +993,7 @@ if($_POST['pass'] == $_POST['pass_2']){
   $passencript= sha1($pass);
   $conexion=conectar_base_de_datos();
  
-  $consulta = "INSERT INTO persona (documento, tipo_documento, password, verificado, rol, activation_code) values ('$documento','$tipo_documento','$passencript','N','P','$activation')";
+  $consulta = "INSERT INTO persona (documento, tipo_documento, password, verificado, rol, activation_code, image, name_image) values ('$documento','$tipo_documento','$passencript','N','P','$activation', './images/Person/person.png', 'person.png')";
     mysqli_query($conexion, $consulta);
    $consulta = "INSERT INTO persona_natural (documento, nombre1, nombre2, apellido1, apellido2)VALUES('$documento','$nombre_natural1','$nombre_natural2','$apellido_natural1','$apellido_natural2')";
    mysqli_query($conexion, $consulta);
@@ -873,7 +1065,7 @@ $telefono = $_POST['telefono'];
 $pass_2 = htmlentities($_POST['pass_2']);
 $passencript= sha1($pass);
 $conexion=conectar_base_de_datos();
-$consulta = "INSERT INTO persona (documento, tipo_documento, password, verificado, rol, activation_code) values ('$documento','$tipo_documento','$passencript','N','E','$activation')";
+$consulta = "INSERT INTO persona (documento, tipo_documento, password, verificado, rol, activation_code, image, name_image) values ('$documento','$tipo_documento','$passencript','N','E','$activation', './images/Company/empresa.png', 'empresa.png')";
   mysqli_query($conexion, $consulta);
 $consulta = "INSERT INTO empresa (documento, nombre)VALUES('$documento','$nombre_empresa')";
  mysqli_query($conexion, $consulta);
@@ -1032,7 +1224,7 @@ return $oferta;
 
         $conexion=conectar_base_de_datos();
       
-        $consulta = "SELECT vacante vacante, fecha_publicacion fecha, id_oferta id_oferta, estado estado, nombre nombre FROM oferta v, empresa e  where v.documento = e.documento and v.estado= 'N'";
+        $consulta = "SELECT * FROM oferta v, empresa e, persona p  where v.documento = e.documento and e.documento=p.documento and v.estado= 'N'";
         $resultado=mysqli_query($conexion,$consulta);
         $requeriment = array();
             while ($fila=mysqli_fetch_array($resultado)) {
@@ -1059,7 +1251,8 @@ function Requeriment_List_Finished(){
 
         $conexion=conectar_base_de_datos();
       
-        $consulta = "SELECT vacante vacante, fecha_publicacion fecha, id_oferta id_oferta, estado estado, nombre nombre, nombre1 nombre1, apellido1 apellido1 FROM oferta v, empresa e, persona_natural p where v.documento = e.documento and v.estado= 'F' and p.documento = v.comercial";
+        /*$consulta = "SELECT * FROM oferta of, empresa e, persona_natural p, persona pe where of.documento = e.documento and of.estado= 'F' and p.documento = of.comercial and pe.documento=e.documento";*/
+        $consulta="SELECT * FROM oferta of, empresa e, persona pe where of.documento=e.documento and pe.documento=e.documento and of.estado='F'";
         $resultado=mysqli_query($conexion,$consulta);
         $requeriment = array();
             while ($fila=mysqli_fetch_array($resultado)) {

@@ -36,8 +36,7 @@ if ( $_SESSION['nivel_de_acceso']=='A') { ?>
                     <label>Tipo de Usuario</label>
                     <select class="form-control"  name="Tipo_user">
                      <option value= "A">Adminsitrador</option>
-                     <option value= "V">Ventas</option>
-                     <option value= "C">Contabilidad</option>
+                     <option value= "C">Comercial</option>
                     </select>
                   </div>
                   <div class="col-md-2">
