@@ -11,6 +11,10 @@ function Certificate_Action_Controller(){
 	Certificate_Action_Model();
 	
 }
+function Log_Action_Controller(){
+	$log=Get_Log_Action_Model();
+	require "vistas/log.php";
+}
 function Nomina_Action_Controller(){
 	$rol="Contratado";
 	$resume=Get_Resumes_Job_Action_Model($rol);

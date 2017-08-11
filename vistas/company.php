@@ -173,9 +173,9 @@
 
               </div>
               <div class="col-md-3">
-                <div class="block-section-sm side-right">
+                <!--<div class="block-section-sm side-right">
 
-                  <!-- filter   -->
+                  
                   <div class="row">
                     <div class="col-xs-6">
                       <p><strong>Filtrar por</strong></p>
@@ -193,8 +193,8 @@
 
                       </div>
                     </div>
-                  </div><!-- end filter   -->
-                </div>
+                  </div>
+                </div>-->
 
 
               </div>

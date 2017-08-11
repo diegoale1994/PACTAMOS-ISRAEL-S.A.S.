@@ -61,6 +61,7 @@ if($tiempo_actual > $inac){
                   <li class=""><a href="../index.php/clients">Empresas</a></li> 
                   <li class=""><a href="../index.php/manage_users">Usuarios</a></li>    
                   <li class=""><a href="../index.php/nomina">Nómina</a></li>  
+                  <li class=""><a href="../index.php/log">Registro</a></li>  
                 </ul>  
                 <ul class="nav navbar-nav navbar-right">
                   <li class="dropdown">
@@ -73,13 +74,50 @@ if($tiempo_actual > $inac){
                   </li>
                 </ul>
               <?php } ?>
-              <?php if($_SESSION['nivel_de_acceso']=='Cm'){
+              <?php if($_SESSION['nivel_de_acceso']=='C'){
                 ?>
                   <ul class="nav navbar-nav">
                     <li><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
-                    <li class=""><a href="../index.php/resume_company"><strong>Perfil</strong></a></li>  
-                    <li class=""><a href="../index.php/job_list"><strong>Clientes</strong></a></li>
-                    <li class=""><a href="../index.php/my_offers">Hojas de Vida</a></li> 
+                    <li class=""><a href="../index.php/clients">Empresas</a></li> 
+                     <li class=""><a href="../index.php/nomina">Nómina</a></li>  
+                    
+                  </ul>  
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                      <a href="#" class="link-profile dropdown-toggle"  data-toggle="dropdown" >
+                        <img src="../images/logo_pactamos.png" alt="" class="img-profile"><?php echo $_SESSION['nombre'];?><b class="caret"></b>
+                      </a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="/empleo/index.php/loggout"> Salir</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                <?php } ?>
+                <?php if($_SESSION['nivel_de_acceso']=='T'){
+                ?>
+                  <ul class="nav navbar-nav">
+                    <li><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
+                    <li class=""><a href="../index.php/requeriment">Requerimientos</a></li>
+                    <li class=""><a href="../index.php/resumes">Personas</a></li> 
+                    <li class=""><a href="../index.php/manage_users">Usuarios</a></li>
+                    
+                  </ul>  
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                      <a href="#" class="link-profile dropdown-toggle"  data-toggle="dropdown" >
+                        <img src="../images/logo_pactamos.png" alt="" class="img-profile"><?php echo $_SESSION['nombre'];?><b class="caret"></b>
+                      </a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="/empleo/index.php/loggout"> Salir</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                <?php } ?>
+                <?php if($_SESSION['nivel_de_acceso']=='V'){
+                ?>
+                  <ul class="nav navbar-nav">
+                    <li><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
+                    <li class=""><a href="../index.php/clients">Empresas</a></li>                    
                   </ul>  
                   <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">

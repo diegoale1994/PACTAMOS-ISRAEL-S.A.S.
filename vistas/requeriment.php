@@ -1,4 +1,4 @@
-
+  
 
    <?php ob_start() ?>
  
@@ -134,9 +134,9 @@
                                <p class="text-truncate ">Empresa: <?php echo $value["nombre"] ?></p>
                               <span class="color-white-mute">Fecha inicio: <?php echo $value["fecha_terminacion"] ?></span> 
                             </div>
-                            <div class="col-md-5">                              
+                            <!--<div class="col-md-5">                              
                                 <a href="/empleo/index.php/resumes?doc=<?php echo $value["id_oferta"] ?>" class="btn btn-primary btn-block btn-lg" disabled>Ver personal asignado</a>
-                            </div>
+                            </div>-->
                           </div>
                         </div><!-- end item list -->
                       </div>

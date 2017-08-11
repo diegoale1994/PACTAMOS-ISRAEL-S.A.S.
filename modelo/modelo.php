@@ -131,18 +131,12 @@ $conexion=conectar_base_de_datos();
 $users = array();
 $consulta="SELECT nombre1, apellido1, n.documento, rol FROM persona AS n
 JOIN persona_natural AS pn WHERE pn.documento = n.documento AND
-n.rol = 'C'";
+n.rol != 'E' AND n.rol != 'P'";
         $resultado=mysqli_query($conexion,$consulta);
             while ($fila=mysqli_fetch_array($resultado)) {
 $users[]=$fila;
             }
-            $consulta="SELECT nombre1, apellido1, n.documento, rol FROM persona AS n
-JOIN persona_natural AS pn WHERE pn.documento = n.documento AND
-n.rol = 'V'";
-        $resultado=mysqli_query($conexion,$consulta);
-            while ($fila=mysqli_fetch_array($resultado)) {
-$users[]=$fila;
-            }
+            
             return $users;
 }
 
@@ -302,6 +296,14 @@ $passencript=sha1($_POST['pass']);
   $resultado=mysqli_query($conexion,$consulta);
   $consulta = "INSERT INTO persona_natural (documento, nombre1, apellido1) values ('$documento','$nombre','$apellido')";
   $resultado=mysqli_query($conexion,$consulta);
+
+  $link="/empleo/index.php/job_details?offerNo=".$oferta;
+  $documento = $_SESSION['documento'];
+  $fecha =  date("Y-m-d");
+  $consulta = "INSERT INTO log (doc_user,action,fecha,link) values ('$documento', 'Asignar Usuario','$fecha','')";
+  mysqli_query($conexion, $consulta);
+
+
  header("Location: /empleo/index.php/manage_users");
 }else{
   header("Location: /empleo/index.php/404_error");
@@ -358,10 +360,18 @@ function Add_comercial_Action_Model(){
   if($_SERVER['REQUEST_METHOD']=="POST"){
   $oferta = $_POST['oferta'];
   $comercial = $_POST['comercial'];
+  
   $conexion=conectar_base_de_datos();
   $consulta = "UPDATE oferta Set comercial='$comercial', estado = 'P' Where id_oferta='$oferta'";
     mysqli_query($conexion, $consulta);
- header("Location: /empleo/index.php/requeriment");
+
+  $link="/empleo/index.php/job_details?offerNo=".$oferta;
+  $documento = $_SESSION['documento'];
+  $fecha =  date("Y-m-d");
+  $consulta = "INSERT INTO log (doc_user,action,fecha,link) values ('$documento', 'Asignar Comercial','$fecha','$link')";
+  mysqli_query($conexion, $consulta);
+
+  header("Location: /empleo/index.php/requeriment");
 }else{
   header("Location: /empleo/index.php/404_error");
   }
@@ -526,8 +536,8 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     date_default_timezone_set('America/Bogota');
     $fecha =  date("Y-m-d");    
     $consulta = "INSERT INTO oferta (documento, salario, vacante, horario, descripcion, descrip_prof, estado,  departamento, ciudad, vacantes, fecha_publicacion) values ('$documento','$salario','$vacante','$horario','$descripcion','$descripcion_profesional','N','$departamento','$ciudad','$vacantes','$fecha')";
-    //mysqli_query($conexion, $consulta);
-     //header("Location: /empleo/index.php/job_post?state=create");
+    mysqli_query($conexion, $consulta);
+     header("Location: /empleo/index.php/job_post?state=create");
 
   }
 
@@ -733,6 +743,19 @@ while ($fila=mysqli_fetch_array($resultado)) {
 return $ref;
 }
 
+function Get_Log_Action_Model(){
+$conexion=conectar_base_de_datos();
+$log = array();
+
+
+$consulta="SELECT * FROM log ";
+$resultado=mysqli_query($conexion,$consulta);
+while ($fila=mysqli_fetch_array($resultado)) {
+  $log[]=$fila;
+              }
+return $log;
+}
+
 function Assign_Action_Model(){
 
   $conexion=conectar_base_de_datos();
@@ -742,6 +765,7 @@ function Assign_Action_Model(){
   $salario=$_GET['sa']; 
   $cargo=$_GET['ca']; 
   $vacante = $_GET['doc']; 
+ 
   
     $consulta = "INSERT INTO oferta_vacante (oferta, vacante, fecha_inicio, fecha_fin, salario, cargo) values ('$oferta', '$vacante', '$fecha_inicio', '$fecha_fin', '$salario', '$cargo')";
     mysqli_query($conexion, $consulta);
@@ -764,6 +788,7 @@ function Assign_Action_Model(){
 
     $consulta = "UPDATE persona_natural Set Estado='Contratado' Where documento ='$vacante'";
     mysqli_query($conexion, $consulta);
+
 
 
     header("Location: /empleo/index.php/requeriment");
@@ -820,7 +845,14 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 
   $consulta = "INSERT INTO nomina (documento, description, fecha_inicio, fecha_fin, file, name_file ) values ('$documento','$description', '$fecha_inicio', '$fecha_fin', '$ruta_fin', '$file')";
     mysqli_query($conexion, $consulta);
-  //header("Location: /empleo/index.php/nomina");
+
+  $link="/empleo/index.php/view_nomina?doc=".$documento;
+  $documentolog = $_SESSION['documento'];
+  $fecha =  date("Y-m-d");
+  $consulta = "INSERT INTO log (doc_user,action,fecha,link) values ('$documentolog', 'Agregar Desprendible','$fecha','$link')";
+  mysqli_query($conexion, $consulta);
+
+  header("Location: /empleo/index.php/nomina");
 }
 }
 
@@ -836,6 +868,8 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
   $documento = $_SESSION['documento'];
   $documento1=$_POST['doc'];
   $ruta="update_resume_person";
+  
+
   if (isset($_GET['doc'])) {
     $documento=$_GET['doc'];
     $ruta="update_resume_person;";
@@ -1045,6 +1079,12 @@ function Register_Company_Action_Model(){
     $consulta = "INSERT INTO empresa (documento, nombre, descripcion, sector, razon, website)VALUES('$documento','$nombre_empresa','$descripcion','$sector','$razon','$website')";
     mysqli_query($conexion, $consulta);
 
+  $link="/empleo/index.php/company_view?doc=".$documento;
+  $documentolog = $_SESSION['documento'];
+  $fecha =  date("Y-m-d");
+  $consulta = "INSERT INTO log (doc_user,action,fecha,link) values ('$documentolog', 'Crear Empresa','$fecha','$link')";
+  mysqli_query($conexion, $consulta);
+
 
   }
 }
@@ -1098,10 +1138,6 @@ header("Location: /empleo/index.php/404_error");
 }
 }
 
-
-
-
-
 function Loggin_Action_Model(){
 
     if($_SERVER['REQUEST_METHOD']=="POST"){
@@ -1133,7 +1169,7 @@ function Loggin_Action_Model(){
                               }
                     }
 
-                    if($niveldeacceso=="P" or $niveldeacceso=="A" or $niveldeacceso=="E"){
+                    if($niveldeacceso=="P" or $niveldeacceso=="A" or $niveldeacceso=="E" or $niveldeacceso=="T" or $niveldeacceso=="V" or $niveldeacceso=="C"){
                         $consulta_datos="SELECT nombre1 FROM persona_natural where documento = '".$documentofinal."'";
                          $resultado1=mysqli_query($conexion,$consulta_datos);
                       while ($fila1=mysqli_fetch_array($resultado1)) {
@@ -1172,6 +1208,15 @@ function Loggin_Action_Model(){
     }
      if($band==1 and $tipo_documento == "CC" and $niveldeacceso=='A'){
        header("Location: ../index.php/requeriment");
+    }
+    if($band==1 and $tipo_documento == "CC" and $niveldeacceso=='C'){
+       header("Location: ../index.php/clients");
+    }
+    if($band==1 and $tipo_documento == "CC" and $niveldeacceso=='V'){
+       header("Location: ../index.php/clients");
+    }
+    if($band==1 and $tipo_documento == "CC" and $niveldeacceso=='T'){
+       header("Location: ../index.php/resumes");
     }
       if($band==1 and $tipo_documento == "NI"){
       header("Location: ../index.php/job_post");

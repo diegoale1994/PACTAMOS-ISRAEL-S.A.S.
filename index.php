@@ -21,7 +21,9 @@
     if($uri=="/empleo/index.php/nomina"){
      Nomina_Action_Controller();
     } 
-
+    if($uri=="/empleo/index.php/log"){
+     Log_Action_Controller();
+    } 
     
     if($uri=="/empleo/index.php/sender"){
      Contact_Form_Action_Controller();
