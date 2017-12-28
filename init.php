@@ -1,3 +1,3 @@
 <?php
-header('Location: /empleo/index.php/home');
+header('Location: /empleo/pactamosweb/index.php');
 ?>

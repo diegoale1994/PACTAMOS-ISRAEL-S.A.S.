@@ -50,10 +50,9 @@ if($tiempo_actual > $inac){
         <nav class="navbar navbar-default main-navbar hidden-sm hidden-xs">
           <div class="container">
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">                  
-              <?php $acceso=0;
-                if (isset($_SESSION['nivel_de_acceso'])){ $acceso=1;
-                  if($_SESSION['nivel_de_acceso']=='A'){
-                  ?>
+              <?php $acceso=0; 
+                if (isset($_SESSION['nivel_de_acceso'])){ $acceso=1;};
+                  if(isset($_SESSION['nivel_de_acceso']) && $_SESSION['nivel_de_acceso'] =='A'){?>
                 <ul class="nav navbar-nav">
                   <li style="padding:5px"><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>                    
                   <li class=""><a href="../index.php/requeriment">Requerimientos</a></li>
@@ -73,9 +72,8 @@ if($tiempo_actual > $inac){
                     </ul>
                   </li>
                 </ul>
-              <?php } ?>
-              <?php if($_SESSION['nivel_de_acceso']=='C'){
-                ?>
+              <?php }; ?>
+              <?php if(isset($_SESSION['nivel_de_acceso']) && $_SESSION['nivel_de_acceso'] =='C'){?>
                   <ul class="nav navbar-nav">
                     <li><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
                     <li class=""><a href="../index.php/clients">Empresas</a></li> 
@@ -92,9 +90,8 @@ if($tiempo_actual > $inac){
                       </ul>
                     </li>
                   </ul>
-                <?php } ?>
-                <?php if($_SESSION['nivel_de_acceso']=='T'){
-                ?>
+                <?php }; ?>
+                <?php if(isset($_SESSION['nivel_de_acceso']) && $_SESSION['nivel_de_acceso'] =='T'){?>
                   <ul class="nav navbar-nav">
                     <li><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
                     <li class=""><a href="../index.php/requeriment">Requerimientos</a></li>
@@ -112,9 +109,8 @@ if($tiempo_actual > $inac){
                       </ul>
                     </li>
                   </ul>
-                <?php } ?>
-                <?php if($_SESSION['nivel_de_acceso']=='V'){
-                ?>
+                <?php }; ?>
+                <?php if(isset($_SESSION['nivel_de_acceso']) && $_SESSION['nivel_de_acceso'] =='V'){?>
                   <ul class="nav navbar-nav">
                     <li><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
                     <li class=""><a href="../index.php/clients">Empresas</a></li>                    
@@ -129,9 +125,8 @@ if($tiempo_actual > $inac){
                       </ul>
                     </li>
                   </ul>
-                <?php } ?>
-                
-                <?php  if($_SESSION['nivel_de_acceso']=='E'){ ?>
+                <?php }; ?>                
+                <?php  if(isset($_SESSION['nivel_de_acceso']) && $_SESSION['nivel_de_acceso'] =='E'){ ?>
                   <ul class="nav navbar-nav">
                     <li><a href="index.html"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
                     <li class=""><a href="../index.php/resume_company"><strong>Perfil</strong></a></li>
@@ -149,14 +144,12 @@ if($tiempo_actual > $inac){
                       </ul>
                     </li>
                   </ul>
-                <?php } ?>
-                <?php if($_SESSION['nivel_de_acceso']=='P'){ ?>
+                <?php }; ?>
+                <?php if(isset($_SESSION['nivel_de_acceso']) && $_SESSION['nivel_de_acceso']=='P'){ ?>
                   <ul class="nav navbar-nav">
-
                     <li ><a href="/empleo/index.php/home"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
                      <li class=""><a href="../index.php/resume_person">Perfil</a></li>
-                    <li class=""><a href="#">Busca Ofertas</a></li>
-                    
+                    <li class=""><a href="#">Busca Ofertas</a></li>                    
                     <li style="padding:15px"><form  action = "/empleo/index.php/job_list" method ="post"> <div class="col-md-5"> <input class="form-control" name = "trabajo" placeholder="Nombre del empleo" required ></div><div class="col-md-4"> <input class="form-control" name = "donde" placeholder="Lugar"></div> <div class="col-md-3"><button class="btn btn-block btn-theme  btn-success">Buscar</button> </div></form></li> 
                   </ul>
                   <ul class="nav navbar-nav navbar-right">
@@ -172,23 +165,17 @@ if($tiempo_actual > $inac){
                       </ul>
                     </li>
                   </ul>
-                <?php }}?>
-                <?php if($acceso==0) {?>
+                <?php };?>
+                <?php if($acceso==2) {?>
                   <ul class="nav navbar-nav">
-                    <li><a href="/empleo/index.php/home"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
-                    <li class=""><a href="../index.php/home"><strong>Inicio</strong></a></li>
-                    <!--<li class=""><a href="../index.php/job_list"><strong>Ofertas</strong></a></li>-->
-
-                    <li class=""><a href="../index.php/company">¿Quienes somos?</a></li>
-                    <li class=""><a href="../brochure/brochure pactamos proyecto.html" target="_blank">Servicios</a></li>
-                    <li class=""><a href="../index.php/contact">Contáctenos</a></li>                  
+                    <li><a href="../pactamosweb/index.php"><img src="../images/logo_pactamos.png" alt="" width="30"></a></li>
                   </ul>
                   <ul class="nav navbar-nav navbar-right">
                     <li class="link-btn"><a href="../index.php/login"><span class="btn btn-theme btn-pill btn-xs btn-line">Ingresar</span></a></li>
                     <li class="link-btn"><a href="../index.php/register"><span class="btn btn-theme  btn-pill btn-xs btn-line">Registro</span></a></li>
                   </ul>
             <!-- end main navbar -->
-                <?php }?> 
+                <?php };?> 
               </div>
             </div>
         </nav> 
@@ -232,9 +219,10 @@ if($tiempo_actual > $inac){
     <div class="row"> 
       <div class="col-sm-6">
         <ul class="list-inline link-footer text-center-xs">
-          <li><a href="../index.php/home">Inicio</a></li>                
-          <li><a href="../index.php/company">¿Quienes Somos?</a></li>
-          <li><a href="../index.php/contact">Contáctenos</a></li>
+          <li><a href="../pactamosweb/index.php">Inicio</a></li>                
+          <li><a href="../pactamosweb/-quienes-somos-.html"">¿Quienes Somos?</a></li>
+          <li class=""><a href="../pactamosweb/servicios.html" target="_blank">Servicios</a></li>
+          <li><a href="../pactamosweb/contactenos.html">Contáctenos</a></li>
         </ul>
       </div>
       <div class="col-sm-6 ">

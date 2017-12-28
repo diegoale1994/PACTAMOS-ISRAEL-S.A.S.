@@ -3,6 +3,7 @@ require('./pdf/fpdf.php');
 
 function conectar_base_de_datos (){
     $conexion=mysqli_connect("localhost","root","","bolsa_empleo");
+    //$conexion=mysqli_connect("72.29.71.187","elpapaen_user","pactamos@2017","elpapaen_bolsa_empleo_prod");
     if(!$conexion){
         echo 'No se pudo conectar con la BD';
     }
@@ -11,7 +12,9 @@ function conectar_base_de_datos (){
 function cerrar_conexion_db($conexion){
     mysqli_close($conexion);
 }
+
 function Get_My_Applys_Action_Model(){
+  if (isset($_SESSION['documento'])){
 $conexion=conectar_base_de_datos();
 $my_aplys = array();
 $documento = $_SESSION['documento'];
@@ -21,6 +24,7 @@ $consulta="SELECT id_oferta from persona_natural_oferta where documento = '$docu
 $my_aplys[]=$fila;
             }
             return $my_aplys;
+}
 }
 
 
@@ -435,7 +439,7 @@ $conexion=conectar_base_de_datos();
 $comercials = array();
 $consulta="SELECT nombre1, apellido1, n.documento FROM persona AS n
 JOIN persona_natural AS pn WHERE pn.documento = n.documento AND
-n.rol = 'C'";
+n.rol = 'V'";
       
 
         $resultado=mysqli_query($conexion,$consulta);
@@ -1225,6 +1229,7 @@ function Loggin_Action_Model(){
     
    cerrar_conexion_db($conexion);
 }}
+
   function Job_List_Action_Model(){
         $oferta = array();  
 if($_SERVER['REQUEST_METHOD']=="POST"){

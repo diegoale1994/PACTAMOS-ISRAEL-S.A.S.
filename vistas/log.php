@@ -1,5 +1,4 @@
 
-
    <?php ob_start() ?> 
 </header><!-- end main-header -->
 <!-- body-content -->

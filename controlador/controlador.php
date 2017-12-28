@@ -236,7 +236,7 @@ function Job_Post_Action_Controller(){
  function User_Loggout_Action_Controller(){
  	session_start();
  	session_destroy();
- 	header("Location: /empleo/index.php/home");
+ 	header("Location: /empleo/pactamosweb/index.php");
   }
  function User_Loggout_Time_Out_Action_Controller(){
  	session_start();

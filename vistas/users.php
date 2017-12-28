@@ -160,13 +160,16 @@ if ( $_SESSION['nivel_de_acceso']=='A') { ?>
                       <th><?php echo $value['apellido1'];?></th>
                       <th><?php 
                       if ($value['rol'] == 'C') {
-                      echo "COMERCIAL";
+                      echo "CONTABILIDAD";
                       }
                        if ($value['rol'] == 'V') {
-                      echo "VENTAS";
+                      echo "COMERCIAL";
                       }
                        if ($value['rol'] == 'A') {
                       echo "ADMINISTRADOR";
+                      }
+                      if ($value['rol'] == 'T') {
+                      echo "TALENTO HUMANO";
                       }
                       	?>
                       </th>                    
